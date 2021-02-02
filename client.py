@@ -63,6 +63,6 @@ while True:
         ser.write(server_command.encode())
         server.close()
         break
-    if cv2.waitKey(1) == ord('q'):
-        break
+    #if cv2.waitKey(1) == ord('q'):
+      #  break
 #cam.release()
