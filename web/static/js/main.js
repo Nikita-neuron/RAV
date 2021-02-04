@@ -1,10 +1,5 @@
-// eel.expose(say_hello_js);               // Expose this function to Python
-// function say_hello_js(x) {
-//     console.log("Hello from " + x);
-// }
 
-// say_hello_js("Javascript World!");
-// eel.say_hello_py("Javascript World!");  // Call a Python function
+var socket = io();
 
 
 let keys = {
@@ -15,8 +10,8 @@ let keys = {
 }
 
 function update_motors() {
-    console.log('update', keys)
-    eel.process_keys(keys)
+	console.log('update', keys)
+	socket.emit('keyboard', keys)
 }
 
 document.addEventListener('keydown', (event) => {
