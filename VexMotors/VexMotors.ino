@@ -19,11 +19,11 @@ Servo motor_left_1;
 Servo motor_left_2;
 Servo motor_left_3;
 
-extern "C" struct myS
+typedef struct
 {
     int r;
     int l;
-};
+} __attribute__((__packed__)) myS;
 
 void setup() {
   pinMode(motor_right_1_Pin, OUTPUT);
@@ -59,6 +59,8 @@ void loop() {
 //    char command = Serial.read();
       myS s;
       Serial.readBytes((byte*)(&s), sizeof(s));
+
+      Serial.write((byte*)&s, sizeof(myS));
 
       right_motors_speed = s.r;
       left_motors_speed = s.l;

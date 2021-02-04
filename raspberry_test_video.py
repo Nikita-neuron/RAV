@@ -80,7 +80,13 @@ while True:
     ser.write(s1)
     # print('kuku')
     # print(ser.read(1))
-    print(ser.readline())
+
+    mess = ser.read()
+
+    mess = struct.unpack("s", mess)
+    struct.unpac
+
+    print(mess)
 
     if cv2.waitKey(1) == ord('q'):
         break
