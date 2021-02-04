@@ -1,4 +1,4 @@
- #include <Servo.h>
+#include <Servo.h>
 
 int right_motors_speed = 0;
 int left_motors_speed = 0;
@@ -18,6 +18,12 @@ Servo motor_right_3;
 Servo motor_left_1;
 Servo motor_left_2;
 Servo motor_left_3;
+
+extern "C" struct myS
+{
+    int r;
+    int l;
+};
 
 void setup() {
   pinMode(motor_right_1_Pin, OUTPUT);
@@ -39,30 +45,44 @@ void setup() {
   Serial.begin(9600);
 }
 
+//void loop() {
+//  if (Serial.available() > 0) {
+////    myS s;
+////    Serial.readBytes((byte*)(&s), sizeof(s));
+//    char command = Serial.read();
+//    Serial.println("ABC");
+//  }
+//}
+
 void loop() {
   if (Serial.available() > 0) {
-    char command = Serial.read();
+//    char command = Serial.read();
+      myS s;
+      Serial.readBytes((byte*)(&s), sizeof(s));
 
-    if (command == 'w') {
-      right_motors_speed = 100;
-      left_motors_speed = 100;
-    }
-    if (command == 's') {
-      right_motors_speed = -100;
-      left_motors_speed = -100;
-    }
-    if (command == 'a') {
-      right_motors_speed = 100;
-      left_motors_speed = -100;
-    }
-    if (command == 'd') {
-      right_motors_speed = -100;
-      left_motors_speed = 100;
-    }
-    if (command == 'f' or command == 't') {
-      right_motors_speed = 0;
-      left_motors_speed = 0;
-    }
+      right_motors_speed = s.r;
+      left_motors_speed = s.l;
+
+//    if (command == 'w') {
+//      right_motors_speed = 100;
+//      left_motors_speed = 100;
+//    }
+//    if (command == 's') {
+//      right_motors_speed = -100;
+//      left_motors_speed = -100;
+//    }
+//    if (command == 'a') {
+//      right_motors_speed = 100;
+//      left_motors_speed = -100;
+//    }
+//    if (command == 'd') {
+//      right_motors_speed = -100;
+//      left_motors_speed = 100;
+//    }
+//    if (command == 'f' or command == 't') {
+//      right_motors_speed = 0;
+//      left_motors_speed = 0;
+//    }
   }
   move_right_motors(right_motors_speed);
   move_left_motors(left_motors_speed);

@@ -3,6 +3,9 @@ import cv2
 import socket
 import pickle
 import struct
+from ctypes import *
+
+from socketsMessagesProtocol import MessagesProtocol
 
 # C:\Users\undeg\AppData\Local\Microsoft\WindowsApps
 
@@ -13,57 +16,72 @@ def get_cmd_args():
     return parser.parse_args()
 
 
+def connect_server():
+    client = socket.socket()
+    ip_pc = get_cmd_args().pc_ip
+    print(ip_pc)
+    client.connect((ip_pc, 1080))
+    print('connected!')
+    return client
 
-client = socket.socket()
-client.connect((get_cmd_args().pc_ip, 1080))
-print('connected!')
 
-#ser = serial.Serial("/dev/ttyACM0", 9600)  # ls /dev/tty*
-#ser.baudrate = 9600
+def connect_arduino():
+    ser = serial.Serial("/dev/ttyACM0", 9600)  # ls /dev/tty*
+    ser.baudrate = 9600
+
+    return ser
+
+
+def get_video(cam):
+    encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 90]
+
+    ret, frame = cam.read()
+
+    if ret is True:
+        frame = cv2.resize(frame, (320, 240))
+        result, frame = cv2.imencode('.jpg', frame, encode_param)
+
+        return frame
+    else:
+        return 'end'
+
+
+client = connect_server()
+ser = connect_arduino()
+messagesProtocol = MessagesProtocol(client)
+cam = cv2.VideoCapture(0)
+
+
+class controlMessage(Structure):
+    _fields_ = [("value1", c_int8),
+         ("value2", c_int16)]
+
+s1 = controlMessage(50, 50)
 
 motors_move = False
 
-cam = cv2.VideoCapture(0)
-
-data = b""
-payload_size = struct.calcsize(">L")
-print("payload_size: {}".format(payload_size))
-
-encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 90]
-
-
 while True:
-    ret, frame = cam.read()
-    frame = cv2.resize(frame, (320, 240))
+    frame = get_video(cam)
 
-    if ret is False:
-        server.send('end'.encode())
+    if frame == 'end':
+        messagesProtocol.send_message('end')
         print('end')
         break
-    else:
-        server.send('ok'.encode())
     
-    if frame is not None:
-        cv2.imshow('frame', frame)
+    messagesProtocol.send_message("OK")
+    messagesProtocol.send_message(frame)
 
-        result, frame = cv2.imencode('.jpg', frame, encode_param)
-        data = pickle.dumps(frame, 0)
-        size = len(data)
 
-        server.sendall(struct.pack(">L", size) + data)
+    message = messagesProtocol.receive_message(16)
 
-    '''
-    for command in client.recv(1024).decode():
-        if motors_move:
-            ser.write(command.encode())
+    if message != 'OK':
+        break
+    
+    ser.write(s1)
+    # print('kuku')
+    # print(ser.read(1))
+    print(ser.readline())
 
-        if command == 'v':
-            motors_move = True
-
-        if command == 't':
-            ser.write(command.encode())
-            break
-    '''
     if cv2.waitKey(1) == ord('q'):
         break
 cam.release()
