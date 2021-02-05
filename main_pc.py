@@ -4,8 +4,9 @@ from multiprocessing import Process
 import threading
 import queue
 import io
-
-from log_system import LogSystem, Logger
+import time
+import logging
+# from log_system import LogSystem, Logger
 
 # import web.server
 
@@ -28,15 +29,19 @@ def webserver():
 def loh():
     print(print)
     raise 1
-    print('LOH')
+    print('vALENTIN-LOH')
 
 class Task(Process):
-    def __init__(self, target, log_system):
+    def __init__(self, target):
         super().__init__(
             target=target,
             name=target.__name__,
         )
-        self.logger = log_system.create_logger(self.name)
+        self.logger = multiprocessing.log_to_stderr(logging.INFO)
+        self.logger.handlers[0].level = logging.INFO
+
+        
+        raise 1
     @staticmethod
     def _custom_print(*args, **kwargs):
         kwargs.setdefault('flush', True)
@@ -53,7 +58,6 @@ class TaskManager:
     def __init__(self, tasks_functions):
         self.tasks_functions = tasks_functions
         self.tasks = {}
-        self.log_system = LogSystem()
         for fun in tasks_functions:
             name = fun.__name__
             # process = Process(
@@ -61,7 +65,7 @@ class TaskManager:
             #     name=f'{name}_task',
             #     args=(None, self.logger.create_writer(name),)
             # )
-            self.tasks[name] = Task(fun, self.log_system)
+            self.tasks[name] = Task(fun)
     def serve(self):
         for _, task in self.tasks.items():
             task.start()
