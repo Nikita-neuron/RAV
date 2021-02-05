@@ -642,3 +642,26 @@ sudo apt-get install protobuf-compiler
 sudo make
 
 https://github.com/opencv/opencv/issues/15278
+
+  File "c:\Users\User\Documents\projects\rav\main_pc.py", line 113, in <module>
+    manager.serve()
+  File "c:\Users\User\Documents\projects\rav\main_pc.py", line 106, in serve
+    task.start()
+  File "C:\Python39\lib\multiprocessing\process.py", line 121, in start
+    self._popen = self._Popen(self)
+  File "C:\Python39\lib\multiprocessing\context.py", line 224, in _Popen
+    return _default_context.get_context().Process._Popen(process_obj)
+  File "C:\Python39\lib\multiprocessing\context.py", line 327, in _Popen
+    return Popen(process_obj)
+  File "C:\Python39\lib\multiprocessing\popen_spawn_win32.py", line 93, in __init__
+    reduction.dump(process_obj, to_child)
+  File "C:\Python39\lib\multiprocessing\reduction.py", line 60, in dump
+    ForkingPickler(file, protocol).dump(obj)
+TypeError: cannot pickle '_io.TextIOWrapper' object
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python39\lib\multiprocessing\spawn.py", line 126, in _main
+    self = reduction.pickle.load(from_parent)
+EOFError: Ran out of input
