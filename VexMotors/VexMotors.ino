@@ -90,8 +90,8 @@ void loop() {
   }
   move_right_motors(right_motors_speed);
   move_left_motors(left_motors_speed);
-  myS ass {0x12, 0x34};
-  Serial.write((byte*)( &ass), sizeof ass);
+//  myS ass {0x12, 0x34};
+  Serial.write((byte*)( &s), sizeof s);
 //  uint16_t loh = 0x1234;
 //  Serial.write((byte*)&loh, sizeof loh);
 

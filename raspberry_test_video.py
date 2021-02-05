@@ -36,7 +36,9 @@ class ServerThread(threading.Thread):
     
     def run(self):
         while self._stopped:
+            print(1)
             frame = self.get_video()
+            print(1)
 
             if frame == 'end':
                 self.messagesProtocol.send_message('end')
@@ -47,10 +49,9 @@ class ServerThread(threading.Thread):
             self.messagesProtocol.send_message(frame)
 
 
-            message = self.messagesProtocol.receive_message(16)
+            message = self.messagesProtocol.receive_message(4096)
 
-            if message != 'OK':
-                break
+            print(message)
 
     def stop(self):
         self._stopped = True
@@ -99,41 +100,25 @@ ser = connect_arduino()
 
 class controlMessage(Structure):
     _pack_ = 1
-    _fields_ = [("value1", c_int8),
-         ("value2", c_int8)]
+    _fields_ = [("r", c_int8),
+         ("l", c_int8)]
 
 s1 = controlMessage(-60, 50)
 
 motors_move = False
 
-time.sleep(0.1)
+time.sleep(1)
 
 while True:
-
-    data = pickle.dumps(s1, 0)
-    size = len(data)
 
     # print("send: " + str(Pack(s1)))
 
     ser.write(Pack(s1))
 
-    while True:
-        serial_data = ser.read(2)
-    # messSize = struct.unpack("B", messSize)[0]
+    serial_data = ser.read(2)
 
-        print('Serial:', serial_data)
-        print('Ass:', controlMessage.from_buffer_copy(serial_data))
-    
-    # data = b''
-
-    # if messSize > 0:
-
-    #     while len(data) < 5:
-    #         data += ser.read()
-
-    #     # data = struct.unpack("HH", data)
-        
-    #     print("arduino: " + str(data.decode()))
+    s2 = controlMessage.from_buffer_copy(serial_data)
+    # print(s2.r)
 
     if cv2.waitKey(1) == ord('q'):
         break

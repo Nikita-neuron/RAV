@@ -25,6 +25,7 @@ def get_video(messagesProtocol):
 
     frame = cv2.imdecode(frame, cv2.IMREAD_COLOR)
     frame = cv2.resize(frame, (320, 240))
+    print(1)
 
     cv2.imshow('frame', frame)
 
@@ -36,12 +37,16 @@ while True:
     
     message = messagesProtocol.receive_message(16)
 
+    print(message)
+
     if message == 'end':
         break
 
     get_video(messagesProtocol)
+    
+    motors = [-50, 50]
 
-    messagesProtocol.send_message("OK")
+    messagesProtocol.send_message(motors)
 
     if cv2.waitKey(1) == ord('q'):
         break
