@@ -6,14 +6,15 @@ import cv2
 from RaspberryPIMotorsThread import RaspberryPIMotorsThread
 from socketsMessagesProtocol import MessagesProtocol
 
+
 class ServerConnect(threading.Thread):
-  def __init__(self):
+  def __init__(self, video_frames):
     super().__init__()
 
     self.sock = None
     self._stopped = False
 
-    self.video_frames = queue.Queue(4)
+    self.video_frames = video_frames
 
     self._IP_RASPBERRY_MOTORS = "192.168.1.37"
     self.raspberryPIMotorsThread = None
@@ -55,14 +56,6 @@ class ServerConnect(threading.Thread):
       self.raspberryPIMotorsThread.add_motors_speed(motors)
     else:
       self.print("RASPBERRY PI MOTORS is not connect")
-
-  def get_video_frames(self):
-    # получение видео с распберри
-    try:
-      frame = self.video_frames.get_nowait()
-      return frame
-    except queue.Empty:
-      return None
 
   def print(self, data):
     print("")

@@ -33,13 +33,6 @@ class RaspberryPIMotorsThread(threading.Thread):
       motors = self.get_motors_speed()
 
       self.messagesProtocol.send_message(motors)
-
-      frame = self.get_video_frames()
-
-      if frame is not None:
-        cv2.imshow('frame', frame)
-
-      cv2.waitKey(1)
       
     self.print("disconnect Raspberry PI Motors")
     self.stop()
@@ -56,9 +49,6 @@ class RaspberryPIMotorsThread(threading.Thread):
       frame = cv2.resize(frame, (320, 240))
 
       self.add_video_frames(frame)
-
-      # cv2.imshow('frame', frame)
-      # cv2.waitKey(1)
     else:
       self.print("No frame")
 
