@@ -1,7 +1,7 @@
 
-import sys
+import time
 
-class ReprFile:
-    def write(self, data):
-        print(repr(data))
-print('', file=ReprFile())
+def f():
+    while True:
+        print('SUBSSS')
+        time.sleep(1)
