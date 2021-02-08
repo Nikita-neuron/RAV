@@ -15,9 +15,9 @@ class MessagesProtocol:
             try:
                 mess = self.socket.recv(bytes)
             except:
-                return None
+                return "No connection"
             if len(mess) == 0:
-                return None
+                return "No connection"
             self.data += mess
 
         packed_msg_size = self.data[:self.payload_size]
@@ -29,9 +29,9 @@ class MessagesProtocol:
             try:
                 mess = self.socket.recv(bytes)
             except:
-                return None
+                return "No connection"
             if len(mess) == 0:
-                return None
+                return "No connection"
             self.data += mess
         frame_data = self.data[:msg_size]
         self.data = self.data[msg_size:]

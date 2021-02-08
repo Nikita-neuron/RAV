@@ -1,6 +1,5 @@
 import threading
 import queue
-import cv2
 import socket
 
 from socketsMessagesProtocol import MessagesProtocol
@@ -23,37 +22,47 @@ class RaspberryPISensorsThread(threading.Thread):
     while not self._stopped:
       try:
         message = self.messagesProtocol.receive_message(16)
+        # print(message)
+
+        if message != "OK":
+          break
       except:
         break
+      
+      try:
+        ultrasonic_data = self.messagesProtocol.receive_message(4096)
 
-      if message == 'end' or message is None:
-        break
-    
-      ultrasonic_data = self.messagesProtocol.receive_message(4096)
-    #   self.print(ultrasonic_data)
-
-      if ultrasonic_data != "No sensors data":
+        if ultrasonic_data == "No connection":
+          break
+        if ultrasonic_data != "No sensors data":
           self.add_ultrasonic_data(ultrasonic_data)
+      except:
+        break
+      
+      try:
+        sys_data = self.messagesProtocol.receive_message(16)
 
-      sys_data = self.messagesProtocol.receive_message(16)
-
-      if sys_data != "No system data":
-        self.add_system_data(sys_data)
+        if sys_data == "No connection":
+          break
+        if sys_data != "No system data":
+          self.add_system_data(sys_data)
+      except:
+        break
       
     self.print("disconnect Raspberry PI SENSORS")
     self.stop()
     self.raspberry.close()
 
   def add_ultrasonic_data(self, ultrasonic_data):
-    # добавдение скорости моторов в очередь
+    # добавдение показаний с датчиков в очередь
     try:
       self.ultrasonic_data.put(ultrasonic_data, block=False)
     except queue.Full:
       pass
 
   def get_ultrasonic_data(self):
-    # получение скорости моторов из очереди
-    ultrasonic_data = [0, 0, 0, 0, 0, 0]
+    # получение показаний датчиков из очереди
+    ultrasonic_data = None
     try:
       ultrasonic_data = self.ultrasonic_data.get_nowait()
     except queue.Empty:
@@ -62,12 +71,14 @@ class RaspberryPISensorsThread(threading.Thread):
     return ultrasonic_data
 
   def add_system_data(self, system_data):
+    # добавление системных данных в очередь
     try:
       self.system_data.put(system_data)
     except queue.Full:
       pass
 
   def get_sys_data(self):
+    # получение системных данных из очереди
     try:
       return self.system_data.get_nowait()
     except queue.Empty:

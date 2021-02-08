@@ -20,7 +20,7 @@ class ServerConnect(threading.Thread):
     self._IP_RASPBERRY_MOTORS = "192.168.1.60"
     self.raspberryPIMotorsThread = None
 
-    self._IP_RASPBERRY_SENSORS = "192.168.1.3"
+    self._IP_RASPBERRY_SENSORS = "192.168.1.37"
     self.raspberryPISensorsThread = None
 
   def run(self):
@@ -43,12 +43,15 @@ class ServerConnect(threading.Thread):
         self.raspberryPIMotorsThread.start()
 
       if adr[0] == self._IP_RASPBERRY_SENSORS:
-        # если подключена распберри с моторами
+        # если подключена распберри с сенсорами
         self.raspberryPISensorsThread = RaspberryPISensorsThread(client)
         self.raspberryPISensorsThread.start()
     
     if self.raspberryPIMotorsThread is not None:
       self.raspberryPIMotorsThread.stop()
+
+    if self.raspberryPISensorsThread is not None:
+      self.raspberryPISensorsThread.stop()
     
     self.sock.close()
     self.print("Server is closed")
@@ -61,18 +64,21 @@ class ServerConnect(threading.Thread):
 
   def set_motors_speed(self, motors):
     # установление скорости моторов
-    if self.raspberryPIMotorsThread is not None:
+    try:
       self.raspberryPIMotorsThread.add_motors_speed(motors)
-    else:
+    except:
       self.print("RASPBERRY PI MOTORS is not connect")
 
   def get_ultrasonic_data(self):
-    if self.raspberryPISensorsThread is not None:
-      self.raspberryPISensorsThread.get_ultrasonic_data()
-    else:
+    # получение данных сенсоров с распберри
+    try:
+      return self.raspberryPISensorsThread.get_ultrasonic_data()
+    except:
       self.print("RASPBERRY PI SENSORS is not connect")
+      return None
 
   def get_sys_data(self):
+    # получение системных данных с распберри
     try:
       return self.raspberryPIMotorsThread.get_sys_data()
     except:

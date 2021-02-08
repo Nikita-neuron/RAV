@@ -22,36 +22,34 @@ class ServerThread(threading.Thread):
       self.messagesProtocol.send_message("OK")
 
       ultrasonic_data = self.get_ultrasonic_data()
-
-      print(ultrasonic_data)
-
       self.messagesProtocol.send_message(ultrasonic_data)
 
       sys_data = self.get_sys_data()
-
       self.messagesProtocol.send_message(sys_data)
             
   def add_ultrasonic_data(self, ultrasonic_data):
-    # добавление скорости моторов в очередь
+    # добавление данных датчиков в очередь
     try:
       self.ultrasonic_data.put(ultrasonic_data, block=False)
     except queue.Full:
       pass
 
   def get_ultrasonic_data(self):
-    # получение скорости моторов из очереди
+    # получение данных датчиков из очереди
     try:
       return self.ultrasonic_data.get_nowait()
     except queue.Empty:
       return "No sensors data"
 
   def add_sys_data(self, sys_data):
+    # добавление системных данных в очередь
     try:
       self.sys_data.put(sys_data, block=False)
     except queue.Full:
       pass
 
   def get_sys_data(self):
+    # получение системных данных из очереди
     sys_data = "No system data"
     try:
       sys_data = self.sys_data.get_nowait()
