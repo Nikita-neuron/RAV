@@ -16,7 +16,7 @@ class ServerConnect(threading.Thread):
 
     self.video_frames = video_frames
 
-    self._IP_RASPBERRY_MOTORS = "192.168.1.37"
+    self._IP_RASPBERRY_MOTORS = "192.168.1.60"
     self.raspberryPIMotorsThread = None
 
   def run(self):
@@ -56,6 +56,13 @@ class ServerConnect(threading.Thread):
       self.raspberryPIMotorsThread.add_motors_speed(motors)
     else:
       self.print("RASPBERRY PI MOTORS is not connect")
+
+  def get_sys_data(self):
+    try:
+      return self.raspberryPIMotorsThread.get_sys_data()
+    except:
+      self.print("RASPBERRY PI MOTORS is not connect")
+      return None
 
   def print(self, data):
     print("")

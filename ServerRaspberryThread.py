@@ -13,6 +13,8 @@ class ServerThread(threading.Thread):
     self.motors_speed = queue.Queue(1)
     self._stopped = False
 
+    self.sys_data = queue.Queue(2)
+
     self.messagesProtocol = MessagesProtocol(server)
 
     self.cam = cv2.VideoCapture(0)
@@ -54,6 +56,12 @@ class ServerThread(threading.Thread):
 
       if motors is not None:
         self.add_motors_speed(motors)
+
+      sys_data = self.get_sys_data()
+
+      self.messagesProtocol.send_message(sys_data)
+
+      
             
   def add_motors_speed(self, motors):
     # добавление скорости моторов в очередь
@@ -70,6 +78,20 @@ class ServerThread(threading.Thread):
       return motors
     except queue.Empty:
       return [0, 0]
+
+  def add_sys_data(self, sys_data):
+    try:
+      self.sys_data.put(sys_data, block=False)
+    except queue.Full:
+      pass
+
+  def get_sys_data(self):
+    sys_data = "No system data"
+    try:
+      sys_data = self.sys_data.get_nowait()
+    except queue.Empty:
+      pass
+    return sys_data
 
   def stop(self):
     self._stopped = True

@@ -6,7 +6,10 @@ import struct
 import threading
 import queue
 import time
+import psutil
 from ctypes import *
+
+from gpiozero import CPUTemperature
 
 from ServerRaspberryThread import ServerThread
 
@@ -18,6 +21,39 @@ def get_cmd_args():
     parser.add_argument('pc_ip')
     return parser.parse_args()
 
+def cpu():
+    return psutil.cpu_percent()
+
+def memory():
+    memory = psutil.virtual_memory()
+    # Divide from Bytes -> KB -> MB
+    # available = round(memory.available/1024.0/1024.0,1)
+    # total = round(memory.total/1024.0/1024.0,1)
+
+    # all data in Bytes
+
+    return {
+        "memoryFree": memory.available,
+        "memoryTotal": memory.total,
+        "memoryPercent": memory.percent
+    }
+
+def disk():
+    disk = psutil.disk_usage('/')
+    # all data in Bytes
+    # Divide from Bytes -> KB -> MB -> GB
+    # free = round(disk.free/1024.0/1024.0/1024.0,1)
+    # total = round(disk.total/1024.0/1024.0/1024.0,1)
+    # return str(free) + 'GB free / ' + str(total) + 'GB total ( ' + str(disk.percent) + '% )
+    return {
+        "diskFree": disk.free,
+        "diskTotal": disk.total,
+        "diskPercent": disk.percent
+    }
+
+def temperature():
+    cpu = CPUTemperature()
+    return cpu.temperature
 
 def connect_server():
     client = socket.socket()
@@ -26,6 +62,20 @@ def connect_server():
     client.connect((ip_pc, 1080))
     print('connected!')
     return client
+
+def get_system_data():
+    cpuData = cpu()
+    memoryData = memory()
+    diskData = disk()
+    temperatureData = temperature()
+
+    return {
+        "cpu": cpuData,
+        "memory": memoryData,
+        "disk": diskData,
+        "temperature": temperatureData
+    }
+
 
 
 def connect_arduino():
@@ -48,6 +98,10 @@ class MotorsStructure(Structure):
     _fields_ = [("r", c_int8), ("l", c_int8)]
 
 while True:
+
+    system_data = get_system_data()
+
+    serverThread.add_sys_data(system_data)
 
     motors = serverThread.get_motors_speed()
 

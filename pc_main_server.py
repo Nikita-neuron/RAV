@@ -21,6 +21,15 @@ def main():
     while True:
         time.sleep(1)
         # command = input("Command: ")
+
+        sys_data = serverThread.get_sys_data()
+
+        if sys_data is not None:
+            print("CPU: " + str(sys_data["cpu"]))
+            print("Memory: " + str(sys_data["memory"]))
+            print("Disk: " + str(sys_data["disk"]))
+            print("Temperatyre: " + str(sys_data["temperature"]))
+
         command = "100 100"
         
         if command == "end":

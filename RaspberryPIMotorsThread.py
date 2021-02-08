@@ -15,6 +15,8 @@ class RaspberryPIMotorsThread(threading.Thread):
     self.video_frames = video_frames
     self.motors_speed = queue.Queue(2)
 
+    self.system_data = queue.Queue(2)
+
     self.messagesProtocol = MessagesProtocol(self.raspberry)
 
   def run(self):
@@ -33,6 +35,11 @@ class RaspberryPIMotorsThread(threading.Thread):
       motors = self.get_motors_speed()
 
       self.messagesProtocol.send_message(motors)
+
+      sys_data = self.messagesProtocol.receive_message(16)
+
+      if sys_data != "No system data":
+        self.add_system_data(sys_data)
       
     self.print("disconnect Raspberry PI Motors")
     self.stop()
@@ -83,6 +90,18 @@ class RaspberryPIMotorsThread(threading.Thread):
       pass
 
     return motors
+
+  def add_system_data(self, system_data):
+    try:
+      self.system_data.put(system_data)
+    except queue.Full:
+      pass
+
+  def get_sys_data(self):
+    try:
+      return self.system_data.get_nowait()
+    except queue.Empty:
+      return None
 
   def print(self, data):
     print("")
