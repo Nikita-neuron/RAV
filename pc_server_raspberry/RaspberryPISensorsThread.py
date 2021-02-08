@@ -22,7 +22,6 @@ class RaspberryPISensorsThread(threading.Thread):
     while not self._stopped:
       try:
         message = self.messagesProtocol.receive_message(16)
-        # print(message)
 
         if message != "OK":
           break

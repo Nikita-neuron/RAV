@@ -9,6 +9,9 @@ from RaspberryVideo import RaspberryVideo
 
 # https://rtcbot.readthedocs.io/en/latest/arduino.html
 
+# https://habr.com/ru/post/513966/
+# https://webdevblog.ru/logging-v-python/
+
 
 def main():
 	video_frames = queue.Queue(4)
