@@ -21,9 +21,11 @@ Servo motor_left_3;
 
 typedef struct
 {
-    int r;
-    int l;
+    int8_t r;
+    int8_t l;
 } __attribute__((__packed__)) myS;
+
+myS s;
 
 void setup() {
   pinMode(motor_right_1_Pin, OUTPUT);
@@ -57,10 +59,10 @@ void setup() {
 void loop() {
   if (Serial.available() > 0) {
 //    char command = Serial.read();
-      myS s;
-      Serial.readBytes((byte*)(&s), sizeof(s));
+      
+      Serial.readBytes((byte*)(&s), sizeof(myS));
 
-      Serial.write((byte*)&s, sizeof(myS));
+      
 
       right_motors_speed = s.r;
       left_motors_speed = s.l;
@@ -88,6 +90,14 @@ void loop() {
   }
   move_right_motors(right_motors_speed);
   move_left_motors(left_motors_speed);
+//  myS ass {0x12, 0x34};
+  Serial.write((byte*)( &s), sizeof s);
+//  uint16_t loh = 0x1234;
+//  Serial.write((byte*)&loh, sizeof loh);
+
+//  Serial.print(String(s.r));
+//  Serial.print(String(s.l));
+  
   delay(1000);
   
 //  int value = 100;

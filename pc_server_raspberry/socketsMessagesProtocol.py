@@ -10,16 +10,29 @@ class MessagesProtocol:
 
     def receive_message(self, bytes):
 
+        mess = ""
         while len(self.data) < self.payload_size:
-            self.data += self.socket.recv(bytes)
+            try:
+                mess = self.socket.recv(bytes)
+            except:
+                return "No connection"
+            if len(mess) == 0:
+                return "No connection"
+            self.data += mess
 
         packed_msg_size = self.data[:self.payload_size]
         self.data = self.data[self.payload_size:]
         msg_size = struct.unpack(">L", packed_msg_size)[0]
 
-
+        mess = ""
         while len(self.data) < msg_size:
-            self.data += self.socket.recv(bytes)
+            try:
+                mess = self.socket.recv(bytes)
+            except:
+                return "No connection"
+            if len(mess) == 0:
+                return "No connection"
+            self.data += mess
         frame_data = self.data[:msg_size]
         self.data = self.data[msg_size:]
 
