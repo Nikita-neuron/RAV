@@ -24,11 +24,13 @@ def main():
 
         sys_data = serverThread.get_sys_data()
 
-        if sys_data is not None:
-            print("CPU: " + str(sys_data["cpu"]))
-            print("Memory: " + str(sys_data["memory"]))
-            print("Disk: " + str(sys_data["disk"]))
-            print("Temperatyre: " + str(sys_data["temperature"]))
+        # if sys_data is not None:
+        #     print("CPU: " + str(sys_data["cpu"]))
+        #     print("Memory: " + str(sys_data["memory"]))
+        #     print("Disk: " + str(sys_data["disk"]))
+        #     print("Temperatyre: " + str(sys_data["temperature"]))
+
+        print(serverThread.get_ultrasonic_data())
 
         command = "100 100"
         
@@ -39,7 +41,7 @@ def main():
         try:
             r, l = map(int, command.split())
             motors = [r, l]
-            serverThread.set_motors_speed(motors)
+            # serverThread.set_motors_speed(motors)
         except:
             print("Your command is incorrect")
             print("Exemple (r, l): 50 50")

@@ -4,6 +4,7 @@ import socket
 import cv2
 
 from RaspberryPIMotorsThread import RaspberryPIMotorsThread
+from RaspberryPISensorsThread import RaspberryPISensorsThread
 from socketsMessagesProtocol import MessagesProtocol
 
 
@@ -18,6 +19,9 @@ class ServerConnect(threading.Thread):
 
     self._IP_RASPBERRY_MOTORS = "192.168.1.60"
     self.raspberryPIMotorsThread = None
+
+    self._IP_RASPBERRY_SENSORS = "192.168.1.3"
+    self.raspberryPISensorsThread = None
 
   def run(self):
     self.start_connect()
@@ -37,6 +41,11 @@ class ServerConnect(threading.Thread):
         # если подключена распберри с моторами
         self.raspberryPIMotorsThread = RaspberryPIMotorsThread(client, self.video_frames)
         self.raspberryPIMotorsThread.start()
+
+      if adr[0] == self._IP_RASPBERRY_SENSORS:
+        # если подключена распберри с моторами
+        self.raspberryPISensorsThread = RaspberryPISensorsThread(client)
+        self.raspberryPISensorsThread.start()
     
     if self.raspberryPIMotorsThread is not None:
       self.raspberryPIMotorsThread.stop()
@@ -56,6 +65,12 @@ class ServerConnect(threading.Thread):
       self.raspberryPIMotorsThread.add_motors_speed(motors)
     else:
       self.print("RASPBERRY PI MOTORS is not connect")
+
+  def get_ultrasonic_data(self):
+    if self.raspberryPISensorsThread is not None:
+      self.raspberryPISensorsThread.get_ultrasonic_data()
+    else:
+      self.print("RASPBERRY PI SENSORS is not connect")
 
   def get_sys_data(self):
     try:
