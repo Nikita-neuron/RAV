@@ -2,6 +2,7 @@ import threading
 import queue
 import socket
 import cv2
+import time
 
 from socketsMessagesProtocol import MessagesProtocol
 
@@ -44,9 +45,11 @@ class ServerThread(threading.Thread):
         break
             
       self.messagesProtocol.send_message("OK")
-      self.messagesProtocol.send_message(frame)
+      # time.sleep(2)
+      # self.messagesProtocol.send_message(frame)
 
       motors = self.messagesProtocol.receive_message(16)
+      # print(motors)
 
       if motors[0] != 0 or motors[1] != 0:
         self.count_zero_speed = 0
@@ -57,9 +60,9 @@ class ServerThread(threading.Thread):
       if motors is not None:
         self.add_motors_speed(motors)
 
-      sys_data = self.get_sys_data()
+      # sys_data = self.get_sys_data()
 
-      self.messagesProtocol.send_message(sys_data)
+      # self.messagesProtocol.send_message(sys_data)
 
       
             

@@ -30,16 +30,16 @@ class RaspberryPIMotorsThread(threading.Thread):
       if message == 'end' or message is None:
         break
     
-      self.get_video()
+      # self.get_video()
               
       motors = self.get_motors_speed()
 
       self.messagesProtocol.send_message(motors)
 
-      sys_data = self.messagesProtocol.receive_message(16)
+      # sys_data = self.messagesProtocol.receive_message(16)
 
-      if sys_data != "No system data":
-        self.add_system_data(sys_data)
+      # if sys_data != "No system data":
+        # self.add_system_data(sys_data)
       
     self.print("disconnect Raspberry PI Motors")
     self.stop()

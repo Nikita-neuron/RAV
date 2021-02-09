@@ -104,6 +104,7 @@ while True:
     serverThread.add_sys_data(system_data)
 
     motors = serverThread.get_motors_speed()
+    print(motors)
 
     motors_arduino = MotorsStructure(motors[0], motors[1])
 
@@ -112,7 +113,7 @@ while True:
     serial_data = arduino.read(2)
 
     motors_from_arduino = MotorsStructure.from_buffer_copy(serial_data)
-    print(motors_from_arduino.r)
+    # print(motors_from_arduino.r)
 
     if cv2.waitKey(1) == ord('q'):
         break

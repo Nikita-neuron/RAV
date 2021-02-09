@@ -45,7 +45,7 @@ def main():
 		try:
 			r, l = map(int, command.split())
 			motors = [r, l]
-			# serverThread.set_motors_speed(motors)
+			serverThread.set_motors_speed(motors)
 		except:
 			print("Your command is incorrect")
 			print("Exemple (r, l): 50 50")
