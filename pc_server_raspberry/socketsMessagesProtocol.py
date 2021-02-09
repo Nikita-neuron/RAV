@@ -14,6 +14,7 @@ class MessagesProtocol:
         while len(self.data) < self.payload_size:
             try:
                 mess = self.socket.recv(bytes)
+                # print(1)
             except:
                 return "No connection"
             if len(mess) == 0:
@@ -25,9 +26,11 @@ class MessagesProtocol:
         msg_size = struct.unpack(">L", packed_msg_size)[0]
 
         mess = ""
+        print("t: " + str(msg_size))
         while len(self.data) < msg_size:
             try:
                 mess = self.socket.recv(bytes)
+                # print(2)
             except:
                 return "No connection"
             if len(mess) == 0:
@@ -42,6 +45,13 @@ class MessagesProtocol:
 
     def send_message(self, data):
         data = pickle.dumps(data, 0)
+        print("data: " + str(data))
         size = len(data)
 
-        self.socket.sendall(struct.pack(">L", size) + data)
+        # print("y: " + "gggg")
+
+        print("size: " + str(size))
+        try:
+            self.socket.sendall(struct.pack(">L", size) + data)
+        except:
+            print(9)

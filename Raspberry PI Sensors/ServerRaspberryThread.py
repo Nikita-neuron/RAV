@@ -17,11 +17,22 @@ class ServerThread(threading.Thread):
     self.messagesProtocol = MessagesProtocol(server)
     
   def run(self):
+    i = 0
     while not self._stopped:
             
       self.messagesProtocol.send_message("OK")
 
+      mess = self.messagesProtocol.receive_message(16)
+
+      if mess != "OK":
+        break
+
       ultrasonic_data = self.get_ultrasonic_data()
+      print('GAVNO', i)
+      i += 1
+
+      # if ultrasonic_data != "No sensors data":
+        # print("t: " + str(ultrasonic_data))
       self.messagesProtocol.send_message(ultrasonic_data)
 
       sys_data = self.get_sys_data()
@@ -31,7 +42,9 @@ class ServerThread(threading.Thread):
     # добавление данных датчиков в очередь
     try:
       self.ultrasonic_data.put(ultrasonic_data, block=False)
+      print("t: " + str(ultrasonic_data))
     except queue.Full:
+      print('FULL')
       pass
 
   def get_ultrasonic_data(self):

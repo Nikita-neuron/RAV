@@ -27,9 +27,12 @@ class RaspberryPISensorsThread(threading.Thread):
           break
       except:
         break
+
+      self.messagesProtocol.send_message("OK")
       
       try:
-        ultrasonic_data = self.messagesProtocol.receive_message(4096)
+        ultrasonic_data = self.messagesProtocol.receive_message(32)
+        # print("a: " + str(ultrasonic_data))
 
         if ultrasonic_data == "No connection":
           break
@@ -39,7 +42,7 @@ class RaspberryPISensorsThread(threading.Thread):
         break
       
       try:
-        sys_data = self.messagesProtocol.receive_message(16)
+        sys_data = self.messagesProtocol.receive_message(4096)
 
         if sys_data == "No connection":
           break
@@ -55,6 +58,7 @@ class RaspberryPISensorsThread(threading.Thread):
   def add_ultrasonic_data(self, ultrasonic_data):
     # добавдение показаний с датчиков в очередь
     try:
+      print("t: " + str(ultrasonic_data))
       self.ultrasonic_data.put(ultrasonic_data, block=False)
     except queue.Full:
       pass

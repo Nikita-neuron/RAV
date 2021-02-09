@@ -20,7 +20,7 @@ class ServerConnect(threading.Thread):
     self._IP_RASPBERRY_MOTORS = "192.168.1.60"
     self.raspberryPIMotorsThread = None
 
-    self._IP_RASPBERRY_SENSORS = "192.168.1.37"
+    self._IP_RASPBERRY_SENSORS = "192.168.1.3"
     self.raspberryPISensorsThread = None
 
   def run(self):

@@ -34,7 +34,7 @@ def main():
 		#     print("Temperatyre: " + str(sys_data["temperature"]))
 
 		data = serverThread.get_ultrasonic_data()
-		print(data)
+		# print(data)
 
 		command = "100 100"
 		
