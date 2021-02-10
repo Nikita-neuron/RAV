@@ -54,11 +54,11 @@ def main():
 	raspberryVideo = RaspberryVideo(video_frames)
 	raspberryVideo.start()
 
-	# webserver_receiver = WebServerReceiver()
-	# webserver_receiver.start()
+	webserver_receiver = WebServerReceiver()
+	webserver_receiver.start()
 
 	while True:
-		time.sleep(1)
+		# time.sleep(1)
 		# command = input("Command: ")
 
 		# sys_data = serverThread.get_sys_data()
@@ -81,8 +81,8 @@ def main():
 
 		try:
 			# r, l = map(int, command.split())
-			# motors = webserver_receiver.get_command()
-			motors = [1, 1]
+			motors = webserver_receiver.get_command()
+			# motors = [1, 1]
 			print('MOTORS', motors)
 			serverThread.set_motors_speed(motors)
 		except:
