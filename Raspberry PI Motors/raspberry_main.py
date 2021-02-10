@@ -104,7 +104,7 @@ while True:
     serverThread.add_sys_data(system_data)
 
     motors = serverThread.get_motors_speed()
-    print(motors)
+    # print(motors)
 
     motors_arduino = MotorsStructure(motors[0], motors[1])
 

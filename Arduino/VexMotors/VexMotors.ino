@@ -98,7 +98,7 @@ void loop() {
 //  Serial.print(String(s.r));
 //  Serial.print(String(s.l));
   
-  delay(1000);
+  //delay(10);
   
 //  int value = 100;
 //  motor_right_1.write(map(value, -100, 100, 1000, 2000));

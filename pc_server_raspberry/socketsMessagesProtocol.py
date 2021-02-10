@@ -1,6 +1,15 @@
 import struct
 import socket
 import pickle
+import numpy as np
+
+from ctypes import *
+
+class MessageStruct(Structure):
+    _pack_ = 1
+    _fields_ = [
+        ("frame", c_long)
+    ]
 
 class MessagesProtocol:
     def __init__(self, socket):
@@ -11,6 +20,7 @@ class MessagesProtocol:
     def receive_message(self, bytes):
         # self.data = b""
 
+        '''
         mess = ""
         while len(self.data) < self.payload_size:
             try:
@@ -41,19 +51,40 @@ class MessagesProtocol:
         self.data = self.data[msg_size:]
 
         frame = pickle.loads(frame_data, fix_imports=True, encoding="bytes")
+        '''
+        # data = self.socket.recv(4096)
+        # print(data)
+
+        # frame = MessageStruct.from_buffer_copy(data)
+        # print(frame.frame)
+
+        # frame = np.ctypeslib.as_array(frame.frame)
+
+        # print(frame)
+
+        mess = b""
+
+        while self.socket.bytesAvailable():
+            mess = self.socket.read(self.socket.bytesAvailable())
         
-        return frame
+
+        return mess
 
     def send_message(self, data):
-        data = pickle.dumps(data, 0)
+        # data = pickle.dumps(data, 0)
         # print("data: " + str(data))
-        size = len(data)
+        # size = len(data)
 
         # print("y: " + "gggg")
 
         # print("size: " + str(size))
+
+        self.socket.send(MessageStruct(data))
+
+        '''
         try:
             self.socket.sendall(struct.pack(">L", size) + data)
         except:
             # print(9)
             pass
+        '''

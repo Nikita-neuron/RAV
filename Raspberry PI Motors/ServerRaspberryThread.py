@@ -3,6 +3,9 @@ import queue
 import socket
 import cv2
 import time
+import numpy as np
+
+from ctypes import *
 
 from socketsMessagesProtocol import MessagesProtocol
 
@@ -29,9 +32,17 @@ class ServerThread(threading.Thread):
 
     if ret is True:
       frame = cv2.resize(frame, (320, 240))
+      # print("size: " + str(len(frame)) + " : " + str(len(frame[0])))
+
+      frame_numpy = np.array(frame)
+      frame_ctype = frame_numpy.ctypes.data_as(POINTER(c_long))
+      print(frame_ctype)
+
+      # print(frame_ctype)
+
       result, frame = cv2.imencode('.jpg', frame, encode_param)
 
-      return frame
+      return frame_ctype
     else:
       return None
     
@@ -39,16 +50,19 @@ class ServerThread(threading.Thread):
     while not self._stopped:
       frame = self.get_video()
 
+      # print("size: " + str(len(frame)))
+
       if frame is None:
         self.messagesProtocol.send_message('end')
         print('end')
         break
             
-      self.messagesProtocol.send_message("OK")
+      # self.messagesProtocol.send_message("OK")
       # time.sleep(2)
-      # self.messagesProtocol.send_message(frame)
+      self.messagesProtocol.send_message(frame)
 
-      motors = self.messagesProtocol.receive_message(16)
+      # motors = self.messagesProtocol.receive_message(16)
+      motors = [0, 0]
       # print(motors)
 
       if motors[0] != 0 or motors[1] != 0:

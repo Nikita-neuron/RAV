@@ -23,18 +23,19 @@ class RaspberryPIMotorsThread(threading.Thread):
     self.print("Connection successful")
     while not self._stopped:
       try:
-        message = self.messagesProtocol.receive_message(16)
+        # message = self.messagesProtocol.receive_message(16)
+        message = "OK"
       except:
         break
 
       if message == 'end' or message is None:
         break
     
-      # self.get_video()
+      self.get_video()
               
       motors = self.get_motors_speed()
 
-      self.messagesProtocol.send_message(motors)
+      # self.messagesProtocol.send_message(motors)
 
       # sys_data = self.messagesProtocol.receive_message(16)
 
@@ -49,6 +50,7 @@ class RaspberryPIMotorsThread(threading.Thread):
   def get_video(self):
     # получение видео от распберри
     frame = self.messagesProtocol.receive_message(16384)
+    # print()
 
     if frame is not None:
 
