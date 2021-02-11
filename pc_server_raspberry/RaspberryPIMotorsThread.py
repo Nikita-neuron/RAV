@@ -1,9 +1,12 @@
+from pickle import NONE
 import threading
 import queue
 import cv2
 import socket
 
 from socketsMessagesProtocol import MessagesProtocol
+
+from Sound import SoundPlayThread, SoundRecordThread
 
 class RaspberryPIMotorsThread(threading.Thread):
   def __init__(self, raspberry, video_frames):
@@ -15,12 +18,20 @@ class RaspberryPIMotorsThread(threading.Thread):
     self.video_frames = video_frames
     self.motors_speed = queue.Queue(2)
 
+    self.sounds_raspberry = queue.Queue(2)
+    self.sounds_pc = queue.Queue(2)
+
     self.system_data = queue.Queue(2)
 
     self.messagesProtocol = MessagesProtocol(self.raspberry)
 
   def run(self):
     self.print("Connection successful")
+    soundRecordThread = SoundRecordThread.SoundRecordThread()
+    soundPlayThread = SoundPlayThread.SoundPlayThread()
+
+    soundRecordThread.start()
+    soundPlayThread.start()
     while not self._stopped:
       try:
         # message = self.messagesProtocol.receive_message(16)
@@ -31,9 +42,30 @@ class RaspberryPIMotorsThread(threading.Thread):
       if message == 'end' or message is None:
         break
     
-      self.get_video()
+      # self.get_video()
               
-      motors = self.get_motors_speed()
+      # motors = self.get_motors_speed()
+
+      sounds_raspberry = self.messagesProtocol.receive_message(4096)
+      if sounds_raspberry is not None:
+        try:
+          # print("sound ", sounds_raspberry)
+          # self.sounds_raspberry.put(sounds_raspberry)
+          soundPlayThread.add_sound(sounds_raspberry)
+        except queue.Full:
+          pass
+      
+      # sound = None
+      # try:
+      #   sound = self.sounds_pc.get_nowait()
+      # except queue.Empty:
+      #   pass
+
+      # sound = soundRecordThread.get_sound()
+
+      # self.messagesProtocol.send_message(sound)
+
+      # soundPlayThread.add_sound(self.get_sound_raspberry())
 
       # self.messagesProtocol.send_message(motors)
 
@@ -104,6 +136,18 @@ class RaspberryPIMotorsThread(threading.Thread):
       return self.system_data.get_nowait()
     except queue.Empty:
       return None
+
+  def get_sound_raspberry(self):
+    try:
+      return self.sounds_raspberry.get_nowait()
+    except:
+      return None
+
+  def add_sound_pc(self, sound):
+    try:
+      self.sounds_pc.put(sound)
+    except queue.Full:
+      pass
 
   def print(self, data):
     print("")

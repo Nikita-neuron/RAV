@@ -7,11 +7,13 @@ import threading
 import queue
 import time
 import psutil
+import pyaudio
 from ctypes import *
 
 from gpiozero import CPUTemperature
 
 from ServerRaspberryThread import ServerThread
+from Sound import SoundPlayThread, SoundRecordThread
 
 # C:\Users\undeg\AppData\Local\Microsoft\WindowsApps
 
@@ -84,13 +86,37 @@ def connect_arduino():
 
     return ser
 
+def get_sound_device():
+    p = pyaudio.PyAudio()
+    print("----------------------record device list---------------------")
+    info = p.get_host_api_info_by_index(0)
+    numdevices = info.get('deviceCount')
+    for i in range(0, numdevices):
+            if (p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels')) > 0:
+                print("Input Device id ", i, " - ", 
+                p.get_device_info_by_host_api_device_index(0, i).get('name'), " chanels: ", 
+                p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels'), " RATE: ", 
+                p.get_device_info_by_host_api_device_index(0, i).get('defaultSampleRate'))
+
+    print("-------------------------------------------------------------")
+    p.terminate()
+
+
+get_sound_device()
+
 
 server = connect_server()
 
 serverThread = ServerThread(server)
 serverThread.start()
 
-arduino = connect_arduino()
+# arduino = connect_arduino()
+
+soundRecordThread = SoundRecordThread.SoundRecordThread()
+soundPlayThread = SoundPlayThread.SoundPlayThread()
+
+soundRecordThread.start()
+soundPlayThread.start()
 
 
 class MotorsStructure(Structure):
@@ -103,19 +129,28 @@ while True:
 
     serverThread.add_sys_data(system_data)
 
-    motors = serverThread.get_motors_speed()
+    sound = soundRecordThread.get_sound()
+    if sound is not None:
+        serverThread.add_sound_raspberry(sound)
+
+    sound_pc = serverThread.get_sound_pc()
+    if sound_pc is not None:
+        soundPlayThread.add_sound(sound_pc)
+
+
+    # motors = serverThread.get_motors_speed()
     # print(motors)
 
-    motors_arduino = MotorsStructure(motors[0], motors[1])
+    # motors_arduino = MotorsStructure(motors[0], motors[1])
 
-    arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
+    # arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
 
-    serial_data = arduino.read(2)
+    # serial_data = arduino.read(2)
 
-    motors_from_arduino = MotorsStructure.from_buffer_copy(serial_data)
+    # motors_from_arduino = MotorsStructure.from_buffer_copy(serial_data)
     # print(motors_from_arduino.r)
 
     if cv2.waitKey(1) == ord('q'):
         break
-cam.release()
+# cam.release()
 server.close()

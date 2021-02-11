@@ -19,6 +19,9 @@ class ServerThread(threading.Thread):
 
     self.sys_data = queue.Queue(2)
 
+    self.sounds_raspberry = queue.Queue(2)
+    self.sounds_pc = queue.Queue(2)
+
     self.messagesProtocol = MessagesProtocol(server)
 
     self.cam = cv2.VideoCapture(0)
@@ -34,32 +37,42 @@ class ServerThread(threading.Thread):
       frame = cv2.resize(frame, (320, 240))
       # print("size: " + str(len(frame)) + " : " + str(len(frame[0])))
 
-      frame_numpy = np.array(frame)
-      frame_ctype = frame_numpy.ctypes.data_as(POINTER(c_long))
-      print(frame_ctype)
+      # frame_numpy = np.array(frame)
+      # frame_ctype = frame_numpy.ctypes.data_as(POINTER(c_long))
+      # print(frame_ctype)
 
       # print(frame_ctype)
 
       result, frame = cv2.imencode('.jpg', frame, encode_param)
 
-      return frame_ctype
+      return frame
     else:
       return None
     
   def run(self):
     while not self._stopped:
-      frame = self.get_video()
+      # frame = self.get_video()
 
       # print("size: " + str(len(frame)))
 
-      if frame is None:
-        self.messagesProtocol.send_message('end')
-        print('end')
-        break
+      # if frame is None:
+      #   self.messagesProtocol.send_message('end')
+      #   print('end')
+      #   break
+
+
+      # self.messagesProtocol.send_message(frame)
+
+      sound = self.get_sound_raspberry()
+      if sound is not None:
+        self.messagesProtocol.send_message(sound)
+
+      # sound_pc = self.messagesProtocol.receive_message(4096)
+      # if sound_pc is not None:
+        # self.add_sound_pc(sound_pc)
             
       # self.messagesProtocol.send_message("OK")
       # time.sleep(2)
-      self.messagesProtocol.send_message(frame)
 
       # motors = self.messagesProtocol.receive_message(16)
       motors = [0, 0]
@@ -109,6 +122,30 @@ class ServerThread(threading.Thread):
     except queue.Empty:
       pass
     return sys_data
+
+  def get_sound_raspberry(self):
+    try:
+      return self.sounds_raspberry.get_nowait()
+    except:
+      return None
+
+  def add_sound_raspberry(self, sound):
+    try:
+      self.sounds_raspberry.put(sound)
+    except queue.Full:
+      pass
+
+  def get_sound_pc(self):
+    try:
+      return self.sounds_pc.get_nowait()
+    except:
+      return None
+
+  def add_sound_pc(self, sound):
+    try:
+      self.sounds_pc.put(sound)
+    except queue.Full:
+      pass
 
   def stop(self):
     self._stopped = True

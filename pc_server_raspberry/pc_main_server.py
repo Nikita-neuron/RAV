@@ -13,7 +13,7 @@ from RaspberryVideo import RaspberryVideo
 # https://habr.com/ru/post/513966/
 # https://webdevblog.ru/logging-v-python/
 
-import service_interface as interface
+# import service_interface as interface
 
 
 class WebServerReceiver(threading.Thread):
