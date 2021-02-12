@@ -49,9 +49,19 @@ class DataType(type, metaclass=DataTypeMeta):
     
 
 class SimpleData(DataType):
-    def __init__(self, ctype, name):
-        self.__name__ = name
-        self._ctype = ctype
+    def __new__(SimpleData, ctype, name):
+        class T:
+            pass
+        T.__name__ = name
+        print(T.__dict__)
+        raise Exception()
+    # def __init__(self, ctype, name):
+    #     class SimpleDataT(Data):
+            
+    #     SimpleDataT.__name__ = name
+    #     self._ctype = ctype
+    #     print(self)
+    #     raise 1
     @property
     def instance_value(self):
         return self.cdata.value
@@ -137,7 +147,7 @@ class StructType(DataType):
     def __instance_pakkit_tostream__(self, stream):
         for name in self.__pakkit_fields__:
             self.__dict__[name].__pakkit_tostream__(stream)
-    def __instance_repr__(self)
+    # def __instance_repr__(self)
 class Struct(metaclass=StructType):
     pass
 class MyStruct(Struct):

@@ -3,3 +3,4 @@ flask-socketio
 multiprocessing-logging
 opencv-python
 watchdog
+twisted
