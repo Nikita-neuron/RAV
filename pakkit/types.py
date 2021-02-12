@@ -10,7 +10,7 @@ import array
 import typing
 
 
-# _CData = i8.__base__.__base__
+_CData = c_uint8.__base__.__base__
 # _PyCStructType = ctypes.Structure.__class__
 
 class Data:
@@ -30,47 +30,54 @@ class DataTypeMeta(type):
 
 
 class DataType(type, metaclass=DataTypeMeta):
-    # *args и **kwargs - аргументы для подклассов, они тут как заглушка
     def __new__(DataType, name, bases, d: dict):
-        # print('DATATYPE NEW', DataType)
-        # d = kwargs.get('d', {
-        #     '__pakkit_fromstream__': classmethod(DataType.__pakkit_fromstream__),
-        # })
-        # for name, value in DataType.__dict__.items():
-        #     if name.startswith('instance_'):
-        #         d[name[len('instance_'):]] = value
-        #     elif name.startswith('__instance_'):
-        #         d['__'+name[len('__instance_'):]] = value
-        class T(Data):
-            pass
-            # @classmethod
-            # def from_stream(cls, stream: typing.BinaryIO):
-            #     raise NotImplementedError()
-        return T
-        # return super().__new__(DataType, DataType.__name__, (Data,), d)
-    
+        bases = bases if Data in bases else bases+(Data,)
+        return super().__new__(DataType, name, bases, d)
 
 
 class SimpleData(DataType):
-    def __new__(SimpleData, ctype, name):
+    def __new__(SimpleData, name, bases, d: dict, ctype=...):
+        '''
+        Создаёт новый тип из данного ctype:
+            1) Если ctype - тип из 'ctypes'(подкласс _CData), ничего особенного не происходит.
+            2) Если ctype == ..., ищет наследников SimpleData в bases, берёт первого попавшегося и получает _ctype оттуда.
+            3) Если не найдены подходящие наследники или ctype какого-то другого типа, вызывается ошибка
+        '''
+        found_ctype = False
+        if ctype is ...:
+            for base in bases:
+                if isinstance(base, SimpleData):
+                    ctype = base._ctype
+                    found_ctype = True
+                    break
+        elif issubclass(ctype, _CData):
+            found_ctype = True
+        if not found_ctype:
+            raise TypeError(f'Неправильный тип ctype ({ctype}) или не найдены наследники SimpleDataT')
+
         class T(Data):
-            __ctype = ctype
+            _ctype = ctype
             def __init__(self, value = 0):
-                self.__cdata = self.__ctype(value)
+                self._cdata = self._ctype(value)
             @classmethod
             def from_stream(cls, stream):
                 self = cls()
-                self.__cdata = self.__ctype.from_buffer_copy(stream.read(sizeof(self.__ctype)))
+                self._cdata = self._ctype.from_buffer_copy(stream.read(sizeof(self._ctype)))
                 return self
+            def to_stream(self, stream):
+                stream.write(self._cdata)
             @property
             def value(self):
-                return self.__cdata.value
+                return self._cdata.value
             def __str__(self):
                 return str(self.value)
             def __repr__(self):
                 return f'{self.__class__.__name__}({self})'
         T.__name__ = T.__qualname__ = name
-        return T
+        return super().__new__(SimpleData, name, (), dict(T.__dict__))
+    def __init__(SimpleDataT, name, bases, d: dict, ctype=...):
+        pass
+    
     # def __init__(self, ctype, name):
     #     self.__name__ = name
     #     self._ctype = ctype
@@ -95,12 +102,15 @@ i16: SimpleData; u16: SimpleData
 i32: SimpleData; u32: SimpleData
 i64: SimpleData; u64: SimpleData
 
-for name, ctype in dict(
-        i8 = c_int8,   u8 = c_uint8,
-        i16 = c_int16, u16 = c_uint16,
-        i32 = c_int32, u32 = c_uint32,
-        i64 = c_int64, u64 = c_uint64).items():
-    globals()[name] = SimpleData(ctype, name)
+def __create_basic_types():
+    ''' Создаёт базовые целочисленные типы в глобальном пространстве имён. '''
+    for name, ctype in dict(
+            i8 = c_int8,   u8 = c_uint8,
+            i16 = c_int16, u16 = c_uint16,
+            i32 = c_int32, u32 = c_uint32,
+            i64 = c_int64, u64 = c_uint64).items():
+        globals()[name] = SimpleData(name, (), {}, ctype)
+__create_basic_types()
 
 size_t = ctypes.c_uint32
 
@@ -111,13 +121,10 @@ size_t = ctypes.c_uint32
 #     return f
 
 class Array(DataType):
-    # def __init__(ArrayT, dtype, size=...):
-    #     ArrayT.dtype = dtype
-    #     ArrayT.size = size if size is ... else size_t(size)
     def __new__(Array, dtype, size=...):
         class T(Data):
-            __dtype = dtype
-            __size = size if size is ... else size_t(size)
+            _dtype = dtype
+            _size = size if size is ... else size_t(size)
             def __init__(self):
                 self.__data = None
             @classmethod
@@ -129,77 +136,119 @@ class Array(DataType):
             @classmethod
             def from_stream(cls, stream):
                 self = cls()
-                if self.__size is ...:
+                if self._size is ...:
                     size = size_t.from_buffer_copy(stream.read(sizeof(size_t)))
                 else:
-                    size = self.__size
+                    size = self._size
                 self.__data = []
                 for _ in range(size.value):
-                    self.__data.append(self.__dtype.from_stream(stream))
+                    self.__data.append(self._dtype.from_stream(stream))
                 return self
+            def to_stream(self, stream):
+                if self._size is ...:
+                    stream.write(size_t(len(self)))
+                for val in self.__data:
+                    val.to_stream(stream)
             def __len__(self):
                 return len(self.__data)
             def __iter__(self):
                 return iter(self.__data)
             def __repr__(self):
                 return f'{self.__class__.__name__}{{{", ".join(map(str, self))}}}'
-        T.__name__ = T.__qualname__ = f'Array[{dtype.__name__}, {size}]'
-        return T
+        return super().__new__(
+            Array,
+            f'Array[{dtype.__name__}, {"..." if size is ... else size}]',
+            (),
+            dict(T.__dict__))
+    
+    def __init__(self, *args, **kwargs):
+        pass
 
 
 class StructType(DataType):
     def __new__(StructType, name, bases, d: dict):
         fields = d.get('__pakkit_fields__', {})
-        print('StructType new', StructType, name, bases, d)
         if '__annotations__' in d:
-            for name, dtype in d['__annotations__'].items():
-                print(name, dtype)
+            for annot_name, dtype in d['__annotations__'].items():
                 if issubclass(dtype, Data):
-                    fields[name] = dtype
+                    fields[annot_name] = dtype
         class T(Data):
             __pakkit_fields__ = fields
             @classmethod
             def from_stream(cls, stream):
                 self = cls()
                 for name, dtype in cls.__pakkit_fields__.items():
-                    self.__dict__[name] = dtype.__pakkit_fromstream__(stream)
+                    self.__dict__[name] = dtype.from_stream(stream)
                 return self
             def to_stream(self, stream):
                 for name in self.__pakkit_fields__:
                     self.__dict__[name].to_stream(stream)
-        T.__name__ = T.__qualname__ = 'FSFFSSFSTARACT'
-        return T
-    # def __instance_repr__(self)
-class Struct(metaclass=StructType):
-    pass
-class MyStruct(Struct):
-    num: i32
-    array_static: Array[i8, 4]
-    array_dynamic: Array[i8, ...]
+            def __repr__(self):
+                return (
+                    f'{self.__class__.__name__} {{\n\t'
+                    + ',\n\t'.join((f'{name} = {repr(self.__dict__[name])}' for name in self.__pakkit_fields__))
+                    + '\n}'
+                )
+        return super().__new__(StructType, name, bases, T.__dict__ | d)
 
-def main():
+
+# Struct и так по умолчанию наследник Data, но VSCode этого не понимает...
+class Struct(Data, metaclass=StructType):
+    pass
+
+
+# class EnumValue(Data):
+#     pass
+class EnumType(DataType):
+    def __new__(EnumType, name, bases, d: dict, dtype=u16):
+        next_value = 0
+        for field_name, value in d.items():
+            if value is ...:
+                value = next_value
+                next_value += 1
+            elif type(value) == int:
+                next_value = value+1
+            else:
+                continue
+            d[field_name] = dtype(value)
+        return super().__new__(EnumType, name, bases, d)
+class Enum(metaclass=EnumType):
+    pass
+
+
+
+
+def _test_struct():
     import io
 
+    class MyStruct(Struct):
+        num: i32
+        array_static: Array[i8, 4]
+        array_dynamic: Array[i8, ...]
 
-    # stream_in = io.BytesIO(b'\x04\x03\x02\x01')
-    # print(Array[u8, 4].from_stream(stream_in))
-
-    #                        #               #               #
+    #                       <| num           | array_static  | [size]        | array_dynamic     >
     stream_in = io.BytesIO(b'\x01\x00\x00\x00\x01\x02\x03\x04\x05\x00\x00\x00\x05\x04\x03\x02\x01')
     stream_out = io.BytesIO()
-    # MyStruct.__pakkit_fromstream__(stream_in)
     s = MyStruct.from_stream(stream_in)
     s.to_stream(stream_out)
-    print(s.array_dynamic)
+    print(s, stream_out.getvalue())
+    assert stream_in.getvalue() == stream_out.getvalue()
 
-    # stream_in = io.BytesIO(b'\x00\x01\x02\x03')
-    # t = Array[u8, 4]
-    # arr = t.__pakkit_fromstream__(stream_in)
-    # print(arr)
-    # stream_out = io.BytesIO()
-    # arr.__pakkit_tostream__(stream_out)
-    # print('v', stream_out.getvalue())
+def _test_enum():
+    import sys
+    
+    class MyEnum(Enum, dtype=u8):
+        A = ... # 0
+        B = 3
+        C = ... # ==4
+        D = ... # ==5
+        E = 100
+        F = ... # 101
+    for attr_name in ('A', 'B', 'C', 'D', 'E', 'F'):
+        print(f'MyEnum.{attr_name} = {getattr(MyEnum, attr_name)}')
 
+def main():
+    _test_enum()
 
 if __name__ == '__main__':
     main()
