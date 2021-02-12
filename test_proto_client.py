@@ -5,7 +5,7 @@ from sys import stdout
 
 class Echo(Protocol):
     def dataReceived(self, data):
-        stdout.write(data)
+        print('Recv', data)
     def connectionMade(self):
         print('Connected')
         self.transport.write(b'Hello, Server!')

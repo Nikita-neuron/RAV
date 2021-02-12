@@ -1,14 +1,15 @@
 
 from twisted.internet import protocol, reactor, endpoints
+from pakkit.types import Struct
 
-class Protocol(protocol.Protocol):
+class PakkitProtocol(protocol.Protocol):
     def dataReceived(self, data):
-        print('Recv')
+        print('Recv', data)
         self.transport.write(b'Hello, World!')
 
-class ProtocolFactory(protocol.Factory):
+class PakkitProtocolFactory(protocol.Factory):
     def buildProtocol(self, addr):
-        return Protocol()
+        return PakkitProtocol()
 
-endpoints.serverFromString(reactor, "tcp:54321").listen(ProtocolFactory())
+endpoints.serverFromString(reactor, "tcp:54321").listen(PakkitProtocolFactory())
 reactor.run()
