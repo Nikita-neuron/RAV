@@ -1,14 +1,14 @@
 from twisted.internet import protocol
 import queue
 
-import PCMotorsProtocol
+import pc.PCMotorsProtocol
 
 class ServerPCFactory(protocol.Factory):
     def __init__(self):
-        self.raspberryPIMotorsProtocol = PCMotorsProtocol.PCMotorsProtocol()
+        self.raspberryPIMotorsProtocol = pc.PCMotorsProtocol.PCMotorsProtocol()
 
     def get_data(self, name):
-        self.raspberryPIMotorsProtocol.get_data(name)
+        return self.raspberryPIMotorsProtocol.get_data(name)
 
     # def get_video_frames(self):
     #     return self.raspberryPIMotorsProtocol.get_video_frames()

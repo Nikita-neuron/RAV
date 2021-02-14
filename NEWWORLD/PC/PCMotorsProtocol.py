@@ -1,12 +1,17 @@
 from twisted.internet import protocol
 import queue
+import msgpack
+import msgpack_numpy
+msgpack_numpy.patch()
 
 
 class PCMotorsProtocol(protocol.Protocol):
   def __init__(self):
-    # self.video_frames       = queue.Queue(2)
-    # self.sounds_raspberry   = queue.Queue(2)
-    # self.system_data        = queue.Queue(2)
+    self.video_frames       = queue.Queue(2)
+    self.sounds_raspberry   = queue.Queue(2)
+    self.system_data        = queue.Queue(2)
+
+    self.unpacker = msgpack.Unpacker()
 
     self.queueData = {
       "frames":           queue.Queue(2),
@@ -16,11 +21,20 @@ class PCMotorsProtocol(protocol.Protocol):
 
   def connectionMade(self):
     print("Connect")
-    self.transport.write(b"Hello")
+    # self.transport.write(b"Hello")
     
   def dataReceived(self, data):
     # получение сообщений от распберри
-    print("from raspberry: ", data)
+    print("kkkk")
+    self.unpacker.feed(data)
+    for msg in self.unpacker:
+      # print(msg)
+      # if msg[0] == "frames":
+        # print("o")
+      print("data recv")
+      self.add_data(msg[0], msg[1])
+      print("done")
+    # print("from raspberry: ", data)
 
     # if data[0] == "video":
     #   self.add_video_frames(data[1])
@@ -33,7 +47,10 @@ class PCMotorsProtocol(protocol.Protocol):
 
   def sendMessage(self, data):
     # отправка сообщений на распберри
-    self.transport.write(data)
+    if self.transport is not None:
+      print("sending")
+      msgpack.pack(data, self.transport)
+      print("done")
 
   def add_data(self, name, data):
     try:
