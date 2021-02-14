@@ -1,3 +1,3 @@
 
 from . import types
-from . import util
+from . import protocol
