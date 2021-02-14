@@ -29,8 +29,8 @@ class PCMotorsProtocol(protocol.Protocol):
     self.unpacker.feed(data)
     for msg in self.unpacker:
       # print(msg)
-      # if msg[0] == "frames":
-        # print("o")
+      if msg[0] == "frames":
+        print("o")
       print("data recv")
       self.add_data(msg[0], msg[1])
       print("done")
