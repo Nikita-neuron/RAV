@@ -1,13 +1,13 @@
 import RaspberryPIMotorsServer
 import sys
 import serial
-import pyaudio
+# import pyaudio
 from ctypes import *
 
 from SystemData import SystemData
 from RaspberryVideo import RaspberryVideo
 
-from Sound import SoundPlayThread, SoundRecordThread
+# from Sound import SoundPlayThread, SoundRecordThread
 
 def get_server_ip():
   return sys.argv[1]
@@ -17,7 +17,7 @@ def connect_arduino():
   ser.baudrate = 9600
 
   return ser
-
+'''
 def get_sound_device():
   p = pyaudio.PyAudio()
   print("----------------------record device list---------------------")
@@ -33,20 +33,20 @@ def get_sound_device():
 
   print("-------------------------------------------------------------")
   p.terminate()
-
+'''
 
 def main():
   systemData = SystemData()
 
-  get_sound_device()
+  # get_sound_device()
 
-  arduino = connect_arduino()
+  # arduino = connect_arduino()
 
-  soundRecordThread = SoundRecordThread.SoundRecordThread()
-  soundPlayThread = SoundPlayThread.SoundPlayThread()
+  # soundRecordThread = SoundRecordThread.SoundRecordThread()
+  # soundPlayThread = SoundPlayThread.SoundPlayThread()
 
-  soundRecordThread.start()
-  soundPlayThread.start()
+  # soundRecordThread.start()
+  # soundPlayThread.start()
 
   raspberryVideo = RaspberryVideo()
   raspberryVideo.start()
@@ -61,12 +61,13 @@ def main():
   while True:
     system_data = systemData.get_system_data()
 
-    raspberryPIMotorsServer.send_message(["systemData", system_data])
+    # raspberryPIMotorsServer.send_message(["systemData", system_data])
 
     frame = raspberryVideo.get_video_frames()
     if frame is not None:
       raspberryPIMotorsServer.send_message(["frames", frame])
 
+    '''
     sound = soundRecordThread.get_sound()
     if sound is not None:
       raspberryPIMotorsServer.send_message(["soundsRaspberry", system_data])
@@ -74,9 +75,10 @@ def main():
     sound_pc = raspberryPIMotorsServer.get_data("soundsPC")
     if sound_pc is not None:
       soundPlayThread.add_sound(sound_pc)
-
-    # motors = raspberryPIMotorsServer.get_data("motorsSpeed")
-    # print(motors)
+    '''
+    motors = raspberryPIMotorsServer.get_data("motorsSpeed")
+    if motors is not None:
+      print(motors)
 
     # motors_arduino = MotorsStructure(motors[0], motors[1])
 

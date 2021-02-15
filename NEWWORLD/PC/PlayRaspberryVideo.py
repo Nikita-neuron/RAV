@@ -27,6 +27,6 @@ class PlayRaspberryVideo(threading.Thread):
 
   def get_frame(self):
     try:
-      self.frames.get_nowait()
+      return self.frames.get_nowait()
     except queue.Empty:
       return None
