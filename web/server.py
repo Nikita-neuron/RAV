@@ -42,18 +42,7 @@ class ImageDisplayThread(threading.Thread):
         self.waiting = False
         while True:
             time_start = time.time()
-            img = None
-            try:
-                img = self.img_queue.get_nowait()
-            except queue.Empty:
-                if not self.waiting:
-                    self.sleep_ms += 1
-                    self.waiting = True
-                continue
-            else:
-                self.waiting = False
-            self.sleep_ms = min(500, self.sleep_ms)
-
+            img = self.img_queue.get()
             cv2.imshow('img', img)
             delta_time = time.time() - time_start
 
@@ -64,16 +53,12 @@ class ImageDisplayThread(threading.Thread):
             average_time = total_time/image_number
             print('delta time', delta_time, average_time)
 
-            # cv2.waitKey(int(1000*average_time)+1)
-            print('MS', self.sleep_ms)
-            cv2.waitKey(self.sleep_ms)
+            cv2.waitKey(int(1000*average_time)+30)
     def display(self, img):
         try:
             self.img_queue.put_nowait(img)
         except queue.Full:
             print('full')
-            self.sleep_ms = min(1, self.sleep_ms-1)
-            pass
 
 # class SocketThread(threading.Thread):
 #     def __init__(self, socket: socket.socket):
@@ -93,19 +78,20 @@ class PcClientProtocol(protocol.Protocol):
         msgpack.pack(msg, self.transport)
     def connectionMade(self):
         self.i = 0
-        self.img_display = ImageDisplayThread()
-        self.img_display.start()
+        # self.img_display = ImageDisplayThread()
+        # self.img_display.start()
         self.sendMsg('client_connect', {'name': 'webserver'})
-        
+    # {'type': 'image', }
     def dataReceived(self, data):
         print('recv', self.i, len(data))
-        # self.i += 1
         self.unpacker.feed(data)
         for msg in self.unpacker:
             if msg['type'] == 'data':
                 print('img', self.i)
                 self.i += 1
-                self.img_display.display(msg['image'])
+                # self.img_display.display(msg['image'])
+                _, encoded = 
+                socketio.emit('image', {'data': cv2.})
 
 
 class PcClientFactory(protocol.ClientFactory):
@@ -147,8 +133,8 @@ def main():
     main_pc_ip= rav.config.MAIN_PC_IP
     main_pc_port = rav.config.MAIN_PC_PORT
 
-    # webserver_thread = threading.Thread(target=run_webserver, daemon=True)
-    # webserver_thread.start()
+    webserver_thread = threading.Thread(target=run_webserver, daemon=True)
+    webserver_thread.start()
     reactor.connectTCP(main_pc_ip, main_pc_port, PcClientFactory())
     reactor.run()
     print('\nexiting!')
