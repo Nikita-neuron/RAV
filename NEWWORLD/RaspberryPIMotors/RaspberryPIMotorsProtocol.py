@@ -11,7 +11,7 @@ class RaspberryPIMotorsProtocol(protocol.Protocol):
     self.unpacker = msgpack.Unpacker()
     self.queueData = {
       "soundsPC":     queue.Queue(2),
-      "motorsSpeed":  queue.Queue(1)
+      "motorsSpeed":  queue.Queue(2)
     }
 
   def connectionMade(self):
@@ -22,9 +22,9 @@ class RaspberryPIMotorsProtocol(protocol.Protocol):
     if self.transport is not None:
       # print()
       # self.transport.write(b"ggg")
-      print("sending")
+      # print("sending")
       msgpack.pack(data, self.transport)
-      print("done")
+      # print("done")
       # self.transport.write(data)
       # msgpack.pack(["frames", [1,2,3]], self.transport)
     
@@ -44,6 +44,6 @@ class RaspberryPIMotorsProtocol(protocol.Protocol):
   
   def get_data(self, name):
     try:
-      self.queueData[name].get_nowait()
+      return self.queueData[name].get_nowait()
     except queue.Empty:
       return None

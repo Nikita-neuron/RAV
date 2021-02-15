@@ -27,10 +27,10 @@ class RaspberryVideo(threading.Thread):
         # print(frame_ctype)
 
         # print(frame_ctype)
+        result, frame = cv2.imencode('.jpg', frame, encode_param)
 
         self.add_video_frames(frame)
 
-        # result, frame = cv2.imencode('.jpg', frame, encode_param)
       cv2.waitKey(1)
 
   def add_video_frames(self, frame):

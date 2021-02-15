@@ -33,7 +33,7 @@ def main():
       pcServerRaspberry.send_massage(["soundsPC", sounds_pc])
     '''
     if frame is not None:
-      print("res")
+      # print("res")
       playRaspberryVideo.add_frame(frame)
 
     # if sys_data is not None:

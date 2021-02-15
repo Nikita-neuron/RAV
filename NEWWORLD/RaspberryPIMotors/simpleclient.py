@@ -77,8 +77,8 @@ def main():
       soundPlayThread.add_sound(sound_pc)
     '''
     motors = raspberryPIMotorsServer.get_data("motorsSpeed")
-    if motors is not None:
-      print(motors)
+    # if motors is not None:
+      # print(motors)
 
     # motors_arduino = MotorsStructure(motors[0], motors[1])
 

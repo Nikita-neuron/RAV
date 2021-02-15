@@ -2,6 +2,9 @@ import struct
 import socket
 import pickle
 import numpy as np
+import msgpack
+import msgpack_numpy
+msgpack_numpy.patch()
 
 from ctypes import *
 
@@ -16,6 +19,8 @@ class MessagesProtocol:
         self.socket = socket
         self.data = b""
         self.payload_size = struct.calcsize(">L")
+
+        self.unpacker = msgpack.Unpacker()
 
     def receive_message(self, bytes):
         # self.data = b""
@@ -67,9 +72,14 @@ class MessagesProtocol:
         # while self.socket.bytesAvailable():
             # mess = self.socket.read(self.socket.bytesAvailable())
         '''
-        
 
-        return self.socket.recv(4096)
+        self.unpacker.feed(self.socket.read(4096))
+        print(self.unpacker)
+        data = None
+        for msg in self.unpacker:
+            data += msg
+
+        return data
 
     def send_message(self, data):
         # data = pickle.dumps(data, 0)
@@ -81,8 +91,9 @@ class MessagesProtocol:
         # print("size: " + str(size))
 
         # self.socket.send(MessageStruct(data))
+        msgpack.pack(data, self.socket)
 
-        self.socket.send(data[0])
+        # self.socket.send(data[0])
 
         
         # try:
