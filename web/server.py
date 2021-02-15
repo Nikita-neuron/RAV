@@ -10,7 +10,11 @@ import livereload
 import time
 from twisted.internet import protocol, reactor
 import threading
-
+import queue
+import msgpack
+import msgpack_numpy
+msgpack_numpy.patch()
+import cv2
 
 async_mode = None
 app = Flask(__name__)
@@ -26,18 +30,110 @@ def hello_world():
 def handle_connect():
     print('WEBSOCKET CONNECT')
 
+class ImageDisplayThread(threading.Thread):
+    def __init__(self):
+        super().__init__(daemon=True)
+        self.img_queue = queue.Queue(20)
+    def run(self):
+        image_number = 0
+        total_time = 0
+        time_start = time.time()
+        self.sleep_ms = 1
+        self.waiting = False
+        while True:
+            time_start = time.time()
+            img = None
+            try:
+                img = self.img_queue.get_nowait()
+            except queue.Empty:
+                if not self.waiting:
+                    self.sleep_ms += 1
+                    self.waiting = True
+                continue
+            else:
+                self.waiting = False
+            self.sleep_ms = min(500, self.sleep_ms)
+
+            cv2.imshow('img', img)
+            delta_time = time.time() - time_start
+
+            delta_time = min(0.5, delta_time)
+
+            total_time += delta_time
+            image_number += 1
+            average_time = total_time/image_number
+            print('delta time', delta_time, average_time)
+
+            # cv2.waitKey(int(1000*average_time)+1)
+            print('MS', self.sleep_ms)
+            cv2.waitKey(self.sleep_ms)
+    def display(self, img):
+        try:
+            self.img_queue.put_nowait(img)
+        except queue.Full:
+            print('full')
+            self.sleep_ms = min(1, self.sleep_ms-1)
+            pass
+
+# class SocketThread(threading.Thread):
+#     def __init__(self, socket: socket.socket):
+#         super().__init__(daemon=True)
+#         self.socket = socket
+#         self.buffer_size = 2048
+#         self.buffer = bytearray(self.buffer_size)
+#     def run(self):
+#         while True:
+#             self.socket.recv_into()
 
 class PcClientProtocol(protocol.Protocol):
+    def __init__(self):
+        self.unpacker = msgpack.Unpacker()
+    def sendMsg(self, type_, msg):
+        msg['type'] = type_
+        msgpack.pack(msg, self.transport)
     def connectionMade(self):
-        print('Connected to main server!')
+        self.i = 0
+        self.img_display = ImageDisplayThread()
+        self.img_display.start()
+        self.sendMsg('client_connect', {'name': 'webserver'})
+        
+    def dataReceived(self, data):
+        print('recv', self.i, len(data))
+        # self.i += 1
+        self.unpacker.feed(data)
+        for msg in self.unpacker:
+            if msg['type'] == 'data':
+                print('img', self.i)
+                self.i += 1
+                self.img_display.display(msg['image'])
+
+
 class PcClientFactory(protocol.ClientFactory):
+    retry_delay = 1.0
+    retry_after_connection_loss = False
+    retry_after_connection_failure = True
+    def __init__(self):
+        self.connection_tries = 0
+    def startedConnecting(self, connector):
+        print(f'Connecting to {connector.host}:{connector.port}' if self.connection_tries==0 else '.', end='', flush=True)
     def buildProtocol(self, addr):
-        print('Connected to main pc', addr)
+        self.connection_tries = 0
+        print(f'\nConnected to main server ({addr.host}:{addr.port})!')
         return PcClientProtocol()
-    def clientConnectionLost(self, connection, reason):
-        print('Connection lost!', connection, reason)
-    def clientConnectionFailed(self, connection, reason):
-        print('Connection failed!', connection, reason)
+    def retryConnection(self, connector):
+        # print('.', end='', flush=True)
+        def retry():
+            connector.connect()
+        reactor.callLater(self.retry_delay, retry)
+    def clientConnectionLost(self, connector, reason):
+        self.connection_tries = 0
+        print('Connection to main server lost!', connector, reason)
+        if self.retry_after_connection_loss:
+            self.retryConnection(connector)
+    def clientConnectionFailed(self, connector, reason):
+        if self.retry_after_connection_failure:
+            self.connection_tries += 1
+            self.retryConnection(connector)
 
 
 def run_webserver():
@@ -48,15 +144,18 @@ def main():
     # app.debug = True
     # livereload.Server(app.wsgi_app).serve(port=5500)
     # app.run(host='localhost'    , port=5500)
-    # TODO: GAVNOOOOOOOOOOOOOOOO ГАВНИИИИИ
-    threading.Thread(target=run_webserver).run()
-    reactor.connectTCP(rav.config.MAIN_PC_IP, rav.config.MAIN_PC_PORT, PcClientFactory())
+    main_pc_ip= rav.config.MAIN_PC_IP
+    main_pc_port = rav.config.MAIN_PC_PORT
+
+    # webserver_thread = threading.Thread(target=run_webserver, daemon=True)
+    # webserver_thread.start()
+    reactor.connectTCP(main_pc_ip, main_pc_port, PcClientFactory())
     reactor.run()
-    
+    print('\nexiting!')
 
 
 if __name__ == '__main__':
-    main()    
+    main() 
 
 
 # def service_main():

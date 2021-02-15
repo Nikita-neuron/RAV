@@ -1,4 +1,16 @@
 
-import cv2
+import threading
+import time
 
-print(type(cv2.imread('AAA.bmp')))
+class GavnoThread(threading.Thread):
+    def __init__(self):
+        super().__init__()
+        self.i = 0
+    def run(self):
+        while True:
+            print(self.i)
+            time.sleep(1)
+
+thread = GavnoThread()
+thread.start()
+thread.i = 1
