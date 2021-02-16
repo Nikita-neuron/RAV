@@ -117,15 +117,15 @@ pc_protocol = PcServerProtocolFactory()
 
 @pc_protocol.onClientConnect('webserver')
 def on_webserver_connect():
-    i = 0
-    def send_img(img):
-        nonlocal i
-        print('send', i, pc_protocol.sendMsg('webserver', 'data', {'image': img}))
-        i += 1
-        # time.sleep(0.1)
-    camera = CameraThread(send_img)
-    camera.start()
     print('Webserver connected!')
+    # i = 0
+    # def send_img(img):
+    #     nonlocal i
+    #     print('send', i, pc_protocol.sendMsg('webserver', 'data', {'image': img}))
+    #     i += 1
+    #     # time.sleep(0.1)
+    # camera = CameraThread(send_img)
+    # camera.start()
     
 
 

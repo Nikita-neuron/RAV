@@ -15,6 +15,7 @@ import msgpack
 import msgpack_numpy
 msgpack_numpy.patch()
 import cv2
+import numpy as np
 
 async_mode = None
 app = Flask(__name__)
@@ -83,8 +84,8 @@ class PcClientProtocol(protocol.Protocol):
                 print('img', self.i)
                 self.i += 1
                 # self.img_display.display(msg['image'])
-                _, encoded = 
-                socketio.emit('image', {'data': cv2.})
+                # _, encoded = 
+                # socketio.emit('image', {'data': cv2.})
 
 
 class PcClientFactory(protocol.ClientFactory):
@@ -125,20 +126,32 @@ def hello_world():
     return render_template('index.html', async_mode=socketio.async_mode)
     # return Response(update_index())
 
-pc_client = PcClientFactory()
-
 @socketio.on('connect')
 def handle_connect():
     print('WEBSOCKET CONNECT')
 
+def keys_to_motors(keys: dict):
+    speeds = np.array([0, 0])
+    if keys['w']:
+        speeds += [50, 50]
+    if keys['s']:
+        speeds -= [50, 50]
+    if keys['a']:
+        speeds *= [-1, 1]
+    if keys['d']:
+        speeds *= [1, -1]
+    return list(speeds)
+
 @socketio.on('keys')
-def handle_keys(data):
-    print('KEYS', data)
-    pc_client.sendMsg('motors', data)
+def handle_keys(keys):
+    print('KEYS', keys)
+    pc_client.sendMsg('motors', {'data': keys_to_motors(keys)})
 
 def run_webserver():
     print('Starting webserver on port', config.WEBSERVER_PORT)
     socketio.run(app, port=config.WEBSERVER_PORT, debug=False)
+
+pc_client = PcClientFactory()
 
 def main():
     # app.debug = True
