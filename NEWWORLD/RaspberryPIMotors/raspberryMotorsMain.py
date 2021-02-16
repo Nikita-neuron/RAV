@@ -1,17 +1,18 @@
-import RaspberryPIMotorsServer
 import sys
 import serial
 # import pyaudio
+sys.path.append("..")
 from ctypes import *
 import queue
 
-from SystemData import SystemData
-from RaspberryVideo import RaspberryVideo
+from systemData import SystemData
+from raspberryVideo import RaspberryVideo
+from raspberryTwisted import raspberryPIClient
 
 # from Sound import SoundPlayThread, SoundRecordThread
 
-def get_server_ip():
-  return sys.argv[1]
+def get_server_ip_port():
+  return sys.argv[1], sys.argv[2]
 
 def connect_arduino():
   ser = serial.Serial("/dev/ttyACM0", 9600)  # ls /dev/tty*
@@ -49,10 +50,12 @@ def main():
     "soundsPC":     queue.Queue(2),
     "motorsSpeed":  queue.Queue(2)
   }
+  name = "raspberryPIMotors"
+  server_ip, server_port = get_server_ip_port()
 
   # get_sound_device()
 
-  # arduino = connect_arduino()
+  arduino = connect_arduino()
 
   # soundRecordThread = SoundRecordThread.SoundRecordThread()
   # soundPlayThread = SoundPlayThread.SoundPlayThread()
@@ -63,7 +66,12 @@ def main():
   raspberryVideo = RaspberryVideo()
   raspberryVideo.start()
 
-  raspberryPIMotorsServer = RaspberryPIMotorsServer.RaspberryPIMotorsServer(get_server_ip(), queueData)
+  raspberryPIMotorsServer = raspberryPIClient.RaspberryPIClient(
+    server_ip,
+    int(server_port), 
+    queueData, 
+    name
+  )
   raspberryPIMotorsServer.start()
 
   class MotorsStructure(Structure):
@@ -98,17 +106,17 @@ def main():
       soundPlayThread.add_sound(sound_pc)
     '''
     motors = get_data(queueData, "motorsSpeed")
-    # if motors is not None:
-      # print(motors)
+    if motors is not None:
+      print("from raspberry: ", motors)
 
-    # motors_arduino = MotorsStructure(motors[0], motors[1])
+    motors_arduino = MotorsStructure(motors[0], motors[1])
 
-    # arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
+    arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
 
-    # serial_data = arduino.read(2)
+    serial_data = arduino.read(2)
 
-    # motors_from_arduino = MotorsStructure.from_buffer_copy(serial_data)
-    # print(motors_from_arduino.r)
+    motors_from_arduino = MotorsStructure.from_buffer_copy(serial_data)
+    print("from arduino: ",motors_from_arduino.r)
 
 
 if __name__ == '__main__':
