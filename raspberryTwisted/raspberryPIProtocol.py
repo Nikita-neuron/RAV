@@ -5,12 +5,12 @@ import msgpack
 import msgpack_numpy
 msgpack_numpy.patch()
 
-class RaspberryPIMotorsProtocol(protocol.Protocol):
+class RaspberryPIProtocol(protocol.Protocol):
 
-  def __init__(self, queueData):
+  def __init__(self, queueData, name):
     self.unpacker = msgpack.Unpacker()
     self.queueData = queueData
-    self.name = "raspberryPIMotors"
+    self.name = name
 
   def connectionMade(self):
     print("Connect")
@@ -24,13 +24,7 @@ class RaspberryPIMotorsProtocol(protocol.Protocol):
 
   def send_message(self, data):
     if self.transport is not None:
-      # print()
-      # self.transport.write(b"ggg")
-      # print("sending")
       msgpack.pack(data, self.transport)
-      # print("done")
-      # self.transport.write(data)
-      # msgpack.pack(["frames", [1,2,3]], self.transport)
     
   def dataReceived(self, data):
     self.unpacker.feed(data)
