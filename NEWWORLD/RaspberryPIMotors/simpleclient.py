@@ -3,6 +3,7 @@ import sys
 import serial
 # import pyaudio
 from ctypes import *
+import queue
 
 from SystemData import SystemData
 from RaspberryVideo import RaspberryVideo
@@ -35,8 +36,19 @@ def get_sound_device():
   p.terminate()
 '''
 
+def get_data(queueData, name):
+  try:
+    return queueData[name].get_nowait()
+  except queue.Empty:
+    return None
+
 def main():
   systemData = SystemData()
+
+  queueData = {
+    "soundsPC":     queue.Queue(2),
+    "motorsSpeed":  queue.Queue(2)
+  }
 
   # get_sound_device()
 
@@ -51,7 +63,7 @@ def main():
   raspberryVideo = RaspberryVideo()
   raspberryVideo.start()
 
-  raspberryPIMotorsServer = RaspberryPIMotorsServer.RaspberryPIMotorsServer(get_server_ip())
+  raspberryPIMotorsServer = RaspberryPIMotorsServer.RaspberryPIMotorsServer(get_server_ip(), queueData)
   raspberryPIMotorsServer.start()
 
   class MotorsStructure(Structure):
@@ -61,22 +73,31 @@ def main():
   while True:
     system_data = systemData.get_system_data()
 
-    # raspberryPIMotorsServer.send_message(["systemData", system_data])
+    raspberryPIMotorsServer.send_message({
+      "type": "systemData", 
+      "data": system_data
+    })
 
     frame = raspberryVideo.get_video_frames()
     if frame is not None:
-      raspberryPIMotorsServer.send_message(["frames", frame])
+      raspberryPIMotorsServer.send_message({
+        "type": "frames",
+        "data": frame
+      })
 
     '''
     sound = soundRecordThread.get_sound()
     if sound is not None:
-      raspberryPIMotorsServer.send_message(["soundsRaspberry", system_data])
+      raspberryPIMotorsServer.send_message({
+        "type": soundsRaspberry", 
+        "data": system_data
+      })
 
-    sound_pc = raspberryPIMotorsServer.get_data("soundsPC")
+    sound_pc = get_data("soundsPC")
     if sound_pc is not None:
       soundPlayThread.add_sound(sound_pc)
     '''
-    motors = raspberryPIMotorsServer.get_data("motorsSpeed")
+    motors = get_data(queueData, "motorsSpeed")
     # if motors is not None:
       # print(motors)
 

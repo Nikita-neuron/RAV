@@ -4,15 +4,16 @@ import threading
 import RaspberryPIMotorsFactory
 
 class RaspberryPIMotorsServer(threading.Thread):
-  def __init__(self, server_ip):
+  def __init__(self, server_ip, queueData):
     super().__init__()
 
     self.server_ip = server_ip
 
-    self.raspberryPIMotorsFactory = RaspberryPIMotorsFactory.RaspberryPIMotorsFactory()
+    self.raspberryPIMotorsFactory = RaspberryPIMotorsFactory.RaspberryPIMotorsFactory(queueData)
 
   def run(self):
-    reactor.connectTCP(self.server_ip, 8000, self.raspberryPIMotorsFactory)
+    print('connecting to', self.server_ip, 54321)
+    reactor.connectTCP(self.server_ip, 54321, self.raspberryPIMotorsFactory)
     reactor.run(installSignalHandlers=False)
 
   def get_data(self, name):

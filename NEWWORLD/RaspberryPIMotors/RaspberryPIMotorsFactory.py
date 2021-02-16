@@ -4,8 +4,8 @@ import RaspberryPIMotorsProtocol
 
 class RaspberryPIMotorsFactory(protocol.ClientFactory):
 
-  def __init__(self):
-    self.raspberryPIMotorsProtocol = RaspberryPIMotorsProtocol.RaspberryPIMotorsProtocol()
+  def __init__(self, queueData):
+    self.raspberryPIMotorsProtocol = RaspberryPIMotorsProtocol.RaspberryPIMotorsProtocol(queueData)
 
   def buildProtocol(self, addr):
     return self.raspberryPIMotorsProtocol
