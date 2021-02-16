@@ -38,6 +38,7 @@ class PcServerProtocol(protocol.Protocol):
     
     def connectionLost(self, reason):
         print('Connection lost', reason )
+        self.factory._clientDisconnect(self)
 
 class PcServerProtocolFactory(protocol.Factory):
     def __init__(self):
@@ -56,6 +57,15 @@ class PcServerProtocolFactory(protocol.Factory):
         deferred = handlers.get(client_name, defer.Deferred())
         handlers[client_name] = deferred
         deferred.callback(None)
+    def _clientDisconnect(self, protocol):
+        client_name = protocol.client_name
+        del self.clients[client_name]
+
+        handlers = self._onClientConnectHandlers
+        deferred = handlers[client_name]
+        new_deferred = defer.Deferred()
+        new_deferred.callbacks = deferred.callbacks
+        handlers[client_name] = new_deferred
     def onClientConnect(self, client_name):
         '''
         Декоратор. Вызывается когда подключается клиент под именем client_name:
