@@ -20,18 +20,18 @@ def get_sound_device():
     print("-------------------------------------------------------------")
     p.terminate()
 
+def main():
+    get_sound_device()
 
-get_sound_device()
+    soundRecordThread = sR.SoundRecordThread()
+    soundPlayThread = sP.SoundPlayThread()
 
-soundRecordThread = sR.SoundRecordThread()
-soundPlayThread = sP.SoundPlayThread()
+    soundRecordThread.start()
+    soundPlayThread.start()
 
-soundRecordThread.start()
-soundPlayThread.start()
+    while True:
+        sound = soundRecordThread.get_sound()
+        soundPlayThread.add_sound(sound)
 
-while True:
-    sound = soundRecordThread.get_sound()
-    soundPlayThread.add_sound(sound)
-
-soundRecordThread.stop()
-soundPlayThread.stop()
+    soundRecordThread.stop()
+    soundPlayThread.stop()
