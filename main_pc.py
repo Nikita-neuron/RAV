@@ -34,6 +34,10 @@ class PcServerProtocol(protocol.Protocol):
                 self.client_name = msg['name']
                 print(f'"{self.client_name}" connected')
                 self.factory._clientConnect(self)
+            elif msg['type'] == 'motors':
+                msg['type'] = 'motorsSpeed'
+                
+
         # self.transport.write(b'Hello, World!')
     
     def connectionLost(self, reason):
@@ -82,7 +86,11 @@ class PcServerProtocolFactory(protocol.Factory):
         
         return f
     def sendMsg(self, client_name, type_, data):
-        return self.clients[client_name].sendMsg(type_, data)
+        try:
+            client = self.clients[client_name]
+        except KeyError:
+            return None
+        return client.sendMsg(type_, data)
 
 # endpoints.serverFromString(reactor, "tcp:54321").listen(PakkitProtocolFactory())
 
@@ -93,7 +101,10 @@ class CameraThread(threading.Thread):
         self.capture = cv2.VideoCapture(0)
     def run(self):
         while self.capture.isOpened():
-            _, img = self.capture.read()
+            ret, img = self.capture.read()
+            if not ret:
+                print('Could not get camera frame')
+                continue
             img = cv2.resize(img, (100, 100))
             cv2.imshow('camera', img)
             cv2.waitKey(1)

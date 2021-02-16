@@ -11,7 +11,7 @@ let keys = {
 
 function update_motors() {
 	console.log('update', keys)
-	socket.emit('keyboard', keys)
+	socket.emit('keys', keys)
 }
 
 document.addEventListener('keydown', (event) => {
