@@ -4,3 +4,5 @@ multiprocessing-logging
 opencv-python
 watchdog
 twisted
+msgpack
+msgpack-numpy

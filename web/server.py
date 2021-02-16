@@ -1,7 +1,7 @@
 
 import sys
 sys.path.append('..')
-import rav.config
+import config
 
 from flask import Flask, Response, render_template
 from flask_socketio import SocketIO
@@ -21,14 +21,6 @@ app = Flask(__name__)
 socketio = SocketIO(app, async_mode=async_mode)
 
 
-@app.route('/')
-def hello_world():
-    return render_template('index.html', async_mode=socketio.async_mode)
-    # return Response(update_index())
-
-@socketio.on('connect')
-def handle_connect():
-    print('WEBSOCKET CONNECT')
 
 class ImageDisplayThread(threading.Thread):
     def __init__(self):
@@ -71,7 +63,8 @@ class ImageDisplayThread(threading.Thread):
 #             self.socket.recv_into()
 
 class PcClientProtocol(protocol.Protocol):
-    def __init__(self):
+    def __init__(self, factory):
+        self.factory = factory
         self.unpacker = msgpack.Unpacker()
     def sendMsg(self, type_, msg):
         msg['type'] = type_
@@ -96,16 +89,18 @@ class PcClientProtocol(protocol.Protocol):
 
 class PcClientFactory(protocol.ClientFactory):
     retry_delay = 1.0
-    retry_after_connection_loss = False
+    retry_after_connection_loss = True
     retry_after_connection_failure = True
     def __init__(self):
+        self.client = None
         self.connection_tries = 0
     def startedConnecting(self, connector):
         print(f'Connecting to {connector.host}:{connector.port}' if self.connection_tries==0 else '.', end='', flush=True)
     def buildProtocol(self, addr):
         self.connection_tries = 0
         print(f'\nConnected to main server ({addr.host}:{addr.port})!')
-        return PcClientProtocol()
+        self.client = PcClientProtocol(self)
+        return self.client
     def retryConnection(self, connector):
         # print('.', end='', flush=True)
         def retry():
@@ -120,22 +115,41 @@ class PcClientFactory(protocol.ClientFactory):
         if self.retry_after_connection_failure:
             self.connection_tries += 1
             self.retryConnection(connector)
+    def sendMsg(self, type_: str, msg):
+        if self.client is not None:
+            print('send message', type_, msg, self.client)
+            self.client.sendMsg(type_, msg)
 
+@app.route('/')
+def hello_world():
+    return render_template('index.html', async_mode=socketio.async_mode)
+    # return Response(update_index())
+
+pc_client = PcClientFactory()
+
+@socketio.on('connect')
+def handle_connect():
+    print('WEBSOCKET CONNECT')
+
+@socketio.on('keys')
+def handle_keys(data):
+    print('KEYS', data)
+    pc_client.sendMsg('motors', data)
 
 def run_webserver():
-    print('Starting webserver')
-    socketio.run(app, host='localhost', port=rav.config.WEBSERVER_PORT, debug=False)
+    print('Starting webserver on port', config.WEBSERVER_PORT)
+    socketio.run(app, port=config.WEBSERVER_PORT, debug=False)
 
 def main():
     # app.debug = True
     # livereload.Server(app.wsgi_app).serve(port=5500)
     # app.run(host='localhost'    , port=5500)
-    main_pc_ip= rav.config.MAIN_PC_IP
-    main_pc_port = rav.config.MAIN_PC_PORT
+    main_pc_ip= config.MAIN_PC_IP
+    main_pc_port = config.MAIN_PC_PORT
 
     webserver_thread = threading.Thread(target=run_webserver, daemon=True)
     webserver_thread.start()
-    reactor.connectTCP(main_pc_ip, main_pc_port, PcClientFactory())
+    reactor.connectTCP(main_pc_ip, main_pc_port, pc_client)
     reactor.run()
     print('\nexiting!')
 

@@ -2,6 +2,7 @@ from twisted.internet import protocol
 import queue
 import msgpack
 import msgpack_numpy
+import time
 msgpack_numpy.patch()
 
 
@@ -14,9 +15,9 @@ class PCMotorsProtocol(protocol.Protocol):
     self.unpacker = msgpack.Unpacker()
 
     self.queueData = {
-      "frames":           queue.Queue(2),
-      "soundsRaspberry":  queue.Queue(2),
-      "systemData":       queue.Queue(2)
+      "frames":           queue.Queue(20),
+      "soundsRaspberry":  queue.Queue(20),
+      "systemData":       queue.Queue(20)
     }
 
   def connectionMade(self):
@@ -25,12 +26,17 @@ class PCMotorsProtocol(protocol.Protocol):
     
   def dataReceived(self, data):
     # получение сообщений от распберри
-    print("kkkk")
+    # print(data[0])
+    # print("kkkk")
+    # print(len(data))
     self.unpacker.feed(data)
+    # print(self.unpacker)
+    # time.sleep(0.5)
     for msg in self.unpacker:
       # print(msg)
-      if msg[0] == "frames":
-        print("o")
+      # if msg[0] == "frames":
+        # print("o")
+      # time.sleep(0.5)
       print("data recv")
       self.add_data(msg[0], msg[1])
       print("done")

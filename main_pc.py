@@ -34,10 +34,15 @@ class PcServerProtocol(protocol.Protocol):
                 self.client_name = msg['name']
                 print(f'"{self.client_name}" connected')
                 self.factory._clientConnect(self)
+            elif msg['type'] == 'motors':
+                msg['type'] = 'motorsSpeed'
+                
+
         # self.transport.write(b'Hello, World!')
     
     def connectionLost(self, reason):
         print('Connection lost', reason )
+        self.factory._clientDisconnect(self)
 
 class PcServerProtocolFactory(protocol.Factory):
     def __init__(self):
@@ -56,6 +61,15 @@ class PcServerProtocolFactory(protocol.Factory):
         deferred = handlers.get(client_name, defer.Deferred())
         handlers[client_name] = deferred
         deferred.callback(None)
+    def _clientDisconnect(self, protocol):
+        client_name = protocol.client_name
+        del self.clients[client_name]
+
+        handlers = self._onClientConnectHandlers
+        deferred = handlers[client_name]
+        new_deferred = defer.Deferred()
+        new_deferred.callbacks = deferred.callbacks
+        handlers[client_name] = new_deferred
     def onClientConnect(self, client_name):
         '''
         Декоратор. Вызывается когда подключается клиент под именем client_name:
@@ -72,7 +86,11 @@ class PcServerProtocolFactory(protocol.Factory):
         
         return f
     def sendMsg(self, client_name, type_, data):
-        return self.clients[client_name].sendMsg(type_, data)
+        try:
+            client = self.clients[client_name]
+        except KeyError:
+            return None
+        return client.sendMsg(type_, data)
 
 # endpoints.serverFromString(reactor, "tcp:54321").listen(PakkitProtocolFactory())
 
@@ -83,7 +101,10 @@ class CameraThread(threading.Thread):
         self.capture = cv2.VideoCapture(0)
     def run(self):
         while self.capture.isOpened():
-            _, img = self.capture.read()
+            ret, img = self.capture.read()
+            if not ret:
+                print('Could not get camera frame')
+                continue
             img = cv2.resize(img, (100, 100))
             cv2.imshow('camera', img)
             cv2.waitKey(1)

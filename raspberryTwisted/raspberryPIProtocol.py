@@ -5,33 +5,31 @@ import msgpack
 import msgpack_numpy
 msgpack_numpy.patch()
 
-class RaspberryPIMotorsProtocol(protocol.Protocol):
+class RaspberryPIProtocol(protocol.Protocol):
 
-  def __init__(self):
+  def __init__(self, queueData, name):
     self.unpacker = msgpack.Unpacker()
-    self.queueData = {
-      "soundsPC":     queue.Queue(2),
-      "motorsSpeed":  queue.Queue(1)
-    }
+    self.queueData = queueData
+    self.name = name
 
   def connectionMade(self):
     print("Connect")
-    # self.transport.write(b"hello, world!")
+
+    hello = {
+      "type": "client_connect",
+      "name": self.name
+    }
+
+    self.send_message(hello)
 
   def send_message(self, data):
     if self.transport is not None:
-      # print()
-      # self.transport.write(b"ggg")
-      print("sending")
       msgpack.pack(data, self.transport)
-      print("done")
-      # self.transport.write(data)
-      # msgpack.pack(["frames", [1,2,3]], self.transport)
     
   def dataReceived(self, data):
     self.unpacker.feed(data)
     for msg in self.unpacker:
-      self.add_data(msg[0], msg[1])
+      self.add_data(msg["type"], msg["data"])
     
   def connectionLost(self, reason):
     print("connection lost")
@@ -44,6 +42,6 @@ class RaspberryPIMotorsProtocol(protocol.Protocol):
   
   def get_data(self, name):
     try:
-      self.queueData[name].get_nowait()
+      return self.queueData[name].get_nowait()
     except queue.Empty:
       return None
