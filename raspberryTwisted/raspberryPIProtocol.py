@@ -35,8 +35,18 @@ class RaspberryPIProtocol(protocol.Protocol):
     print("connection lost")
 
   def add_data(self, name, data):
+    # print("put")
+    # print(data)
+    # self.queueData[name] = data
+    # print("done")
     try:
-      self.queueData[name].put(data)
+      # print("put")
+      # print(self.queueData[name].full())
+      # if self.queueData[name].qsize() < 20:
+        # self.queueData[name].put_nowait(data)
+      # print("put done")
+      self.queueData[name].put_nowait(data)
+      # print("done")
     except queue.Full:
       pass
   
