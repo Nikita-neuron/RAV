@@ -1,13 +1,13 @@
 import threading
 from twisted.internet import reactor, protocol
 
-import pc.ServerPCFactory
+import ServerPCFactory
 
 class PCServer(threading.Thread):
-  def __init__(self):
+  def __init__(self, queueData):
     super().__init__()
 
-    self.serverPCFactory = pc.ServerPCFactory.ServerPCFactory()
+    self.serverPCFactory = ServerPCFactory.ServerPCFactory(queueData)
 
   def run(self):
     print("listen...")
