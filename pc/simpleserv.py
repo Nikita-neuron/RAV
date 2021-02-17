@@ -31,7 +31,7 @@ def main():
   playRaspberryVideo = PlayRaspberryVideo()
   playRaspberryVideo.start()
 
-  pult = cv2.imread(r"newworld\pc\pult.jpg")
+  pult = cv2.imread(r"pc\pult.jpg")
   pult = cv2.resize(pult, (500, 500))
   cv2.imshow("pult", pult)
 

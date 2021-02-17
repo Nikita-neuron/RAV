@@ -17,8 +17,5 @@ class RaspberryPIClient(threading.Thread):
     reactor.connectTCP(self.server_ip, self.server_port, self.raspberryPIFactory)
     reactor.run(installSignalHandlers=False)
 
-  def get_data(self, name):
-    return self.raspberryPIFactory.get_data(name)
-
   def send_message(self, data):
     self.raspberryPIFactory.send_message(data)

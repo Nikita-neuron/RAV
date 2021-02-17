@@ -23,16 +23,16 @@ def connect_arduino():
 
 def get_sound_device():
   p = pyaudio.PyAudio()
+  print("----------------------default record device list---------------------")
+  print(p.get_default_input_device_info())
+  print(p.get_default_output_device_info())
+  print("---------------------------------------------------------------------")
   print("----------------------record device list---------------------")
   info = p.get_host_api_info_by_index(0)
   numdevices = info.get('deviceCount')
   for i in range(0, numdevices):
     if (p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels')) > 0:
-      print("Input Device id ", i, " - ", 
-        p.get_device_info_by_host_api_device_index(0, i).get('name'), " chanels: ", 
-        p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels'), " RATE: ", 
-        p.get_device_info_by_host_api_device_index(0, i).get('defaultSampleRate')
-      )
+      print("Input Device id ", i, " - ", p.get_device_info_by_host_api_device_index(0, i).get('name'), " chanels: ", p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels'))
 
   print("-------------------------------------------------------------")
   p.terminate()
@@ -43,12 +43,7 @@ class MotorsStructure(Structure):
   _fields_ = [("r", c_int8), ("l", c_int8)]
 
 def get_data(queueData, name):
-  # print("get")
-  # data = queueData[name]
-  # print("get done")
-  # return data
   try:
-    # print("get")
     return queueData[name].get_nowait()
   except queue.Empty:
     return None
@@ -65,7 +60,7 @@ def main():
 
   # get_sound_device()
 
-  arduino = connect_arduino()
+  # arduino = connect_arduino()
 
   # soundRecordThread = soundRecordThread.SoundRecordThread(INDEX=1, CHANELS=1)
   # soundPlayThread = soundPlayThread.SoundPlayThread()
@@ -112,24 +107,12 @@ def main():
     #   soundPlayThread.add_sound(sound_pc)
     
     motors = get_data(queueData, "motorsSpeed")
-    # print("motors: ", motors)
     if motors is not None:
       print("from raspberry: ", motors)
 
       motors_arduino = MotorsStructure(motors[0], motors[1])
 
-      # msgpack.pack(motors, arduino)
-      arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
-
-      # try:
-        # arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
-      # except:
-        # pass
-
-      # serial_data = arduino.read(2)
-
-      # motors_from_arduino = MotorsStructure.from_buffer_copy(serial_data)
-      # print("from arduino: ",motors_from_arduino.r)
+      # arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
 
 
 if __name__ == '__main__':
