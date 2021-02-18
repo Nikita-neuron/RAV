@@ -27,7 +27,7 @@ def main():
     get_sound_device()
 
     soundRecordThread = sR.SoundRecordThread(INDEX=1, CHANNELS=1, RATE=50000)
-    soundPlayThread = sP.SoundPlayThread(INDEX=5, CHANNELS=2, RATE=44100)
+    soundPlayThread = sP.SoundPlayThread(INDEX=4, CHANNELS=2, RATE=44100)
 
     soundRecordThread.start()
     soundPlayThread.start()

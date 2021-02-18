@@ -3,31 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/style.css">
+    <!-- <link rel="stylesheet" href="static/css/style.css"> -->
     <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script> -->
     <!-- <script src="/socket.io/socket.io.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js" integrity="sha512-oFOCo2/3DtjrJG4N27BjSLQWoiBv171sK6a+JiWjp/7agxC2nCUP358AqzxkBUb5jX8g6CYLPdSKQTbC0weCwA==" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js" integrity="sha512-oFOCo2/3DtjrJG4N27BjSLQWoiBv171sK6a+JiWjp/7agxC2nCUP358AqzxkBUb5jX8g6CYLPdSKQTbC0weCwA==" crossorigin="anonymous"></script> -->
     <!-- <script src="static/js/main.js"></script> -->
-    <script src="{{ url_for('static', filename='js/main.js', version='1') }}"></script>
     <title>hahaha</title>
+    <script src="gamepad.js"></script>
 </head>
 <body>
     <header>
         <h1>Hello from psyhushka</h1>
     </header>
-    <main>
-        <!-- <p>{{ tim }}</p> -->
-        <div class="container">
-            <div class="joystick">
-                <img src="static/images/joystick.png" alt="">
-                <div id="stick1">
-                    <img src="static/images/stick.png"/>		
-                </div>
-            </div>
-        </div>
-    </main>
-    <footer>
+    <script>
+        console.log(gamepad)
+        while (true) {
+            document.body.innerHTML = `${getGamepadValues()}`
+        }
+        // function updateStatus() {
+        //     window.requestAnimationFrame(updateStatus);
 
-    </footer>
+        //     var gamepads = navigator.getGamepads();
+
+        //     var data = '';
+        //     for (var padindex = 0; padindex < gamepads.length; ++padindex)
+        //     {
+        //         var pad = gamepads[padindex];
+        //         if (!pad) continue;
+        //         data += '<pre>' + pad.index + ": " + pad.id + "<br/>";
+        //         for (var i = 0; i < pad.buttons.length; ++i) {
+        //             data += `button_${gamepad_buttons[i]}: ${pad.buttons[i].value};${pad.buttons[i].pressed}<br/>`
+        //         }
+        //             // data += "button" + i + ": " + pad.buttons[i].value + ';' + pad.buttons[i].pressed + "<br/>";
+
+        //         for (var i = 0; i < pad.axes.length; ++i)
+        //             data += "axis" + i + ": " + pad.axes[i] + "<br/>";
+        //     }
+        //     document.body.innerHTML = data;
+        // }
+
+        // window.requestAnimationFrame(updateStatus);
+    </script>
 </body>
 </html>
