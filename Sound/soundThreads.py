@@ -2,8 +2,8 @@ import multiprocessing as mp
 import pyaudio
 import wave
 
-import soundRecordThread as sR
-import soundPlayThread as sP
+import SoundRecordThread as sR
+import SoundPlayThread as sP
 
 def get_sound_device():
     p = pyaudio.PyAudio()
@@ -28,42 +28,15 @@ def main():
     get_sound_device()
 
     soundRecordThread = sR.SoundRecordThread(INDEX=1, CHANNELS=1, RATE=44100)
-    soundPlayThread = sP.SoundPlayThread(INDEX=5, CHANNELS=2, RATE=44100)
+    soundPlayThread = sP.SoundPlayThread(INDEX=5, CHANNELS=1, RATE=44100)
 
     soundRecordThread.start()
     soundPlayThread.start()
 
-    # while True:
-        # sound = soundRecordThread.get_sound()
-        # if sound is not None:
-            # soundPlayThread.add_sound(sound)
-
-    frames = [] # Инициализировать массив для хранения кадров
-
-        # Хранить данные в блоках в течение 3 секунд
-    wf = wave.open('test.wav')
-    data = wf.readframes(1024)
-    while data != '':
-        # frames.append(data)
-        # soundPlayThread.add_sound([0, data])
-        for i in range(10):
-            frames.append(data)
-            data = wf.readframes(1024)
-        soundPlayThread.add_sound(frames)
-        # data = wf.readframes(1024)
-    print("fff")
-    # soundPlayThread.add_sound(frames)
-    # for i in range(0, 1000000):
-    #     sound = soundRecordThread.get_sound()
-    #     if sound is not None:
-    #         for j in range(len(sound)):
-    #             frames.append(sound[j])
-    # wf = wave.open("test.wav", 'wb')
-    # wf.setnchannels(1)
-    # wf.setsampwidth(pyaudio.get_sample_size(pyaudio.paInt16))
-    # wf.setframerate(44100)
-    # wf.writeframes(b''.join(frames))
-    # wf.close()
+    while True:
+        sound = soundRecordThread.get_sound()
+        if sound is not None:
+            soundPlayThread.add_sound(sound)
 
     soundRecordThread.stop()
     soundPlayThread.stop()
