@@ -14,5 +14,5 @@ class ServerPCFactory(protocol.Factory):
         self.raspberryPIMotorsProtocol.sendMessage(data)
 
     def buildProtocol(self, addr):
-        if addr.host == "192.168.1.37":
+        if addr.host == "172.20.235.94":
             return self.raspberryPIMotorsProtocol

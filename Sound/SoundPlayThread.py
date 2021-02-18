@@ -20,14 +20,14 @@ class SoundPlayThread(threading.Thread):
 
         self.stream         = None
 
-        if CHANNELS is None:
-            self.CHANNELS   = self.default_device["maxOutputChannels"]
+        # if CHANNELS is None:
+        #     self.CHANNELS   = self.default_device["maxOutputChannels"]
 
-        if RATE is None:
-            self.RATE       = int(self.default_device["defaultSampleRate"])
+        # if RATE is None:
+        #     self.RATE       = int(self.default_device["defaultSampleRate"])
 
-        if INDEX is None:
-            self.INDEX      = self.default_device["index"]
+        # if INDEX is None:
+        #     self.INDEX      = self.default_device["index"]
 
         self.DELAY_SIZE     = int(self.DELAY_SECONDS * self.RATE / (10 * self.CHUNK))
         self.queue_sound    = queue.Queue(self.DELAY_SIZE)
@@ -48,13 +48,13 @@ class SoundPlayThread(threading.Thread):
             format              =self.FORMAT,
             channels            =self.CHANNELS,
             rate                =self.RATE,
-            output               =True,
+            output              =True,
             frames_per_buffer   =self.CHUNK,
             output_device_index  = self.INDEX)
 
     def add_sound(self, frame):
         try:
-            return self.queue_sound.put(frame)
+            return self.queue_sound.put_nowait(frame)
         except queue.Full:
             pass
     

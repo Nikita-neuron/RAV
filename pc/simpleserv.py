@@ -2,7 +2,7 @@ import PCServer
 import queue
 import cv2
 
-from Sound import SoundPlayThread, SoundRecordThread
+from Sound import soundPlayThread, soundRecordThread
 from PlayRaspberryVideo import PlayRaspberryVideo
 
 def get_data(queueData, name):
@@ -22,11 +22,11 @@ def main():
   pcServerRaspberry = PCServer.PCServer(queueData)
   pcServerRaspberry.start()
 
-  soundRecordThread = SoundRecordThread.SoundRecordThread()
-  soundPlayThread = SoundPlayThread.SoundPlayThread()
+  soundRecord = soundRecordThread.SoundRecordThread()
+  soundPlay = soundPlayThread.SoundPlayThread()
 
-  soundRecordThread.start()
-  soundPlayThread.start()
+  soundRecord.start()
+  soundPlay.start()
   
   playRaspberryVideo = PlayRaspberryVideo()
   playRaspberryVideo.start()
@@ -39,6 +39,7 @@ def main():
     sys_data = get_data(queueData, "systemData")
     frame = get_data(queueData, "frames")
     sounds_raspberry = get_data(queueData, "soundsRaspberry")
+    # print(sounds_raspberry)
 
     motors = [0, 0]
     # key = "k"
@@ -65,9 +66,9 @@ def main():
     })
     
     if sounds_raspberry is not None:
-      soundPlayThread.add_sound(sounds_raspberry)
+      soundPlay.add_sound(sounds_raspberry)
 
-    sounds_pc = soundRecordThread.get_sound()
+    sounds_pc = soundRecord.get_sound()
     if sounds_pc is not None:
       pcServerRaspberry.send_motors_raspberry({
         "type": "soundsPC", 

@@ -3,7 +3,7 @@ import queue
 import pyaudio
 
 class SoundPlayThread(threading.Thread):
-    def __init__(self, CHUNK = 1024, CHANNELS = 1, RATE = 44100, DELAY_SECONDS = 5, INDEX = 5):
+    def __init__(self, CHUNK = 1024, CHANNELS = None, RATE = None, DELAY_SECONDS = 5, INDEX = None):
         super().__init__()
 
         self._stopped       = False
@@ -13,14 +13,24 @@ class SoundPlayThread(threading.Thread):
         self.RATE           = RATE
         self.INDEX          = INDEX
         self.DELAY_SECONDS  = DELAY_SECONDS
-        self.DELAY_SIZE     = int(self.DELAY_SECONDS * self.RATE / (10 * self.CHUNK))
 
         self.FORMAT         = pyaudio.paInt16
         self.p              = pyaudio.PyAudio()
-
-        self.queue_sound    = queue.Queue(self.DELAY_SIZE)
+        self.default_device = self.p.get_default_output_device_info()
 
         self.stream         = None
+
+        if CHANNELS is None:
+            self.CHANNELS   = self.default_device["maxOutputChannels"]
+
+        if RATE is None:
+            self.RATE       = int(self.default_device["defaultSampleRate"])
+
+        if INDEX is None:
+            self.INDEX      = self.default_device["index"]
+
+        self.DELAY_SIZE     = int(self.DELAY_SECONDS * self.RATE / (10 * self.CHUNK))
+        self.queue_sound    = queue.Queue(self.DELAY_SIZE)
 
     def run(self):
         self.init_audio()
@@ -28,7 +38,8 @@ class SoundPlayThread(threading.Thread):
             try:
                 sound = self.queue_sound.get_nowait()
                 if sound is not None:
-                    self.stream.write(sound)
+                    for i in range(len(sound)):
+                        self.stream.write(sound[i])
             except queue.Empty:
                 pass
 
@@ -39,8 +50,7 @@ class SoundPlayThread(threading.Thread):
             rate                =self.RATE,
             output               =True,
             frames_per_buffer   =self.CHUNK,
-            # output_device_index  = self.INDEX)
-        )
+            output_device_index  = self.INDEX)
 
     def add_sound(self, frame):
         try:

@@ -20,14 +20,14 @@ class SoundRecordThread(threading.Thread):
 
         self.stream         = None
 
-        if CHANNELS is None:
-            self.CHANNELS   = self.default_device["maxInputChannels"]
+        # if CHANNELS is None:
+        #     self.CHANNELS   = self.default_device["maxInputChannels"]
 
-        if RATE is None:
-            self.RATE       = int(self.default_device["defaultSampleRate"])
+        # if RATE is None:
+        #     self.RATE       = int(self.default_device["defaultSampleRate"])
 
-        if INDEX is None:
-            self.INDEX      = self.default_device["index"]
+        # if INDEX is None:
+        #     self.INDEX      = self.default_device["index"]
 
         self.DELAY_SIZE     = int(self.DELAY_SECONDS * self.RATE / (10 * self.CHUNK))
         self.queue_sound    = queue.Queue(self.DELAY_SIZE)
@@ -36,7 +36,7 @@ class SoundRecordThread(threading.Thread):
         self.init_audio()
         while not self._stopped:
             frame = []
-            for i in range(2):
+            for i in range(10):
                 frame.append(self.stream.read(self.CHUNK,exception_on_overflow = False))
             
             try:

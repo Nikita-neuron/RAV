@@ -1,17 +1,15 @@
 import multiprocessing as mp
 import pyaudio
 
-import SoundRecordThread
-import SoundPlayThread
-
-CHUNK = 1024
-CHANNELS = 1
-RATE = 44100
-DELAY_SECONDS = 5
-DELAY_SIZE = DELAY_SECONDS * RATE / (10 * CHUNK)
+import Sound.soundRecordThread as sR
+import Sound.soundPlayThread as sP
 
 def get_sound_device():
     p = pyaudio.PyAudio()
+    print("----------------------default record device list---------------------")
+    print(p.get_default_input_device_info())
+    print(p.get_default_output_device_info())
+    print("---------------------------------------------------------------------")
     print("----------------------record device list---------------------")
     info = p.get_host_api_info_by_index(0)
     numdevices = info.get('deviceCount')
@@ -22,20 +20,18 @@ def get_sound_device():
     print("-------------------------------------------------------------")
     p.terminate()
 
+def main():
+    get_sound_device()
 
-get_sound_device()
+    soundRecordThread = sR.SoundRecordThread()
+    soundPlayThread = sP.SoundPlayThread()
 
-# print(pyaudio.PyAudio().is_format_supported(input_format=pyaudio.paInt16, input_channels=CHANNELS, rate=RATE, input_device=1))
+    soundRecordThread.start()
+    soundPlayThread.start()
 
-soundRecordThread = SoundRecordThread.SoundRecordThread()
-soundPlayThread = SoundPlayThread.SoundPlayThread()
+    while True:
+        sound = soundRecordThread.get_sound()
+        soundPlayThread.add_sound(sound)
 
-soundRecordThread.start()
-soundPlayThread.start()
-
-while True:
-    sound = soundRecordThread.get_sound()
-    soundPlayThread.add_sound(sound)
-
-soundRecordThread.stop()
-soundPlayThread.stop()
+    soundRecordThread.stop()
+    soundPlayThread.stop()
