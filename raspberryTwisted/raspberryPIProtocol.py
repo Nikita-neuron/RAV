@@ -5,6 +5,8 @@ import msgpack
 import msgpack_numpy
 msgpack_numpy.patch()
 
+# sudo apt-get install telnetd
+
 class RaspberryPIProtocol(protocol.Protocol):
 
   def __init__(self, queueData, name):
@@ -36,12 +38,6 @@ class RaspberryPIProtocol(protocol.Protocol):
 
   def add_data(self, name, data):
     try:
-      self.queueData[name].put(data)
+      self.queueData[name].put_nowait(data)
     except queue.Full:
       pass
-  
-  def get_data(self, name):
-    try:
-      return self.queueData[name].get_nowait()
-    except queue.Empty:
-      return None

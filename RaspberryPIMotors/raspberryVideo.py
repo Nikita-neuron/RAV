@@ -20,13 +20,7 @@ class RaspberryVideo(threading.Thread):
 
       if ret is True:
         frame = cv2.resize(frame, (320, 240))
-        # print("size: " + str(len(frame)) + " : " + str(len(frame[0])))
-
-        # frame_numpy = np.array(frame)
-        # frame_ctype = frame_numpy.ctypes.data_as(POINTER(c_long))
-        # print(frame_ctype)
-
-        # print(frame_ctype)
+        
         result, frame = cv2.imencode('.jpg', frame, encode_param)
 
         self.add_video_frames(frame)

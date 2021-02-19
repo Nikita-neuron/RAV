@@ -1,9 +1,8 @@
 import threading
 import queue
 import pyaudio
-import wave
 
-class SoundPlayThread(threading.Thread):
+class SoundRecordThread(threading.Thread):
     def __init__(self, CHUNK = 1024, CHANNELS = None, RATE = None, DELAY_SECONDS = 5, INDEX = None):
         super().__init__()
 
@@ -17,12 +16,12 @@ class SoundPlayThread(threading.Thread):
 
         self.FORMAT         = pyaudio.paInt16
         self.p              = pyaudio.PyAudio()
-        self.default_device = self.p.get_default_output_device_info()
+        self.default_device = self.p.get_default_input_device_info()
 
         self.stream         = None
 
         if CHANNELS is None:
-            self.CHANNELS   = self.default_device["maxOutputChannels"]
+            self.CHANNELS   = self.default_device["maxInputChannels"]
 
         if RATE is None:
             self.RATE       = int(self.default_device["defaultSampleRate"])
@@ -35,31 +34,31 @@ class SoundPlayThread(threading.Thread):
 
     def run(self):
         self.init_audio()
-        
         while not self._stopped:
-            sound = None
+            frame = []
+            for i in range(10):
+                frame.append(self.stream.read(self.CHUNK,exception_on_overflow = False))
+            
             try:
-                sound = self.queue_sound.get_nowait()
-            except queue.Empty:
+                self.queue_sound.put(frame)
+            except queue.Full:
                 pass
-            if sound is not None:
-                for i in range(len(sound)):
-                    self.stream.write(sound[i])
 
     def init_audio(self):
         self.stream = self.p.open(
-            format              = self.FORMAT,
-            channels            = self.CHANNELS,
-            rate                = self.RATE,
-            output              = True,
-            frames_per_buffer   = self.CHUNK,
-            output_device_index = self.INDEX)
+            format              =self.FORMAT,
+            channels            =self.CHANNELS,
+            rate                =self.RATE,
+            input               =True,
+            frames_per_buffer   =self.CHUNK,
+            input_device_index  = self.INDEX
+        )
 
-    def add_sound(self, frame):
+    def get_sound(self):
         try:
-            self.queue_sound.put_nowait(frame)
-        except queue.Full:
-            pass
+            return self.queue_sound.get_nowait()
+        except queue.Empty:
+            return None
     
     def stop(self):
         self.stream.stop_stream()

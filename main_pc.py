@@ -95,11 +95,16 @@ import time
 # endpoints.serverFromString(reactor, "tcp:54321").listen(PakkitProtocolFactory())
 
 class CameraThread(threading.Thread):
-    def __init__(self, on_image: 'Callable'):
+    def __init__(self):
         super().__init__(daemon=True)
-        self.callback = on_image
+        self.daemon = True
         self.capture = cv2.VideoCapture(0)
+        self.start_time = None
+    def start(self, on_image):
+        self.callback = on_image
+        super().start()
     def run(self):
+        self.start_time = time.time()
         while self.capture.isOpened():
             ret, img = self.capture.read()
             if not ret:
@@ -114,6 +119,7 @@ class CameraThread(threading.Thread):
 pc_protocol = PcServerProtocolFactory()
 
 # pc_protocol._onClientConnectHandlers['webserver'] = defer.Deferred()
+# camera = CameraThread()
 
 # @pc_protocol.onClientConnect('webserver')
 # def on_webserver_connect():

@@ -1,7 +1,11 @@
 
 import sys
-sys.path.append('..')
-import config
+import importlib.util
+# sys.path.append('..')
+# import config
+spec = importlib.util.spec_from_file_location('config', 'C:\\Users\\undeg\\Documents\\RAV\\config.py')
+config = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(config)
 
 from flask import Flask, Response, render_template
 from flask_socketio import SocketIO
@@ -27,30 +31,43 @@ socketio = SocketIO(app, async_mode=async_mode)
 class ImageDisplayThread(threading.Thread):
     def __init__(self):
         super().__init__(daemon=True)
-        self.img_queue = queue.Queue(20)
+        self.img_queue = queue.Queue(100)
     def run(self):
-        image_number = 0
-        total_time = 0
-        time_start = time.time()
-        self.sleep_ms = 1
-        self.waiting = False
+        last_display = 0
         while True:
-            time_start = time.time()
-            img = self.img_queue.get()
+            last_display = time.time()
+            spf, img = self.img_queue.get()
+            current_time = time.time()
             cv2.imshow('img', img)
-            delta_time = time.time() - time_start
+            time_delta = current_time - last_display
+            print('SPF', spf, time_delta-spf)
+            # cv2.waitKey(max(1, int(1000*(
+            #     time_delta - spf
+            # ))))
+            cv2.waitKey(1)
 
-            delta_time = min(0.5, delta_time)
+        # image_number = 0
+        # total_time = 0
+        # time_start = time.time()
+        # self.sleep_ms = 1
+        # self.waiting = False
+        # while True:
+        #     time_start = time.time()
+        #     img = self.img_queue.get()
+        #     cv2.imshow('img', img)
+        #     delta_time = time.time() - time_start
 
-            total_time += delta_time
-            image_number += 1
-            average_time = total_time/image_number
-            print('delta time', delta_time, average_time)
+        #     delta_time = min(0.5, delta_time)
 
-            cv2.waitKey(int(1000*average_time)+30)
-    def display(self, img):
+        #     total_time += delta_time
+        #     image_number += 1
+        #     average_time = total_time/image_number
+        #     print('delta time', delta_time, average_time)
+
+        #     cv2.waitKey(int(1000*average_time)+30)
+    def display(self, spf, img):
         try:
-            self.img_queue.put_nowait(img)
+            self.img_queue.put_nowait((spf, img))
         except queue.Full:
             print('full')
 
@@ -104,11 +121,11 @@ def keys_to_motors(keys: dict):
     if keys['w']:
         speeds += [50, 50]
     if keys['s']:
-        speeds -= [50, 50]
+        speeds += [-50, -50]
     if keys['a']:
-        speeds *= [-1, 1]
+        speeds += [25, -25]
     if keys['d']:
-        speeds *= [1, -1]
+        speeds += [-25, 25]
     return list(speeds)
 
 @socketio.on('keys')
