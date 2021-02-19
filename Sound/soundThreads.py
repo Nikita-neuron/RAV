@@ -2,8 +2,8 @@ import multiprocessing as mp
 import pyaudio
 import wave
 
-import Sound.soundRecordThread as sR
-import Sound.soundPlayThread as sP
+import SoundRecordThread as sR
+import SoundPlayThread as sP
 
 def get_sound_device():
     p = pyaudio.PyAudio()
@@ -25,7 +25,7 @@ def get_sound_device():
     p.terminate()
 
 def main():
-    get_sound_device()
+    
 
     soundRecordThread = sR.SoundRecordThread(INDEX=1, CHANNELS=1, RATE=44100)
     soundPlayThread = sP.SoundPlayThread(INDEX=5, CHANNELS=1, RATE=44100)
@@ -33,12 +33,16 @@ def main():
     soundRecordThread.start()
     soundPlayThread.start()
 
+    get_sound_device()
+
     while True:
         sound = soundRecordThread.get_sound()
         if sound is not None:
             soundPlayThread.add_sound(sound)
 
+        # get_sound_device()
+
     soundRecordThread.stop()
     soundPlayThread.stop()
 
-# main()
+main()
