@@ -4,10 +4,11 @@ import pyaudio
 import wave
 
 class SoundPlayThread(threading.Thread):
-    def __init__(self, CHUNK = 1024, CHANNELS = None, RATE = None, DELAY_SECONDS = 5, INDEX = None):
+    def __init__(self, CHUNK = 1024, CHANNELS = None, RATE = None, DELAY_SECONDS = 5, INDEX = None, server=None):
         super().__init__()
 
         self._stopped       = False
+        self.server = server
 
         self.CHUNK          = CHUNK
         self.CHANNELS       = CHANNELS

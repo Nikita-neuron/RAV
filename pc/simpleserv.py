@@ -1,6 +1,7 @@
 import PCServer
 import queue
 import cv2
+import pyaudio
 
 from Sound import soundPlayThread, soundRecordThread
 from PlayRaspberryVideo import PlayRaspberryVideo
@@ -11,19 +12,39 @@ def get_data(queueData, name):
   except queue.Empty:
     return None
 
+def get_sound_device():
+    p = pyaudio.PyAudio()
+    print("----------------------default record device list---------------------")
+    print(p.get_default_input_device_info())
+    print(p.get_default_output_device_info())
+    print("---------------------------------------------------------------------")
+    print("----------------------record device list---------------------")
+    info = p.get_host_api_info_by_index(0)
+    numdevices = info.get('deviceCount')
+    for i in range(0, numdevices):
+        if (p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels')) > 0:
+            print("Input Device id ", i, " - ", 
+            p.get_device_info_by_host_api_device_index(0, i).get('name'), " chanels: ", 
+            p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels'), 
+            "RATE: ", p.get_device_info_by_host_api_device_index(0, i).get('defaultSampleRate'))
+
+    print("-------------------------------------------------------------")
+    p.terminate()
+
 def main():
+  # get_sound_device()
 
   queueData = {
     "frames":           queue.Queue(20),
-    "soundsRaspberry":  queue.Queue(20),
+    "soundsRaspberry":  queue.Queue(1),
     "systemData":       queue.Queue(20)
   }
 
   pcServerRaspberry = PCServer.PCServer(queueData)
   pcServerRaspberry.start()
 
-  soundRecord = soundRecordThread.SoundRecordThread()
-  soundPlay = soundPlayThread.SoundPlayThread()
+  soundRecord = soundRecordThread.SoundRecordThread(DELAY_SECONDS=1)
+  soundPlay = soundPlayThread.SoundPlayThread(CHANNELS=1, DELAY_SECONDS=1)
 
   soundRecord.start()
   soundPlay.start()
@@ -68,16 +89,17 @@ def main():
     if sounds_raspberry is not None:
       soundPlay.add_sound(sounds_raspberry)
 
-    sounds_pc = soundRecord.get_sound()
-    if sounds_pc is not None:
-      pcServerRaspberry.send_motors_raspberry({
-        "type": "soundsPC", 
-        "data": sounds_pc
-      })
+    # sounds_pc = soundRecord.get_sound()
+    # if sounds_pc is not None:
+    #   # print(sounds_pc)
+    #   pcServerRaspberry.send_motors_raspberry({
+    #     "type": "soundsPC", 
+    #     "data": sounds_pc
+    #   })
     
-    if frame is not None:
-      # print("res")
-      playRaspberryVideo.add_frame(frame)
+    # if frame is not None:
+    #   # print("res")
+    #   playRaspberryVideo.add_frame(frame)
 
     # if sys_data is not None:
       # print(sys_data)

@@ -61,18 +61,9 @@ def main():
   name = "raspberryPIMotors"
   server_ip, server_port = get_server_ip_port()
 
-  # get_sound_device()
+  get_sound_device()
 
-  arduino = connect_arduino()
-
-  # soundRecord = soundRecordThread.SoundRecordThread(INDEX=1, CHANNELS=1, RATE=48000)
-  # soundPlay = soundPlayThread.SoundPlayThread()
-
-  # soundRecord.start()
-  # soundPlay.start()
-
-  raspberryVideo = RaspberryVideo()
-  raspberryVideo.start()
+  # arduino = connect_arduino()
 
   raspberryPIMotorsServer = raspberryPIClient.RaspberryPIClient(
     server_ip,
@@ -80,34 +71,56 @@ def main():
     queueData, 
     name
   )
+
+  soundRecord = soundRecordThread.SoundRecordThread(INDEX=1, CHANNELS=1, RATE=48000, 
+  DELAY_SECONDS=0, server=raspberryPIMotorsServer)
+  soundPlay = soundPlayThread.SoundPlayThread(CHANNELS=1, DELAY_SECONDS=0, server=raspberryPIMotorsServer)
+
+  soundRecord.start()
+  soundPlay.start()
+
+  # raspberryVideo = RaspberryVideo(raspberryPIMotorsServer)
+  # raspberryVideo.start()
+
   raspberryPIMotorsServer.start()
 
+  i = 0
+
   while True:
-    system_data = systemData.get_system_data()
 
-    raspberryPIMotorsServer.send_message({
-      "type": "systemData", 
-      "data": system_data
-    })
+    if i%10000 == 0:
+      system_data = systemData.get_system_data()
 
-    frame = raspberryVideo.get_video_frames()
-    if frame is not None:
-      raspberryPIMotorsServer.send_message({
-        "type": "frames",
-        "data": frame
-      })
+      # raspberryPIMotorsServer.send_message({
+      #   "type": "systemData", 
+      #   "data": system_data
+      # })
+    i += 1
+
+    # print("get frame")
+    # frame = raspberryVideo.get_video_frames()
+    # print("hhh")
+    # # print("send")
+    # if frame is not None:
+    #   raspberryPIMotorsServer.send_message({
+    #     "type": "frames",
+    #     "data": frame
+    #   })
+    # print("done")
 
     
-    # sound = soundRecord.get_sound()
-    # if sound is not None:
-    #   # print(sound)
-    #   raspberryPIMotorsServer.send_message({
-    #     "type": "soundsRaspberry", 
-    #     "data": sound
-    #   })
+    sound = soundRecord.get_sound()
+    if sound is not None:
+      # print(sound)
+      soundPlay.add_sound(sound)
+      # raspberryPIMotorsServer.send_message({
+      #   "type": "soundsRaspberry", 
+      #   "data": sound
+      # })
 
     # sound_pc = get_data(queueData, "soundsPC")
     # if sound_pc is not None:
+    #   # print(sound_pc)
     #   soundPlay.add_sound(sound_pc)
     
     motors = get_data(queueData, "motorsSpeed")
@@ -116,7 +129,7 @@ def main():
 
       motors_arduino = MotorsStructure(motors[0], motors[1])
 
-      arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
+      # arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
 
 
 if __name__ == '__main__':

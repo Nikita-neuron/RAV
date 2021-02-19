@@ -1,12 +1,15 @@
 import threading
 import queue
 import pyaudio
+import cv2
+import time
 
 class SoundRecordThread(threading.Thread):
-    def __init__(self, CHUNK = 1024, CHANNELS = None, RATE = None, DELAY_SECONDS = 5, INDEX = None):
+    def __init__(self, CHUNK = 1024, CHANNELS = None, RATE = None, DELAY_SECONDS = 5, INDEX = None, server=None):
         super().__init__()
 
         self._stopped       = False
+        self.server = server
 
         self.CHUNK          = CHUNK
         self.CHANNELS       = CHANNELS
@@ -20,37 +23,48 @@ class SoundRecordThread(threading.Thread):
 
         self.stream         = None
 
-        # if CHANNELS is None:
-        #     self.CHANNELS   = self.default_device["maxInputChannels"]
+        if CHANNELS is None:
+            self.CHANNELS   = self.default_device["maxInputChannels"]
 
-        # if RATE is None:
-        #     self.RATE       = int(self.default_device["defaultSampleRate"])
+        if RATE is None:
+            self.RATE       = int(self.default_device["defaultSampleRate"])
 
-        # if INDEX is None:
-        #     self.INDEX      = self.default_device["index"]
+        if INDEX is None:
+            self.INDEX      = self.default_device["index"]
 
         self.DELAY_SIZE     = int(self.DELAY_SECONDS * self.RATE / (10 * self.CHUNK))
         self.queue_sound    = queue.Queue(self.DELAY_SIZE)
 
+        self.cam = cv2.VideoCapture(0)
+
     def run(self):
         self.init_audio()
         while not self._stopped:
+            ret, frames = self.cam.read()
+            cv2.waitKey(1)
             frame = []
-            for i in range(10):
+            for i in range(1):
                 frame.append(self.stream.read(self.CHUNK,exception_on_overflow = False))
             
             try:
+                # print(sound)
+                # print(frame)
+                # self.server.send_message({
+                #     "type": "soundsRaspberry", 
+                #     "data": frame
+                # })
+                # pass
                 self.queue_sound.put(frame)
             except queue.Full:
                 pass
 
     def init_audio(self):
         self.stream = self.p.open(
-            format              =self.FORMAT,
-            channels            =self.CHANNELS,
-            rate                =self.RATE,
-            input               =True,
-            frames_per_buffer   =self.CHUNK,
+            format              = self.FORMAT,
+            channels            = self.CHANNELS,
+            rate                = self.RATE,
+            input               = True,
+            frames_per_buffer   = self.CHUNK,
             input_device_index  = self.INDEX
         )
 
