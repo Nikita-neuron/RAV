@@ -9,11 +9,12 @@ import livereload
 
 import time
 from twisted.internet import protocol, reactor
+from myproto import PcClientProtocolFactory
 import threading
 import queue
-import msgpack
-import msgpack_numpy
-msgpack_numpy.patch()
+# import msgpack
+# import msgpack_numpy
+# msgpack_numpy.patch()
 import cv2
 import numpy as np
 
@@ -63,63 +64,31 @@ class ImageDisplayThread(threading.Thread):
 #         while True:
 #             self.socket.recv_into()
 
-class PcClientProtocol(protocol.Protocol):
-    def __init__(self, factory):
-        self.factory = factory
-        self.unpacker = msgpack.Unpacker()
-    def sendMsg(self, type_, msg):
-        msg['type'] = type_
-        msgpack.pack(msg, self.transport)
-    def connectionMade(self):
-        self.i = 0
-        # self.img_display = ImageDisplayThread()
-        # self.img_display.start()
-        self.sendMsg('client_connect', {'name': 'webserver'})
-    # {'type': 'image', }
-    def dataReceived(self, data):
-        print('recv', self.i, len(data))
-        self.unpacker.feed(data)
-        for msg in self.unpacker:
-            if msg['type'] == 'data':
-                print('img', self.i)
-                self.i += 1
-                # self.img_display.display(msg['image'])
-                # _, encoded = 
-                # socketio.emit('image', {'data': cv2.})
+# class PcClientProtocol(protocol.Protocol):
+#     def __init__(self, factory):
+#         self.factory = factory
+#         self.unpacker = msgpack.Unpacker()
+#     def sendMsg(self, type_, msg):
+#         msg['type'] = type_
+#         msgpack.pack(msg, self.transport)
+#     def connectionMade(self):
+#         self.i = 0
+#         # self.img_display = ImageDisplayThread()
+#         # self.img_display.start()
+#         self.sendMsg('client_connect', {'name': 'webserver'})
+#     # {'type': 'image', }
+#     def dataReceived(self, data):
+#         print('recv', self.i, len(data))
+#         self.unpacker.feed(data)
+#         for msg in self.unpacker:
+#             if msg['type'] == 'data':
+#                 print('img', self.i)
+#                 self.i += 1
+#                 # self.img_display.display(msg['image'])
+#                 # _, encoded = 
+#                 # socketio.emit('image', {'data': cv2.})
 
 
-class PcClientFactory(protocol.ClientFactory):
-    retry_delay = 1.0
-    retry_after_connection_loss = True
-    retry_after_connection_failure = True
-    def __init__(self):
-        self.client = None
-        self.connection_tries = 0
-    def startedConnecting(self, connector):
-        print(f'Connecting to {connector.host}:{connector.port}' if self.connection_tries==0 else '.', end='', flush=True)
-    def buildProtocol(self, addr):
-        self.connection_tries = 0
-        print(f'\nConnected to main server ({addr.host}:{addr.port})!')
-        self.client = PcClientProtocol(self)
-        return self.client
-    def retryConnection(self, connector):
-        # print('.', end='', flush=True)
-        def retry():
-            connector.connect()
-        reactor.callLater(self.retry_delay, retry)
-    def clientConnectionLost(self, connector, reason):
-        self.connection_tries = 0
-        print('Connection to main server lost!', connector, reason)
-        if self.retry_after_connection_loss:
-            self.retryConnection(connector)
-    def clientConnectionFailed(self, connector, reason):
-        if self.retry_after_connection_failure:
-            self.connection_tries += 1
-            self.retryConnection(connector)
-    def sendMsg(self, type_: str, msg):
-        if self.client is not None:
-            print('send message', type_, msg, self.client)
-            self.client.sendMsg(type_, msg)
 
 @app.route('/')
 def hello_world():
@@ -151,7 +120,7 @@ def run_webserver():
     print('Starting webserver on port', config.WEBSERVER_PORT)
     socketio.run(app, port=config.WEBSERVER_PORT, debug=False)
 
-pc_client = PcClientFactory()
+pc_client = PcClientProtocolFactory()
 
 def main():
     # app.debug = True
