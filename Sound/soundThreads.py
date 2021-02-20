@@ -3,7 +3,7 @@ import pyaudio
 import wave
 
 import SoundRecordThread as sR
-import SoundPlayThread as sP
+import soundPlayThread as sP
 
 def get_sound_device():
     p = pyaudio.PyAudio()
@@ -27,18 +27,19 @@ def get_sound_device():
 def main():
     
 
-    soundRecordThread = sR.SoundRecordThread(INDEX=1, CHANNELS=1, RATE=44100)
-    soundPlayThread = sP.SoundPlayThread(INDEX=5, CHANNELS=1, RATE=44100)
+    soundRecord = sR.SoundRecordThread(INDEX=2, CHANNELS=1, RATE=48000, 
+    DELAY_SECONDS=2)
+    soundPlay = sP.SoundPlayThread(CHANNELS=1, DELAY_SECONDS=2, INDEX=11)
 
-    soundRecordThread.start()
-    soundPlayThread.start()
+    soundRecord.start()
+    soundPlay.start()
 
     get_sound_device()
 
     while True:
-        sound = soundRecordThread.get_sound()
+        sound = soundRecord.get_sound()
         if sound is not None:
-            soundPlayThread.add_sound(sound)
+            soundPlay.add_sound(sound)
 
         # get_sound_device()
 

@@ -34,20 +34,25 @@ def get_sound_device():
 def main():
   # get_sound_device()
 
-  queueData = {
+  queueDataMotors = {
     "frames":           queue.Queue(20),
     "soundsRaspberry":  queue.Queue(1),
     "systemData":       queue.Queue(20)
   }
 
-  pcServerRaspberry = PCServer.PCServer(queueData)
+  queueDataSensors = {
+    "ultrasonic":       queue.Queue(2),
+    "systemData":       queue.Queue(2)
+  }
+
+  pcServerRaspberry = PCServer.PCServer(queueDataMotors, queueDataSensors)
   pcServerRaspberry.start()
 
-  soundRecord = soundRecordThread.SoundRecordThread(DELAY_SECONDS=1)
-  soundPlay = soundPlayThread.SoundPlayThread(CHANNELS=1, DELAY_SECONDS=1)
+  # soundRecord = soundRecordThread.SoundRecordThread(DELAY_SECONDS=1)
+  # soundPlay = soundPlayThread.SoundPlayThread(CHANNELS=1, DELAY_SECONDS=1)
 
-  soundRecord.start()
-  soundPlay.start()
+  # soundRecord.start()
+  # soundPlay.start()
   
   playRaspberryVideo = PlayRaspberryVideo()
   playRaspberryVideo.start()
@@ -57,9 +62,9 @@ def main():
   cv2.imshow("pult", pult)
 
   while True:
-    sys_data = get_data(queueData, "systemData")
-    frame = get_data(queueData, "frames")
-    sounds_raspberry = get_data(queueData, "soundsRaspberry")
+    sys_data_motors = get_data(queueDataMotors, "systemData")
+    frame = get_data(queueDataMotors, "frames")
+    sounds_raspberry = get_data(queueDataMotors, "soundsRaspberry")
     # print(sounds_raspberry)
 
     motors = [0, 0]
@@ -86,8 +91,8 @@ def main():
       "data": motors
     })
     
-    if sounds_raspberry is not None:
-      soundPlay.add_sound(sounds_raspberry)
+    # if sounds_raspberry is not None:
+      # soundPlay.add_sound(sounds_raspberry)
 
     # sounds_pc = soundRecord.get_sound()
     # if sounds_pc is not None:
@@ -103,5 +108,9 @@ def main():
 
     # if sys_data is not None:
       # print(sys_data)
+
+    ultrasonic = get_data(queueDataSensors, "ultrasonic")
+    if ultrasonic is not None:
+      print(ultrasonic)
 if __name__ == '__main__':
   main()

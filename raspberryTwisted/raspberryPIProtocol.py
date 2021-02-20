@@ -1,11 +1,10 @@
 from twisted.internet import protocol
-import cv2
 import queue
 import msgpack
 import msgpack_numpy
 msgpack_numpy.patch()
 
-from Sound import soundPlayThread, soundRecordThread
+# from Sound import soundPlayThread, soundRecordThread
 
 # sudo apt-get install telnetd
 
