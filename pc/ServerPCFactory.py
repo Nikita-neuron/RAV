@@ -5,7 +5,9 @@ import PCMotorsProtocol
 import PCSensorsProtocol
 
 class ServerPCFactory(protocol.Factory):
-    def __init__(self, queueDataMotors, queueDataSensors):
+    def __init__(self, queueDataMotors, queueDataSensors, ip_raspberry_motors, ip_raspberry_sensors):
+        self.ip_raspberry_motors = ip_raspberry_motors
+        self.ip_raspberry_sensors = ip_raspberry_sensors
         self.raspberryPIMotorsProtocol = PCMotorsProtocol.PCMotorsProtocol(queueDataMotors)
         self.raspberryPISensorsProtocol = PCSensorsProtocol.PCSensorsProtocol(queueDataSensors)
 
@@ -13,8 +15,8 @@ class ServerPCFactory(protocol.Factory):
         self.raspberryPIMotorsProtocol.sendMessage(data)
 
     def buildProtocol(self, addr):
-        if addr.host == "172.20.234.161":
+        if addr.host == self.ip_raspberry_motors:
             return self.raspberryPIMotorsProtocol
 
-        if addr.host == "172.20.234.171":
+        if addr.host == self.ip_raspberry_sensors:
             return self.raspberryPISensorsProtocol

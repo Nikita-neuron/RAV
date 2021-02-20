@@ -45,7 +45,11 @@ def main():
     "systemData":       queue.Queue(2)
   }
 
-  pcServerRaspberry = PCServer.PCServer(queueDataMotors, queueDataSensors)
+  ip_raspberry_motors = "172.20.234.161"
+  ip_raspberry_sensors = "172.20.234.171"
+
+  pcServerRaspberry = PCServer.PCServer(queueDataMotors, queueDataSensors, 
+  ip_raspberry_motors, ip_raspberry_sensors)
   pcServerRaspberry.start()
 
   # soundRecord = soundRecordThread.SoundRecordThread(DELAY_SECONDS=1)

@@ -62,7 +62,7 @@ def main():
 		"soundsPC":     queue.Queue(2),
 		"ultrasonic":  queue.Queue(2)
 	}
-	name = "raspberryPIMotors"
+	name = "raspberryPISensors"
 	server_ip, server_port = get_server_ip_port()
 
 	# get_sound_device()

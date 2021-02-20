@@ -4,10 +4,11 @@ from twisted.internet import reactor, protocol
 import ServerPCFactory
 
 class PCServer(threading.Thread):
-  def __init__(self, queueDataMotors, queueDataSensors):
+  def __init__(self, queueDataMotors, queueDataSensors, ip_raspberry_motors, ip_raspberry_sensors):
     super().__init__()
 
-    self.serverPCFactory = ServerPCFactory.ServerPCFactory(queueDataMotors, queueDataSensors)
+    self.serverPCFactory = ServerPCFactory.ServerPCFactory(queueDataMotors, queueDataSensors, 
+    ip_raspberry_motors, ip_raspberry_sensors)
 
   def run(self):
     print("listen...")
