@@ -1,16 +1,29 @@
 import threading
 import queue
 import cv2
+import time
+import pyaudio
 
 class RaspberryVideo(threading.Thread):
-  def __init__(self):
+  def __init__(self, server):
     super().__init__()
+
+    self.server = server
 
     self.video_frames = queue.Queue(2)
 
     self.cam = cv2.VideoCapture(0)
 
     self._stopped = False
+
+    self.stream = self.p.open(
+            format              = pyaudio.paInt16,
+            channels            = 1,
+            rate                = 48000,
+            input               = True,
+            frames_per_buffer   = 1024,
+            input_device_index  = 1
+        )
 
   def run(self):
     while not self._stopped:
@@ -22,6 +35,11 @@ class RaspberryVideo(threading.Thread):
         frame = cv2.resize(frame, (320, 240))
         
         result, frame = cv2.imencode('.jpg', frame, encode_param)
+
+        # self.server.send_message({
+        #   "type": "frames",
+        #   "data": frame
+        # })
 
         self.add_video_frames(frame)
 
@@ -41,3 +59,16 @@ class RaspberryVideo(threading.Thread):
       return frame
     except queue.Empty:
       return None
+    # encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 90]
+    # ret, frame = self.cam.read()
+
+    # if ret is True:
+    #   frame = cv2.resize(frame, (320, 240))
+        
+    #   result, frame = cv2.imencode('.jpg', frame, encode_param)
+
+    #   return frame
+    # else:
+    #   return None
+
+    cv2.waitKey(1)

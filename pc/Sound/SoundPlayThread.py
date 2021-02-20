@@ -1,6 +1,7 @@
 import threading
 import queue
 import pyaudio
+import wave
 
 class SoundPlayThread(threading.Thread):
     def __init__(self, CHUNK = 1024, CHANNELS = None, RATE = None, DELAY_SECONDS = 5, INDEX = None):
@@ -34,27 +35,29 @@ class SoundPlayThread(threading.Thread):
 
     def run(self):
         self.init_audio()
+        
         while not self._stopped:
+            sound = None
             try:
                 sound = self.queue_sound.get_nowait()
-                if sound is not None:
-                    for i in range(len(sound)):
-                        self.stream.write(sound[i])
             except queue.Empty:
                 pass
+            if sound is not None:
+                for i in range(len(sound)):
+                    self.stream.write(sound[i])
 
     def init_audio(self):
         self.stream = self.p.open(
-            format              =self.FORMAT,
-            channels            =self.CHANNELS,
-            rate                =self.RATE,
-            output               =True,
-            frames_per_buffer   =self.CHUNK,
-            output_device_index  = self.INDEX)
+            format              = self.FORMAT,
+            channels            = self.CHANNELS,
+            rate                = self.RATE,
+            output              = True,
+            frames_per_buffer   = self.CHUNK,
+            output_device_index = self.INDEX)
 
     def add_sound(self, frame):
         try:
-            return self.queue_sound.put(frame)
+            self.queue_sound.put_nowait(frame)
         except queue.Full:
             pass
     

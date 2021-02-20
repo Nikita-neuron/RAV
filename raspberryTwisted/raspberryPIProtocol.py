@@ -5,6 +5,8 @@ import msgpack
 import msgpack_numpy
 msgpack_numpy.patch()
 
+from Sound import soundPlayThread, soundRecordThread
+
 # sudo apt-get install telnetd
 
 class RaspberryPIProtocol(protocol.Protocol):
@@ -13,6 +15,13 @@ class RaspberryPIProtocol(protocol.Protocol):
     self.unpacker = msgpack.Unpacker()
     self.queueData = queueData
     self.name = name
+
+    # self.soundRecord = soundRecordThread.SoundRecordThread(INDEX=1, CHANNELS=1, RATE=48000, 
+    # DELAY_SECONDS=2, server=self.transport)
+    # self.soundPlay = soundPlayThread.SoundPlayThread(CHANNELS=2)
+
+    # self.soundRecord.start()
+    # self.soundPlay.start()
 
   def connectionMade(self):
     print("Connect")
@@ -31,6 +40,11 @@ class RaspberryPIProtocol(protocol.Protocol):
   def dataReceived(self, data):
     self.unpacker.feed(data)
     for msg in self.unpacker:
+      # if msg["type"] == "soundsPC":
+      #   sound_pc = msg["data"]
+      #   if sound_pc is not None:
+      #     # print(sound_pc)
+      #     self.soundPlay.add_sound(sound_pc)
       self.add_data(msg["type"], msg["data"])
     
   def connectionLost(self, reason):

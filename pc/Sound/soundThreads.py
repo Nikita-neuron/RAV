@@ -1,5 +1,6 @@
 import multiprocessing as mp
 import pyaudio
+import wave
 
 import Sound.soundRecordThread as sR
 import Sound.soundPlayThread as sP
@@ -14,8 +15,11 @@ def get_sound_device():
     info = p.get_host_api_info_by_index(0)
     numdevices = info.get('deviceCount')
     for i in range(0, numdevices):
-            if (p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels')) > 0:
-                print("Input Device id ", i, " - ", p.get_device_info_by_host_api_device_index(0, i).get('name'), " chanels: ", p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels'))
+        if (p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels')) > 0:
+            print("Input Device id ", i, " - ", 
+            p.get_device_info_by_host_api_device_index(0, i).get('name'), " chanels: ", 
+            p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels'), 
+            "RATE: ", p.get_device_info_by_host_api_device_index(0, i).get('defaultSampleRate'))
 
     print("-------------------------------------------------------------")
     p.terminate()
@@ -23,15 +27,18 @@ def get_sound_device():
 def main():
     get_sound_device()
 
-    soundRecordThread = sR.SoundRecordThread()
-    soundPlayThread = sP.SoundPlayThread()
+    soundRecordThread = sR.SoundRecordThread(INDEX=1, CHANNELS=1, RATE=44100)
+    soundPlayThread = sP.SoundPlayThread(INDEX=5, CHANNELS=1, RATE=44100)
 
     soundRecordThread.start()
     soundPlayThread.start()
 
     while True:
         sound = soundRecordThread.get_sound()
-        soundPlayThread.add_sound(sound)
+        if sound is not None:
+            soundPlayThread.add_sound(sound)
 
     soundRecordThread.stop()
     soundPlayThread.stop()
+
+# main()

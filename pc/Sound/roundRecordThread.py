@@ -46,11 +46,11 @@ class SoundRecordThread(threading.Thread):
 
     def init_audio(self):
         self.stream = self.p.open(
-            format              = self.FORMAT,
-            channels            = self.CHANNELS,
-            rate                = self.RATE,
-            input               = True,
-            frames_per_buffer   = self.CHUNK,
+            format              =self.FORMAT,
+            channels            =self.CHANNELS,
+            rate                =self.RATE,
+            input               =True,
+            frames_per_buffer   =self.CHUNK,
             input_device_index  = self.INDEX
         )
 
