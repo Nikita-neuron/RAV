@@ -1,11 +1,11 @@
 from twisted.internet import protocol
-import cv2
 import queue
 import msgpack
 import msgpack_numpy
 msgpack_numpy.patch()
 
-from Sound import soundPlayThread, soundRecordThread
+
+# from Sound import soundPlayThread, soundRecordThread
 
 # sudo apt-get install telnetd
 
@@ -28,7 +28,7 @@ class RaspberryPIProtocol(protocol.Protocol):
 
     hello = {
       "type": "client_connect",
-      "name": self.name
+      "data": self.name
     }
 
     self.send_message(hello)

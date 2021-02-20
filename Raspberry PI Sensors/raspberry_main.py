@@ -1,118 +1,146 @@
+import ctypes
+import sys
 import serial
-import socket
-import psutil
+# import pyaudio
+sys.path.append("..")
 from ctypes import *
+import queue
+import msgpack
 
-from gpiozero import CPUTemperature
+from systemData import SystemData
+from raspberryTwisted import raspberryPIClient
 
-from ServerRaspberryThread import ServerThread
+# from Sound import soundPlayThread, soundRecordThread
 
-# C:\Users\undeg\AppData\Local\Microsoft\WindowsApps
-
-def get_cmd_args():
-	import argparse
-	parser = argparse.ArgumentParser('Raspberry server')
-	parser.add_argument('pc_ip')
-	return parser.parse_args()
-
-def cpu():
-	return psutil.cpu_percent()
-
-def memory():
-	memory = psutil.virtual_memory()
-	# Divide from Bytes -> KB -> MB
-	# available = round(memory.available/1024.0/1024.0,1)
-	# total = round(memory.total/1024.0/1024.0,1)
-
-	# all data in Bytes
-
-	return {
-		"memoryFree": memory.available,
-		"memoryTotal": memory.total,
-		"memoryPercent": memory.percent
-	}
-
-def disk():
-	disk = psutil.disk_usage('/')
-	# all data in Bytes
-	# Divide from Bytes -> KB -> MB -> GB
-	# free = round(disk.free/1024.0/1024.0/1024.0,1)
-	# total = round(disk.total/1024.0/1024.0/1024.0,1)
-	# return str(free) + 'GB free / ' + str(total) + 'GB total ( ' + str(disk.percent) + '% )
-	return {
-		"diskFree": disk.free,
-		"diskTotal": disk.total,
-		"diskPercent": disk.percent
-	}
-
-def temperature():
-	cpu = CPUTemperature()
-	return cpu.temperature
-
-def connect_server():
-	client = socket.socket()
-	ip_pc = get_cmd_args().pc_ip
-	print(ip_pc)
-	client.connect((ip_pc, 1080))
-	print('connected!')
-	return client
-
-def get_system_data():
-	cpuData = cpu()
-	memoryData = memory()
-	diskData = disk()
-	temperatureData = temperature()
-
-	return {
-		"cpu": cpuData,
-		"memory": memoryData,
-		"disk": diskData,
-		"temperature": temperatureData
-	}
-
-
+def get_server_ip_port():
+  return sys.argv[1], sys.argv[2]
 
 def connect_arduino():
-	ser = serial.Serial("/dev/ttyACM0", 9600)  # ls /dev/tty*
-	ser.baudrate = 9600
+  ser = serial.Serial("/dev/ttyACM0", 9600)  # ls /dev/tty*
+  ser.baudrate = 9600
 
-	return ser
+  return ser
 
+# def get_sound_device():
+#   p = pyaudio.PyAudio()
+#   print("----------------------default record device list---------------------")
+#   print(p.get_default_input_device_info())
+#   print(p.get_default_output_device_info())
+#   print("---------------------------------------------------------------------")
+#   print("----------------------record device list---------------------")
+#   info = p.get_host_api_info_by_index(0)
+#   numdevices = info.get('deviceCount')
+#   for i in range(0, numdevices):
+#     if (p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels')) > 0:
+#       print("Input Device id ", i, " - ", 
+#       p.get_device_info_by_host_api_device_index(0, i).get('name'), " chanels: ", 
+#       p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels'), 
+#       "RATE: ", p.get_device_info_by_host_api_device_index(0, i).get('defaultSampleRate'))
 
-server = connect_server()
-
-serverThread = ServerThread(server)
-serverThread.start()
-
-arduino = connect_arduino()
+#   print("-------------------------------------------------------------")
+#   p.terminate()
 
 
 class UltrasonicStructure(Structure):
 	_pack_ = 1
 	_fields_ = [
-		("dis1", c_int8), ("dis2", c_int8), 
-		("dis3", c_int8), ("dis4", c_int8), 
-		("dis5", c_int8), ("dis6", c_int8)
+		("dis1", c_int16), ("dis2", c_int16), 
+		("dis3", c_int16), ("dis4", c_int16), 
+		("dis5", c_int16)
 	]
 
-while True:
+def get_data(queueData, name):
+  try:
+    return queueData[name].get_nowait()
+  except queue.Empty:
+    return None
 
-	system_data = get_system_data()
+def main():
+	systemData = SystemData()
 
-	serverThread.add_sys_data(system_data)
+	queueData = {
+		"soundsPC":     queue.Queue(2),
+		"ultrasonic":  queue.Queue(2)
+	}
+	name = "raspberryPISensors"
+	server_ip, server_port = get_server_ip_port()
 
-	serial_data = arduino.read(6)
+	# get_sound_device()
 
-	ultrasonicData = UltrasonicStructure.from_buffer_copy(serial_data)
-	print("r: " + str(ultrasonicData.dis1))
+	arduino = connect_arduino()
 
-	serverThread.add_ultrasonic_data([
-		ultrasonicData.dis1,
-		ultrasonicData.dis2,
-		ultrasonicData.dis3,
-		ultrasonicData.dis4,
-		ultrasonicData.dis5,
-		ultrasonicData.dis6
-	])
+	raspberryPIMotorsServer = raspberryPIClient.RaspberryPIClient(
+		server_ip,
+		int(server_port), 
+		queueData, 
+		name
+	)
 
-server.close()
+	# soundRecord = soundRecordThread.SoundRecordThread(INDEX=2, CHANNELS=1, RATE=48000, 
+	# DELAY_SECONDS=2, server=raspberryPIMotorsServer)
+	# soundPlay = soundPlayThread.SoundPlayThread(CHANNELS=1, DELAY_SECONDS=2, server=raspberryPIMotorsServer,
+	# INDEX=11)
+
+	# soundRecord.start()
+	# soundPlay.start()
+
+	raspberryPIMotorsServer.start()
+
+	i = 0
+
+
+	while True:
+
+		if i%10000 == 0:
+			system_data = systemData.get_system_data()
+
+			# raspberryPIMotorsServer.send_message({
+			#   "type": "systemData", 
+			#   "data": system_data
+			# })
+			i += 1
+
+		# print("get frame")
+		# frame = raspberryVideo.get_video_frames()
+		# print("hhh")
+		# # print("send")
+		# if frame is not None:
+		#   raspberryPIMotorsServer.send_message({
+		#     "type": "frames",
+		#     "data": frame
+		#   })
+		# print("done")
+
+		
+		# sound = soundRecord.get_sound()
+		# if sound is not None:
+		# # print(sound)
+		# 	soundPlay.add_sound(sound)
+		# raspberryPIMotorsServer.send_message({
+		#   "type": "soundsRaspberry", 
+		#   "data": sound
+		# })
+
+		# sound_pc = get_data(queueData, "soundsPC")
+		# if sound_pc is not None:
+		#   # print(sound_pc)
+		#   soundPlay.add_sound(sound_pc)
+
+		serial_data = arduino.read(10)
+
+		ultrasonicData = UltrasonicStructure.from_buffer_copy(serial_data)
+
+		ultrasonicData = [
+			ultrasonicData.dis1,
+			ultrasonicData.dis2,
+			ultrasonicData.dis3,
+			ultrasonicData.dis4,
+			ultrasonicData.dis5,
+		]
+		print(ultrasonicData)
+
+		raspberryPIMotorsServer.send_message({
+		  "type": "ultrasonic", 
+		  "data": ultrasonicData
+		})
+main()

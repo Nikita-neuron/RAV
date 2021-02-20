@@ -35,15 +35,15 @@ class SoundRecordThread(threading.Thread):
         self.DELAY_SIZE     = int(self.DELAY_SECONDS * self.RATE / (10 * self.CHUNK))
         self.queue_sound    = queue.Queue(self.DELAY_SIZE)
 
-        self.cam = cv2.VideoCapture(1)
+        # self.cam = cv2.VideoCapture(1)
 
     def run(self):
         self.init_audio()
         while not self._stopped:
             # ret, frames = self.cam.read()
-            cv2.waitKey(1)
+            # cv2.waitKey(1)
             frame = []
-            for i in range(1):
+            for i in range(10):
                 frame.append(self.stream.read(self.CHUNK,exception_on_overflow = False))
             
             try:

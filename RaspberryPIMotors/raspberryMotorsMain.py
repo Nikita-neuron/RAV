@@ -61,9 +61,9 @@ def main():
   name = "raspberryPIMotors"
   server_ip, server_port = get_server_ip_port()
 
-  get_sound_device()
+  # get_sound_device()
 
-  # arduino = connect_arduino()
+  arduino = connect_arduino()
 
   raspberryPIMotorsServer = raspberryPIClient.RaspberryPIClient(
     server_ip,
@@ -72,15 +72,16 @@ def main():
     name
   )
 
-  soundRecord = soundRecordThread.SoundRecordThread(INDEX=1, CHANNELS=1, RATE=48000, 
-  DELAY_SECONDS=0, server=raspberryPIMotorsServer)
-  soundPlay = soundPlayThread.SoundPlayThread(CHANNELS=1, DELAY_SECONDS=0, server=raspberryPIMotorsServer)
+  # soundRecord = soundRecordThread.SoundRecordThread(INDEX=2, CHANNELS=1, RATE=48000, 
+  # DELAY_SECONDS=2, server=raspberryPIMotorsServer)
+  # soundPlay = soundPlayThread.SoundPlayThread(CHANNELS=1, DELAY_SECONDS=2, server=raspberryPIMotorsServer,
+  # INDEX=11)
 
-  soundRecord.start()
-  soundPlay.start()
+  # soundRecord.start()
+  # soundPlay.start()
 
-  # raspberryVideo = RaspberryVideo(raspberryPIMotorsServer)
-  # raspberryVideo.start()
+  raspberryVideo = RaspberryVideo(raspberryPIMotorsServer)
+  raspberryVideo.start()
 
   raspberryPIMotorsServer.start()
 
@@ -98,21 +99,21 @@ def main():
     i += 1
 
     # print("get frame")
-    # frame = raspberryVideo.get_video_frames()
+    frame = raspberryVideo.get_video_frames()
     # print("hhh")
-    # # print("send")
-    # if frame is not None:
-    #   raspberryPIMotorsServer.send_message({
-    #     "type": "frames",
-    #     "data": frame
-    #   })
+    # print("send")
+    if frame is not None:
+      raspberryPIMotorsServer.send_message({
+        "type": "frames",
+        "data": frame
+      })
     # print("done")
 
     
-    sound = soundRecord.get_sound()
-    if sound is not None:
-      # print(sound)
-      soundPlay.add_sound(sound)
+    # sound = soundRecord.get_sound()
+    # if sound is not None:
+    #   # print(sound)
+    #   soundPlay.add_sound(sound)
       # raspberryPIMotorsServer.send_message({
       #   "type": "soundsRaspberry", 
       #   "data": sound
@@ -129,7 +130,7 @@ def main():
 
       motors_arduino = MotorsStructure(motors[0], motors[1])
 
-      # arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
+      arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
 
 
 if __name__ == '__main__':
