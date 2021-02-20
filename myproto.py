@@ -19,6 +19,7 @@ class Protocol(protocol.Protocol):
     def dataReceived(self, data):
         self._unpacker.feed(data)
         for msg in self._unpacker:
+            print(msg)
             msg_type = msg['type']
             callback_name = 'on_'+msg_type
             if hasattr(self, callback_name):
@@ -108,6 +109,8 @@ class PcClientProtocolFactory(protocol.ClientFactory):
         if self.client is not None:
             print('send message', type_, msg, self.client)
             self.client.sendMsg(type_, msg)
+    def on_joystick(self, msg):
+        print(msg)
 
 
 class PcServerProtocolFactory(protocol.Factory):

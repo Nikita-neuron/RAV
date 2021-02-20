@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="static/css/style.css"> -->
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script> -->
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js" integrity="sha512-oFOCo2/3DtjrJG4N27BjSLQWoiBv171sK6a+JiWjp/7agxC2nCUP358AqzxkBUb5jX8g6CYLPdSKQTbC0weCwA==" crossorigin="anonymous"></script> -->
+    <!-- <script src="static/js/main.js"></script> -->
+    <title>hahaha</title>
+    <script src="gamepad.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Hello from psyhushka</h1>
+    </header>
+    <script>
+        console.log(gamepad)
+        function cycle() {
+            let gamepad_value = getGamepadIfChanged()
+            if (gamepad_value === null) {
+                window.requestAnimationFrame(cycle)
+                return
+            }
+            let {buttons, sticks} = gamepad_value
+            html = ''
+            html += 'left stick: '+sticks.left.join(', ')+'<br/>'
+            html += 'right stick: '+sticks.right.join(', ')+'<br/>'
+            for (button_name in gamepad_value.buttons) {
+                button = gamepad_value.buttons[button_name]
+                html += `${button_name} = ${button.value}<br/>`
+            }
+            document.body.innerHTML = html
+            window.requestAnimationFrame(cycle)
+        }
+        window.requestAnimationFrame(cycle)
+    </script>
+</body>
+</html>

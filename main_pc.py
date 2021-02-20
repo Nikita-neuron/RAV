@@ -131,8 +131,8 @@ pc_protocol = PcServerProtocolFactory()
 #     #     i += 1
 #     #     # time.sleep(0.1)
 
-camera = CameraThread(lambda img: pc_protocol.sendMsg('webserver', 'image', img))
-camera.start()
+camera = CameraThread()
+camera.start(lambda img: pc_protocol.sendMsg('webserver', 'image', img))
 
 def main():
     reactor.listenTCP(config.MAIN_PC_PORT, pc_protocol)

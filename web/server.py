@@ -3,7 +3,7 @@ import sys
 import importlib.util
 # sys.path.append('..')
 # import config
-spec = importlib.util.spec_from_file_location('config', 'C:\\Users\\undeg\\Documents\\RAV\\config.py')
+spec = importlib.util.spec_from_file_location('config', r'C:\Users\User\Documents\projects\rav\config.py')
 config = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(config)
 

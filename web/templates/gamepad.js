@@ -1,4 +1,6 @@
 
+console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa')
+
 function deepCompare() {
     // FROM https://stackoverflow.com/a/1144249
     var i, l, leftChain, rightChain;
@@ -147,6 +149,8 @@ let GAMEPAD_BUTTONS = bidirect_object([
     "cc", // Самая центральная кнопка
 ])
 
+
+
 let gamepad = null
 window.addEventListener("gamepadconnected", function(e) {
     gamepad = e.gamepad
@@ -157,18 +161,41 @@ window.addEventListener("gamepadconnected", function(e) {
 window.addEventListener('gamepaddisconnected', function(e) {
     gamepad = null
 })
+function getGamepadSticks() {
+    if (gamepad === null) {
+        return null
+    }
+    let axes = gamepad.axes
+    return {
+        'left': [axes[0], axes[1]],
+        'right': [axes[2], axes[3]]
+    }
+}
+function getGamepadButtons() {
+    if (gamepad === null) {
+        return null
+    }
+    let buttons = {}
+    for (const [i, btn] of gamepad.buttons.entries()) {
+        buttons[GAMEPAD_BUTTONS[i]] = {'value': btn.value, 'pressed': btn.pressed}
+    }
+    let axes = gamepad.axes
+    return buttons
+}
 function getGamepadValues() {
     if (gamepad === null) {
         return null
     }
-    buttons = {}
-    for (const [i, btn] of gamepad.buttons.entries()) {
-        buttons[GAMEPAD_BUTTONS[i]] = btn
-    }
-    axes = gamepad.axes
     return {
-        'buttons': buttons,
-        'lstick': [axes[0], axes[1]],
-        'rstick': [axes[2], axes[3]]
+        'buttons': getGamepadButtons(),
+        'sticks': getGamepadSticks()
     }
+}
+function getGamepadIfChanged() {
+    let gamepad_values = getGamepadValues()
+    if (!deepCompare(gamepad_values, this.last_values)) {
+        this.last_values = gamepad_values
+        return gamepad_values
+    }
+    return null
 }
