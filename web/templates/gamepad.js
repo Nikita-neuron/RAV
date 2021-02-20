@@ -128,10 +128,10 @@ function bidirect_object(o) {
 }
 
 let GAMEPAD_BUTTONS = bidirect_object([
-    "rb", // Правые кнопки
+    "br", // Правые кнопки
     "rr", // 
-    "rl", //
-    "rt", //__________________________
+    "lr", //
+    "tr", //__________________________
     "lb", // Кнопки сзади
     "rb", // 
     "lt", //
@@ -140,10 +140,10 @@ let GAMEPAD_BUTTONS = bidirect_object([
     "cr", //__________________________
     "lstick", // Кнопки НАЖАТИЯ стиков
     "rstick", // _____________________
-    "lt", // Левые кнопки
-    "lb", // 
+    "tl", // Левые кнопки
+    "bl", // 
     "ll", //
-    "lr", //__________________________
+    "rl", //__________________________
     "cc", // Самая центральная кнопка
 ])
 
@@ -162,7 +162,7 @@ function getGamepadValues() {
         return null
     }
     buttons = {}
-    for (const [i, btn] of gamepad.buttons) {
+    for (const [i, btn] of gamepad.buttons.entries()) {
         buttons[GAMEPAD_BUTTONS[i]] = btn
     }
     axes = gamepad.axes

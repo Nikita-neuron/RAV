@@ -17,9 +17,13 @@
     </header>
     <script>
         console.log(gamepad)
-        while (true) {
-            document.body.innerHTML = `${getGamepadValues()}`
+        function cycle() {
+            values = getGamepadValues()
+            if (values !== null)
+                document.body.innerHTML = `${JSON.stringify(values)}`
+            window.requestAnimationFrame(cycle)
         }
+        window.requestAnimationFrame(cycle)
         // function updateStatus() {
         //     window.requestAnimationFrame(updateStatus);
 
