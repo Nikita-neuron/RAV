@@ -1,0 +1,317 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  background-color: #000;
+
+  background-image: url("../img/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* preloader */
+#p_prldr{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right:0;
+  bottom:0;
+  background: #737da0;
+  z-index: 30;
+}
+
+#p_prldr .svg_anm {
+  position: absolute;
+  left: calc(65% - 500px);
+  top: calc(80% - 500px);
+  width: 500px;
+  height: 500px;
+  background: url("../img/Logo_gradient.svg") center center no-repeat;
+  background-size: 500px;
+}
+   
+/* .contpre{
+  width: 250px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  margin-left:-125px;
+  margin-top:-75px;
+  color:#fff;
+  font-size:40px;
+  letter-spacing:-2px;
+  text-align:center;
+  line-height:35px;
+} */
+   
+/* #p_prldr .svg_anm {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: url('../img/Logo_gradient.svg') center center no-repeat;
+  background-size:500px;    
+  margin: -16px 0 0 -16px;
+} */
+/* end preloader */
+
+.visulizate {
+  display: flex;
+  justify-content: space-between;
+}
+
+.video-sound {
+  display: flex;
+  width: 60%;
+  min-width: 100px;
+}
+
+/* video */
+.video {
+  background-color: rgb(112, 110, 110);
+
+  width: 100%;
+  height: 400px;
+
+  margin: 18px 0 0 18px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* end video */
+
+/* sound */
+.sound {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  margin-left: 10px;
+}
+
+.microphone, .speaker {
+  background: none;
+  border: none;
+  width: 80px;
+  height: 80px;
+  padding: 0;
+
+  margin-top: 20px;
+}
+.microphone:focus, .speaker:focus {
+  outline: none;
+}
+.microphone-img, .speaker-img {
+  position: relative;
+  top: -73px;
+}
+.no-microphone, .no-speaker {
+  position: relative;
+  width: 75.32px;
+  height: 4.03px;
+  top: -105px;
+
+  background: #DC3030;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  transform: rotate(-45deg);
+}
+/* end sound */
+
+/* sensors */
+.sensors {
+  height: 400px;
+  min-width: 415px;
+  margin-left: 10px;
+  margin-right: 45px;
+}
+.view-from-above {
+  width: 200px;
+  height: 250px;
+  margin-top: 160px;
+  margin-left: 100px;
+
+  background: #C4C4C4;
+}
+.signal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sensors-up-left, .sensors-up-right {
+  position: relative;
+  top: -405px;
+  height: 150px;
+}
+.sensors-up-right {
+  top: -555px;
+  left: 40px;
+}
+.sensors-up-left {
+  left: -70px;
+}
+.sensors-right, .sensors-left {
+  position: relative;
+  flex-direction: row;
+  width: 100px;
+  top: -530px;
+  left: -10px
+}
+.sensors-left {
+  top: -730px;
+  left: 310px;
+  transform: rotate(180deg);
+}
+.sensors-down {
+  position: relative;
+  flex-direction: column-reverse;
+  height: 150px;
+  top: -700px;
+  left: -5px;
+}
+/* end sensors */
+
+/* system data */
+.system-data {
+  margin-top: 20px;
+  margin-left: 10px;
+  display: flex;
+}
+
+.raspberry-sensors-system-data, .raspberry-motors-system-data {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.system-data .system-data-header {
+  height: 48px;
+  text-align: center;
+  padding: 0 10px;
+
+  background: rgba(110, 110, 117, 0.64);
+  border-radius: 16px;
+}
+
+.system-data .header-text {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+
+  color: #DEE065;
+}
+
+.system-data .system-data-container {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+}
+
+.system-data .system-data-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.system-data .percent {
+  width: 176px;
+  background: #DA7E7E;
+  border-radius: 12px;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+
+  color: #000000;
+}
+
+.system-data .deep{
+  display: flex;
+  margin-top: 10px;
+  background: #E78989;
+  border-radius: 16px;
+  padding: 4px;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+
+  color: #000000;
+}
+
+.system-data .total-free-texts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.system-data .total-free-data {
+  margin-left: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.system-data .processor {
+  margin-top: 10px;
+  background: #DA7E7E;
+  border-radius: 12px;
+  padding: 4px;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+
+  color: #000000;
+}
+
+.system-data .temperature {
+  margin-top: 10px;
+  background: #96DA7E;
+  border-radius: 12px;
+  padding: 4px;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+
+  color: #000000;
+}
+/* end system data */
+
+.footer {
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: -100px;
+  right: 10px;
+}
+
+@media (max-width: 1000px) {
+  .system-data {
+    flex-direction: column;
+  }
+  .raspberry-motors-system-data {
+    margin-top: 10px;
+  }
+}
