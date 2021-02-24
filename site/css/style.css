@@ -29,31 +29,6 @@ body {
   background: url("../img/Logo_gradient.svg") center center no-repeat;
   background-size: 500px;
 }
-   
-/* .contpre{
-  width: 250px;
-  height: 100px;
-  position: absolute;
-  left: 50%;
-  top: 48%;
-  margin-left:-125px;
-  margin-top:-75px;
-  color:#fff;
-  font-size:40px;
-  letter-spacing:-2px;
-  text-align:center;
-  line-height:35px;
-} */
-   
-/* #p_prldr .svg_anm {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: url('../img/Logo_gradient.svg') center center no-repeat;
-  background-size:500px;    
-  margin: -16px 0 0 -16px;
-} */
-/* end preloader */
 
 .visulizate {
   display: flex;
@@ -188,7 +163,6 @@ body {
 }
 
 .system-data .system-data-header {
-  height: 48px;
   text-align: center;
   padding: 0 10px;
 
@@ -200,8 +174,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 36px;
-  line-height: 42px;
+  font-size: 25px;
 
   color: #DEE065;
 }
@@ -220,15 +193,14 @@ body {
 }
 
 .system-data .percent {
-  width: 176px;
+  padding: 2px 5px;
   background: #DA7E7E;
   border-radius: 12px;
 
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 20px;
   text-align: center;
 
   color: #000000;
@@ -244,8 +216,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 20px;
   text-align: center;
 
   color: #000000;
@@ -273,8 +244,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 20px;
   text-align: center;
 
   color: #000000;
@@ -289,8 +259,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 20px;
   text-align: center;
 
   color: #000000;
@@ -303,7 +272,7 @@ body {
 
 .logo {
   position: absolute;
-  top: -100px;
+  top: -120px;
   right: 10px;
 }
 
