@@ -3,7 +3,7 @@ import pyaudio
 import wave
 
 import SoundRecordThread as sR
-import soundPlayThread as sP
+import SoundPlayThread as sP
 
 def get_sound_device():
     p = pyaudio.PyAudio()
