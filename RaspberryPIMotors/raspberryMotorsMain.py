@@ -10,7 +10,7 @@ from systemData import SystemData
 from raspberryVideo import RaspberryVideo
 from raspberryTwisted import raspberryPIClient
 
-from Sound import soundPlayThread, soundRecordThread
+# from Sound import soundPlayThread, soundRecordThread
 
 def get_server_ip_port():
   return sys.argv[1], sys.argv[2]
@@ -55,15 +55,15 @@ def main():
   systemData = SystemData()
 
   queueData = {
-    "soundsPC":     queue.Queue(2),
-    "motorsSpeed":  queue.Queue(2)
+    "soundsPC":     queue.Queue(20),
+    "motorsSpeed":  queue.Queue(20)
   }
   name = "raspberryPIMotors"
   server_ip, server_port = get_server_ip_port()
 
   # get_sound_device()
 
-  arduino = connect_arduino()
+  # arduino = connect_arduino()
 
   raspberryPIMotorsServer = raspberryPIClient.RaspberryPIClient(
     server_ip,
@@ -80,8 +80,8 @@ def main():
   # soundRecord.start()
   # soundPlay.start()
 
-  raspberryVideo = RaspberryVideo(raspberryPIMotorsServer)
-  raspberryVideo.start()
+  # raspberryVideo = RaspberryVideo(raspberryPIMotorsServer)
+  # raspberryVideo.start()
 
   raspberryPIMotorsServer.start()
 
@@ -99,14 +99,14 @@ def main():
     i += 1
 
     # print("get frame")
-    frame = raspberryVideo.get_video_frames()
+    # frame = raspberryVideo.get_video_frames()
     # print("hhh")
     # print("send")
-    if frame is not None:
-      raspberryPIMotorsServer.send_message({
-        "type": "frames",
-        "data": frame
-      })
+    # if frame is not None:
+    #   raspberryPIMotorsServer.send_message({
+    #     "type": "frames",
+    #     "data": frame
+    #   })
     # print("done")
 
     
@@ -128,9 +128,9 @@ def main():
     if motors is not None:
       print("from raspberry: ", motors)
 
-      motors_arduino = MotorsStructure(motors[0], motors[1])
+      # motors_arduino = MotorsStructure(motors[0], motors[1])
 
-      arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
+      # arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
 
 
 if __name__ == '__main__':
