@@ -128,10 +128,20 @@ def keys_to_motors(keys: dict):
         speeds += [-25, 25]
     return list(speeds)
 
-@socketio.on('keys')
-def handle_keys(keys):
-    print('KEYS', keys)
-    pc_client.sendMsg('motors', {'data': keys_to_motors(keys)})
+# @socketio.on('keys')
+# def handle_keys(keys):
+#     print('KEYS', keys)
+#     pc_client.sendMsg('motors', {'data': keys_to_motors(keys)})
+
+@socketio.on('joystick')
+def handle_keys(joystick):
+    print('JOYSTICK', joystick)
+    right_stick = joystick['sticks']['right']
+    # right_stick = joystick['sticks']['right']
+    
+    motors = np.int(100*np.array(right_stick)).clip(-100, 100)
+    pc_client.sendMsg('motors', {'data': motors})
+
 
 def run_webserver():
     print('Starting webserver on port', config.WEBSERVER_PORT)

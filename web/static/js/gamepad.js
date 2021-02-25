@@ -1,5 +1,4 @@
 
-console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa')
 
 function deepCompare() {
     // FROM https://stackoverflow.com/a/1144249
