@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -8,6 +12,17 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 
+  height: 100%;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+
+  color: #000000;
+}
+
+.main {
   height: 100%;
 }
 
@@ -32,7 +47,18 @@ body {
   background-size: 500px;
 }
 
+.container {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-around;
+}
+
 .visulizate {
+  height: 60%;
+
   display: flex;
   justify-content: space-between;
 }
@@ -54,11 +80,15 @@ body {
 
   margin: 18px 18px 0;
 }
+.no_video {
+  /* display: none; */
+}
 .video-player {
   display: none;
 
-  width: 100%;
   height: 100%;
+  max-width: 100%;
+  width: auto;
 }
 /* end video */
 
@@ -156,16 +186,18 @@ body {
 
 /* system data */
 .system-data {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: 10px;
   display: flex;
 }
 
 .raspberry-sensors-system-data, .raspberry-motors-system-data {
-  width: 500px;
+  min-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  margin-left: 20px;
 }
 
 .system-data .system-data-header {
@@ -177,10 +209,7 @@ body {
 }
 
 .system-data .header-text {
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 25px;
+  font-size: 2vw;
 
   color: #DEE065;
 }
@@ -196,6 +225,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  font-size: 1.3vw;
+}
+
+.system-data .system-data-content:first-child {
+  margin-right: 10px;
 }
 
 .system-data .percent {
@@ -203,13 +238,7 @@ body {
   background: #DA7E7E;
   border-radius: 12px;
 
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
   font-weight: 500;
-  font-size: 20px;
-  text-align: center;
-
-  color: #000000;
 }
 
 .system-data .deep{
@@ -218,14 +247,6 @@ body {
   background: #E78989;
   border-radius: 16px;
   padding: 4px;
-
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  text-align: center;
-
-  color: #000000;
 }
 
 .system-data .total-free-texts {
@@ -241,34 +262,21 @@ body {
   justify-content: center;
 }
 
-.system-data .processor {
+.system-data .processor, .system-data .temperature {
   margin-top: 10px;
-  background: #DA7E7E;
+  font-weight: 500;
+  font-size: 1.3vw;
+
   border-radius: 12px;
   padding: 4px;
+}
 
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  text-align: center;
-
-  color: #000000;
+.system-data .processor {
+  background: #DA7E7E;
 }
 
 .system-data .temperature {
-  margin-top: 10px;
   background: #96DA7E;
-  border-radius: 12px;
-  padding: 4px;
-
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  text-align: center;
-
-  color: #000000;
 }
 /* end system data */
 
