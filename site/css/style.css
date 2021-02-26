@@ -43,7 +43,7 @@ body {
   top: calc(80% - 500px);
   width: 500px;
   height: 500px;
-  background: url("../img/Logo_gradient.svg") center center no-repeat;
+  background: url("../img/Logo.svg") center center no-repeat;
   background-size: 500px;
 }
 

@@ -1,13 +1,13 @@
 import sys
 import serial
-import pyaudio
+# import pyaudio
 sys.path.append("..")
 from ctypes import *
 import queue
 import msgpack
 
 from systemData import SystemData
-from raspberryVideo import RaspberryVideo
+# from raspberryVideo import RaspberryVideo
 from raspberryTwisted import raspberryPIClient
 
 # from Sound import soundPlayThread, soundRecordThread
@@ -43,7 +43,7 @@ def get_sound_device():
 
 class MotorsStructure(Structure):
   _pack_ = 1
-  _fields_ = [("r", c_int8), ("l", c_int8)]
+  _fields_ = [("r", c_int8), ("l", c_int8), ("p", c_int8)]
 
 def get_data(queueData, name):
   try:
@@ -63,7 +63,7 @@ def main():
 
   # get_sound_device()
 
-  # arduino = connect_arduino()
+  arduino = connect_arduino()
 
   raspberryPIMotorsServer = raspberryPIClient.RaspberryPIClient(
     server_ip,
@@ -92,10 +92,10 @@ def main():
     if i%10000 == 0:
       system_data = systemData.get_system_data()
 
-      # raspberryPIMotorsServer.send_message({
-      #   "type": "systemData", 
-      #   "data": system_data
-      # })
+      raspberryPIMotorsServer.send_message({
+        "type": "systemData", 
+        "data": system_data
+      })
     i += 1
 
     # print("get frame")
@@ -128,9 +128,9 @@ def main():
     if motors is not None:
       print("from raspberry: ", motors)
 
-      # motors_arduino = MotorsStructure(motors[0], motors[1])
+      motors_arduino = MotorsStructure(motors[0], motors[1], motors[2])
 
-      # arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
+      arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
 
 
 if __name__ == '__main__':

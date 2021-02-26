@@ -1,3 +1,5 @@
+<!-- https://css-tricks.com/svg-line-animation-works/ -->
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -27,9 +29,7 @@
       <div class="visulizate">
         <div class="video-sound">
           <div class="video" onclick="start();">
-            <svg class="no_video" width="64" height="64">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#no_camera', version='1') }}"></use>
-            </svg>
+            <img src="{{ url_for('static', filename='img/no_camera.svg', version='1') }}" alt="" class="no_video" width="64" height="64">
             <video id="remote-video" class="video-player" autoplay="">
               Your browser does not support the video tag.
             </video>
@@ -50,134 +50,19 @@
         <div class="sensors">
           <div class="view-from-above"></div>
           <div class="sensors-up-left signal">
-            <svg width="148" height="30" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <use href="{{ url_for('static', filename='img/icons.svg#signal-up-8', version='1') }}"></use>
-            </svg>
-            <svg width="132" height="30">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-7', version='1') }}"></use>
-            </svg>
-            <svg width="117" height="30">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-6', version='1') }}"></use>
-            </svg>
-            <svg width="103" height="30">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-5', version='1') }}"></use>
-            </svg>
-            <svg width="86" height="30">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-4', version='1') }}"></use>
-            </svg>
-            <svg width="74" height="30">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-3', version='1') }}"></use>
-            </svg>
-            <svg width="61" height="23">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-2', version='1') }}"></use>
-            </svg>
-            <svg width="44" height="17">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-1', version='1') }}"></use>
-            </svg>
+            <img src="{{ url_for('static', filename='img/up-signal.svg', version='1') }}" alt="" width="148" height="150">
           </div>
           <div class="sensors-up-right signal">
-            <svg width="148" height="30">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-8', version='1') }}"></use>
-            </svg>
-            <svg width="132" height="30">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-7', version='1') }}"></use>
-            </svg>
-            <svg width="117" height="30">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-6', version='1') }}"></use>
-            </svg>
-            <svg width="103" height="30">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-5', version='1') }}"></use>
-            </svg>
-            <svg width="86" height="30">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-4', version='1') }}"></use>
-            </svg>
-            <svg width="74" height="30">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-3', version='1') }}"></use>
-            </svg>
-            <svg width="61" height="23">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-2', version='1') }}"></use>
-            </svg>
-            <svg width="44" height="17">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-up-1', version='1') }}"></use>
-            </svg>
+            <img src="{{ url_for('static', filename='img/up-signal.svg', version='1') }}" alt="" width="148" height="150">
           </div>
           <div class="sensors-right signal">
-            <svg width="31" height="207">
-              <use xlink:href=" {{ url_for('static', filename='img/icons.svg#signal-right-left-8', version='1') }}"></use>
-            </svg>
-            <svg width="31" height="187">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-right-left-7', version='1') }}"></use>
-            </svg>
-            <svg width="32" height="165">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-right-left-6', version='1') }}"></use>
-            </svg>
-            <svg width="31" height="146">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-right-left-5', version='1') }}"></use>
-            </svg>
-            <svg width="32" height="122">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-right-left-4', version='1') }}"></use>
-            </svg>
-            <svg width="31" height="105">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-right-left-3', version='1') }}"></use>
-            </svg>
-            <svg width="24" height="86">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-right-left-2', version='1') }}"></use>
-            </svg>
-            <svg width="17" height="61">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-right-left-1', version='1') }}"></use>
-            </svg>
+            <img src="{{ url_for('static', filename='img/leftRight-signal.svg', version='1') }}" alt="" width="100" height="207">
           </div>
           <div class="sensors-left signal">
-            <svg width="31" height="207">
-              <use xlink:href=" {{ url_for('static', filename='img/icons.svg#signal-right-left-8', version='1') }}"></use>
-            </svg>
-            <svg width="31" height="187">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-right-left-7', version='1') }}"></use>
-            </svg>
-            <svg width="32" height="165">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-right-left-6', version='1') }}"></use>
-            </svg>
-            <svg width="31" height="146">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-right-left-5', version='1') }}"></use>
-            </svg>
-            <svg width="32" height="122">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-right-left-4', version='1') }}"></use>
-            </svg>
-            <svg width="31" height="105">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-right-left-3', version='1') }}"></use>
-            </svg>
-            <svg width="24" height="86">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-right-left-2', version='1') }}"></use>
-            </svg>
-            <svg width="17" height="61">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-right-left-1', version='1') }}"></use>
-            </svg>
+            <img src="{{ url_for('static', filename='img/leftRight-signal.svg', version='1') }}" alt="" width="100" height="207">
           </div>
           <div class="sensors-down signal">
-            <svg width="207" height="31">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-down-8', version='1') }}"></use>
-            </svg>
-            <svg width="187" height="31">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-down-7', version='1') }}"></use>
-            </svg>
-            <svg width="165" height="32">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-down-6', version='1') }}"></use>
-            </svg>
-            <svg width="146" height="32">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-down-5', version='1') }}"></use>
-            </svg>
-            <svg width="122" height="31">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-down-4', version='1') }}"></use>
-            </svg>
-            <svg width="105" height="32">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-down-3', version='1') }}"></use>
-            </svg>
-            <svg width="86" height="24">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-down-2', version='1') }}"></use>
-            </svg>
-            <svg width="61" height="16">
-              <use xlink:href="{{ url_for('static', filename='img/icons.svg#signal-down-1', version='1') }}"></use>
-            </svg>
+            <img src="{{ url_for('static', filename='img/down-signal.svg', version='1') }}" alt="" width="207" height="150">
           </div>
         </div>
       </div>
@@ -349,7 +234,7 @@
   </main>
   <footer class="footer">
     <div class="logo">
-      <img src="{{ url_for('static', filename='img/Logo_gradient.svg', version='1') }}" alt="logo" class="logo-img">
+      <img src="{{ url_for('static', filename='img/miniLogo_gradient.svg', version='1') }}" alt="logo" class="logo-img">
     </div>
   </footer>
   <!DOCTYPE html>

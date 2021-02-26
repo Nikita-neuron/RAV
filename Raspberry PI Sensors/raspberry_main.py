@@ -49,6 +49,10 @@ class UltrasonicStructure(Structure):
 		("dis5", c_int16)
 	]
 
+class MotorsStructure(Structure):
+  _pack_ = 1
+  _fields_ = [("u", c_int8), ("d", c_int8)]
+
 def get_data(queueData, name):
   try:
     return queueData[name].get_nowait()
@@ -59,8 +63,9 @@ def main():
 	systemData = SystemData()
 
 	queueData = {
-		"soundsPC":     queue.Queue(2),
-		"ultrasonic":  queue.Queue(2)
+		"soundsPC":     queue.Queue(20),
+		"ultrasonic":  queue.Queue(20),
+		"motorsSpeed": queue.Queue(20)
 	}
 	name = "raspberryPISensors"
 	server_ip, server_port = get_server_ip_port()
@@ -94,10 +99,10 @@ def main():
 		if i%10000 == 0:
 			system_data = systemData.get_system_data()
 
-			# raspberryPIMotorsServer.send_message({
-			#   "type": "systemData", 
-			#   "data": system_data
-			# })
+			raspberryPIMotorsServer.send_message({
+			  "type": "systemData", 
+			  "data": system_data
+			})
 			i += 1
 
 		# print("get frame")
@@ -125,6 +130,13 @@ def main():
 		# if sound_pc is not None:
 		#   # print(sound_pc)
 		#   soundPlay.add_sound(sound_pc)
+
+		motors = get_data(queueData, "motorsSpeed")
+		if motors is not None:
+			print("from raspberry: ", motors)
+			motors_arduino = MotorsStructure(motors[0], motors[1])
+			arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
+
 
 		serial_data = arduino.read(10)
 
