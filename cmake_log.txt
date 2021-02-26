@@ -809,3 +809,73 @@ ALSA lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type for card
 connecting to 172.20.235.98 8000
 Connect
 
+
+--data-path: "memory.memoryFree"
+
+
+
+
+
+
+
+
+
+
+
+LIBS
+libcanberra-dev \
+libopencv-dev \
+libopencv-contrib-dev \
+libopencv-superres-dev \
+libopencv3.2-java \
+libopencv3.2-jni \
+libopencv-contrib3.2 \
+libopencv-videostab-dev \
+libopencv-videostab3.2 \
+libgles2-mesa-dev \
+libgles-dev \
+libopencv-stitching-dev \
+libopencv-objdetect-dev \
+libopencv-calib3d-dev \
+libopencv-features2d-dev \
+libopencv-highgui-dev \
+libopenexr-dev \
+libilmbase-dev \
+libtesseract4 \
+liblept5 \
+libopencv-stitching3.2 \
+libopencv-calib3d3.2 \
+libopencv-viz-dev \
+libopencv-ts-dev \
+libopencv-viz3.2 \
+libopencv-superres3.2 \
+libopencv-features2d3.2 \
+libopencv-flann-dev \
+libopencv-flann3.2 \
+libopencv-objdetect3.2 \
+libopencv-highgui3.2 \
+libopencv-shape-dev \
+libopencv-video-dev \
+libopencv-photo-dev \
+libopencv-shape3.2 \
+libopencv-video3.2 \
+libopencv-ml-dev \
+libopencv-ml3.2 \
+libopencv-photo3.2 \
+liborc-0.4-dev \
+liborc-0.4-dev-bin \
+libpng12-0 \
+libqt5glib-2.0-0 \
+opencv-data \
+libopencv-videoio-dev \
+libopencv-imgcodecs-dev \
+libgdcm2-dev \
+libopencv-videoio3.2 \
+libopencv-imgproc-dev \
+libopencv-imgcodecs3.2 \
+libgdcm2.8 \
+libopencv-core-dev \
+libopencv-imgproc3.2 \
+libsocket++1 \
+libopencv-core3.2 \
+
