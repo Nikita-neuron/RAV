@@ -3,7 +3,7 @@ import sys
 import importlib.util
 # sys.path.append('..')
 # import config
-spec = importlib.util.spec_from_file_location('config', r'D:\Python\RAV\config.py')
+spec = importlib.util.spec_from_file_location('config', r'config.py')
 config = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(config)
 
@@ -71,40 +71,6 @@ class ImageDisplayThread(threading.Thread):
         except queue.Full:
             print('full')
 
-# class SocketThread(threading.Thread):
-#     def __init__(self, socket: socket.socket):
-#         super().__init__(daemon=True)
-#         self.socket = socket
-#         self.buffer_size = 2048
-#         self.buffer = bytearray(self.buffer_size)
-#     def run(self):
-#         while True:
-#             self.socket.recv_into()
-
-# class PcClientProtocol(protocol.Protocol):
-#     def __init__(self, factory):
-#         self.factory = factory
-#         self.unpacker = msgpack.Unpacker()
-#     def sendMsg(self, type_, msg):
-#         msg['type'] = type_
-#         msgpack.pack(msg, self.transport)
-#     def connectionMade(self):
-#         self.i = 0
-#         # self.img_display = ImageDisplayThread()
-#         # self.img_display.start()
-#         self.sendMsg('client_connect', {'name': 'webserver'})
-#     # {'type': 'image', }
-#     def dataReceived(self, data):
-#         print('recv', self.i, len(data))
-#         self.unpacker.feed(data)
-#         for msg in self.unpacker:
-#             if msg['type'] == 'data':
-#                 print('img', self.i)
-#                 self.i += 1
-#                 # self.img_display.display(msg['image'])
-#                 # _, encoded = 
-#                 # socketio.emit('image', {'data': cv2.})
-
 
 
 @app.route('/')
@@ -135,12 +101,18 @@ def keys_to_motors(keys: dict):
 
 @socketio.on('joystick')
 def handle_keys(joystick):
-    print('JOYSTICK', joystick)
-    right_stick = joystick['sticks']['right']
-    # right_stick = joystick['sticks']['right']
+    # print('JOYSTICK', joystick)
+    sticks = joystick['sticks']
+    buttons = joystick['buttons']
+    left_stick_y = -sticks['left'][1]
+    right_stick_y = -sticks['right'][1]
+    lb = buttons['lb']
+    rb = buttons['rb']
     
-    motors = np.int(100*np.array(right_stick)).clip(-100, 100)
-    pc_client.sendMsg('motors', {'data': motors})
+    motors = np.int8(100*np.array([right_stick_y, left_stick_y])).clip(-100, 100)
+    platform = 30*lb['pressed'] - 30*rb['pressed']
+    print('Send', motors)
+    pc_client.sendMsg('motorsSpeed', [*motors, platform])
 
 
 def run_webserver():

@@ -25,12 +25,12 @@ class Protocol(protocol.Protocol):
             if hasattr(self, callback_name):
                 getattr(self, callback_name)(msg['data'])
                 continue
-            print(f'Unknown message type "{msg_type}"')
+            print(f'{self}: Unknown message type "{msg_type}"')
 
 
 
 class PcServerProtocol(Protocol):
-    def __init__(self, factory):
+    def __init__(self, factory: 'PcServerProtocolFactory'):
         super().__init__()
         self.factory = factory
         self.name = None
@@ -48,6 +48,12 @@ class PcServerProtocol(Protocol):
         self.name = name
         print(f'"{self.name}" connected')
         self.factory._on_client_connect(self)
+    def on_motorsSpeed(self, data):
+        print('recv motors', data)
+        self.factory.sendMsg('raspberryPIMotors', 'motorsSpeed', data)
+    def on_systemData(self, data):
+        self.factory.sendMsg('webserver', 'systemData', data)
+        
 
 
 class PcClientProtocol(Protocol):
@@ -74,6 +80,8 @@ class PcClientProtocol(Protocol):
     def on_image(self, img):
         print('img', self.i)
         self.i += 1
+    def on_systemData(self, data):
+        print('recv sysytem', data)
 
 
 class PcClientProtocolFactory(protocol.ClientFactory):

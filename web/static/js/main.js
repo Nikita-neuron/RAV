@@ -2,35 +2,35 @@
 var socket = io();
 
 
-let keys = {
-    'w': false,
-    'a': false,
-    's': false,
-    'd': false
-}
+// let keys = {
+//     'w': false,
+//     'a': false,
+//     's': false,
+//     'd': false
+// }
 
-function update_motors() {
-	console.log('update', keys)
-	socket.emit('keys', keys)
-}
+// function update_motors() {
+// 	console.log('update', keys)
+// 	socket.emit('keys', keys)
+// }
 
-document.addEventListener('keydown', (event) => {
-    if (!(event.key in keys)) {
-        return
-    }
-    let needs_update = !keys[event.key]
-    keys[event.key] = true
-    if (needs_update) {
-        update_motors()
-    }
-})
-document.addEventListener('keyup', (event) => {
-    if (!(event.key in keys)) {
-        return
-    }
-    keys[event.key] = false
-    update_motors()
-})
+// document.addEventListener('keydown', (event) => {
+//     if (!(event.key in keys)) {
+//         return
+//     }
+//     let needs_update = !keys[event.key]
+//     keys[event.key] = true
+//     if (needs_update) {
+//         update_motors()
+//     }
+// })
+// document.addEventListener('keyup', (event) => {
+//     if (!(event.key in keys)) {
+//         return
+//     }
+//     keys[event.key] = false
+//     update_motors()
+// })
 
 
 function update()
@@ -48,4 +48,4 @@ function loop()
 	update();
 }
 
-// loop();
+loop();

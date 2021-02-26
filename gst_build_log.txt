@@ -1,0 +1,3318 @@
+
+|
+||Executing subproject openh264 method meson
+||
+||Project name: openh264
+||Project version: 2.1.1
+||C compiler for the host machine: cc (gcc 8.3.0 "cc (Raspbian 8.3.0-6+rpi1) 8.3.0")
+||C linker for the host machine: cc ld.bfd 2.31.1
+||C++ compiler for the host machine: c++ (gcc 8.3.0 "c++ (Raspbian 8.3.0-6+rpi1) 8.3.0")
+||C++ linker for the host machine: c++ ld.bfd 2.31.1
+||Program nasm nasm.exe found: NO
+||
+||subprojects/openh264/meson.build:41:0: Exception: Program 'nasm nasm.exe' not found
+|
+|Subproject subprojects/openh264 is buildable: NO (disabling)
+|Dependency openh264 from subproject subprojects/openh264 found: NO (subproject failed to configure)
+|Run-time dependency libopenjp2 found: YES 2.3.0
+|Run-time dependency libopenmpt found: NO (tried pkgconfig and cmake)
+|C++ compiler for the host machine: c++ (gcc 8.3.0 "c++ (Raspbian 8.3.0-6+rpi1) 8.3.0")
+|C++ linker for the host machine: c++ ld.bfd 2.31.1
+|Run-time dependency libopenni2 found: NO (tried pkgconfig and cmake)
+|Dependency opus found: YES 1.3.1-90-g16286a25 (cached)
+|Run-time dependency libqrencode found: NO (tried pkgconfig and cmake)
+|Run-time dependency dvdnav found: NO (tried pkgconfig and cmake)
+|Run-time dependency dvdread found: NO (tried pkgconfig and cmake)
+|Run-time dependency librsvg-2.0 found: NO (tried pkgconfig and cmake)
+|Run-time dependency librtmp found: NO (tried pkgconfig and cmake)
+|Run-time dependency sbc found: NO (tried pkgconfig and cmake)
+|Message: Using internal libusrsctp
+|Compiler for C supports arguments -Wfloat-equal: YES
+|Compiler for C supports arguments -Wshadow: YES (cached)
+|Compiler for C supports arguments -Wpointer-arith: YES (cached)
+|Compiler for C supports arguments -Winit-self: YES (cached)
+|Compiler for C supports arguments -Wno-unused-function: YES (cached)
+|Compiler for C supports arguments -Wno-unused-parameter: YES (cached)
+|Compiler for C supports arguments -Wno-unreachable-code: YES
+|Compiler for C supports arguments -Wstrict-prototypes: YES (cached)
+|Compiler for C supports arguments -Wno-missing-prototypes: YES (cached)
+|Compiler for C supports arguments -Wno-incompatible-pointer-types-discards-qualifiers: NO
+|Compiler for C supports arguments -Wno-address-of-packed-member: NO
+|Compiler for C supports arguments -Wno-discarded-qualifiers: YES (cached)
+|Compiler for C supports arguments -Wno-missing-declarations: YES (cached)
+|Compiler for C supports arguments -Wno-old-style-definition: YES (cached)
+|Compiler for C supports arguments -Wno-redundant-decls: YES (cached)
+|Compiler for C supports arguments -Wno-error: YES
+|Dependency threads found: YES unknown (cached)
+|Has header "sys/queue.h" : YES
+|Has header "sys/socket.h" : YES (cached)
+|Has header "linux/if_addr.h" : YES
+|Has header "linux/rtnetlink.h" : YES
+|Has header "sys/types.h" : YES (cached)
+|Has header "netinet/in.h" : YES (cached)
+|Has header "netinet/ip.h" : YES (cached)
+|Has header "netinet/ip_icmp.h" : YES
+|Has header "stdatomic.h" : YES
+|Checking whether type "struct sockaddr" has member "sa_len" : NO
+|Checking whether type "struct sockaddr_in" has member "sin_len" : NO
+|Checking whether type "struct sockaddr_in6" has member "sin6_len" : NO
+|Checking whether type "struct sockaddr_conn" has member "sconn_len" : NO
+|Dependency libxml-2.0 found: YES 2.9.4 (cached)
+|Run-time dependency sndfile found: NO (tried pkgconfig and cmake)
+|Run-time dependency soundtouch found: NO (tried pkgconfig and cmake)
+|Run-time dependency soundtouch-1.4 found: NO (tried pkgconfig and cmake)
+|Run-time dependency soundtouch-1.0 found: NO (tried pkgconfig and cmake)
+|Run-time dependency spandsp found: NO (tried pkgconfig and cmake)
+|Run-time dependency srt found: NO (tried pkgconfig and cmake)
+|Header <srt/srt.h> has symbol "srt_startup" : NO
+|Run-time dependency libsrtp2 found: NO (tried pkgconfig and cmake)
+|Run-time dependency libsrtp found: NO (tried pkgconfig and cmake)
+|Header <srtp/srtp.h> has symbol "crypto_policy_set_aes_gcm_128_16_auth" : NO
+|Run-time dependency svthevcenc found: NO (tried pkgconfig and cmake)
+|Run-time dependency zvbi-0.2 found: NO (tried pkgconfig and cmake)
+|Dependency libxml-2.0 found: YES 2.9.4 (cached)
+|Run-time dependency pango found: YES 1.42.3
+|Dependency cairo found: YES 1.16.0 (cached)
+|Dependency pangocairo found: YES 1.42.3 (cached)
+|Run-time dependency vo-aacenc found: NO (tried pkgconfig and cmake)
+|Run-time dependency vo-amrwbenc found: NO (tried pkgconfig and cmake)
+|Dependency libdrm found: YES 2.4.100 (cached)
+|Dependency nice from subproject subprojects/libnice found: YES 0.1.18.1
+|Run-time dependency webrtc-audio-processing found: NO (tried pkgconfig and cmake)
+|Run-time dependency libwebp found: YES 0.6.1
+|Run-time dependency wildmidi found: NO (tried pkgconfig and cmake)
+|Has header "wildmidi_lib.h" : NO
+|Run-time dependency wpe-webkit-1.0 found: NO (tried pkgconfig and cmake)
+|Run-time dependency wpebackend-fdo-1.0 found: NO (tried pkgconfig and cmake)
+|Dependency egl found: YES 1.5 (cached)
+|Dependency xkbcommon found: YES 0.8.2 (cached)
+|Run-time dependency wayland-server found: YES 1.16.0
+|Run-time dependency x265 found: NO (tried pkgconfig and cmake)
+|Run-time dependency zxing found: NO (tried pkgconfig and cmake)
+|Run-time dependency zbar found: NO (tried pkgconfig and cmake)
+|Run-time dependency libexif found: YES 0.6.21
+|Dependency (anonymous) from subproject subprojects/orc found: YES 0.4.32
+|Dependency gtk+-3.0 found: YES 3.24.5 (cached)
+|Run-time dependency gdk-x11-3.0 found: YES 3.24.5
+|Compiler for C supports link arguments -fvisibility=default: YES
+|Run-time dependency gmodule-export-2.0 found: YES 2.58.3
+|Dependency x11 found: YES 1.6.7 (cached)
+|Has header "sys/socket.h" : YES (cached)
+|Checking for function "kill" : YES
+|Checking for function "socketpair" : YES
+|Checking for function "fcntl" : YES
+|Checking for function "fork" : YES
+|Compiler for C supports link arguments -fvisibility=default: YES (cached)
+|Dependency gmodule-export-2.0 found: YES 2.58.3 (cached)
+|Dependency gtk+-3.0 found: YES 3.24.5 (cached)
+|Dependency gtk+-wayland-3.0 found: YES 3.24.5 (cached)
+|Program scripts/update-orc-dist-files.py found: YES (/home/pi/gst-build/subprojects/gst-plugins-bad/scripts/update-orc-dist-files.py)
+|Program xgettext found: YES (/usr/bin/xgettext)
+|Configuring config.h using configuration
+|Program hotdoc found: NO
+|Message: Hotdoc not found, not building the documentation
+|Build targets in project: 1026
+|Subproject gst-plugins-bad finished.
+
+Message: Created symlink to gst-plugins-bad
+Клонирование в «gst-plugins-ugly»…
+remote: Enumerating objects: 40887, done.
+remote: Total 40887 (delta 0), reused 0 (delta 0), pack-reused 40887
+Получение объектов: 100% (40887/40887), 7.23 MiB | 766.00 KiB/s, готово.
+Определение изменений: 100% (31272/31272), готово.
+Уже на «master»
+Ваша ветка обновлена в соответствии с «origin/master».
+
+|Executing subproject gst-plugins-ugly method meson
+|
+|Project name: gst-plugins-ugly
+|Project version: 1.19.0.1
+|C compiler for the host machine: cc (gcc 8.3.0 "cc (Raspbian 8.3.0-6+rpi1) 8.3.0")
+|C linker for the host machine: cc ld.bfd 2.31.1
+|C++ compiler for the host machine: c++ (gcc 8.3.0 "c++ (Raspbian 8.3.0-6+rpi1) 8.3.0")
+|C++ linker for the host machine: c++ ld.bfd 2.31.1
+|Compiler for C supports link arguments -Wl,-Bsymbolic-functions: YES (cached)
+|Compiler for C++ supports link arguments -Wl,-Bsymbolic-functions: YES
+|Has header "dlfcn.h" : YES (cached)
+|Has header "inttypes.h" : YES (cached)
+|Has header "malloc.h" : YES
+|Has header "memory.h" : YES (cached)
+|Has header "stdint.h" : YES (cached)
+|Has header "stdlib.h" : YES (cached)
+|Has header "strings.h" : YES (cached)
+|Has header "string.h" : YES (cached)
+|Has header "sys/stat.h" : YES (cached)
+|Has header "sys/types.h" : YES (cached)
+|Has header "unistd.h" : YES (cached)
+|Has header "winsock2.h" : NO (cached)
+|Checking for function "dcgettext" : YES (cached)
+|Checking for size of "char" : 1
+|Checking for size of "int" : 4
+|Checking for size of "long" : 4
+|Checking for size of "short" : 2
+|Checking for size of "void*" : 4
+|Dependency gstreamer-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-app-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-video-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-pbutils-1.0 found: YES 1.19.0.1 (cached)
+|Dependency gstreamer-tag-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-fft-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-audio-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-base-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-riff-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-rtp-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-net-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-sdp-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-rtsp-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-check-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-controller-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency orc-0.4 found: YES 0.4.32 (cached)
+|Dependency gmodule-2.0 found: YES 2.58.3 (cached)
+|Message: GStreamer debug system is enabled
+|Compiler for C supports arguments -Wmissing-declarations: YES (cached)
+|Compiler for C++ supports arguments -Wmissing-declarations: YES (cached)
+|Compiler for C supports arguments -Wredundant-decls: YES (cached)
+|Compiler for C++ supports arguments -Wredundant-decls: YES (cached)
+|Compiler for C supports arguments -Wwrite-strings: YES (cached)
+|Compiler for C++ supports arguments -Wwrite-strings: YES (cached)
+|Compiler for C supports arguments -Wformat: YES (cached)
+|Compiler for C++ supports arguments -Wformat: YES (cached)
+|Compiler for C supports arguments -Wformat-nonliteral: YES (cached)
+|Compiler for C++ supports arguments -Wformat-nonliteral: YES (cached)
+|Compiler for C supports arguments -Wformat-security: YES (cached)
+|Compiler for C++ supports arguments -Wformat-security: YES (cached)
+|Compiler for C supports arguments -Winit-self: YES (cached)
+|Compiler for C++ supports arguments -Winit-self: YES (cached)
+|Compiler for C supports arguments -Wmissing-include-dirs: YES (cached)
+|Compiler for C++ supports arguments -Wmissing-include-dirs: YES (cached)
+|Compiler for C supports arguments -Waddress: YES (cached)
+|Compiler for C++ supports arguments -Waddress: YES (cached)
+|Compiler for C supports arguments -Wno-multichar: YES (cached)
+|Compiler for C++ supports arguments -Wno-multichar: YES (cached)
+|Compiler for C supports arguments -Wvla: YES (cached)
+|Compiler for C++ supports arguments -Wvla: YES (cached)
+|Compiler for C supports arguments -Wpointer-arith: YES (cached)
+|Compiler for C++ supports arguments -Wpointer-arith: YES (cached)
+|Compiler for C supports arguments -Waggregate-return: YES (cached)
+|Compiler for C++ supports arguments -Waggregate-return: YES (cached)
+|Compiler for C supports arguments -fno-strict-aliasing: YES (cached)
+|Compiler for C++ supports arguments -fno-strict-aliasing: YES (cached)
+|Compiler for C supports arguments -fvisibility=hidden: YES (cached)
+|Compiler for C++ supports arguments -fvisibility=hidden: YES
+|Compiler for C supports arguments -Wmissing-prototypes: YES (cached)
+|Compiler for C supports arguments -Wold-style-definition: YES (cached)
+|Compiler for C supports arguments -Wdeclaration-after-statement: YES (cached)
+|Compiler for C supports arguments -Wnested-externs: YES (cached)
+|Message: Disabling deprecated GLib API
+|Program python3 found: YES (/usr/bin/python3)
+|Library a52 found: NO
+|Header <a52dec/a52.h> has symbol "a52_init" : NO
+|Run-time dependency opencore-amrnb found: NO (tried pkgconfig and cmake)
+|Run-time dependency opencore-amrwb found: NO (tried pkgconfig and cmake)
+|Run-time dependency libcdio found: NO (tried pkgconfig and cmake)
+|Run-time dependency dvdread found: NO (tried pkgconfig and cmake)
+|Run-time dependency libmpeg2 found: NO (tried pkgconfig and cmake)
+|C++ compiler for the host machine: c++ (gcc 8.3.0 "c++ (Raspbian 8.3.0-6+rpi1) 8.3.0")
+|C++ linker for the host machine: c++ ld.bfd 2.31.1
+|Has header "sidplay/player.h" : NO
+|Run-time dependency x264 found: YES 0.155.2917 0a84d98
+|Library m found: YES
+|Compiler for C supports arguments -Wno-missing-prototypes: YES (cached)
+|Compiler for C supports arguments -Wno-missing-declarations: YES (cached)
+|Compiler for C supports arguments -Wno-old-style-definition: YES (cached)
+|Program xgettext found: YES (/usr/bin/xgettext)
+|Program hotdoc found: NO
+|Message: Hotdoc not found, not building the documentation
+|Configuring config.h using configuration
+|Build targets in project: 1039
+|Subproject gst-plugins-ugly finished.
+
+Message: Created symlink to gst-plugins-ugly
+Клонирование в «gst-libav»…
+remote: Enumerating objects: 27, done.
+remote: Counting objects: 100% (27/27), done.
+remote: Compressing objects: 100% (18/18), done.
+remote: Total 14006 (delta 14), reused 10 (delta 4), pack-reused 13979
+Получение объектов: 100% (14006/14006), 3.52 MiB | 1.01 MiB/s, готово.
+Определение изменений: 100% (9401/9401), готово.
+Уже на «master»
+Ваша ветка обновлена в соответствии с «origin/master».
+
+|Executing subproject gst-libav method meson
+|
+|Project name: gst-libav
+|Project version: 1.19.0.1
+|C compiler for the host machine: cc (gcc 8.3.0 "cc (Raspbian 8.3.0-6+rpi1) 8.3.0")
+|C linker for the host machine: cc ld.bfd 2.31.1
+|C++ compiler for the host machine: c++ (gcc 8.3.0 "c++ (Raspbian 8.3.0-6+rpi1) 8.3.0")
+|C++ linker for the host machine: c++ ld.bfd 2.31.1
+|Run-time dependency libavfilter found: NO (tried pkgconfig and cmake)
+|Looking for a fallback subproject for the dependency libavfilter
+Клонирование в «FFmpeg»…
+remote: Enumerating objects: 591755, done.
+remote: Total 591755 (delta 0), reused 0 (delta 0), pack-reused 591755
+Получение объектов: 100% (591755/591755), 140.32 MiB | 1.68 MiB/s, готово.
+Определение изменений: 100% (473432/473432), готово.
+Распаковка файлов: 100% (7389/7389), готово.
+Распаковка файлов: 100% (16/16), готово.
+Ветка «meson-4.3.1» отслеживает внешнюю ветку «meson-4.3.1» из «origin».
+Переключено на новую ветку «meson-4.3.1»
+|
+||Executing subproject FFmpeg method meson
+||
+||Project name: FFmpeg
+||Project version: 4.3.1
+||C compiler for the host machine: cc (gcc 8.3.0 "cc (Raspbian 8.3.0-6+rpi1) 8.3.0")
+||C linker for the host machine: cc ld.bfd 2.31.1
+||Program python3 found: YES (/usr/bin/python3)
+||Compiler for C supports arguments -D_ISOC99_SOURCE: YES
+||Compiler for C supports arguments -D_GNU_SOURCE: YES
+||Compiler for C supports arguments -D_LARGEFILE_SOURCE: YES
+||Compiler for C supports arguments -DPIC: YES
+||Compiler for C supports arguments -Wno-parentheses: YES (cached)
+||Compiler for C supports arguments -Wno-pointer-sign: YES (cached)
+||Compiler for C supports arguments -Wno-switch: YES
+||Compiler for C supports arguments -Wno-format-truncation: YES
+||Compiler for C supports arguments -Wno-deprecated-declarations: YES (cached)
+||Compiler for C supports arguments -Wno-unused-function: YES (cached)
+||Compiler for C supports arguments -Wno-maybe-uninitialized: YES
+||Compiler for C supports arguments -Wno-discarded-qualifiers: YES (cached)
+||Compiler for C supports arguments -Wno-unused-variable: YES (cached)
+||Compiler for C supports arguments -Wno-bool-operation: YES
+||Compiler for C supports arguments -Wno-incompatible-pointer-types: YES
+||Compiler for C supports arguments -Wno-address: YES
+||Compiler for C supports arguments -std=c99: YES
+||Dependency threads found: YES unknown (cached)
+||Has header "dev/bktr/ioctl_meteor.h" : NO
+||Has header "dev/bktr/ioctl_bt848.h" : NO
+||Has header "machine/ioctl_meteor.h" : NO
+||Has header "machine/ioctl_bt848.h" : NO
+||Has header "dev/video/meteor/ioctl_meteor.h" : NO
+||Has header "dev/video/bktr/ioctl_bt848.h" : NO
+||Has header "dev/ic/bt8xx.h" : NO
+||Checking for function "localtime_r" : YES
+||Has header "vdpau/vdpau.h" : NO
+||Checking for function "nanosleep" : YES
+||Has header "arpa/inet.h" : YES (cached)
+||Checking whether type "struct rusage" has member "ru_maxrss" : YES
+||Checking whether type "struct stat" has member "st_mtim.tv_nsec" : YES
+||Dependency alsa found: YES 1.1.8 (cached)
+||Has header "alsa/asoundlib.h" with dependency alsa: YES
+||Checking for function "snd_pcm_htimestamp" with dependency alsa: YES
+||Run-time dependency ffnvcodec found: NO (tried pkgconfig and cmake)
+||Run-time dependency ffnvcodec found: NO (tried pkgconfig and cmake)
+||Run-time dependency ffnvcodec found: NO (tried pkgconfig and cmake)
+||Run-time dependency ffnvcodec found: NO (tried pkgconfig and cmake)
+||Run-time dependency libgme found: NO (tried pkgconfig and cmake)
+||Dependency gnutls found: YES 3.6.7 (cached)
+||Has header "gnutls/gnutls.h" with dependency gnutls: YES
+||Checking for function "gnutls_global_init" with dependency gnutls: YES
+||Run-time dependency aom found: NO (tried pkgconfig and cmake)
+||Message: Skipping libaribb24 because of license
+||Run-time dependency lilv-0 found: NO (tried pkgconfig and cmake)
+||Run-time dependency libass found: NO (tried pkgconfig and cmake)
+||Run-time dependency libbluray found: NO (tried pkgconfig and cmake)
+||Run-time dependency libbs2b found: NO (tried pkgconfig and cmake)
+||Run-time dependency caca found: NO (tried pkgconfig and cmake)
+||Message: Skipping libcdio because of license
+||Message: Skipping libcdio because of license
+||Dependency libdc1394-2 found: YES 2.2.5 (cached)
+||Has header "dc1394/dc1394.h" with dependency libdc1394-2: YES
+||Checking for function "dc1394_new" with dependency libdc1394-2: YES
+||Dependency libdrm found: YES 2.4.100 (cached)
+||WARNING: Project targeting '>= 0.50.0' but tried to use feature introduced in '0.53.0': Fallback without variable name.
+||Message: Skipping libfdk_aac because of license
+||Run-time dependency fontconfig found: YES 2.13.1
+||Has header "fontconfig/fontconfig.h" with dependency fontconfig: YES
+||Checking for function "FcInit" with dependency fontconfig: YES
+||Run-time dependency freetype2 found: YES 22.1.16
+||Has header "ft2build.h" with dependency freetype2: YES
+||Has header "FT_FREETYPE_H" with dependency freetype2: NO
+||Run-time dependency fribidi found: YES 1.0.5
+||Has header "fribidi.h" with dependency fribidi: YES
+||Checking for function "fribidi_version_info" with dependency fribidi: YES
+||Run-time dependency jack found: YES 0.125.0rc1
+||Has header "jack/jack.h" with dependency jack: YES
+||Checking for function "jack_port_get_latency_range" with dependency jack: YES
+||Run-time dependency kvazaar found: NO (tried pkgconfig and cmake)
+||Run-time dependency libmfx found: NO (tried pkgconfig and cmake)
+||Run-time dependency libmodplug found: NO (tried pkgconfig and cmake)
+||Dependency opencv found: YES 3.2.0 (cached)
+||Has header "opencv2/core/core_c.h" with dependency opencv: YES
+||Checking for function "cvCreateImageHeader" with dependency opencv: NO
+||Dependency opencv found: YES 3.2.0 (cached)
+||Has header "opencv/cxcore.h" with dependency opencv: YES
+||Checking for function "cvCreateImageHeader" with dependency opencv: NO
+||Run-time dependency openh264 found: NO (tried pkgconfig and cmake)
+||Run-time dependency dav1d found: NO (tried pkgconfig and cmake)
+||Dependency libopenjp2 found: YES 2.3.0 (cached)
+||Has header "openjpeg.h" with dependency libopenjp2: YES
+||Checking for function "opj_version" with dependency libopenjp2: YES
+||Run-time dependency libopenmpt found: NO (tried pkgconfig and cmake)
+||Dependency opus found: YES 1.3.1-90-g16286a25 (cached)
+||Run-time dependency libpulse found: NO (tried pkgconfig and cmake)
+||Run-time dependency librabbitmq found: NO (tried pkgconfig and cmake)
+||Run-time dependency rav1e found: NO (tried pkgconfig and cmake)
+||Run-time dependency librsvg-2.0 found: NO (tried pkgconfig and cmake)
+||Run-time dependency librtmp found: NO (tried pkgconfig and cmake)
+||Message: Skipping librubberband because of license
+||Run-time dependency shine found: NO (tried pkgconfig and cmake)
+||Message: Skipping libsmbclient because of license
+||Run-time dependency libssh found: NO (tried pkgconfig and cmake)
+||Run-time dependency speex found: NO (tried pkgconfig and cmake)
+||Run-time dependency srt found: NO (tried pkgconfig and cmake)
+||Run-time dependency tesseract found: NO (tried pkgconfig and cmake)
+||Message: Skipping libtls because of license
+||Dependency libv4l2 found: YES 1.16.3 (cached)
+||Has header "libv4l2.h" with dependency libv4l2: YES
+||Checking for function "v4l2_ioctl" with dependency libv4l2: YES
+||Message: Skipping libvidstab because of license
+||Message: Skipping libvmaf because of license
+||Run-time dependency vorbis found: NO (tried pkgconfig and cmake)
+||Run-time dependency vorbisenc found: NO (tried pkgconfig and cmake)
+||Run-time dependency vpx found: NO (tried pkgconfig and cmake)
+||Run-time dependency vpx found: NO (tried pkgconfig and cmake)
+||Run-time dependency vpx found: NO (tried pkgconfig and cmake)
+||Run-time dependency vpx found: NO (tried pkgconfig and cmake)
+||Dependency libwebp found: YES 0.6.1 (cached)
+||Has header "webp/encode.h" with dependency libwebp: YES
+||Checking for function "WebPGetEncoderVersion" with dependency libwebp: YES
+||Run-time dependency libwebpmux found: YES 0.6.1
+||Has header "webp/mux.h" with dependency libwebpmux: YES
+||Checking for function "WebPAnimEncoderOptionsInit" with dependency libwebpmux: YES
+||Message: Skipping libx264 because of license
+||Message: Skipping libx265 because of license
+||Dependency xcb found: YES 1.13.1 (cached)
+||Has header "xcb/xcb.h" with dependency xcb: YES
+||Checking for function "xcb_connect" with dependency xcb: YES
+||Run-time dependency xcb-shm found: YES 1.13.1
+||Has header "xcb/shm.h" with dependency xcb-shm: YES
+||Checking for function "xcb_shm_attach" with dependency xcb-shm: YES
+||Run-time dependency xcb-shape found: NO (tried pkgconfig and cmake)
+||Run-time dependency xcb-xfixes found: NO (tried pkgconfig and cmake)
+||Dependency libxml-2.0 found: YES 2.9.4 (cached)
+||Has header "libxml2/libxml/xmlversion.h" with dependency libxml-2.0: YES
+||Checking for function "xmlCheckVersion" with dependency libxml-2.0: YES
+||Run-time dependency zimg found: NO (tried pkgconfig and cmake)
+||Run-time dependency libzmq found: NO (tried pkgconfig and cmake)
+||Run-time dependency zvbi-0.2 found: NO (tried pkgconfig and cmake)
+||Message: Skipping openssl because of license
+||Run-time dependency pocketsphinx found: NO (tried pkgconfig and cmake)
+||Message: Skipping rkmpp because of license
+||Run-time dependency rockchip_mpp found: NO (tried pkgconfig and cmake)
+||sdl2-config found: NO need ['>= 2.0.1', '< 2.1.0']
+||Run-time dependency sdl2 found: NO (tried pkgconfig and config-tool)
+||Library advapi32 found: NO
+||Has header "avisynth/avisynth_c.h" : NO
+||Library android found: NO
+||Library bcrypt found: NO
+||Library bz2 found: NO
+||Library camera2ndk found: NO
+||Message: Skipping decklink because of license
+||Library celt0 found: NO
+||Library chromaprint found: NO
+||Has header "time.h" : YES
+||Checking for function "clock_gettime" : YES
+||Message: Skipping cuda_sdk because of license
+||Library crystalhd found: NO
+||Message: Skipping frei0r because of license
+||Library gme found: NO
+||Library stdc++ found: YES
+||Library gcrypt found: NO
+||Message: Skipping gmp because of license
+||Has header "ladspa.h" : NO (cached)
+||Has header "dlfcn.h" : YES (cached)
+||Message: Skipping libcdio because of license
+||Message: Skipping libcdio because of license
+||Library codec2 found: NO
+||Checking for function "dlopen" : NO
+||Checking for function "dlsym" : NO
+||Library dl found: YES
+||Checking for function "dlopen" with dependency -ldl: YES
+||Checking for function "dlsym" with dependency -ldl: YES
+||Message: Skipping libfdk_aac because of license
+||Library flite_cmu_time_awb found: NO
+||Library flite_cmu_us_awb found: NO
+||Library flite_cmu_us_kal found: NO
+||Library flite_cmu_us_kal16 found: NO
+||Library flite_cmu_us_rms found: NO
+||Library flite_cmu_us_slt found: NO
+||Library flite_usenglish found: NO
+||Library flite_cmulex found: NO
+||Library flite found: NO
+||Library gsm found: NO
+||Library gsm found: NO
+||Library raw1394 found: YES
+||Library avc1394 found: NO
+||Library rom1394 found: NO
+||Library iec61883 found: NO
+||Library lbc found: NO
+||Library m found: YES
+||Has header "math.h" with dependency -lm: YES
+||Checking for function "sin" with dependency -lm: YES
+||Message: Skipping libnpp because of license
+||Message: Skipping libnpp because of license
+||Message: Skipping libopencore_amrnb because of license
+||Message: Skipping libopencore_amrwb because of license
+||Library opencv_core found: YES
+||Library opencv_imgproc found: YES
+||Checking for function "cvCreateImageHeader" with dependencies -lopencv_core, -lopencv_imgproc: NO
+||Message: Skipping libsmbclient because of license
+||Library snappy found: NO
+||Library stdc++ found: YES
+||Library soxr found: NO
+||Library theoraenc found: YES
+||Library theoradec found: YES
+||Library ogg found: YES
+||Has header "theora/theoraenc.h" with dependencies -ltheoraenc, -ltheoradec, -logg: YES
+||Checking for function "th_info_init" with dependencies -ltheoraenc, -ltheoradec, -logg: YES
+||Library twolame found: NO
+||Message: Skipping libvo_amrwbenc because of license
+||Library vpx found: NO
+||Library vpx found: NO
+||Library vpx found: NO
+||Library vpx found: NO
+||Library wavpack found: NO
+||Message: Skipping libxvid because of license
+||Has header "linux/fb.h" : YES (cached)
+||Library lzma found: YES
+||Has header "lzma.h" with dependency -llzma: YES
+||Checking for function "lzma_version_number" with dependency -llzma: YES
+||Library mediandk found: NO
+||Library mmal_core found: NO
+||Library mmal_util found: NO
+||Library mmal_vc_client found: NO
+||Library bcm_host found: NO
+||Library ole32 found: NO
+||Has header "OMX_Core.h" : NO
+||Library openal found: NO
+||Library OpenAL32 found: NO
+||Library OpenCL found: NO
+||Library GL found: YES
+||Has header "GL/glx.h" with dependency -lGL: YES
+||Checking for function "glXGetProcAddress" with dependency -lGL: YES
+||Message: Skipping openssl because of license
+||Message: Skipping openssl because of license
+||Message: Skipping openssl because of license
+||Library psapi found: NO
+||Library shell32 found: NO
+||Library sndio found: NO
+||Library user32 found: NO
+||Library vfw3 found: NO
+||Library va found: NO
+||Library z found: YES
+||Has header "zlib.h" with dependency -lz: YES
+||Checking for function "zlibVersion" with dependency -lz: YES
+||Library mp3lame found: NO
+||Library mysofa found: NO
+||Message: Skipping libx264 because of license
+||Message: Skipping libxavs because of license
+||Checking for function "getaddrinfo" : YES
+||Checking for function "inet_aton" : YES
+||Checking for function "memalign" : YES
+||Checking for function "access" : YES
+||Checking for function "fcntl" : YES
+||Checking for function "fork" : YES
+||Checking for function "gethrtime" : NO
+||Checking for function "getopt" : YES
+||Checking for function "getrusage" : YES
+||Checking for function "gettimeofday" : YES
+||Checking for function "isatty" : YES
+||Checking for function "mkstemp" : YES
+||Checking for function "mmap" : YES
+||Checking for function "mprotect" : YES
+||Checking for function "sched_getaffinity" : YES
+||Checking for function "setrlimit" : YES
+||Checking for function "strerror_r" : YES
+||Checking for function "sysconf" : YES
+||Checking for function "sysctl" : YES
+||Checking for function "usleep" : YES
+||Checking for function "pthread_join" with dependency threads: YES
+||Checking for function "pthread_create" with dependency threads: YES
+||Checking for function "pthread_cancel" with dependency threads: YES
+||Checking for function "__sync_val_compare_and_swap" : NO
+||Checking for function "gmtime_r" : YES
+||Checking for function "localtime_r" : YES
+||Checking for function "closesocket" : NO
+||Has header "malloc.h" : YES (cached)
+||Header <malloc.h> has symbol "_aligned_malloc" : NO
+||Has header "stdlib.h" : YES (cached)
+||Header <stdlib.h> has symbol "arc4random" : NO
+||Has header "conio.h" : NO
+||Has header "io.h" : NO
+||Has header "lzo/lzo1x.h" : NO
+||Has header "mach/mach_time.h" : NO
+||Header <stdlib.h> has symbol "getenv" : YES
+||Has header "sys/stat.h" : YES (cached)
+||Header <sys/stat.h> has symbol "lstat" : YES
+||Has header "windows.h" : NO (cached)
+||Header <windows.h> has symbol "GetProcessTimes" : NO
+||Header <windows.h> has symbol "GetSystemTimeAsFileTime" : NO
+||Header <windows.h> has symbol "LoadLibrary" : NO
+||Header <windows.h> has symbol "MapViewOfFile" : NO
+||Header <windows.h> has symbol "PeekNamedPipe" : NO
+||Header <windows.h> has symbol "SetConsoleTextAttribute" : NO
+||Header <windows.h> has symbol "SetConsoleCtrlHandler" : NO
+||Header <windows.h> has symbol "Sleep" : NO
+||Header <windows.h> has symbol "VirtualAlloc" : NO
+||Has header "glob.h" : YES
+||Header <glob.h> has symbol "glob" : YES
+||Library Xv found: NO
+||Library X11 found: YES
+||Library Xext found: YES
+||Library gdi32 found: NO
+||Library secur32 found: NO
+||Has header "atomic.h" : NO
+||Has header "mbarrier.h" : NO
+||Header <windows.h> has symbol "MemoryBarrier" : NO
+||Has header "stdint.h" : YES (cached)
+||Has header "x264.h" : YES
+||Header <stdint.h> has symbol "x264_csp_bgr" : NO
+||Header <stdlib.h> has symbol "posix_memalign" : YES
+||Has header "semaphore.h" with dependency threads: YES
+||Header <semaphore.h> has symbol "sem_timedwait" with dependency threads: YES
+||Has header "complex.h" : YES
+||Header <complex.h> has symbol "cabs" : YES
+||Header <complex.h> has symbol "cexp" : YES
+||Header <math.h> has symbol "atanf" with dependency -lm: YES
+||Header <math.h> has symbol "atan2f" with dependency -lm: YES
+||Header <math.h> has symbol "cbrt" with dependency -lm: YES
+||Header <math.h> has symbol "cbrtf" with dependency -lm: YES
+||Header <math.h> has symbol "copysign" with dependency -lm: YES
+||Header <math.h> has symbol "cosf" with dependency -lm: YES
+||Header <math.h> has symbol "erf" with dependency -lm: YES
+||Header <math.h> has symbol "exp2" with dependency -lm: YES
+||Header <math.h> has symbol "exp2f" with dependency -lm: YES
+||Header <math.h> has symbol "expf" with dependency -lm: YES
+||Header <math.h> has symbol "hypot" with dependency -lm: YES
+||Header <math.h> has symbol "isfinite" with dependency -lm: YES
+||Header <math.h> has symbol "isinf" with dependency -lm: YES
+||Header <math.h> has symbol "isnan" with dependency -lm: YES
+||Header <math.h> has symbol "ldexpf" with dependency -lm: YES
+||Header <math.h> has symbol "llrint" with dependency -lm: YES
+||Header <math.h> has symbol "llrintf" with dependency -lm: YES
+||Header <math.h> has symbol "log2" with dependency -lm: YES
+||Header <math.h> has symbol "log2f" with dependency -lm: YES
+||Header <math.h> has symbol "log10f" with dependency -lm: YES
+||Header <math.h> has symbol "lrint" with dependency -lm: YES
+||Header <math.h> has symbol "lrintf" with dependency -lm: YES
+||Header <math.h> has symbol "powf" with dependency -lm: YES
+||Header <math.h> has symbol "rint" with dependency -lm: YES
+||Header <math.h> has symbol "round" with dependency -lm: YES
+||Header <math.h> has symbol "roundf" with dependency -lm: YES
+||Header <math.h> has symbol "sinf" with dependency -lm: YES
+||Header <math.h> has symbol "trunc" with dependency -lm: YES
+||Header <math.h> has symbol "truncf" with dependency -lm: YES
+||Has header "dxva.h" : NO
+||Checking for type "DXVA_PicParams_VP9" : NO
+||Has header "d3d11.h" : NO
+||Checking for type "ID3D11VideoContext" : NO
+||Has header "d3d9.h" : NO
+||Has header "dxva2api.h" : NO
+||Has header "va/va.h" : NO
+||Has header "va/va_dec_hevc.h" : NO
+||Has header "va/va_dec_vp8.h" : NO
+||Has header "va/va_vpp.h" : NO
+||Checking for type "VAProcPipelineParameterBuffer" : NO
+||Has header "va/va_enc_h264.h" : NO
+||Has header "va/va_enc_hevc.h" : NO
+||Has header "va/va_enc_mpeg2.h" : NO
+||Checking for type "VAEncPictureParameterBufferMPEG2" : NO
+||Has header "va/va_enc_vp8.h" : NO
+||Has header "va/va_enc_vp9.h" : NO
+||Has header "vdpau/vdpau.h" : NO (cached)
+||Has header "dshow.h" : NO
+||Has header "netdb.h" : YES (cached)
+||Checking for type "struct addrinfo" : YES
+||Has header "netinet/in.h" : YES (cached)
+||Checking for type "struct group_source_req" : YES
+||Checking for type "struct ip_mreq_source" : YES
+||Checking for type "struct ipv6_mreq" : YES
+||Has header "poll.h" : YES (cached)
+||Checking for type "struct pollfd" : YES
+||Has header "netinet/sctp.h" : NO
+||Checking for type "struct sockaddr_in6" : YES
+||Has header "sys/types.h" : YES (cached)
+||Has header "sys/socket.h" : YES (cached)
+||Checking for type "struct sockaddr_storage" : YES
+||Checking for type "socklen_t" : YES
+||Has header "direct.h" : NO
+||Has header "dirent.h" : YES
+||Has header "dxgidebug.h" : NO
+||Has header "msa.h" : NO
+||Has header "net/udplite.h" : NO
+||Has header "sys/param.h" : YES (cached)
+||Has header "sys/resource.h" : YES (cached)
+||Has header "sys/select.h" : YES
+||Has header "sys/soundcard.h" : YES (cached)
+||Has header "sys/un.h" : YES
+||Has header "sys/videoio.h" : NO
+||Has header "termios.h" : YES
+||Has header "unistd.h" : YES (cached)
+||Has header "valgrind/valgrind.h" : NO (cached)
+||Has header "X11/extensions/XvMClib.h" : NO
+||Has header "asm/types.h" : YES
+||Has header "linux/videodev2.h" : YES (cached)
+||Checking if "v4l2_m2m" compiles: YES
+||Checking if "pragma_deprecated" compiles: YES
+||Checking if "const_nan" compiles: YES
+||Has header "arm_neon.h" : YES
+||Checking if "intrinsics_neon" compiles: NO
+||Has header "sys/time.h" : YES (cached)
+||Checking if "vc1_v4l2_m2m" compiles: YES
+||Checking if "mpeg1_v4l2_m2m" compiles: YES
+||Checking if "mpeg2_v4l2_m2m" compiles: YES
+||Checking if "mpeg4_v4l2_m2m" compiles: YES
+||Checking if "hevc_v4l2_m2m" compiles: YES
+||Checking if "h263_v4l2_m2m" compiles: YES
+||Checking if "h264_v4l2_m2m" compiles: YES
+||Checking if "vp8_v4l2_m2m" compiles: YES
+||Checking if "vp9_v4l2_m2m" compiles: YES
+||Has header "GL/glext.h" : YES (cached)
+||Program find_things_extern.py found: YES (/home/pi/gst-build/subprojects/FFmpeg/find_things_extern.py)
+||Program find_things.py found: YES (/home/pi/gst-build/subprojects/FFmpeg/find_things.py)
+||Configuring tmpconfig.h using configuration
+||Configuring components.h using configuration
+||Program depresolver.py found: YES (/usr/bin/python3 /home/pi/gst-build/subprojects/FFmpeg/depresolver.py)
+||Configuring version.h using configuration
+||Configuring avconfig.h using configuration
+||Configuring libavutil.ver using configuration
+||Program version.py found: YES (/usr/bin/python3 /home/pi/gst-build/subprojects/FFmpeg/libavutil/version.py)
+||Configuring version.h using configuration
+||Configuring libpostproc.ver using configuration
+||Configuring version.h using configuration
+||Configuring libswresample.ver using configuration
+||Configuring version.h using configuration
+||Configuring libswscale.ver using configuration
+||Configuring version.h using configuration
+||Configuring libavcodec.ver using configuration
+||Configuring version.h using configuration
+||Configuring libavformat.ver using configuration
+||Configuring version.h using configuration
+||Configuring libavfilter.ver using configuration
+||Configuring version.h using configuration
+||Configuring libavdevice.ver using configuration
+||Configuring version.h using configuration
+||Configuring libavresample.ver using configuration
+||Program print_things.py found: YES (/home/pi/gst-build/subprojects/FFmpeg/print_things.py)
+||Has header "stdatomic.h" : YES (cached)
+||subprojects/FFmpeg/meson.build:2013: WARNING: Consider using the built-in option for language standard version instead of using "-std=c99".
+||Compiler for C supports link arguments -Wl,--version-script,/home/pi/gst-build/build/subprojects/FFmpeg/libavutil/libavutil.ver: YES
+||Compiler for C supports link arguments -Wl,--version-script,/home/pi/gst-build/build/subprojects/FFmpeg/libpostproc/libpostproc.ver: YES
+||Compiler for C supports link arguments -Wl,--version-script,/home/pi/gst-build/build/subprojects/FFmpeg/libswresample/libswresample.ver: YES
+||Compiler for C supports link arguments -Wl,--version-script,/home/pi/gst-build/build/subprojects/FFmpeg/libswscale/libswscale.ver: YES
+||Compiler for C supports link arguments -Wl,--version-script,/home/pi/gst-build/build/subprojects/FFmpeg/libavcodec/libavcodec.ver: YES
+||Compiler for C supports link arguments -Wl,--version-script,/home/pi/gst-build/build/subprojects/FFmpeg/libavformat/libavformat.ver: YES
+||Compiler for C supports link arguments -Wl,--version-script,/home/pi/gst-build/build/subprojects/FFmpeg/libavresample/libavresample.ver: YES
+||WARNING: Project targeting '>= 0.50.0' but tried to use feature introduced in '0.54.0': native arg in add_languages.
+cc: error trying to exec 'cc1obj': execvp: Нет такого файла или каталога
+||Compiler for language objc for the host machine not found.
+||Objective-C compiler for the host machine: cc (gcc 8.3.0)
+||Objective-C linker for the host machine: cc ld.bfd 2.31.1
+||C++ compiler for the host machine: c++ (gcc 8.3.0 "c++ (Raspbian 8.3.0-6+rpi1) 8.3.0")
+||C++ linker for the host machine: c++ ld.bfd 2.31.1
+||Compiler for C supports link arguments -Wl,--version-script,/home/pi/gst-build/build/subprojects/FFmpeg/libavfilter/libavfilter.ver: YES
+||Objective-C compiler for the host machine: cc (gcc 8.3.0)
+||Objective-C linker for the host machine: cc ld.bfd 2.31.1
+||C++ compiler for the host machine: c++ (gcc 8.3.0 "c++ (Raspbian 8.3.0-6+rpi1) 8.3.0")
+||C++ linker for the host machine: c++ ld.bfd 2.31.1
+||C++ compiler for the host machine: c++ (gcc 8.3.0 "c++ (Raspbian 8.3.0-6+rpi1) 8.3.0")
+||C++ linker for the host machine: c++ ld.bfd 2.31.1
+||Compiler for C supports link arguments -Wl,--version-script,/home/pi/gst-build/build/subprojects/FFmpeg/libavdevice/libavdevice.ver: YES
+||Message: License: LGPL version 2.1 or later
+||Configuring config.h using configuration
+||Configuring config.asm using configuration
+||Build targets in project: 1141
+||WARNING: Project specifies a minimum meson_version '>= 0.50.0' but uses features which were added in newer versions:
+|| * 0.53.0: {'Fallback without variable name'}
+|| * 0.54.0: {'native arg in add_languages'}
+||Subproject FFmpeg finished.
+|
+|Dependency libavfilter from subproject subprojects/FFmpeg found: YES 7.85.100
+|Dependency libavformat from subproject subprojects/FFmpeg found: YES 58.45.100
+|Dependency libavcodec from subproject subprojects/FFmpeg found: YES 58.91.100
+|Dependency libavutil from subproject subprojects/FFmpeg found: YES 56.51.100
+|Has header "unistd.h" : YES (cached)
+|Dependency gstreamer-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-base-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-check-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-video-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-audio-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-pbutils-1.0 found: YES 1.19.0.1 (cached)
+|Library m found: YES
+|Compiler for C supports arguments -fvisibility=hidden: YES (cached)
+|Compiler for C supports link arguments -Wl,--exclude-libs=ALL: YES
+|Compiler for C supports arguments -fno-strict-aliasing: YES (cached)
+|Message: GStreamer debug system is enabled
+|Compiler for C supports arguments -Wmissing-declarations: YES (cached)
+|Compiler for C supports arguments -Wmissing-prototypes: YES (cached)
+|Compiler for C supports arguments -Wold-style-definition: YES (cached)
+|Compiler for C supports arguments -Wredundant-decls: YES (cached)
+|Compiler for C supports arguments -Wundef: YES (cached)
+|Compiler for C supports arguments -Wwrite-strings: YES (cached)
+|Compiler for C supports arguments -Wformat: YES (cached)
+|Compiler for C supports arguments -Wformat-nonliteral: YES (cached)
+|Compiler for C supports arguments -Wformat-security: YES (cached)
+|Compiler for C supports arguments -Winit-self: YES (cached)
+|Compiler for C supports arguments -Wmissing-include-dirs: YES (cached)
+|Compiler for C supports arguments -Waddress: YES (cached)
+|Compiler for C supports arguments -Wno-multichar: YES (cached)
+|Compiler for C supports arguments -Waggregate-return: YES (cached)
+|Compiler for C supports arguments -Wdeclaration-after-statement: YES (cached)
+|Compiler for C supports arguments -Wvla: YES (cached)
+|Compiler for C supports arguments -Wpointer-arith: YES (cached)
+|Program hotdoc found: NO
+|Message: Hotdoc not found, not building the documentation
+|Configuring config.h using configuration
+|Program python3 found: YES (/usr/bin/python3)
+|Build targets in project: 1149
+|Subproject gst-libav finished.
+
+Message: Created symlink to gst-libav
+Клонирование в «gst-rtsp-server»…
+remote: Enumerating objects: 42, done.
+remote: Counting objects: 100% (42/42), done.
+remote: Compressing objects: 100% (42/42), done.
+remote: Total 11602 (delta 26), reused 0 (delta 0), pack-reused 11560
+Получение объектов: 100% (11602/11602), 2.49 MiB | 1.38 MiB/s, готово.
+Определение изменений: 100% (7958/7958), готово.
+Уже на «master»
+Ваша ветка обновлена в соответствии с «origin/master».
+
+|Executing subproject gst-rtsp-server method meson
+|
+|Project name: gst-rtsp-server
+|Project version: 1.19.0.1
+|C compiler for the host machine: cc (gcc 8.3.0 "cc (Raspbian 8.3.0-6+rpi1) 8.3.0")
+|C linker for the host machine: cc ld.bfd 2.31.1
+|Compiler for C supports link arguments -Wl,-Bsymbolic-functions: YES (cached)
+|Compiler for C supports arguments -fvisibility=hidden: YES (cached)
+|Compiler for C supports arguments -fno-strict-aliasing: YES (cached)
+|Message: Disabling deprecated GLib API
+|Compiler for C supports arguments -Wmissing-declarations: YES (cached)
+|Compiler for C supports arguments -Wmissing-prototypes: YES (cached)
+|Compiler for C supports arguments -Wredundant-decls: YES (cached)
+|Compiler for C supports arguments -Wundef: YES (cached)
+|Compiler for C supports arguments -Wwrite-strings: YES (cached)
+|Compiler for C supports arguments -Wformat: YES (cached)
+|Compiler for C supports arguments -Wformat-nonliteral: YES (cached)
+|Compiler for C supports arguments -Wformat-security: YES (cached)
+|Compiler for C supports arguments -Wold-style-definition: YES (cached)
+|Compiler for C supports arguments -Waggregate-return: YES (cached)
+|Compiler for C supports arguments -Winit-self: YES (cached)
+|Compiler for C supports arguments -Wmissing-include-dirs: YES (cached)
+|Compiler for C supports arguments -Waddress: YES (cached)
+|Compiler for C supports arguments -Wno-multichar: YES (cached)
+|Compiler for C supports arguments -Wdeclaration-after-statement: YES (cached)
+|Compiler for C supports arguments -Wvla: YES (cached)
+|Compiler for C supports arguments -Wpointer-arith: YES (cached)
+|Dependency glib-2.0 found: YES 2.58.3 (cached)
+|Dependency gstreamer-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-rtsp-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-rtp-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-sdp-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-app-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-net-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-check-1.0 found: YES 1.19.0.1 (overridden)
+|Message: GStreamer debug system is enabled
+|Program g-ir-scanner found: NO
+|Run-time dependency libcgroup found: NO (tried pkgconfig and cmake)
+|Program hotdoc found: NO
+|Message: Hotdoc not found, not building the documentation
+|Configuring config.h using configuration
+|Program python3 found: YES (/usr/bin/python3)
+|Build targets in project: 1189
+|Subproject gst-rtsp-server finished.
+
+Message: Created symlink to gst-rtsp-server
+Клонирование в «gst-devtools»…
+remote: Enumerating objects: 19303, done.
+remote: Total 19303 (delta 0), reused 0 (delta 0), pack-reused 19303
+Получение объектов: 100% (19303/19303), 3.39 MiB | 1.24 MiB/s, готово.
+Определение изменений: 100% (14590/14590), готово.
+Уже на «master»
+Ваша ветка обновлена в соответствии с «origin/master».
+
+|Executing subproject gst-devtools method meson
+|
+|Project name: gst-devtools
+|Project version: 1.19.0.1
+|C compiler for the host machine: cc (gcc 8.3.0 "cc (Raspbian 8.3.0-6+rpi1) 8.3.0")
+|C linker for the host machine: cc ld.bfd 2.31.1
+|Compiler for C supports arguments -fvisibility=hidden: YES (cached)
+|Compiler for C supports arguments -fno-strict-aliasing: YES (cached)
+|Dependency gstreamer-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-base-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-pbutils-1.0 found: YES 1.19.0.1 (cached)
+|Dependency gstreamer-video-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-controller-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-check-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency glib-2.0 found: YES 2.58.3 (cached)
+|Dependency gmodule-2.0 found: YES 2.58.3 (cached)
+|Dependency gio-2.0 found: YES 2.58.3 (cached)
+|Dependency gtk+-3.0 found: YES 3.24.5 (cached)
+|Library m found: YES
+|Library dl found: YES
+|Run-time dependency json-glib-1.0 found: YES 1.4.4
+|Program g-ir-scanner found: NO
+|Compiler for C supports arguments -Wmissing-declarations: YES (cached)
+|Compiler for C supports arguments -Wmissing-prototypes: YES (cached)
+|Compiler for C supports arguments -Wredundant-decls: YES (cached)
+|Compiler for C supports arguments -Wundef: YES (cached)
+|Compiler for C supports arguments -Wwrite-strings: YES (cached)
+|Compiler for C supports arguments -Wformat: YES (cached)
+|Compiler for C supports arguments -Wformat-security: YES (cached)
+|Compiler for C supports arguments -Winit-self: YES (cached)
+|Compiler for C supports arguments -Wmissing-include-dirs: YES (cached)
+|Compiler for C supports arguments -Waddress: YES (cached)
+|Compiler for C supports arguments -Wno-multichar: YES (cached)
+|Compiler for C supports arguments -Wdeclaration-after-statement: YES (cached)
+|Compiler for C supports arguments -Wvla: YES (cached)
+|Compiler for C supports arguments -Wpointer-arith: YES (cached)
+|Program python3 found: YES (/usr/bin/python3)
+|Has header "unistd.h" : YES (cached)
+|Configuring config.h using configuration
+|Program glib-mkenums found: YES (/usr/bin/glib-mkenums)
+|Run-time dependency cairo-png found: YES 1.16.0
+|Configuring config.py using configuration
+|Dependency gstreamer-transcoder-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-rtsp-server-1.0 found: YES 1.19.0.1 (overridden)
+|Configuring gst-validate-launcher using configuration
+|Program /home/pi/gst-build/build/subprojects/gst-devtools/validate/tools/gst-validate-launcher found: YES (/home/pi/gst-build/build/subprojects/gst-devtools/validate/tools/gst-validate-launcher)
+|Program hotdoc found: NO
+|Message: Hotdoc not found, not building the documentation
+|Build targets in project: 1211
+|Subproject gst-devtools finished.
+
+Message: Created symlink to gst-devtools
+Клонирование в «gst-integration-testsuites»…
+remote: Enumerating objects: 44, done.
+remote: Counting objects: 100% (44/44), done.
+remote: Compressing objects: 100% (41/41), done.
+remote: Total 11415 (delta 15), reused 0 (delta 0), pack-reused 11371
+Получение объектов: 100% (11415/11415), 3.31 MiB | 610.00 KiB/s, готово.
+Определение изменений: 100% (5186/5186), готово.
+Уже на «master»
+Ваша ветка обновлена в соответствии с «origin/master».
+
+|Executing subproject gst-integration-testsuites method meson
+|
+|Project name: gst-integration-testsuites
+|Project version: 1.19.0.1
+|Build targets in project: 1211
+|Subproject gst-integration-testsuites finished.
+
+Message: Created symlink to gst-integration-testsuites
+Клонирование в «gst-editing-services»…
+remote: Enumerating objects: 86, done.
+remote: Counting objects: 100% (86/86), done.
+remote: Compressing objects: 100% (85/85), done.
+remote: Total 23427 (delta 53), reused 0 (delta 0), pack-reused 23341
+Получение объектов: 100% (23427/23427), 5.26 MiB | 1.24 MiB/s, готово.
+Определение изменений: 100% (18005/18005), готово.
+Уже на «master»
+Ваша ветка обновлена в соответствии с «origin/master».
+
+|Executing subproject gst-editing-services method meson
+|
+|Project name: gst-editing-services
+|Project version: 1.19.0.1
+|C compiler for the host machine: cc (gcc 8.3.0 "cc (Raspbian 8.3.0-6+rpi1) 8.3.0")
+|C linker for the host machine: cc ld.bfd 2.31.1
+|Library m found: YES
+|Compiler for C supports link arguments -Wl,-Bsymbolic-functions: YES (cached)
+|Compiler for C supports arguments -fvisibility=hidden: YES (cached)
+|Compiler for C supports arguments -fno-strict-aliasing: YES (cached)
+|Dependency gstreamer-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-pbutils-1.0 found: YES 1.19.0.1 (cached)
+|Dependency gstreamer-video-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-audio-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-base-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-check-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-controller-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gst-validate-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gio-2.0 found: YES 2.58.3 (cached)
+|Dependency libxml-2.0 found: YES 2.9.4 (cached)
+|Program g-ir-scanner found: NO
+|Compiler for C supports arguments -Wmissing-declarations: YES (cached)
+|Compiler for C supports arguments -Wmissing-prototypes: YES (cached)
+|Compiler for C supports arguments -Wredundant-decls: YES (cached)
+|Compiler for C supports arguments -Wundef: YES (cached)
+|Compiler for C supports arguments -Wwrite-strings: YES (cached)
+|Compiler for C supports arguments -Wformat: YES (cached)
+|Compiler for C supports arguments -Wformat-security: YES (cached)
+|Compiler for C supports arguments -Winit-self: YES (cached)
+|Compiler for C supports arguments -Wmissing-include-dirs: YES (cached)
+|Compiler for C supports arguments -Waddress: YES (cached)
+|Compiler for C supports arguments -Wno-multichar: YES (cached)
+|Compiler for C supports arguments -Wdeclaration-after-statement: YES (cached)
+|Compiler for C supports arguments -Wvla: YES (cached)
+|Compiler for C supports arguments -Wpointer-arith: YES (cached)
+|Program python3 found: YES (/usr/bin/python3)
+|Configuring ges-version.h using configuration
+|Program flex found: YES (/usr/bin/flex)
+|Dependency bash-completion found: YES 2.8 (cached)
+|Program hotdoc found: NO
+|Message: Hotdoc not found, not building the documentation
+|Message: pygobject overrides directory /usr/local/lib/python3.7/site-packages/gi/overrides
+|Configuring config.h using configuration
+|Build targets in project: 1255
+|Subproject gst-editing-services finished.
+
+Message: Created symlink to gst-editing-services
+Subproject gstreamer-vaapi : skipped: feature vaapi disabled
+Subproject gst-omx : skipped: feature omx disabled
+Subproject gstreamer-sharp : skipped: feature sharp disabled
+Клонирование в «pygobject»…
+remote: Enumerating objects: 377, done.
+remote: Counting objects: 100% (377/377), done.
+remote: Compressing objects: 100% (225/225), done.
+remote: Total 26714 (delta 241), reused 268 (delta 152), pack-reused 26337
+Получение объектов: 100% (26714/26714), 5.65 MiB | 2.17 MiB/s, готово.
+Определение изменений: 100% (20391/20391), готово.
+Ветка «pygobject-3-38» отслеживает внешнюю ветку «pygobject-3-38» из «origin».
+Переключено на новую ветку «pygobject-3-38»
+
+|Executing subproject pygobject method meson
+|
+|Project name: pygobject
+|Project version: 3.38.1
+|C compiler for the host machine: cc (gcc 8.3.0 "cc (Raspbian 8.3.0-6+rpi1) 8.3.0")
+|C linker for the host machine: cc ld.bfd 2.31.1
+|Program python3 found: YES (/usr/bin/python3)
+|Dependency python found: YES (pkgconfig)
+|Run-time dependency gobject-introspection-1.0 found: NO (tried pkgconfig and cmake)
+|Looking for a fallback subproject for the dependency gobject-introspection-1.0
+|Using subprojects/pygobject/subprojects/gobject-introspection.wrap
+Клонирование в «gobject-introspection»…
+remote: Enumerating objects: 381, done.
+remote: Counting objects: 100% (381/381), done.
+remote: Compressing objects: 100% (223/223), done.
+remote: Total 36557 (delta 227), reused 275 (delta 158), pack-reused 36176
+Получение объектов: 100% (36557/36557), 10.43 MiB | 2.38 MiB/s, готово.
+Определение изменений: 100% (30226/30226), готово.
+Уже на «master»
+Ваша ветка обновлена в соответствии с «origin/master».
+|
+||Executing subproject gobject-introspection method meson
+||
+||Project name: gobject-introspection
+||Project version: 1.67.0
+||C compiler for the host machine: cc (gcc 8.3.0 "cc (Raspbian 8.3.0-6+rpi1) 8.3.0")
+||C linker for the host machine: cc ld.bfd 2.31.1
+||Program python3 found: YES (/usr/bin/python3)
+||Compiler for C supports arguments -Wall: YES (cached)
+||Compiler for C supports arguments -Warray-bounds: YES
+||Compiler for C supports arguments -Wcast-align: YES (cached)
+||Compiler for C supports arguments -Wdeclaration-after-statement: YES (cached)
+||Compiler for C supports arguments -Wduplicated-branches: YES
+||Compiler for C supports arguments -Wextra: YES (cached)
+||Compiler for C supports arguments -Wformat=2: YES (cached)
+||Compiler for C supports arguments -Wformat-nonliteral: YES (cached)
+||Compiler for C supports arguments -Wformat-security: YES (cached)
+||Compiler for C supports arguments -Wimplicit-function-declaration: YES
+||Compiler for C supports arguments -Winit-self: YES (cached)
+||Compiler for C supports arguments -Wjump-misses-init: YES
+||Compiler for C supports arguments -Wlogical-op: YES (cached)
+||Compiler for C supports arguments -Wmissing-declarations: YES (cached)
+||Compiler for C supports arguments -Wmissing-format-attribute: YES (cached)
+||Compiler for C supports arguments -Wmissing-include-dirs: YES (cached)
+||Compiler for C supports arguments -Wmissing-noreturn: YES
+||Compiler for C supports arguments -Wmissing-prototypes: YES (cached)
+||Compiler for C supports arguments -Wnested-externs: YES (cached)
+||Compiler for C supports arguments -Wnull-dereference: YES
+||Compiler for C supports arguments -Wold-style-definition: YES (cached)
+||Compiler for C supports arguments -Wpacked: YES (cached)
+||Compiler for C supports arguments -Wpointer-arith: YES (cached)
+||Compiler for C supports arguments -Wrestrict: YES
+||Compiler for C supports arguments -Wreturn-type: YES
+||Compiler for C supports arguments -Wshadow: YES (cached)
+||Compiler for C supports arguments -Wsign-compare: YES (cached)
+||Compiler for C supports arguments -Wstrict-aliasing: YES (cached)
+||Compiler for C supports arguments -Wstrict-prototypes: YES (cached)
+||Compiler for C supports arguments -Wundef: YES (cached)
+||Compiler for C supports arguments -Wunused-but-set-variable: YES
+||Compiler for C supports arguments -Wwrite-strings: YES (cached)
+||Compiler for C supports arguments -fno-strict-aliasing: YES (cached)
+||subprojects/gobject-introspection/meson.build:76: WARNING: Consider using the built-in warning_level option instead of using "-Wall".
+||subprojects/gobject-introspection/meson.build:76: WARNING: Consider using the built-in warning_level option instead of using "-Wextra".
+||Checking for size of "char" : 1
+||Checking for size of "short" : 2
+||Checking for size of "int" : 4
+||Checking for size of "long" : 4
+||Configuring config.h using configuration
+||Dependency glib-2.0 found: YES 2.58.3 (cached)
+||Dependency gobject-2.0 found: YES 2.58.3 (cached)
+||Dependency gio-2.0 found: YES 2.58.3 (cached)
+||Dependency gmodule-2.0 found: YES 2.58.3 (cached)
+||Dependency gio-unix-2.0 found: YES 2.58.3 (cached)
+||Run-time dependency libffi found: YES 3.2.1
+||Dependency python found: YES (pkgconfig)
+||Check usable header "Python.h" with dependency python: YES
+||Dependency cairo found: YES 1.16.0 (cached)
+||Dependency cairo-gobject found: YES 1.16.0 (cached)
+||subprojects/gobject-introspection/meson.build:210: WARNING: Not building with doctool support, not all tests will be run
+||Library m found: YES
+||Compiler for C supports arguments -Wno-implicit-fallthrough: YES
+||Compiler for C supports arguments -Wno-old-style-definition: YES (cached)
+||Compiler for C supports arguments -Wno-suggest-attribute=noreturn: YES
+||Compiler for C supports arguments -Wno-type-limits: YES
+||Compiler for C supports arguments -Wno-undef: YES (cached)
+||Compiler for C supports arguments -Wno-unused-parameter: YES (cached)
+||Compiler for C supports arguments -Wno-cast-align: YES
+||Compiler for C supports arguments -Wno-unused-function: YES (cached)
+||Compiler for C supports arguments -Wno-return-type: YES
+||Compiler for C supports arguments -Wno-old-style-definition: YES (cached)
+||Compiler for C supports arguments -Wno-type-limits: YES (cached)
+||Compiler for C supports arguments -Wno-old-style-definition: YES (cached)
+||Compiler for C supports arguments -Wno-cast-align: YES (cached)
+||Compiler for C supports arguments -Wno-unused-parameter: YES (cached)
+||Compiler for C supports arguments -Wno-duplicated-branches: YES
+||Compiler for C supports arguments -Wno-cast-align: YES (cached)
+||Configuring giversion.h using configuration
+||Compiler for C supports arguments -Wno-unused-parameter: YES (cached)
+||Compiler for C supports arguments -Wno-duplicated-branches: YES (cached)
+||Compiler for C supports arguments -Wno-type-limits: YES (cached)
+||Compiler for C supports arguments -Wno-cast-align: YES (cached)
+||Compiler for C supports arguments -Wno-missing-field-initializers: YES
+||Configuring g-ir-scanner using configuration
+||Program g-ir-scanner found: YES (/home/pi/gst-build/build/subprojects/gobject-introspection/tools/g-ir-scanner)
+||Configuring g-ir-annotation-tool using configuration
+||Program g-ir-annotation-tool found: YES (/home/pi/gst-build/build/subprojects/gobject-introspection/tools/g-ir-annotation-tool)
+||Compiler for C supports arguments -Wno-missing-field-initializers: YES (cached)
+||Configuring _version.py using configuration
+||Configuring __init__.py using configuration
+||Configuring annotationmain.py using configuration
+||Configuring annotationparser.py using configuration
+||Configuring ast.py using configuration
+||Configuring cachestore.py using configuration
+||Configuring ccompiler.py using configuration
+||Configuring codegen.py using configuration
+||Configuring docmain.py using configuration
+||Configuring docwriter.py using configuration
+||Configuring dumper.py using configuration
+||Configuring introspectablepass.py using configuration
+||Configuring girparser.py using configuration
+||Configuring girwriter.py using configuration
+||Configuring gdumpparser.py using configuration
+||Configuring maintransformer.py using configuration
+||Configuring mdextensions.py using configuration
+||Configuring message.py using configuration
+||Configuring msvccompiler.py using configuration
+||Configuring pkgconfig.py using configuration
+||Configuring shlibs.py using configuration
+||Configuring scannermain.py using configuration
+||Configuring sectionparser.py using configuration
+||Configuring sourcescanner.py using configuration
+||Configuring testcodegen.py using configuration
+||Configuring transformer.py using configuration
+||Configuring utils.py using configuration
+||Configuring xmlwriter.py using configuration
+||subprojects/gobject-introspection/giscanner/meson.build:59: WARNING: Custom target input 'doctemplates' can't be converted to File object(s).
+||This will become a hard error in the future.
+||Program flex found: YES (/usr/bin/flex)
+||Program bison found: YES (/usr/bin/bison)
+||Has header "unistd.h" : YES (cached)
+||Compiler for C supports arguments -Wno-missing-field-initializers: YES (cached)
+||Compiler for C supports arguments -Wno-unused-parameter: YES (cached)
+||Dependency python found: YES (pkgconfig)
+||Configuring cairo-1.0.gir using configuration
+||Program g-ir-scanner found: YES (overridden)
+||Compiler for C supports arguments -Wno-unused-parameter: YES (cached)
+||Compiler for C supports arguments -Wno-unused-parameter: YES (cached)
+||Compiler for C supports arguments -Wno-unused-parameter: YES (cached)
+||Compiler for C supports arguments -Wno-unused-parameter: YES (cached)
+||Compiler for C supports arguments -Wno-old-style-definition: YES (cached)
+||Compiler for C supports arguments -Wno-missing-field-initializers: YES (cached)
+||Compiler for C supports arguments -Wno-unused-parameter: YES (cached)
+||Build targets in project: 1338
+||Subproject gobject-introspection finished.
+|
+|Dependency gobject-introspection-1.0 found: YES 1.67.0 (overridden)
+|Dependency glib-2.0 found: YES 2.58.3 (cached)
+|Dependency gobject-2.0 found: YES 2.58.3 (cached)
+|Dependency gio-2.0 found: YES 2.58.3 (cached)
+|Dependency gmodule-2.0 found: YES 2.58.3 (cached)
+|Dependency libffi found: YES 3.2.1 (cached)
+|Dependency cairo found: YES 1.16.0 (cached)
+|Dependency cairo-gobject found: YES 1.16.0 (cached)
+|WARNING: Project targeting '>= 0.46.0' but tried to use feature introduced in '0.47.0': User option "feature".
+|Run-time dependency py3cairo found: NO (tried pkgconfig and cmake)
+|Looking for a fallback subproject for the dependency py3cairo
+Клонирование в «pycairo»…
+remote: Enumerating objects: 3749, done.
+remote: Total 3749 (delta 0), reused 0 (delta 0), pack-reused 3749
+Получение объектов: 100% (3749/3749), 1.39 MiB | 1.13 MiB/s, готово.
+Определение изменений: 100% (2702/2702), готово.
+Примечание: переход на «v1.19.1».
+
+Вы сейчас в состоянии «отделённого HEAD». Вы можете осмотреться, сделать
+экспериментальные изменения и закоммитить их, также вы можете отменить
+изменения любых коммитов в этом состоянии не затрагивая любые ветки и
+не переходя на них.
+
+Если вы хотите создать новую ветку и сохранить свои коммиты, то вы
+можете сделать это (сейчас или позже) вызвав команду checkout снова,
+но с параметром -b. Например:
+
+  git checkout -b <имя-новой-ветки>
+
+HEAD сейчас на 43e9c4a release
+|
+||Executing subproject pycairo method meson
+||
+||Project name: pycairo
+||Project version: 1.19.1
+||C compiler for the host machine: cc (gcc 8.3.0 "cc (Raspbian 8.3.0-6+rpi1) 8.3.0")
+||C linker for the host machine: cc ld.bfd 2.31.1
+||Program python3 found: YES (/usr/bin/python3)
+||Compiler for C supports arguments -Wall: YES (cached)
+||Compiler for C supports arguments -Warray-bounds: YES (cached)
+||Compiler for C supports arguments -Wcast-align: YES (cached)
+||Compiler for C supports arguments -Wconversion: YES
+||Compiler for C supports arguments -Wextra: YES (cached)
+||Compiler for C supports arguments -Wformat=2: YES (cached)
+||Compiler for C supports arguments -Wformat-nonliteral: YES (cached)
+||Compiler for C supports arguments -Wformat-security: YES (cached)
+||Compiler for C supports arguments -Wimplicit-function-declaration: YES (cached)
+||Compiler for C supports arguments -Winit-self: YES (cached)
+||Compiler for C supports arguments -Winline: YES (cached)
+||Compiler for C supports arguments -Wmissing-format-attribute: YES (cached)
+||Compiler for C supports arguments -Wmissing-noreturn: YES (cached)
+||Compiler for C supports arguments -Wnested-externs: YES (cached)
+||Compiler for C supports arguments -Wold-style-definition: YES (cached)
+||Compiler for C supports arguments -Wpacked: YES (cached)
+||Compiler for C supports arguments -Wpointer-arith: YES (cached)
+||Compiler for C supports arguments -Wreturn-type: YES (cached)
+||Compiler for C supports arguments -Wshadow: YES (cached)
+||Compiler for C supports arguments -Wsign-compare: YES (cached)
+||Compiler for C supports arguments -Wstrict-aliasing: YES (cached)
+||Compiler for C supports arguments -Wundef: YES (cached)
+||Compiler for C supports arguments -Wunused-but-set-variable: YES (cached)
+||Compiler for C supports arguments -Wswitch-default: YES
+||Compiler for C supports arguments -Wno-missing-field-initializers: YES (cached)
+||Compiler for C supports arguments -Wno-unused-parameter: YES (cached)
+||Compiler for C supports arguments -fno-strict-aliasing: YES (cached)
+||Compiler for C supports arguments -fvisibility=hidden: YES (cached)
+||Configuring pycairo-1.19.1.egg-info using configuration
+||Dependency python found: YES (pkgconfig)
+||Dependency cairo found: YES 1.16.0 (cached)
+||WARNING: Project targeting '>= 0.47.0' but tried to use feature introduced in '0.53.0': Fallback without variable name.
+||Build targets in project: 1340
+||WARNING: Project specifies a minimum meson_version '>= 0.47.0' but uses features which were added in newer versions:
+|| * 0.53.0: {'Fallback without variable name'}
+||Subproject pycairo finished.
+|
+|Dependency py3cairo from subproject subprojects/pycairo found: YES 1.19.1
+|Compiler for C supports arguments -Wall: YES (cached)
+|Compiler for C supports arguments -Warray-bounds: YES (cached)
+|Compiler for C supports arguments -Wcast-align: YES (cached)
+|Compiler for C supports arguments -Wduplicated-branches: YES (cached)
+|Compiler for C supports arguments -Wextra: YES (cached)
+|Compiler for C supports arguments -Wformat=2: YES (cached)
+|Compiler for C supports arguments -Wformat-nonliteral: YES (cached)
+|Compiler for C supports arguments -Wformat-security: YES (cached)
+|Compiler for C supports arguments -Wimplicit-function-declaration: YES (cached)
+|Compiler for C supports arguments -Winit-self: YES (cached)
+|Compiler for C supports arguments -Wjump-misses-init: YES (cached)
+|Compiler for C supports arguments -Wlogical-op: YES (cached)
+|Compiler for C supports arguments -Wmissing-declarations: YES (cached)
+|Compiler for C supports arguments -Wmissing-format-attribute: YES (cached)
+|Compiler for C supports arguments -Wmissing-include-dirs: YES (cached)
+|Compiler for C supports arguments -Wmissing-noreturn: YES (cached)
+|Compiler for C supports arguments -Wmissing-prototypes: YES (cached)
+|Compiler for C supports arguments -Wnested-externs: YES (cached)
+|Compiler for C supports arguments -Wnull-dereference: YES (cached)
+|Compiler for C supports arguments -Wold-style-definition: YES (cached)
+|Compiler for C supports arguments -Wpacked: YES (cached)
+|Compiler for C supports arguments -Wpointer-arith: YES (cached)
+|Compiler for C supports arguments -Wrestrict: YES (cached)
+|Compiler for C supports arguments -Wreturn-type: YES (cached)
+|Compiler for C supports arguments -Wshadow: YES (cached)
+|Compiler for C supports arguments -Wsign-compare: YES (cached)
+|Compiler for C supports arguments -Wstrict-aliasing: YES (cached)
+|Compiler for C supports arguments -Wstrict-prototypes: YES (cached)
+|Compiler for C supports arguments -Wswitch-default: YES (cached)
+|Compiler for C supports arguments -Wundef: YES (cached)
+|Compiler for C supports arguments -Wunused-but-set-variable: YES (cached)
+|Compiler for C supports arguments -Wwrite-strings: YES (cached)
+|Compiler for C supports arguments -Wno-incompatible-pointer-types-discards-qualifiers: NO (cached)
+|Compiler for C supports arguments -Wno-missing-field-initializers: YES (cached)
+|Compiler for C supports arguments -Wno-unused-parameter: YES (cached)
+|Compiler for C supports arguments -Wno-discarded-qualifiers: YES (cached)
+|Compiler for C supports arguments -Wno-sign-conversion: YES
+|Compiler for C supports arguments -Wno-cast-function-type: YES
+|Compiler for C supports arguments -Wno-int-conversion: YES
+|Compiler for C supports arguments -fno-strict-aliasing: YES (cached)
+|Compiler for C supports arguments -fvisibility=hidden: YES (cached)
+|Configuring config.h using configuration
+|Configuring pygobject-3.0.pc using configuration
+|Configuring PyGObject-3.38.1.egg-info using configuration
+|Compiler for C supports arguments -fvisibility=hidden: YES (cached)
+|Found pkg-config: /usr/bin/pkg-config (0.29)
+|Found CMake: /usr/bin/cmake (3.13.4)
+|Build-time dependency gobject-introspection-1.0 found: NO (tried pkgconfig and cmake)
+|
+|subprojects/pygobject/tests/meson.build:52:6: Exception: Dependency "gobject-introspection-1.0" not found, tried pkgconfig and cmake
+
+Subproject subprojects/pygobject is buildable: NO (disabling)
+Клонирование в «gst-python»…
+remote: Enumerating objects: 9242, done.
+remote: Total 9242 (delta 0), reused 0 (delta 0), pack-reused 9242
+Получение объектов: 100% (9242/9242), 1.76 MiB | 1.62 MiB/s, готово.
+Определение изменений: 100% (6934/6934), готово.
+Уже на «master»
+Ваша ветка обновлена в соответствии с «origin/master».
+
+|Executing subproject gst-python method meson
+|
+|Project name: gst-python
+|Project version: 1.19.0.1
+|C compiler for the host machine: cc (gcc 8.3.0 "cc (Raspbian 8.3.0-6+rpi1) 8.3.0")
+|C linker for the host machine: cc ld.bfd 2.31.1
+|C++ compiler for the host machine: c++ (gcc 8.3.0 "c++ (Raspbian 8.3.0-6+rpi1) 8.3.0")
+|C++ linker for the host machine: c++ ld.bfd 2.31.1
+|Dependency gstreamer-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-base-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gmodule-2.0 found: YES 2.58.3 (cached)
+|Run-time dependency pygobject-3.0 found: NO (tried pkgconfig and cmake)
+|Looking for a fallback subproject for the dependency pygobject-3.0
+|
+|subprojects/gst-python/meson.build:23:0: Exception: Subproject "subprojects/pygobject" required but not found.
+
+Subproject subprojects/gst-python is buildable: NO (disabling)
+Клонирование в «gst-examples»…
+remote: Enumerating objects: 39, done.
+remote: Counting objects: 100% (39/39), done.
+remote: Compressing objects: 100% (19/19), done.
+remote: Total 3067 (delta 20), reused 39 (delta 20), pack-reused 3028
+Получение объектов: 100% (3067/3067), 1.07 MiB | 1.41 MiB/s, готово.
+Определение изменений: 100% (1304/1304), готово.
+Уже на «master»
+Ваша ветка обновлена в соответствии с «origin/master».
+
+|Executing subproject gst-examples method meson
+|
+|Project name: gst-examples
+|Project version: 1.19.0.1
+|C compiler for the host machine: cc (gcc 8.3.0 "cc (Raspbian 8.3.0-6+rpi1) 8.3.0")
+|C linker for the host machine: cc ld.bfd 2.31.1
+|Library m found: YES
+|Dependency glib-2.0 found: YES 2.58.3 (cached)
+|Dependency gio-2.0 found: YES 2.58.3 (cached)
+|Dependency gobject-2.0 found: YES 2.58.3 (cached)
+|Dependency gmodule-2.0 found: YES 2.58.3 (cached)
+|Dependency gstreamer-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-player-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-tag-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-webrtc-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gstreamer-webrtc-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency gtk+-3.0 found: YES 3.24.5 (cached)
+|Dependency x11 found: YES 1.6.7 (cached)
+|Program glib-compile-resources found: YES (/usr/bin/glib-compile-resources)
+|Dependency gstreamer-sdp-1.0 found: YES 1.19.0.1 (overridden)
+|Dependency libsoup-2.4 found: YES 2.64.2 (cached)
+|Dependency json-glib-1.0 found: YES 1.4.4 (cached)
+|Program openssl found: YES (/usr/bin/openssl)
+|Program generate_cert.sh found: YES (/home/pi/gst-build/subprojects/gst-examples/webrtc/signalling/generate_cert.sh)
+|Program configure_test_check.py found: YES (/usr/bin/python3 /home/pi/gst-build/subprojects/gst-examples/webrtc/check/configure_test_check.py)
+|Build targets in project: 1265
+|Subproject gst-examples finished.
+
+Message: Created symlink to gst-examples
+Subproject gst-plugins-rs : skipped: feature rs disabled
+Dependency glib-2.0 found: YES 2.58.3 (cached)
+Program hotdoc found: NO
+Message: Not building documentation as hotdoc was not found
+Configuring GstDocumentedSubprojects with command
+Program scripts/generate_plugins_path.py found: YES (/usr/bin/python3 /home/pi/gst-build/scripts/generate_plugins_path.py)
+Configuring GstPluginsPath.json with command
+Message: Building subprojects: gstreamer, gst-plugins-base, gst-plugins-good, libnice, gst-plugins-bad, gst-plugins-ugly, gst-libav, gst-rtsp-server, gst-devtools, gst-integration-testsuites, gst-editing-services, gst-examples
+Run-time dependency gstreamer-full-1.0 found: NO (tried pkgconfig and cmake)
+Program gst-env.py found: YES (/home/pi/gst-build/gst-env.py)
+Program git-update found: YES (/home/pi/gst-build/git-update)
+Build targets in project: 1271
+
+libdv 1.0.0
+
+    YUV format            : YUY2
+    assembly optimizations: NO
+
+gst-plugins-bad 1.19.0.1
+
+    Plugins: accurip, adpcmdec, adpcmenc, aiff, asfmux, audiobuffersplit,
+             audiofxbad, audiomixmatrix, audiolatency, audiovisualizers,
+             autoconvert, bayer, camerabin, coloreffects, debugutilsbad,
+             dvbsubenc, dvbsuboverlay, dvdspu, faceoverlay, festival,
+             fieldanalysis, freeverb, frei0r, gaudieffects, gdp,
+             geometrictransform, id3tag, inter, interlace, ivfparse, ivtc,
+             jp2kdecimator, jpegformat, rfbsrc, midi, mpegpsdemux, mpegpsmux,
+             mpegtsdemux, mpegtsmux, mxf, netsim, rtponvif, pcapparse, pnm,
+             proxy, legacyrawparse, removesilence, rist, rtmp2, rtpmanagerbad,
+             sdpelem, segmentclip, siren, smooth, speed, subenc, switchbin,
+             timecode, transcode, videofiltersbad, videoframe_audiolevel,
+             videoparsersbad, videosignal, vmnc, y4mdec, decklink, dvb,
+             fbdevsink, ipcpipeline, kms, nvcodec, shm, closedcaption, curl,
+             dash, dc1394, hls, iqa, microdns, opencv, openexr, openjpeg,
+             opusparse, sctp, smoothstreaming, ttmlsubs, webrtc, webp
+
+gst-plugins-base 1.19.0.1
+
+    GL api     : gles2, gl
+    GL platform: egl
+    GL winsys  : wayland
+    Plugins    : adder, app, audioconvert, audiomixer, audiorate,
+                 audioresample, audiotestsrc, compositor, encoding, gio,
+                 overlaycomposition, pbtypes, playback, rawparse, subparse,
+                 tcp, typefindfunctions, videoconvert, videorate, videoscale,
+                 videotestsrc, volume, alsa, opengl, ogg, opus, pango, theora,
+                 ximagesink
+
+gst-plugins-good 1.19.0.1
+
+    Plugins: alpha, alphacolor, apetag, audiofx, audioparsers, auparse,
+             autodetect, avi, cutter, navigationtest, debug, deinterlace, dtmf,
+             effectv, equalizer, flv, flxdec, goom, goom2k1, icydemux,
+             id3demux, imagefreeze, interleave, isomp4, alaw, mulaw, level,
+             matroska, monoscope, multifile, multipart, replaygain, rtp,
+             rtpmanager, rtsp, shapewipe, smpte, spectrum, udp, videobox,
+             videocrop, videofilter, videomixer, wavenc, wavparse, y4menc,
+             ossaudio, oss4, rpicamsrc, video4linux2, ximagesrc, cairo,
+             gdkpixbuf, gtk, jpeg, dv, png, soup
+
+gst-plugins-ugly 1.19.0.1
+
+    Plugins: asf, dvdlpcmdec, dvdsub, realmedia, xingmux, x264
+
+gstreamer 1.19.0.1
+
+    Plugins: coreelements, coretracers
+
+opus 1.3.1-90-g16286a25
+
+  Compiler support
+    C99 var arrays                 : YES
+    C99 lrintf                     : YES
+    Use alloca                     : NO (using C99 variable-size arrays instead)
+
+  Optimizations
+    Floating point support         : YES
+    Fast float approximations      : NO
+    Fixed point debugging          : NO
+    Inline assembly optimizations  : none
+    External assembly optimizations: none
+    Intrinsics optimizations       : ARMv7/AArch64 NEON
+    Run-time CPU detection         : ARMv7/AArch64 NEON
+
+  General configuration
+    Custom modes                   : NO
+    Assertions                     : NO
+    Hardening                      : YES
+    Fuzzing                        : NO
+    Check ASM                      : NO
+    API documentation              : NO
+    Extra programs                 : YES
+    Tests                          : YES
+
+orc 0.4.32
+
+  Backends
+    SSE             : YES
+    MMX             : YES
+    NEON            : YES
+    MIPS            : YES
+    c64x            : YES
+    Altivec         : YES
+
+  Build options
+    Tools           : YES
+    Tests           : YES
+    Examples        : YES
+    Benchmarks      : YES
+    Documentation   : NO  disabled
+    Orc-test library: YES
+
+All GStreamer modules 1.19.0.1
+
+  Subprojects
+    FFmpeg                    : YES 4 warnings
+    avtp                      : YES
+    dssim                     : YES
+    dv                        : YES
+    gl-headers                : YES
+    gobject-introspection     : YES 4 warnings
+    graphene                  : NO
+                                Value "false" (of type "string") for combo option "Enable GObject Introspection (depends on GObject)" is not one of the choices. Possible choices are (as string): "enabled", "disabled", "auto".
+    gst-devtools              : YES
+    gst-editing-services      : YES
+    gst-examples              : YES
+    gst-integration-testsuites: YES
+    gst-libav                 : YES
+    gst-omx                   : NO Feature 'omx' disabled
+    gst-plugins-bad           : YES
+    gst-plugins-base          : YES 1 warnings
+    gst-plugins-good          : YES
+    gst-plugins-rs            : NO Feature 'rs' disabled
+    gst-plugins-ugly          : YES
+    gst-python                : NO
+                                Subproject "subprojects/pygobject" required but not found.
+    gst-rtsp-server           : YES
+    gstreamer                 : YES
+    gstreamer-sharp           : NO Feature 'sharp' disabled
+    gstreamer-vaapi           : NO Feature 'vaapi' disabled
+    libdrm                    : YES
+    libmicrodns               : YES
+    libnice                   : YES
+    openh264                  : NO Program 'nasm nasm.exe' not found
+    opus                      : YES
+    orc                       : YES
+    pycairo                   : YES 2 warnings
+    pygobject                 : NO
+                                Dependency "gobject-introspection-1.0" not found, tried pkgconfig and cmake
+    tinyalsa                  : NO
+                                Neither a subproject directory nor a tinyalsa.wrap file was found.
+
+Found ninja-1.8.2 at /usr/bin/ninja
+pi@raspberrypi:~/gst-build $ ls
+build                       gst-libav                   gst-worktree.py
+cmd_or_ps.ps1               gst-plugins-bad             libnice
+data                        gst-plugins-base            LICENSE
+git-update                  gst-plugins-good            meson.build
+gst-devtools                gst-plugins-ugly            meson_options.txt
+gst-editing-services        gstreamer                   README.md
+gst-env.py                  gstreamer-full-default.map  scripts
+gst-examples                gst-rtsp-server             subprojects
+gst-integration-testsuites  gst-uninstalled.py          tests
+pi@raspberrypi:~/gst-build $ cd build/
+pi@raspberrypi:~/gst-build/build $ ls
+build.ninja               GstPluginsPath.json  meson-private      tests
+compile_commands.json     meson-info           meson-uninstalled
+GstDocumentedSubprojects  meson-logs           subprojects
+pi@raspberrypi:~/gst-build/build $ ninja
+[127/5951] Compiling C object subproje...reamer-1.0.so.0.1900.0.p/gstbuffer.c.o
+../subprojects/gstreamer/gst/gstbuffer.c:190:9: note: #pragma message: No 64-bit atomic int defined for this "armv7l" platform/toolchain!
+ #pragma message "No 64-bit atomic int defined for this " STR(TARGET_CPU) " platform/toolchain!"
+         ^~~~~~~
+[1683/5951] Compiling C object subproj...t/effectv/libgsteffectv.so.p/gstop.c.o
+FAILED: subprojects/gst-plugins-good/gst/effectv/libgsteffectv.so.p/gstop.c.o
+cc -Isubprojects/gst-plugins-good/gst/effectv/libgsteffectv.so.p -Isubprojects/gst-plugins-good/gst/effectv -I../subprojects/gst-plugins-good/gst/effectv -Isubprojects/gst-plugins-good -I../subprojects/gst-plugins-good -Isubprojects/gstreamer -I../subprojects/gstreamer -Isubprojects/gstreamer/libs -I../subprojects/gstreamer/libs -Isubprojects/gst-plugins-base/gst-libs -I../subprojects/gst-plugins-base/gst-libs -Isubprojects/orc -I../subprojects/orc -Isubprojects/gstreamer/gst -Isubprojects/gst-plugins-base/gst-libs/gst/video -I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -O2 -g -fvisibility=hidden -fno-strict-aliasing -DG_DISABLE_DEPRECATED -Wmissing-declarations -Wredundant-decls -Wwrite-strings -Winit-self -Wmissing-include-dirs -Wno-multichar -Wvla -Wpointer-arith -Wmissing-prototypes -Wdeclaration-after-statement -Wold-style-definition -Waggregate-return -fPIC -pthread -DHAVE_CONFIG_H -MD -MQ subprojects/gst-plugins-good/gst/effectv/libgsteffectv.so.p/gstop.c.o -MF subprojects/gst-plugins-good/gst/effectv/libgsteffectv.so.p/gstop.c.o.d -o subprojects/gst-plugins-good/gst/effectv/libgsteffectv.so.p/gstop.c.o -c ../subprojects/gst-plugins-good/gst/effectv/gstop.c
+../subprojects/gst-plugins-good/gst/effectv/gstop.c:420:1: internal compiler error: Ошибка сегментирования
+ }
+ ^
+0xb6a4611f ???
+        ../sysdeps/unix/sysv/linux/arm/sigrestorer.S:64
+0xb6a30717 __libc_start_main
+        /build/glibc-FUvrFr/glibc-2.28/csu/libc-start.c:308
+Please submit a full bug report,
+with preprocessed source if appropriate.
+Please include the complete backtrace with any bug report.
+See <file:///usr/share/doc/gcc-8/README.Bugs> for instructions.
+[1688/5951] Compiling C object subproj...bgstequalizer.so.p/gstiirequalizer.c.o
+ninja: build stopped: subcommand failed.
+pi@raspberrypi:~/gst-build/build $ ninja
+[970/4264] Compiling C object subproje...audiovisualizers.so.p/gstwavescope.c.o^[1321/4264] Compiling C object subproj...-2.4.100/libdrm.so.2.4.0.p/xf86drm.c.o
+In file included from ../subprojects/libdrm-2.4.100/xf86drm.c:69:
+../subprojects/libdrm-2.4.100/xf86drm.c: In function ‘drmGetMinorNameForFD’:
+../subprojects/libdrm-2.4.100/xf86drm.h:85:23: warning: ‘%s’ directive output may be truncated writing up to 255 bytes into a region of size 55 [-Wformat-truncation=]
+ #define DRM_DIR_NAME  "/dev/dri"
+                       ^~~~~~~~~~
+../subprojects/libdrm-2.4.100/xf86drm.c:2873:50: note: in expansion of macro ‘DRM_DIR_NAME’
+             snprintf(dev_name, sizeof(dev_name), DRM_DIR_NAME "/%s",
+                                                  ^~~~~~~~~~~~
+../subprojects/libdrm-2.4.100/xf86drm.c:2873:65: note: format string is defined here
+             snprintf(dev_name, sizeof(dev_name), DRM_DIR_NAME "/%s",
+                                                                 ^~
+../subprojects/libdrm-2.4.100/xf86drm.c:2873:13: note: ‘snprintf’ output between 10 and 265 bytes into a destination of size 64
+             snprintf(dev_name, sizeof(dev_name), DRM_DIR_NAME "/%s",
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                  ent->d_name);
+                  ~~~~~~~~~~~~
+../subprojects/libdrm-2.4.100/xf86drm.c: In function ‘parse_separate_sysfs_files’:
+../subprojects/libdrm-2.4.100/xf86drm.c:3154:37: warning: ‘/’ directive output may be truncated writing 1 byte into a region of size between 0 and 4096 [-Wformat-truncation=]
+         snprintf(path, PATH_MAX, "%s/%s", pci_path, attrs[i]);
+                                     ^
+../subprojects/libdrm-2.4.100/xf86drm.c:3154:9: note: ‘snprintf’ output 2 or more bytes (assuming 4098) into a destination of size 4096
+         snprintf(path, PATH_MAX, "%s/%s", pci_path, attrs[i]);
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/libdrm-2.4.100/xf86drm.c: In function ‘process_device’:
+../subprojects/libdrm-2.4.100/xf86drm.c:3184:33: warning: ‘/config’ directive output may be truncated writing 7 bytes into a region of size between 0 and 4096 [-Wformat-truncation=]
+     snprintf(path, PATH_MAX, "%s/config", pci_path);
+                                 ^~~~~~~
+../subprojects/libdrm-2.4.100/xf86drm.c:3184:5: note: ‘snprintf’ output between 8 and 4104 bytes into a destination of size 4096
+     snprintf(path, PATH_MAX, "%s/config", pci_path);
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[1339/4264] Compiling C object subproj...libdrm_amdgpu.so.1.0.0.p/amdgpu_bo.c.o
+../subprojects/libdrm-2.4.100/amdgpu/amdgpu_bo.c: In function ‘amdgpu_find_bo_by_cpu_mapping’:
+../subprojects/libdrm-2.4.100/amdgpu/amdgpu_bo.c:562:13: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+       cpu < (void*)((uintptr_t)bo->cpu_ptr + bo->alloc_size))
+             ^
+[1355/4264] Compiling C object subproj..._freedreno.so.1.0.0.p/freedreno_bo.c.o
+../subprojects/libdrm-2.4.100/freedreno/freedreno_bo.c: In function ‘lookup_bo’:
+../subprojects/libdrm-2.4.100/freedreno/freedreno_bo.c:47:40: warning: dereferencing type-punned pointer might break strict-aliasing rules [-Wstrict-aliasing]
+  if (!drmHashLookup(tbl, key, (void **)&bo)) {
+                                        ^~~
+[1395/4264] Compiling C object subproj...100/tests/util/libutil.a.p/pattern.c.o
+../subprojects/libdrm-2.4.100/tests/util/pattern.c: In function ‘fill_tiles_rgb16fp’:
+../subprojects/libdrm-2.4.100/tests/util/pattern.c:988:8: warning: unused variable ‘mem_base’ [-Wunused-variable]
+  void *mem_base = mem;
+        ^~~~~~~~
+[2969/4264] Compiling C object subproj...ormat-static.a.p/libavformat_aadec.c.o
+../subprojects/FFmpeg/libavformat/aadec.c: In function ‘aa_read_header’:
+../subprojects/FFmpeg/libavformat/aadec.c:116:13: warning: ‘strncpy’ output may be truncated copying 63 bytes from a string of length 127 [-Wstringop-truncation]
+             strncpy(codec_name, val, sizeof(codec_name) - 1);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[3082/4264] Compiling C object subproj...mat-static.a.p/libavformat_dashdec.c.o
+In function ‘parse_manifest_representation’,
+    inlined from ‘parse_manifest_adaptationset’ at ../subprojects/FFmpeg/libavformat/dashdec.c:1167:19,
+    inlined from ‘parse_manifest’ at ../subprojects/FFmpeg/libavformat/dashdec.c:1386:17:
+../subprojects/FFmpeg/libavformat/dashdec.c:1078:13: warning: ‘strncpy’ specified bound 20 equals destination size [-Wstringop-truncation]
+             strncpy(rep->id, rep_id_val ? rep_id_val : "", sizeof(rep->id));
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[3170/4264] Compiling C object subproj...vformat-static.a.p/libavformat_hls.c.o
+In function ‘new_rendition’,
+    inlined from ‘parse_playlist’ at ../subprojects/FFmpeg/libavformat/hls.c:812:13:
+../subprojects/FFmpeg/libavformat/hls.c:532:13: warning: ‘strncpy’ output may be truncated copying between 2 and 62 bytes from a string of length 63 [-Wstringop-truncation]
+             strncpy(rend->language + langlen + 1, info->assoc_language,
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                     sizeof(rend->language) - langlen - 2);
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[3811/4264] Compiling C object subproj...v/ext/libav/libgstlibav.so.p/gstav.c.o
+In file included from ../subprojects/FFmpeg/libavcodec/avcodec.h:45,
+                 from ../subprojects/gst-libav/ext/libav/gstav.h:27,
+                 from ../subprojects/gst-libav/ext/libav/gstav.c:31:
+../subprojects/FFmpeg/libavcodec/codec.h:134:5: warning: "FF_API_UNUSED_CODEC_CAPS" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNUSED_CODEC_CAPS
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstav.h:27,
+                 from ../subprojects/gst-libav/ext/libav/gstav.c:31:
+../subprojects/FFmpeg/libavcodec/avcodec.h:453:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:462:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:471:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstav.h:28,
+                 from ../subprojects/gst-libav/ext/libav/gstav.c:31:
+../subprojects/FFmpeg/libavformat/avformat.h:532:5: warning: "FF_API_AVIOFORMAT" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_AVIOFORMAT
+     ^~~~~~~~~~~~~~~~~
+[3816/4264] Compiling C object subproj...bav/libgstlibav.so.p/gstavprotocol.c.o
+In file included from ../subprojects/FFmpeg/libavcodec/avcodec.h:45,
+                 from ../subprojects/FFmpeg/libavformat/avformat.h:312,
+                 from ../subprojects/gst-libav/ext/libav/gstavprotocol.c:27:
+../subprojects/FFmpeg/libavcodec/codec.h:134:5: warning: "FF_API_UNUSED_CODEC_CAPS" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNUSED_CODEC_CAPS
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/FFmpeg/libavformat/avformat.h:312,
+                 from ../subprojects/gst-libav/ext/libav/gstavprotocol.c:27:
+../subprojects/FFmpeg/libavcodec/avcodec.h:453:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:462:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:471:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstavprotocol.c:27:
+../subprojects/FFmpeg/libavformat/avformat.h:532:5: warning: "FF_API_AVIOFORMAT" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_AVIOFORMAT
+     ^~~~~~~~~~~~~~~~~
+[3818/4264] Compiling C object subproj.../libgstlibav.so.p/gstavdeinterlace.c.o
+In file included from ../subprojects/FFmpeg/libavcodec/avcodec.h:45,
+                 from ../subprojects/gst-libav/ext/libav/gstavdeinterlace.c:27:
+../subprojects/FFmpeg/libavcodec/codec.h:134:5: warning: "FF_API_UNUSED_CODEC_CAPS" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNUSED_CODEC_CAPS
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstavdeinterlace.c:27:
+../subprojects/FFmpeg/libavcodec/avcodec.h:453:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:462:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:471:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstav.h:28,
+                 from ../subprojects/gst-libav/ext/libav/gstavdeinterlace.c:36:
+../subprojects/FFmpeg/libavformat/avformat.h:532:5: warning: "FF_API_AVIOFORMAT" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_AVIOFORMAT
+     ^~~~~~~~~~~~~~~~~
+[3819/4264] Compiling C object subproj.../libav/libgstlibav.so.p/gstavutils.c.o
+In file included from ../subprojects/FFmpeg/libavcodec/avcodec.h:45,
+                 from ../subprojects/gst-libav/ext/libav/gstavutils.h:27,
+                 from ../subprojects/gst-libav/ext/libav/gstavutils.c:23:
+../subprojects/FFmpeg/libavcodec/codec.h:134:5: warning: "FF_API_UNUSED_CODEC_CAPS" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNUSED_CODEC_CAPS
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstavutils.h:27,
+                 from ../subprojects/gst-libav/ext/libav/gstavutils.c:23:
+../subprojects/FFmpeg/libavcodec/avcodec.h:453:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:462:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:471:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+[3820/4264] Compiling C object subproj...libav/libgstlibav.so.p/gstavaudenc.c.o
+In file included from ../subprojects/FFmpeg/libavcodec/avcodec.h:45,
+                 from ../subprojects/gst-libav/ext/libav/gstavaudenc.c:33:
+../subprojects/FFmpeg/libavcodec/codec.h:134:5: warning: "FF_API_UNUSED_CODEC_CAPS" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNUSED_CODEC_CAPS
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstavaudenc.c:33:
+../subprojects/FFmpeg/libavcodec/avcodec.h:453:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:462:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:471:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstav.h:28,
+                 from ../subprojects/gst-libav/ext/libav/gstavaudenc.c:38:
+../subprojects/FFmpeg/libavformat/avformat.h:532:5: warning: "FF_API_AVIOFORMAT" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_AVIOFORMAT
+     ^~~~~~~~~~~~~~~~~
+[3821/4264] Compiling C object subproj...libav/libgstlibav.so.p/gstavauddec.c.o
+In file included from ../subprojects/FFmpeg/libavcodec/avcodec.h:45,
+                 from ../subprojects/gst-libav/ext/libav/gstavauddec.c:29:
+../subprojects/FFmpeg/libavcodec/codec.h:134:5: warning: "FF_API_UNUSED_CODEC_CAPS" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNUSED_CODEC_CAPS
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstavauddec.c:29:
+../subprojects/FFmpeg/libavcodec/avcodec.h:453:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:462:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:471:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstav.h:28,
+                 from ../subprojects/gst-libav/ext/libav/gstavauddec.c:34:
+../subprojects/FFmpeg/libavformat/avformat.h:532:5: warning: "FF_API_AVIOFORMAT" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_AVIOFORMAT
+     ^~~~~~~~~~~~~~~~~
+[3822/4264] Compiling C object subproj...bav/libgstlibav.so.p/gstavcodecmap.c.o
+In file included from ../subprojects/FFmpeg/libavcodec/avcodec.h:45,
+                 from ../subprojects/gst-libav/ext/libav/gstavcodecmap.c:29:
+../subprojects/FFmpeg/libavcodec/codec.h:134:5: warning: "FF_API_UNUSED_CODEC_CAPS" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNUSED_CODEC_CAPS
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstavcodecmap.c:29:
+../subprojects/FFmpeg/libavcodec/avcodec.h:453:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:462:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:471:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstav.h:28,
+                 from ../subprojects/gst-libav/ext/libav/gstavcodecmap.c:32:
+../subprojects/FFmpeg/libavformat/avformat.h:532:5: warning: "FF_API_AVIOFORMAT" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_AVIOFORMAT
+     ^~~~~~~~~~~~~~~~~
+[3823/4264] Compiling C object subproj...libav/libgstlibav.so.p/gstavvidenc.c.o
+In file included from ../subprojects/FFmpeg/libavcodec/avcodec.h:45,
+                 from ../subprojects/gst-libav/ext/libav/gstavvidenc.c:31:
+../subprojects/FFmpeg/libavcodec/codec.h:134:5: warning: "FF_API_UNUSED_CODEC_CAPS" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNUSED_CODEC_CAPS
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstavvidenc.c:31:
+../subprojects/FFmpeg/libavcodec/avcodec.h:453:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:462:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:471:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstav.h:28,
+                 from ../subprojects/gst-libav/ext/libav/gstavvidenc.c:35:
+../subprojects/FFmpeg/libavformat/avformat.h:532:5: warning: "FF_API_AVIOFORMAT" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_AVIOFORMAT
+     ^~~~~~~~~~~~~~~~~
+[3826/4264] Compiling C object subproj...xt/libav/libgstlibav.so.p/gstavcfg.c.o
+In file included from ../subprojects/FFmpeg/libavcodec/avcodec.h:45,
+                 from ../subprojects/gst-libav/ext/libav/gstav.h:27,
+                 from ../subprojects/gst-libav/ext/libav/gstavcfg.c:28:
+../subprojects/FFmpeg/libavcodec/codec.h:134:5: warning: "FF_API_UNUSED_CODEC_CAPS" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNUSED_CODEC_CAPS
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstav.h:27,
+                 from ../subprojects/gst-libav/ext/libav/gstavcfg.c:28:
+../subprojects/FFmpeg/libavcodec/avcodec.h:453:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:462:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:471:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstav.h:28,
+                 from ../subprojects/gst-libav/ext/libav/gstavcfg.c:28:
+../subprojects/FFmpeg/libavformat/avformat.h:532:5: warning: "FF_API_AVIOFORMAT" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_AVIOFORMAT
+     ^~~~~~~~~~~~~~~~~
+[3831/4264] Compiling C object subproj...xt/libav/libgstlibav.so.p/gstavmux.c.o
+In file included from ../subprojects/FFmpeg/libavcodec/avcodec.h:45,
+                 from ../subprojects/FFmpeg/libavformat/avformat.h:312,
+                 from ../subprojects/gst-libav/ext/libav/gstavmux.c:26:
+../subprojects/FFmpeg/libavcodec/codec.h:134:5: warning: "FF_API_UNUSED_CODEC_CAPS" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNUSED_CODEC_CAPS
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/FFmpeg/libavformat/avformat.h:312,
+                 from ../subprojects/gst-libav/ext/libav/gstavmux.c:26:
+../subprojects/FFmpeg/libavcodec/avcodec.h:453:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:462:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:471:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstavmux.c:26:
+../subprojects/FFmpeg/libavformat/avformat.h:532:5: warning: "FF_API_AVIOFORMAT" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_AVIOFORMAT
+     ^~~~~~~~~~~~~~~~~
+[3835/4264] Compiling C object subproj...libav/libgstlibav.so.p/gstavviddec.c.o
+In file included from ../subprojects/FFmpeg/libavcodec/avcodec.h:45,
+                 from ../subprojects/gst-libav/ext/libav/gstavviddec.c:27:
+../subprojects/FFmpeg/libavcodec/codec.h:134:5: warning: "FF_API_UNUSED_CODEC_CAPS" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNUSED_CODEC_CAPS
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstavviddec.c:27:
+../subprojects/FFmpeg/libavcodec/avcodec.h:453:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:462:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:471:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstav.h:28,
+                 from ../subprojects/gst-libav/ext/libav/gstavviddec.c:31:
+../subprojects/FFmpeg/libavformat/avformat.h:532:5: warning: "FF_API_AVIOFORMAT" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_AVIOFORMAT
+     ^~~~~~~~~~~~~~~~~
+[3837/4264] Compiling C object subproj.../libav/libgstlibav.so.p/gstavdemux.c.o
+In file included from ../subprojects/FFmpeg/libavcodec/avcodec.h:45,
+                 from ../subprojects/FFmpeg/libavformat/avformat.h:312,
+                 from ../subprojects/gst-libav/ext/libav/gstavdemux.c:28:
+../subprojects/FFmpeg/libavcodec/codec.h:134:5: warning: "FF_API_UNUSED_CODEC_CAPS" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNUSED_CODEC_CAPS
+     ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/FFmpeg/libavformat/avformat.h:312,
+                 from ../subprojects/gst-libav/ext/libav/gstavdemux.c:28:
+../subprojects/FFmpeg/libavcodec/avcodec.h:453:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:462:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../subprojects/FFmpeg/libavcodec/avcodec.h:471:5: warning: "FF_API_UNSANITIZED_BITRATES" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_UNSANITIZED_BITRATES
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../subprojects/gst-libav/ext/libav/gstavdemux.c:28:
+../subprojects/FFmpeg/libavformat/avformat.h:532:5: warning: "FF_API_AVIOFORMAT" is not defined, evaluates to 0 [-Wundef]
+ #if FF_API_AVIOFORMAT
+     ^~~~~~~~~~~~~~~~~
+[4264/4264] Linking target subprojects...-editing-services/tests/check/ges_clip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[0/1] /home/pi/.local/bin/meson --internal uninstall
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/includes/default-seek-flags.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/rtsp_overrides/includes/default-seek-flags.scenario
+Deleted: /usr/local/lib/arm-linux-gnueabihf/liborc-0.4.so.0.32.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/liborc-0.4.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/liborc-0.4.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/liborc-test-0.4.so.0.32.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/liborc-test-0.4.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/liborc-test-0.4.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/liborc-test-0.4.a
+Deleted: /usr/local/bin/orcc
+Deleted: /usr/local/bin/orc-bugreport
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstenumtypes.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstreamer-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstreamer-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstreamer-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstbase-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstbase-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstbase-1.0.so
+Deleted: /usr/local/include/gstreamer-1.0/gst/controller/controller-enumtypes.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstcontroller-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstcontroller-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstcontroller-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstnet-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstnet-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstnet-1.0.so
+Deleted: /usr/local/libexec/gstreamer-1.0/gst-plugin-scanner
+Deleted: /usr/local/libexec/gstreamer-1.0/gst-completion-helper
+Deleted: /usr/local/libexec/gstreamer-1.0/gst-ptp-helper
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstcheck-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstcheck-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstcheck-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstcoreelements.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstcoretracers.so
+Deleted: /usr/local/bin/gst-inspect-1.0
+Deleted: /usr/local/bin/gst-stats-1.0
+Deleted: /usr/local/bin/gst-typefind-1.0
+Deleted: /usr/local/bin/gst-launch-1.0
+Deleted: /usr/local/bin/gst-tester-1.0
+Deleted: /usr/local/libexec/gstreamer-1.0/gst-hotdoc-plugins-scanner
+Deleted: /usr/local/include/gstreamer-1.0/gst/tag/tag-enumtypes.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgsttag-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgsttag-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgsttag-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstfft-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstfft-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstfft-1.0.so
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-enumtypes.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstvideo-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstvideo-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstvideo-1.0.so
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/audio-enumtypes.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstaudio-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstaudio-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstaudio-1.0.so
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtp/gstrtp-enumtypes.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstrtp-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstrtp-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstrtp-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstsdp-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstsdp-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstsdp-1.0.so
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp/gstrtsp-enumtypes.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstrtsp-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstrtsp-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstrtsp-1.0.so
+Deleted: /usr/local/include/gstreamer-1.0/gst/pbutils/pbutils-enumtypes.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstpbutils-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstpbutils-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstpbutils-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstriff-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstriff-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstriff-1.0.so
+Deleted: /usr/local/include/gstreamer-1.0/gst/app/app-enumtypes.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstapp-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstapp-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstapp-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstallocators-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstallocators-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstallocators-1.0.so
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gl-enumtypes.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstgl-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstgl-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstgl-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstadder.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstapp.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstaudioconvert.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstaudiomixer.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstaudiorate.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstaudioresample.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstaudiotestsrc.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstcompositor.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstencoding.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstgio.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstoverlaycomposition.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstpbtypes.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstplayback.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstrawparse.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstsubparse.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgsttcp.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgsttypefindfunctions.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvideoconvert.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvideorate.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvideoscale.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvideotestsrc.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvolume.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstalsa.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstopengl.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstogg.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libopus.so.0.8.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libopus.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libopus.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstopus.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstpango.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgsttheora.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstximagesink.so
+Deleted: /usr/local/bin/gst-device-monitor-1.0
+Deleted: /usr/local/bin/gst-discoverer-1.0
+Deleted: /usr/local/bin/gst-play-1.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstalpha.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstalphacolor.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstapetag.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstaudiofx.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstaudioparsers.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstauparse.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstautodetect.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstavi.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstcutter.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstnavigationtest.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstdebug.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstdeinterlace.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstdtmf.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgsteffectv.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstequalizer.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstflv.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstflxdec.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstgoom.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstgoom2k1.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgsticydemux.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstid3demux.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstimagefreeze.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstinterleave.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstisomp4.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstalaw.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstmulaw.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstlevel.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstmatroska.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstmonoscope.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstmultifile.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstmultipart.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstreplaygain.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstrtp.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstrtpmanager.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstrtsp.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstshapewipe.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstsmpte.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstspectrum.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstudp.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvideobox.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvideocrop.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvideofilter.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvideomixer.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstwavenc.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstwavparse.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgsty4menc.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstossaudio.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstoss4.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstrpicamsrc.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvideo4linux2.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstximagesrc.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstcairo.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstgdkpixbuf.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstgtk.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstjpeg.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdv.so.4.0.3
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdv.so.4
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdv.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstdv.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstpng.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstsoup.so
+Deleted: /usr/local/bin/stund
+Deleted: /usr/local/bin/stunbdc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libnice.so.10.11.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libnice.so.10
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libnice.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstnice.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgsturidownloader-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgsturidownloader-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgsturidownloader-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstadaptivedemux-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstadaptivedemux-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstadaptivedemux-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstbadaudio-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstbadaudio-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstbadaudio-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstbasecamerabinsrc-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstbasecamerabinsrc-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstbasecamerabinsrc-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstcodecparsers-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstcodecparsers-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstcodecparsers-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstcodecs-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstcodecs-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstcodecs-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstinsertbin-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstinsertbin-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstinsertbin-1.0.so
+Deleted: /usr/local/include/gstreamer-1.0/gst/interfaces/photography-enumtypes.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstphotography-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstphotography-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstphotography-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstisoff-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstisoff-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstisoff-1.0.so
+Deleted: /usr/local/include/gstreamer-1.0/gst/mpegts/gstmpegts-enumtypes.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstmpegts-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstmpegts-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstmpegts-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstopencv-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstopencv-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstopencv-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstplayer-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstplayer-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstplayer-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstsctp-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstsctp-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstsctp-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgsttranscoder-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgsttranscoder-1.0.so
+Deleted: /usr/local/include/gstreamer-1.0/gst/webrtc/webrtc-enumtypes.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstwebrtc-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstwebrtc-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstwebrtc-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstaccurip.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstadpcmdec.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstadpcmenc.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstaiff.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstasfmux.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstaudiobuffersplit.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstaudiofxbad.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstaudiomixmatrix.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstaudiolatency.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstaudiovisualizers.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstautoconvert.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstbayer.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstcamerabin.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstcoloreffects.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstdebugutilsbad.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstdvbsubenc.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstdvbsuboverlay.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstdvdspu.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstfaceoverlay.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstfestival.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstfieldanalysis.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstfreeverb.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstfrei0r.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstgaudieffects.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstgdp.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstgeometrictransform.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstid3tag.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstinter.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstinterlace.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstivfparse.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstivtc.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstjp2kdecimator.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstjpegformat.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstrfbsrc.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstmidi.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstmpegpsdemux.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstmpegpsmux.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstmpegtsdemux.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstmpegtsmux.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstmxf.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstnetsim.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstrtponvif.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstpcapparse.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstpnm.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstproxy.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstlegacyrawparse.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstremovesilence.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstrist.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstrtmp2.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstrtpmanagerbad.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstsdpelem.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstsegmentclip.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstsiren.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstsmooth.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstspeed.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstsubenc.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstswitchbin.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgsttimecode.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgsttranscode.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvideofiltersbad.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvideoframe_audiolevel.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvideoparsersbad.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvideosignal.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvmnc.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgsty4mdec.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstdecklink.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstdvb.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstfbdevsink.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstipcpipeline.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm.so.2.4.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm.so.2
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libkms.so.1.0.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libkms.so.1
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libkms.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm_nouveau.so.2.0.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm_nouveau.so.2
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm_nouveau.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm_radeon.so.1.0.1
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm_radeon.so.1
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm_radeon.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm_amdgpu.so.1.0.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm_amdgpu.so.1
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm_amdgpu.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm_freedreno.so.1.0.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm_freedreno.so.1
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdrm_freedreno.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstkms.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstnvcodec.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstshm.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavtp.so.0.1.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavtp.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavtp.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstclosedcaption.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstcurl.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstdash.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstdc1394.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgsthls.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdssim-lib.so.1.1
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdssim-lib.so.1
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libdssim-lib.so
+Deleted: /usr/local/bin/dssim
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstiqa.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libmicrodns.so.0.1.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libmicrodns.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libmicrodns.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstmicrodns.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstopencv.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstopenexr.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstopenjpeg.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstopusparse.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstsctp.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstsmoothstreaming.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstttmlsubs.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstwebrtc.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstwebp.so
+Deleted: /usr/local/bin/playout
+Deleted: /usr/local/bin/gst-transcoder-1.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstasf.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstdvdlpcmdec.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstdvdsub.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstrealmedia.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstxingmux.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstx264.so
+Deleted: /usr/local/include/libavutil/ffversion.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavutil-static.a
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavutil.so.56
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavutil.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libpostproc-static.a
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libpostproc.so.55
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libpostproc.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libswresample-static.a
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libswresample.so.3
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libswresample.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libswscale-static.a
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libswscale.so.5
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libswscale.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavcodec-static.a
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavcodec.so.58
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavcodec.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavformat-static.a
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavformat.so.58
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavformat.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavresample-static.a
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavresample.so.4
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavresample.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavfilter-static.a
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavfilter.so.7
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavfilter.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavdevice-static.a
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavdevice.so.58
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libavdevice.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstlibav.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstrtspserver-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstrtspserver-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstrtspserver-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstrtspclientsink.so
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-enum-types.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstvalidate-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstvalidate-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstvalidate-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstvalidatetracer.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstvalidate-default-overrides-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstvalidate-default-overrides-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libgstvalidate-default-overrides-1.0.so
+Deleted: /usr/local/bin/gst-validate-1.0
+Deleted: /usr/local/bin/gst-validate-transcoding-1.0
+Deleted: /usr/local/bin/gst-validate-media-check-1.0
+Deleted: /usr/local/bin/gst-validate-rtsp-server-1.0
+Deleted: /usr/local/bin/gst-validate-images-check-1.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/validate/libgstvalidatefaultinjection.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/validate/libgstvalidategapplication.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/validate/libgstvalidatessim.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/validate/libgstvalidategtk.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libges-1.0.so.0.1900.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libges-1.0.so.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf/libges-1.0.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstnle.so
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstges.so
+Deleted: /usr/local/bin/ges-launch-1.0
+Deleted: /usr/local/include/orc-0.4/orc/orc.h
+Deleted: /usr/local/include/orc-0.4/orc/orcarm.h
+Deleted: /usr/local/include/orc-0.4/orc/orcbytecode.h
+Deleted: /usr/local/include/orc-0.4/orc/orcbytecodes.h
+Deleted: /usr/local/include/orc-0.4/orc/orccode.h
+Deleted: /usr/local/include/orc-0.4/orc/orccompiler.h
+Deleted: /usr/local/include/orc-0.4/orc/orcconstant.h
+Deleted: /usr/local/include/orc-0.4/orc/orccpu.h
+Deleted: /usr/local/include/orc-0.4/orc/orccpuinsn.h
+Deleted: /usr/local/include/orc-0.4/orc/orcdebug.h
+Deleted: /usr/local/include/orc-0.4/orc/orcemulateopcodes.h
+Deleted: /usr/local/include/orc-0.4/orc/orcexecutor.h
+Deleted: /usr/local/include/orc-0.4/orc/orcfunctions.h
+Deleted: /usr/local/include/orc-0.4/orc/orcinstruction.h
+Deleted: /usr/local/include/orc-0.4/orc/orcinternal.h
+Deleted: /usr/local/include/orc-0.4/orc/orclimits.h
+Deleted: /usr/local/include/orc-0.4/orc/orcmmx.h
+Deleted: /usr/local/include/orc-0.4/orc/orcneon.h
+Deleted: /usr/local/include/orc-0.4/orc/orconce.h
+Deleted: /usr/local/include/orc-0.4/orc/orcopcode.h
+Deleted: /usr/local/include/orc-0.4/orc/orcparse.h
+Deleted: /usr/local/include/orc-0.4/orc/orcpowerpc.h
+Deleted: /usr/local/include/orc-0.4/orc/orcprogram.h
+Deleted: /usr/local/include/orc-0.4/orc/orcrule.h
+Deleted: /usr/local/include/orc-0.4/orc/orcsse.h
+Deleted: /usr/local/include/orc-0.4/orc/orctarget.h
+Deleted: /usr/local/include/orc-0.4/orc/orcutils.h
+Deleted: /usr/local/include/orc-0.4/orc/orcvariable.h
+Deleted: /usr/local/include/orc-0.4/orc/orcx86.h
+Deleted: /usr/local/include/orc-0.4/orc/orcx86insn.h
+Deleted: /usr/local/include/orc-0.4/orc/orcmips.h
+Deleted: /usr/local/include/orc-0.4/orc/orc-stdint.h
+Deleted: /usr/local/include/orc-0.4/orc-test/orctest.h
+Deleted: /usr/local/include/orc-0.4/orc-test/orcarray.h
+Deleted: /usr/local/include/orc-0.4/orc-test/orcrandom.h
+Deleted: /usr/local/include/orc-0.4/orc-test/orcprofile.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gst.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/glib-compat.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstobject.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstallocator.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstbin.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstbuffer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstbufferlist.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstbufferpool.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstbus.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstcaps.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstcapsfeatures.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstchildproxy.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstclock.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstcompat.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstcontext.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstcontrolbinding.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstcontrolsource.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstdatetime.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstdebugutils.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstelement.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstelementmetadata.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstdevice.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstdeviceprovider.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstdeviceproviderfactory.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstdynamictypefactory.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstelementfactory.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gsterror.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstevent.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstformat.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstghostpad.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstdevicemonitor.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstinfo.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstiterator.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstatomicqueue.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstmacros.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstmessage.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstmeta.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstmemory.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstminiobject.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstpad.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstpadtemplate.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstparamspecs.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstpipeline.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstplugin.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstpluginfeature.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstpoll.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstpreset.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstprotection.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstquery.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstpromise.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstsample.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstsegment.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gststreamcollection.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gststreams.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gststructure.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstsystemclock.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gsttaglist.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gsttagsetter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gsttask.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gsttaskpool.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gsttoc.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gsttocsetter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gsttracer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gsttracerfactory.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gsttracerrecord.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gsttypefind.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gsttypefindfactory.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gsturi.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstutils.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstvalue.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstregistry.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstparse.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/math-compat.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/base.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/base-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstadapter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstaggregator.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstbaseparse.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstbasesink.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstbasesrc.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstbasetransform.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstbitreader.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstbitwriter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstbytereader.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstbytewriter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstcollectpads.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstdataqueue.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstflowcombiner.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstpushsrc.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gstqueuearray.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/base/gsttypefindhelper.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/controller/gstinterpolationcontrolsource.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/controller/gstlfocontrolsource.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/controller/gstargbcontrolbinding.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/controller/gstdirectcontrolbinding.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/controller/gsttimedvaluecontrolsource.h
+Could not delete /usr/local/include/gstreamer-1.0/gst/controller/gstinterpolationcontrolsource.h: [Errno 2] No such file or directory: '/usr/local/include/gstreamer-1.0/gst/controller/gstinterpolationcontrolsource.h'.
+Deleted: /usr/local/include/gstreamer-1.0/gst/controller/gstproxycontrolbinding.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/controller/gsttriggercontrolsource.h
+Could not delete /usr/local/include/gstreamer-1.0/gst/controller/gstlfocontrolsource.h: [Errno 2] No such file or directory: '/usr/local/include/gstreamer-1.0/gst/controller/gstlfocontrolsource.h'.
+Deleted: /usr/local/include/gstreamer-1.0/gst/controller/controller-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/controller/controller.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/net/gstnet.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/net/gstnetaddressmeta.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/net/gstnetclientclock.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/net/gstnetcontrolmessagemeta.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/net/gstnettimepacket.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/net/gstnettimeprovider.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/net/gstnetutils.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/net/gstptpclock.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/net/net-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/net/net.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/check/check.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/check/check-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/check/gstbufferstraw.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/check/gstcheck.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/check/gstconsistencychecker.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/check/gstharness.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/check/gsttestclock.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/tag/gsttagdemux.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/tag/tag.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/tag/gsttagmux.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/tag/xmpwriter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/tag/tag-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/fft/fft.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/fft/fft-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/fft/gstfftf32.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/fft/gstfftf64.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/fft/gstfft.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/fft/gstffts16.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/fft/gstffts32.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/colorbalance.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/colorbalancechannel.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/gstvideoaffinetransformationmeta.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/gstvideoaggregator.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/gstvideodecoder.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/gstvideoencoder.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/gstvideofilter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/gstvideometa.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/gstvideopool.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/gstvideosink.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/gstvideotimecode.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/gstvideoutils.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/navigation.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-anc.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-event.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-format.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-chroma.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-color.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-converter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-dither.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-hdr.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-info.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-frame.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-scaler.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-tile.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/videodirection.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/videoorientation.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/videooverlay.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-resampler.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-blend.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-overlay-composition.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/video/video-multiview.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/audio.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/audio-format.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/audio-channels.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/audio-channel-mixer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/audio-converter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/audio-info.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/audio-quantize.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/audio-resampler.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstaudioaggregator.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstaudioringbuffer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstaudiobasesrc.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstaudiocdsrc.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstaudiobasesink.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstaudiostreamalign.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/audio-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/audio-buffer.h
+Could not delete /usr/local/include/gstreamer-1.0/gst/audio/gstaudiobasesink.h: [Errno 2] No such file or directory: '/usr/local/include/gstreamer-1.0/gst/audio/gstaudiobasesink.h'.
+Could not delete /usr/local/include/gstreamer-1.0/gst/audio/gstaudiobasesrc.h: [Errno 2] No such file or directory: '/usr/local/include/gstreamer-1.0/gst/audio/gstaudiobasesrc.h'.
+Could not delete /usr/local/include/gstreamer-1.0/gst/audio/gstaudiocdsrc.h: [Errno 2] No such file or directory: '/usr/local/include/gstreamer-1.0/gst/audio/gstaudiocdsrc.h'.
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstaudioclock.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstaudiodecoder.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstaudioencoder.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstaudiofilter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstaudioiec61937.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstaudiometa.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstaudiosink.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstaudiosrc.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/streamvolume.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtp/gstrtcpbuffer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtp/gstrtpbaseaudiopayload.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtp/gstrtpbasedepayload.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtp/gstrtpbasepayload.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtp/gstrtpbuffer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtp/gstrtpdefs.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtp/gstrtphdrext.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtp/gstrtpmeta.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtp/gstrtppayloads.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtp/rtp-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtp/rtp.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/sdp/sdp.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/sdp/sdp-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/sdp/gstsdp.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/sdp/gstmikey.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/sdp/gstsdpmessage.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp/gstrtspconnection.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp/gstrtspdefs.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp/gstrtspextension.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp/gstrtsp.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp/gstrtspmessage.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp/gstrtsprange.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp/gstrtsptransport.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp/gstrtspurl.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp/rtsp-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp/rtsp.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/pbutils/pbutils.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/pbutils/pbutils-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/pbutils/codec-utils.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/pbutils/descriptions.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/pbutils/encoding-profile.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/pbutils/encoding-target.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/pbutils/install-plugins.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/pbutils/missing-plugins.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/pbutils/gstdiscoverer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/pbutils/gstaudiovisualizer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/riff/riff.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/riff/riff-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/riff/riff-ids.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/riff/riff-media.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/riff/riff-read.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/app/gstappsrc.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/app/app.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/app/app-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/app/gstappsink.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/allocators/allocators.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/allocators/allocators-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/allocators/gstfdmemory.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/allocators/gstphysmemory.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/allocators/gstdmabuf.h
+Deleted: /usr/local/include/GL/wglext.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gl.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gl-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstgl_enums.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstgl_fwd.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglapi.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglbasefilter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglbasememory.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglbasesrc.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglbuffer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglbufferpool.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglcolorconvert.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglcontext.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstgldebug.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstgldisplay.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglfeature.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglfilter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglformat.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglframebuffer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglmemory.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglmemorypbo.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstgloverlaycompositor.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglquery.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglrenderbuffer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglshader.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglshaderstrings.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglsl.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglslstage.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglsyncmeta.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglupload.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglutils.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglviewconvert.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglwindow.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/gstglfuncs.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/all_functions.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/base.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/blending.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/buffers.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/debug.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/eglimage.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/fbo.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/fixedfunction.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/gles.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/gstgl_compat.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/gstgl_gles2compat.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/opengl.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/query.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/shaders.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/sync.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes/vao.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/wayland/wayland.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/wayland/gstgldisplay_wayland.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/egl/egl.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/egl/gstegl.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/egl/gsteglimage.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/egl/gstgldisplay_egl.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/egl/gstglmemoryegl.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/egl/gstgldisplay_egl_device.h
+Deleted: /usr/local/include/opus/opus.h
+Deleted: /usr/local/include/opus/opus_multistream.h
+Deleted: /usr/local/include/opus/opus_projection.h
+Deleted: /usr/local/include/opus/opus_types.h
+Deleted: /usr/local/include/opus/opus_defines.h
+Deleted: /usr/local/include/libdv/dv_types.h
+Deleted: /usr/local/include/libdv/dv.h
+Deleted: /usr/local/include/nice/address.h
+Deleted: /usr/local/include/nice/agent.h
+Deleted: /usr/local/include/nice/candidate.h
+Deleted: /usr/local/include/nice/debug.h
+Deleted: /usr/local/include/nice/interfaces.h
+Deleted: /usr/local/include/nice/pseudotcp.h
+Deleted: /usr/local/include/stun/stunagent.h
+Deleted: /usr/local/include/stun/stunmessage.h
+Deleted: /usr/local/include/stun/win32_common.h
+Deleted: /usr/local/include/stun/debug.h
+Deleted: /usr/local/include/stun/constants.h
+Deleted: /usr/local/include/stun/usages/bind.h
+Deleted: /usr/local/include/stun/usages/ice.h
+Deleted: /usr/local/include/stun/usages/turn.h
+Deleted: /usr/local/include/stun/usages/timer.h
+Deleted: /usr/local/include/nice/nice.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/uridownloader/uridownloader-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/uridownloader/gstfragment.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/uridownloader/gsturidownloader.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/uridownloader/gsturidownloader_debug.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstnonstreamaudiodecoder.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/audio-bad-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio/gstplanaraudioadapter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/basecamerabinsrc/basecamerabinsrc-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/basecamerabinsrc/gstcamerabin-enum.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/basecamerabinsrc/gstcamerabinpreview.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/basecamerabinsrc/gstbasecamerasrc.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/codecparsers/codecparsers-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/codecparsers/gstmpegvideoparser.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/codecparsers/gsth264parser.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/codecparsers/gstvc1parser.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/codecparsers/gstmpeg4parser.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/codecparsers/gsth265parser.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/codecparsers/gstvp8parser.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/codecparsers/gstvp8rangedecoder.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/codecparsers/gstjpeg2000sampling.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/codecparsers/gstjpegparser.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/codecparsers/gstmpegvideometa.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/codecparsers/gstvp9parser.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/codecparsers/gstav1parser.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/insertbin/gstinsertbin.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/interfaces/photography.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/interfaces/photography-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/isoff/gstisoff.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/mpegts/gstmpegtssection.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/mpegts/gst-atsc-section.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/mpegts/gst-dvb-section.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/mpegts/gst-scte-section.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/mpegts/gst-hdmv-section.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/mpegts/gstmpegtsdescriptor.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/mpegts/gst-atsc-descriptor.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/mpegts/gst-dvb-descriptor.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/mpegts/gst-isdb-descriptor.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/mpegts/mpegts-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/mpegts/mpegts.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/opencv/opencv-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/opencv/gstopencvutils.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/opencv/gstopencvvideofilter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/player/player.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/player/player-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/player/gstplayer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/player/gstplayer-types.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/player/gstplayer-signal-dispatcher.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/player/gstplayer-video-renderer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/player/gstplayer-media-info.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/player/gstplayer-g-main-context-signal-dispatcher.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/player/gstplayer-video-overlay-video-renderer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/player/gstplayer-visualization.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/sctp/sctpreceivemeta.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/sctp/sctpsendmeta.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/sctp/sctp-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/transcoder/gsttranscoder.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/transcoder/transcoder-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/webrtc/dtlstransport.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/webrtc/icetransport.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/webrtc/rtcsessiondescription.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/webrtc/rtpreceiver.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/webrtc/rtpsender.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/webrtc/rtptransceiver.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/webrtc/datachannel.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/webrtc/webrtc_fwd.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/webrtc/webrtc.h
+Deleted: /usr/local/include/libsync.h
+Deleted: /usr/local/include/xf86drm.h
+Deleted: /usr/local/include/xf86drmMode.h
+Deleted: /usr/local/include/libdrm/drm.h
+Deleted: /usr/local/include/libdrm/drm_fourcc.h
+Deleted: /usr/local/include/libdrm/drm_mode.h
+Deleted: /usr/local/include/libdrm/drm_sarea.h
+Deleted: /usr/local/include/libdrm/i915_drm.h
+Deleted: /usr/local/include/libdrm/mach64_drm.h
+Deleted: /usr/local/include/libdrm/mga_drm.h
+Deleted: /usr/local/include/libdrm/msm_drm.h
+Deleted: /usr/local/include/libdrm/nouveau_drm.h
+Deleted: /usr/local/include/libdrm/qxl_drm.h
+Deleted: /usr/local/include/libdrm/r128_drm.h
+Deleted: /usr/local/include/libdrm/radeon_drm.h
+Deleted: /usr/local/include/libdrm/amdgpu_drm.h
+Deleted: /usr/local/include/libdrm/savage_drm.h
+Deleted: /usr/local/include/libdrm/sis_drm.h
+Deleted: /usr/local/include/libdrm/tegra_drm.h
+Deleted: /usr/local/include/libdrm/vc4_drm.h
+Deleted: /usr/local/include/libdrm/via_drm.h
+Deleted: /usr/local/include/libdrm/virtgpu_drm.h
+Deleted: /usr/local/include/libdrm/vmwgfx_drm.h
+Deleted: /usr/local/include/libkms/libkms.h
+Deleted: /usr/local/include/libdrm/nouveau/nouveau.h
+Deleted: /usr/local/include/libdrm/nouveau/nvif/class.h
+Deleted: /usr/local/include/libdrm/nouveau/nvif/cl0080.h
+Deleted: /usr/local/include/libdrm/nouveau/nvif/cl9097.h
+Deleted: /usr/local/include/libdrm/nouveau/nvif/if0002.h
+Deleted: /usr/local/include/libdrm/nouveau/nvif/if0003.h
+Deleted: /usr/local/include/libdrm/nouveau/nvif/ioctl.h
+Deleted: /usr/local/include/libdrm/nouveau/nvif/unpack.h
+Deleted: /usr/local/include/libdrm/radeon_bo.h
+Deleted: /usr/local/include/libdrm/radeon_cs.h
+Deleted: /usr/local/include/libdrm/radeon_surface.h
+Deleted: /usr/local/include/libdrm/radeon_bo_gem.h
+Deleted: /usr/local/include/libdrm/radeon_cs_gem.h
+Deleted: /usr/local/include/libdrm/radeon_bo_int.h
+Deleted: /usr/local/include/libdrm/radeon_cs_int.h
+Deleted: /usr/local/include/libdrm/r600_pci_ids.h
+Deleted: /usr/local/include/libdrm/amdgpu.h
+Deleted: /usr/local/include/freedreno/freedreno_drmif.h
+Deleted: /usr/local/include/freedreno/freedreno_ringbuffer.h
+Deleted: /usr/local/include/libdrm/vc4_packet.h
+Deleted: /usr/local/include/libdrm/vc4_qpu_defines.h
+Deleted: /usr/local/include/avtp.h
+Deleted: /usr/local/include/avtp_aaf.h
+Deleted: /usr/local/include/avtp_crf.h
+Deleted: /usr/local/include/avtp_cvf.h
+Deleted: /usr/local/include/avtp_ieciidc.h
+Deleted: /usr/local/include/dssim.h
+Deleted: /usr/local/include/microdns/microdns.h
+Deleted: /usr/local/include/microdns/rr.h
+Deleted: /usr/local/include/libavutil/adler32.h
+Deleted: /usr/local/include/libavutil/aes.h
+Deleted: /usr/local/include/libavutil/aes_ctr.h
+Deleted: /usr/local/include/libavutil/attributes.h
+Deleted: /usr/local/include/libavutil/audio_fifo.h
+Deleted: /usr/local/include/libavutil/avassert.h
+Deleted: /usr/local/include/libavutil/avstring.h
+Deleted: /usr/local/include/libavutil/avutil.h
+Deleted: /usr/local/include/libavutil/base64.h
+Deleted: /usr/local/include/libavutil/blowfish.h
+Deleted: /usr/local/include/libavutil/bprint.h
+Deleted: /usr/local/include/libavutil/bswap.h
+Deleted: /usr/local/include/libavutil/buffer.h
+Deleted: /usr/local/include/libavutil/camellia.h
+Deleted: /usr/local/include/libavutil/cast5.h
+Deleted: /usr/local/include/libavutil/channel_layout.h
+Deleted: /usr/local/include/libavutil/common.h
+Deleted: /usr/local/include/libavutil/cpu.h
+Deleted: /usr/local/include/libavutil/crc.h
+Deleted: /usr/local/include/libavutil/des.h
+Deleted: /usr/local/include/libavutil/dict.h
+Deleted: /usr/local/include/libavutil/display.h
+Deleted: /usr/local/include/libavutil/dovi_meta.h
+Deleted: /usr/local/include/libavutil/downmix_info.h
+Deleted: /usr/local/include/libavutil/encryption_info.h
+Deleted: /usr/local/include/libavutil/error.h
+Deleted: /usr/local/include/libavutil/eval.h
+Deleted: /usr/local/include/libavutil/fifo.h
+Deleted: /usr/local/include/libavutil/file.h
+Deleted: /usr/local/include/libavutil/frame.h
+Deleted: /usr/local/include/libavutil/hash.h
+Deleted: /usr/local/include/libavutil/hdr_dynamic_metadata.h
+Deleted: /usr/local/include/libavutil/hmac.h
+Deleted: /usr/local/include/libavutil/hwcontext.h
+Deleted: /usr/local/include/libavutil/hwcontext_cuda.h
+Deleted: /usr/local/include/libavutil/hwcontext_d3d11va.h
+Deleted: /usr/local/include/libavutil/hwcontext_drm.h
+Deleted: /usr/local/include/libavutil/hwcontext_dxva2.h
+Deleted: /usr/local/include/libavutil/hwcontext_mediacodec.h
+Deleted: /usr/local/include/libavutil/hwcontext_opencl.h
+Deleted: /usr/local/include/libavutil/hwcontext_qsv.h
+Deleted: /usr/local/include/libavutil/hwcontext_vaapi.h
+Deleted: /usr/local/include/libavutil/hwcontext_vdpau.h
+Deleted: /usr/local/include/libavutil/hwcontext_videotoolbox.h
+Deleted: /usr/local/include/libavutil/hwcontext_vulkan.h
+Deleted: /usr/local/include/libavutil/imgutils.h
+Deleted: /usr/local/include/libavutil/intfloat.h
+Deleted: /usr/local/include/libavutil/intreadwrite.h
+Deleted: /usr/local/include/libavutil/lfg.h
+Deleted: /usr/local/include/libavutil/log.h
+Deleted: /usr/local/include/libavutil/lzo.h
+Deleted: /usr/local/include/libavutil/macros.h
+Deleted: /usr/local/include/libavutil/mastering_display_metadata.h
+Deleted: /usr/local/include/libavutil/mathematics.h
+Deleted: /usr/local/include/libavutil/md5.h
+Deleted: /usr/local/include/libavutil/mem.h
+Deleted: /usr/local/include/libavutil/motion_vector.h
+Deleted: /usr/local/include/libavutil/murmur3.h
+Deleted: /usr/local/include/libavutil/opt.h
+Deleted: /usr/local/include/libavutil/parseutils.h
+Deleted: /usr/local/include/libavutil/pixdesc.h
+Deleted: /usr/local/include/libavutil/pixelutils.h
+Deleted: /usr/local/include/libavutil/pixfmt.h
+Deleted: /usr/local/include/libavutil/random_seed.h
+Deleted: /usr/local/include/libavutil/rational.h
+Deleted: /usr/local/include/libavutil/rc4.h
+Deleted: /usr/local/include/libavutil/replaygain.h
+Deleted: /usr/local/include/libavutil/ripemd.h
+Deleted: /usr/local/include/libavutil/samplefmt.h
+Deleted: /usr/local/include/libavutil/sha.h
+Deleted: /usr/local/include/libavutil/sha512.h
+Deleted: /usr/local/include/libavutil/spherical.h
+Deleted: /usr/local/include/libavutil/stereo3d.h
+Deleted: /usr/local/include/libavutil/tea.h
+Deleted: /usr/local/include/libavutil/threadmessage.h
+Deleted: /usr/local/include/libavutil/time.h
+Deleted: /usr/local/include/libavutil/timecode.h
+Deleted: /usr/local/include/libavutil/timestamp.h
+Deleted: /usr/local/include/libavutil/tree.h
+Deleted: /usr/local/include/libavutil/twofish.h
+Deleted: /usr/local/include/libavutil/tx.h
+Deleted: /usr/local/include/libavutil/video_enc_params.h
+Deleted: /usr/local/include/libavutil/xtea.h
+Deleted: /usr/local/include/libpostproc/postprocess.h
+Deleted: /usr/local/include/libswresample/swresample.h
+Deleted: /usr/local/include/libswscale/swscale.h
+Deleted: /usr/local/include/libavcodec/ac3_parser.h
+Deleted: /usr/local/include/libavcodec/adts_parser.h
+Deleted: /usr/local/include/libavcodec/avcodec.h
+Deleted: /usr/local/include/libavcodec/avdct.h
+Deleted: /usr/local/include/libavcodec/avfft.h
+Deleted: /usr/local/include/libavcodec/bsf.h
+Deleted: /usr/local/include/libavcodec/codec_desc.h
+Deleted: /usr/local/include/libavcodec/codec.h
+Deleted: /usr/local/include/libavcodec/codec_id.h
+Deleted: /usr/local/include/libavcodec/codec_par.h
+Deleted: /usr/local/include/libavcodec/d3d11va.h
+Deleted: /usr/local/include/libavcodec/dirac.h
+Deleted: /usr/local/include/libavcodec/dv_profile.h
+Deleted: /usr/local/include/libavcodec/dxva2.h
+Deleted: /usr/local/include/libavcodec/jni.h
+Deleted: /usr/local/include/libavcodec/mediacodec.h
+Deleted: /usr/local/include/libavcodec/packet.h
+Deleted: /usr/local/include/libavcodec/qsv.h
+Deleted: /usr/local/include/libavcodec/vaapi.h
+Deleted: /usr/local/include/libavcodec/vdpau.h
+Deleted: /usr/local/include/libavcodec/videotoolbox.h
+Deleted: /usr/local/include/libavcodec/vorbis_parser.h
+Deleted: /usr/local/include/libavcodec/xvmc.h
+Deleted: /usr/local/include/libavformat/avformat.h
+Deleted: /usr/local/include/libavformat/avio.h
+Deleted: /usr/local/include/libavfilter/avfilter.h
+Deleted: /usr/local/include/libavfilter/buffersink.h
+Deleted: /usr/local/include/libavfilter/buffersrc.h
+Deleted: /usr/local/include/libavdevice/avdevice.h
+Deleted: /usr/local/include/libavresample/avresample.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-auth.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-address-pool.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-context.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-params.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-sdp.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-thread-pool.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-media.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-media-factory.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-media-factory-uri.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-mount-points.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-permissions.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-stream.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-stream-transport.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-session.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-session-media.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-session-pool.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-token.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-client.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-server.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-server-object.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-server-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-onvif-server.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-onvif-client.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-onvif-media-factory.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server/rtsp-onvif-media.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/validate.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/validate-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-types.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-bin-monitor.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-pipeline-monitor.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-element-monitor.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-enums.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/media-descriptor.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/media-descriptor-writer.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/media-descriptor-parser.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-monitor-factory.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-monitor.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-override.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-override-registry.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-pad-monitor.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-reporter.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-report.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-runner.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-scenario.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-utils.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate/gst-validate-media-info.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-types.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-prelude.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-enums.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-gerror.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-meta-container.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-timeline.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-layer.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-clip.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-pipeline.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-source-clip.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-source-clip-asset.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-uri-clip.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-base-effect-clip.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-effect-clip.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-operation-clip.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-base-transition-clip.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-transition-clip.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-test-clip.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-time-overlay-clip.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-title-clip.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-overlay-clip.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-text-overlay-clip.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-base-effect.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-effect.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-track.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-audio-track.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-video-track.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-track-element.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-track-element-deprecated.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-source.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-operation.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-video-source.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-audio-source.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-video-uri-source.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-audio-uri-source.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-image-source.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-multi-file-source.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-transition.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-audio-transition.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-video-transition.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-video-test-source.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-audio-test-source.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-title-source.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-text-overlay.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-screenshot.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-formatter.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-asset.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-uri-asset.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-clip-asset.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-track-element-asset.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-extractable.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-project.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-base-xml-formatter.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-xml-formatter.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-command-line-formatter.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-timeline-element.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-container.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-effect-asset.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-utils.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-group.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-marker-list.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-pitivi-formatter.h
+Deleted: /usr/local/include/gstreamer-1.0/ges/ges-version.h
+Deleted: /usr/local/share/man/man1/gst-inspect-1.0.1
+Deleted: /usr/local/share/man/man1/gst-stats-1.0.1
+Deleted: /usr/local/share/man/man1/gst-typefind-1.0.1
+Deleted: /usr/local/share/man/man1/gst-launch-1.0.1
+Deleted: /usr/local/share/man/man1/gst-device-monitor-1.0.1
+Deleted: /usr/local/share/man/man1/gst-discoverer-1.0.1
+Deleted: /usr/local/share/man/man1/gst-play-1.0.1
+Deleted: /usr/local/share/man/man1/ges-launch-1.0.1
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/orc-test-0.4.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/orc-0.4.pc
+Deleted: /usr/local/share/aclocal/orc.m4
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstconfig.h
+Deleted: /usr/local/include/gstreamer-1.0/gst/gstversion.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-base-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-controller-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-net-1.0.pc
+Deleted: /usr/local/share/gstreamer-1.0/gdb/gst_gdb.py
+Deleted: /usr/local/share/gstreamer-1.0/gdb/glib_gobject_helper.py
+Deleted: /usr/local/share/gdb/auto-load/.//usr/local/lib/arm-linux-gnueabihf/libgstreamer-1.0.so.0.1900.0-gdb.py
+Deleted: /usr/local/include/gstreamer-1.0/gst/check/internal-check.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-check-1.0.pc
+Deleted: /usr/local/share/bash-completion/helpers/gst
+Deleted: /usr/local/share/bash-completion/completions/gst-launch-1.0
+Deleted: /usr/local/share/bash-completion/completions/gst-inspect-1.0
+Deleted: /usr/local/libexec/gstreamer-1.0/gst-plugins-doc-cache-generator
+Deleted: /usr/local/share/aclocal/gst-element-check-1.0.m4
+Deleted: /usr/local/share/gst-plugins-base/1.0/license-translations.dict
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-tag-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-fft-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-video-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-audio-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-rtp-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-sdp-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-rtsp-1.0.pc
+Deleted: /usr/local/include/gstreamer-1.0/gst/pbutils/gstpluginsbaseversion.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-pbutils-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-riff-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-app-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-allocators-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/include/gst/gl/gstglconfig.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-gl-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-gl-prototypes-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-gl-wayland-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-gl-egl-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/opus.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-plugins-base-1.0.pc
+Deleted: /usr/local/share/gstreamer-1.0/presets/GstIirEqualizer3Bands.prs
+Deleted: /usr/local/share/gstreamer-1.0/presets/GstIirEqualizer10Bands.prs
+Deleted: /usr/local/share/gstreamer-1.0/presets/GstQTMux.prs
+Deleted: /usr/local/include/libdv/dv_config.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libdv.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/nice.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-plugins-bad-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-bad-audio-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-codecparsers-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-insertbin-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-photography-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-mpegts-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-player-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-sctp-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-transcoder-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-webrtc-1.0.pc
+Deleted: /usr/local/share/gstreamer-1.0/presets/GstFreeverb.prs
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libdrm.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libkms.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libdrm_nouveau.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libdrm_radeon.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libdrm_amdgpu.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libdrm_freedreno.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libdrm_vc4.pc
+Deleted: /usr/local/share/libdrm/amdgpu.ids
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/avtp.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/dssim.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/microdns.pc
+Deleted: /usr/local/share/gstreamer-1.0/encoding-profiles/file-extension/ogv.gep
+Deleted: /usr/local/share/gstreamer-1.0/encoding-profiles/file-extension/oga.gep
+Deleted: /usr/local/share/gstreamer-1.0/encoding-profiles/file-extension/mkv.gep
+Deleted: /usr/local/share/gstreamer-1.0/encoding-profiles/file-extension/mp3.gep
+Deleted: /usr/local/share/gstreamer-1.0/encoding-profiles/file-extension/webm.gep
+Deleted: /usr/local/share/gstreamer-1.0/encoding-profiles/file-extension/flv.gep
+Deleted: /usr/local/share/gstreamer-1.0/encoding-profiles/file-extension/mp4.gep
+Deleted: /usr/local/share/gstreamer-1.0/encoding-profiles/file-extension/avi.gep
+Deleted: /usr/local/share/gstreamer-1.0/encoding-profiles/online-services/youtube.gep
+Deleted: /usr/local/share/gstreamer-1.0/encoding-profiles/device/dvd.gep
+Deleted: /usr/local/share/gstreamer-1.0/presets/GstX264Enc.prs
+Deleted: /usr/local/include/libavutil/version.h
+Deleted: /usr/local/include/libavutil/avconfig.h
+Deleted: /usr/local/include/libpostproc/version.h
+Deleted: /usr/local/include/libswresample/version.h
+Deleted: /usr/local/include/libswscale/version.h
+Deleted: /usr/local/include/libavcodec/version.h
+Deleted: /usr/local/include/libavformat/version.h
+Deleted: /usr/local/include/libavfilter/version.h
+Deleted: /usr/local/include/libavdevice/version.h
+Deleted: /usr/local/include/libavresample/version.h
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libavutil.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libpostproc.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libswresample.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libswscale.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libavcodec.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libavformat.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libavdevice.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libavfilter.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/libavresample.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gstreamer-rtsp-server-1.0.pc
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/simple_seeks.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/seek_forward.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/seek_backward.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/seek_forward_backward.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/reverse_playback.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/fast_forward.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/fast_backward.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/alternate_fast_backward_forward.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/pause_resume.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/scrub_forward_seeking.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/scrub_backward_seeking.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/scrub_forward_seeking_full.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/scrub_backward_seeking_full.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/adaptive_video_size.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/adaptive_video_framerate.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/adaptive_video_framerate_size.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/force_key_unit.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/seek_with_stop.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/switch_audio_track_while_paused.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/switch_subtitle_track.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/switch_subtitle_track_while_paused.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/disable_subtitle_track_while_paused.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/play_15s.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/play_5s.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/change_state_intensive.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/switch_audio_track.scenario
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/force_rtsp2.scenario
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gst-validate-1.0.pc
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher/config.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher/baseclasses.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher/__init__.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher/loggable.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher/reporters.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher/main.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher/httpserver.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher/RangeHTTPServer.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher/utils.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher/vfb_server.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher//apps/__init__.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher//apps/gstvalidate.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher//apps/gstcheck.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher//apps/pyunittest.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher//testsuites/check.py
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher//testsuites/pyunittest.py
+Deleted: /usr/local/bin/gst-validate-launcher
+Could not delete /usr/local/include/gstreamer-1.0/ges/ges-version.h: [Errno 2] No such file or directory: '/usr/local/include/gstreamer-1.0/ges/ges-version.h'.
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig/gst-editing-services-1.0.pc
+Deleted: /usr/local/share/bash-completion/completions/ges-launch-1.0
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/ges-edit-clip-while-paused.scenario
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher/apps/geslaunch.py
+Deleted: /usr/local/lib/python3.7/site-packages/gi/overrides/GES.py
+Deleted: /usr/local/lib/python3.7/site-packages/gi/overrides
+Deleted: /usr/local/lib/python3.7/site-packages/gi
+Deleted: /usr/local/lib/python3.7/site-packages
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher/testsuites
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher/apps
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python/launcher
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher/python
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gst-validate-launcher
+Deleted: /usr/local/share/gstreamer-1.0/encoding-profiles/device
+Deleted: /usr/local/share/gstreamer-1.0/encoding-profiles/online-services
+Deleted: /usr/local/share/gstreamer-1.0/encoding-profiles/file-extension
+Deleted: /usr/local/share/gstreamer-1.0/encoding-profiles
+Deleted: /usr/local/share/libdrm
+Deleted: /usr/local/share/gstreamer-1.0/presets
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/include/gst/gl
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/include/gst
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/include
+Deleted: /usr/local/share/gst-plugins-base/1.0
+Deleted: /usr/local/share/gst-plugins-base
+Deleted: /usr/local/share/bash-completion/completions
+Deleted: /usr/local/share/bash-completion/helpers
+Deleted: /usr/local/share/bash-completion
+Deleted: /usr/local/share/gdb/auto-load/usr/local/lib/arm-linux-gnueabihf
+Deleted: /usr/local/share/gdb/auto-load/usr/local/lib
+Deleted: /usr/local/share/gdb/auto-load/usr/local
+Deleted: /usr/local/share/gdb/auto-load/usr
+Deleted: /usr/local/share/gdb/auto-load
+Deleted: /usr/local/share/gdb
+Deleted: /usr/local/share/gstreamer-1.0/gdb
+Deleted: /usr/local/share/aclocal
+Deleted: /usr/local/lib/arm-linux-gnueabihf/pkgconfig
+Deleted: /usr/local/include/gstreamer-1.0/ges
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp-server
+Deleted: /usr/local/include/libavresample
+Deleted: /usr/local/include/libavdevice
+Deleted: /usr/local/include/libavfilter
+Deleted: /usr/local/include/libavformat
+Deleted: /usr/local/include/libavcodec
+Deleted: /usr/local/include/libswscale
+Deleted: /usr/local/include/libswresample
+Deleted: /usr/local/include/libpostproc
+Deleted: /usr/local/include/microdns
+Deleted: /usr/local/include/freedreno
+Deleted: /usr/local/include/libdrm/nouveau/nvif
+Deleted: /usr/local/include/libdrm/nouveau
+Deleted: /usr/local/include/libkms
+Deleted: /usr/local/include/libdrm
+Deleted: /usr/local/include/gstreamer-1.0/gst/transcoder
+Deleted: /usr/local/include/gstreamer-1.0/gst/sctp
+Deleted: /usr/local/include/gstreamer-1.0/gst/player
+Deleted: /usr/local/include/gstreamer-1.0/gst/opencv
+Deleted: /usr/local/include/gstreamer-1.0/gst/isoff
+Deleted: /usr/local/include/gstreamer-1.0/gst/insertbin
+Deleted: /usr/local/include/gstreamer-1.0/gst/codecparsers
+Deleted: /usr/local/include/gstreamer-1.0/gst/basecamerabinsrc
+Deleted: /usr/local/include/gstreamer-1.0/gst/uridownloader
+Deleted: /usr/local/include/stun/usages
+Deleted: /usr/local/include/stun
+Deleted: /usr/local/include/nice
+Deleted: /usr/local/include/libdv
+Deleted: /usr/local/include/opus
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/egl
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/wayland
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl/glprototypes
+Deleted: /usr/local/include/GL
+Deleted: /usr/local/include/gstreamer-1.0/gst/allocators
+Deleted: /usr/local/include/gstreamer-1.0/gst/riff
+Deleted: /usr/local/include/gstreamer-1.0/gst/sdp
+Deleted: /usr/local/include/gstreamer-1.0/gst/fft
+Deleted: /usr/local/include/gstreamer-1.0/gst/check
+Deleted: /usr/local/include/gstreamer-1.0/gst/net
+Deleted: /usr/local/include/gstreamer-1.0/gst/base
+Deleted: /usr/local/include/orc-0.4/orc-test
+Deleted: /usr/local/include/orc-0.4/orc
+Deleted: /usr/local/include/orc-0.4
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0/validate
+Deleted: /usr/local/include/gstreamer-1.0/gst/validate
+Deleted: /usr/local/include/libavutil
+Deleted: /usr/local/include/gstreamer-1.0/gst/webrtc
+Deleted: /usr/local/include/gstreamer-1.0/gst/mpegts
+Deleted: /usr/local/include/gstreamer-1.0/gst/interfaces
+Deleted: /usr/local/include/gstreamer-1.0/gst/gl
+Deleted: /usr/local/include/gstreamer-1.0/gst/app
+Deleted: /usr/local/include/gstreamer-1.0/gst/pbutils
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtsp
+Deleted: /usr/local/include/gstreamer-1.0/gst/rtp
+Deleted: /usr/local/include/gstreamer-1.0/gst/audio
+Deleted: /usr/local/include/gstreamer-1.0/gst/video
+Deleted: /usr/local/include/gstreamer-1.0/gst/tag
+Deleted: /usr/local/lib/arm-linux-gnueabihf/gstreamer-1.0
+Deleted: /usr/local/libexec/gstreamer-1.0
+Deleted: /usr/local/libexec
+Deleted: /usr/local/include/gstreamer-1.0/gst/controller
+Deleted: /usr/local/include/gstreamer-1.0/gst
+Deleted: /usr/local/include/gstreamer-1.0
+Deleted: /usr/local/lib/arm-linux-gnueabihf
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/rtsp_overrides/includes
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/rtsp_overrides
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios/includes
+Deleted: /usr/local/share/gstreamer-1.0/validate/scenarios
+Deleted: /usr/local/share/gstreamer-1.0/validate
+Deleted: /usr/local/share/gstreamer-1.0
+
+Uninstall finished.
+
+Deleted: 1370
+Failed: 6
+
+Remember that files created by custom scripts have not been removed.
+
