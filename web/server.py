@@ -7,6 +7,7 @@ spec = importlib.util.spec_from_file_location('config', r'config.py')
 config = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(config)
 
+import flask
 from flask import Flask, Response, render_template
 from flask_socketio import SocketIO
 import livereload
@@ -23,7 +24,8 @@ import cv2
 import numpy as np
 
 async_mode = None
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 socketio = SocketIO(app, async_mode=async_mode)
 
 
@@ -77,6 +79,11 @@ class ImageDisplayThread(threading.Thread):
 def hello_world():
     return render_template('index.html', async_mode=socketio.async_mode)
     # return Response(update_index())
+
+@app.route('/<path:filename>')
+def file_route(filename):
+    print('ROUTE', filename)
+    return flask.send_from_directory(app.static_folder, filename)
 
 @socketio.on('connect')
 def handle_connect():

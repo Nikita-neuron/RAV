@@ -10,9 +10,9 @@
   <script src="{{ url_for('static', filename='js/jquery-3.5.1.min.js', version='1') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js" integrity="sha512-oFOCo2/3DtjrJG4N27BjSLQWoiBv171sK6a+JiWjp/7agxC2nCUP358AqzxkBUb5jX8g6CYLPdSKQTbC0weCwA==" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <script src="{{ url_for('static', filename='js/main_webrtc.js', version='1') }}"></script>
-  <script src="{{ url_for('static', filename='js/gamepad.js', version='1') }}"></script>
-  <script src="{{ url_for('static', filename='js/main.js', version='1') }}"></script>
+  <script src="{{ url_for('static', filename='js/main_webrtc.js', version='1') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/gamepad.js', version='1') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/main.js', version='1') }}" defer></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', version='1') }}">
   <title>RAV</title>
 </head>
@@ -29,20 +29,20 @@
       <div class="visulizate">
         <div class="video-sound">
           <div class="video" onclick="start();">
-            <img src="{{ url_for('static', filename='img/no_camera.svg', version='1') }}" alt="" class="no_video" width="64" height="64">
+            <img src="img/no_camera.svg" alt="" class="no_video" width="64" height="64">
             <video id="remote-video" class="video-player" autoplay="">
               Your browser does not support the video tag.
             </video>
           </div>
           <div class="sound">
             <button class="microphone">
-              <img src=" {{ url_for('static', filename='img/sound_background.png', version='1') }}" alt="microphone" class="microphone-background">
-              <img src=" {{ url_for('static', filename='img/microphone.png', version='1') }}" alt="microphone" class="microphone-img">
+              <img src="img/sound_background.png" alt="microphone" class="microphone-background">
+              <img src="img/microphone.png" alt="microphone" class="microphone-img">
               <div class="no-microphone"></div>
             </button>
             <button class="speaker">
-              <img src=" {{ url_for('static', filename='img/sound_background.png', version='1') }}" alt="speaker" class="speaker=background">
-              <img src=" {{ url_for('static', filename='img/volume.png', version='1') }}" alt="speaker" class="speaker-img">
+              <img src="img/sound_background.png" alt="speaker" class="speaker=background">
+              <img src="img/volume.png" alt="speaker" class="speaker-img">
               <div class="no-speaker"></div>
             </button>
           </div>
@@ -50,19 +50,19 @@
         <div class="sensors">
           <div class="view-from-above"></div>
           <div class="sensors-up-left signal">
-            <img src="{{ url_for('static', filename='img/up-signal.svg', version='1') }}" alt="" width="148" height="150">
+            <object data="img/up-signal.svg" alt="" width="148" height="150"></object>
           </div>
           <div class="sensors-up-right signal">
-            <img src="{{ url_for('static', filename='img/up-signal.svg', version='1') }}" alt="" width="148" height="150">
+            <object data="img/up-signal.svg" alt="" width="148" height="150"></object>
           </div>
           <div class="sensors-right signal">
-            <img src="{{ url_for('static', filename='img/leftRight-signal.svg', version='1') }}" alt="" width="100" height="207">
+            <object data="img/leftRight-signal.svg" alt="" width="100" height="207"></object>
           </div>
           <div class="sensors-left signal">
-            <img src="{{ url_for('static', filename='img/leftRight-signal.svg', version='1') }}" alt="" width="100" height="207">
+            <object data="img/leftRight-signal.svg" alt="" width="100" height="207"></object>
           </div>
           <div class="sensors-down signal">
-            <img src="{{ url_for('static', filename='img/down-signal.svg', version='1') }}" alt="" width="207" height="150">
+            <object data="img/down-signal.svg" alt="" width="207" height="150"></object>
           </div>
         </div>
       </div>
@@ -282,7 +282,7 @@
   </main>
   <footer class="footer">
     <div class="logo">
-      <img src="{{ url_for('static', filename='img/miniLogo_gradient.svg', version='1') }}" alt="logo" class="logo-img">
+      <img src="img/miniLogo_gradient.svg" alt="logo" class="logo-img">
     </div>
   </footer>
   <script type="text/javascript">
@@ -293,58 +293,58 @@
     });
   </script>
   <script>
-    let sensorsSystemData = {
-      "memory": {
-          "memoryFree":       1000,
-          "memoryTotal":      1000,
-          "memoryPercent":    100
-      },
-      "disk": {
-          "diskFree":         0,
-          "diskTotal":        0,
-          "diskPercent":      0
-      },
-      "cpu":                  0,
-      "temperature":          0
-  };
+  //   let sensorsSystemData = {
+  //     "memory": {
+  //         "memoryFree":       1000,
+  //         "memoryTotal":      1000,
+  //         "memoryPercent":    100
+  //     },
+  //     "disk": {
+  //         "diskFree":         0,
+  //         "diskTotal":        0,
+  //         "diskPercent":      0
+  //     },
+  //     "cpu":                  0,
+  //     "temperature":          0
+  // };
 
-  let motorsSystemData = {
-      "memory": {
-          "memoryFree":       1000,
-          "memoryTotal":      1000,
-          "memoryPercent":    100
-      },
-      "disk": {
-          "diskFree":         0,
-          "diskTotal":        0,
-          "diskPercent":      0
-      },
-      "cpu":                  0,
-      "temperature":          0
-  };
+  // let motorsSystemData = {
+  //     "memory": {
+  //         "memoryFree":       1000,
+  //         "memoryTotal":      1000,
+  //         "memoryPercent":    100
+  //     },
+  //     "disk": {
+  //         "diskFree":         0,
+  //         "diskTotal":        0,
+  //         "diskPercent":      0
+  //     },
+  //     "cpu":                  0,
+  //     "temperature":          0
+  // };
 
-  set_system_data(sensorsSystemData, motorsSystemData);
+  // set_system_data(sensorsSystemData, motorsSystemData);
 
-  function set_system_data(sensorsSystemData, motorsSystemData) {
-      let selectors = [
-          "memoryFree",
-          "memoryTotal",
-          "memoryPercent",
-          "diskFree",
-          "diskTotal",
-          "diskPercent",
-          "cpu",
-          "temperature"
-      ];
+  // function set_system_data(sensorsSystemData, motorsSystemData) {
+  //     let selectors = [
+  //         "memoryFree",
+  //         "memoryTotal",
+  //         "memoryPercent",
+  //         "diskFree",
+  //         "diskTotal",
+  //         "diskPercent",
+  //         "cpu",
+  //         "temperature"
+  //     ];
 
-      for (key in sensorsSystemData) {
-        console.log(sensorsSystemData[key].length);
-      }
+  //     for (key in sensorsSystemData) {
+  //       console.log(sensorsSystemData[key].length);
+  //     }
 
-      // selectors.forEach((item) => {
-      //     document.querySelector(`.sensors${item}`).value = sensorsSystemData[]
-      // });
-  }
+  //     // selectors.forEach((item) => {
+  //     //     document.querySelector(`.sensors${item}`).value = sensorsSystemData[]
+  //     // });
+  // }
   </script>
 </body>
 </html>
