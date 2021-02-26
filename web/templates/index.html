@@ -79,8 +79,11 @@
                 <span class="percent-text">
                   Память:
                 </span>
-                <span class="percent-data sensors-memory-percent">
-                  100%
+                <span class="percent-data">
+                  <span class="sensors-memoryPercent">
+                    100 
+                  </span>
+                  <span>%</span>
                 </span>
               </div>
               <div class="deep">
@@ -93,11 +96,17 @@
                   </span>
                 </div>
                 <div class="total-free-data">
-                  <span class="total-data sensors-memory-total">
-                    10000 MB
+                  <span class="total-data">
+                    <span class="sensors-memoryTotal">
+                      10000 
+                    </span>
+                    <span>MB</span>
                   </span>
-                  <span class="free-data sensors-memory-free">
-                    10000 MB
+                  <span class="free-data">
+                    <span class="sensors-memoryFree">
+                      10000 
+                    </span>
+                    <span>MB</span>
                   </span>
                 </div>
               </div>
@@ -107,8 +116,11 @@
                 <span class="disk-percent-text">
                   Диск:
                 </span>
-                <span class="percent-data sensors-disk-percent">
-                  100%
+                <span class="percent-data">
+                  <span class="sensors-diskPercent">
+                    100 
+                  </span>
+                  <span>%</span>
                 </span>
               </div>
               <div class="deep">
@@ -121,11 +133,17 @@
                   </span>
                 </div>
                 <div class="total-free-data">
-                  <span class="total-data sensors-disk-total">
-                    10000 MB
+                  <span class="total-data">
+                    <span class="sensors-diskTotal">
+                      10000 
+                    </span>
+                    <span>MB</span>
                   </span>
-                  <span class="free-data sensors-disk-free">
-                    10000 MB
+                  <span class="free-data">
+                    <span class="sensors-diskFree">
+                      10000 
+                    </span>
+                    <span>MB</span>
                   </span>
                 </div>
               </div>
@@ -135,16 +153,22 @@
             <span class="processor-text">
               Процессор:
             </span>
-            <span class="processor-data sensors-processor">
-              100%
+            <span class="processor-data">
+              <span class="sensors-cpu">
+                100 
+              </span>
+              <span>%</span>
             </span>
           </div>
           <div class="temperature">
             <span class="temperature-text">
               Температура:
             </span>
-            <span class="temperature-data sensors-temperature">
-              100 °С
+            <span class="temperature-data">
+              <span class="sensors-temperature">
+                100 
+              </span>
+              <span>°С</span>
             </span>
           </div>
         </div>
@@ -160,8 +184,11 @@
                 <span class="percent-text">
                   Память:
                 </span>
-                <span class="percent-data motors-memory-percent">
-                  100%
+                <span class="percent-data">
+                  <span class="motors-memoryPercent">
+                    100 
+                  </span>
+                  <span>%</span>
                 </span>
               </div>
               <div class="deep">
@@ -174,11 +201,17 @@
                   </span>
                 </div>
                 <div class="total-free-data">
-                  <span class="total-data motors-memory-total">
-                    10000 MB
+                  <span class="total-data">
+                    <span class="motors-memoryTotal">
+                      10000 
+                    </span>
+                    <span>MB</span>
                   </span>
-                  <span class="free-data motors-memory-free">
-                    10000 MB
+                  <span class="free-data">
+                    <span class="motors-memoryFree">
+                      10000 
+                    </span>
+                    <span>MB</span>
                   </span>
                 </div>
               </div>
@@ -188,8 +221,11 @@
                 <span class="disk-percent-text">
                   Диск:
                 </span>
-                <span class="percent-data motors-disk-percent">
-                  100%
+                <span class="percent-data">
+                  <span class="motors-diskPercent">
+                    100 
+                  </span>
+                  <span>%</span>
                 </span>
               </div>
               <div class="deep">
@@ -202,11 +238,17 @@
                   </span>
                 </div>
                 <div class="total-free-data">
-                  <span class="total-data motors-disk-total">
-                    10000 MB
+                  <span class="total-data">
+                    <span class="motors-diskTotal">
+                      10000 
+                    </span>
+                    <span>MB</span>
                   </span>
-                  <span class="free-data motors-disk-free">
-                    10000 MB
+                  <span class="free-data">
+                    <span class="motors-diskFree">
+                      10000 
+                    </span>
+                    <span>MB</span>
                   </span>
                 </div>
               </div>
@@ -216,16 +258,22 @@
             <span class="processor-text">
               Процессор:
             </span>
-            <span class="processor-data motors-processor">
-              100%
+            <span class="processor-data">
+              <span class="motors-cpu">
+                100 
+              </span>
+              <span>%</span>
             </span>
           </div>
           <div class="temperature">
             <span class="temperature-text">
               Температура:
             </span>
-            <span class="temperature-data motors-disk-temperature">
-              100 °С
+            <span class="temperature-data">
+              <span class="motors-temperature">
+                100 
+              </span>
+              <span>°С</span>
             </span>
           </div>
         </div>
@@ -237,13 +285,66 @@
       <img src="{{ url_for('static', filename='img/miniLogo_gradient.svg', version='1') }}" alt="logo" class="logo-img">
     </div>
   </footer>
-  <!DOCTYPE html>
   <script type="text/javascript">
     $(window).on('load', function () {
         var $preloader = $('#p_prldr'), $svg_anm   = $preloader.find('.svg_anm');
         $svg_anm.delay(900).fadeOut();
         $preloader.delay(1000).fadeOut('slow');
     });
-</script>
+  </script>
+  <script>
+    let sensorsSystemData = {
+      "memory": {
+          "memoryFree":       1000,
+          "memoryTotal":      1000,
+          "memoryPercent":    100
+      },
+      "disk": {
+          "diskFree":         0,
+          "diskTotal":        0,
+          "diskPercent":      0
+      },
+      "cpu":                  0,
+      "temperature":          0
+  };
+
+  let motorsSystemData = {
+      "memory": {
+          "memoryFree":       1000,
+          "memoryTotal":      1000,
+          "memoryPercent":    100
+      },
+      "disk": {
+          "diskFree":         0,
+          "diskTotal":        0,
+          "diskPercent":      0
+      },
+      "cpu":                  0,
+      "temperature":          0
+  };
+
+  set_system_data(sensorsSystemData, motorsSystemData);
+
+  function set_system_data(sensorsSystemData, motorsSystemData) {
+      let selectors = [
+          "memoryFree",
+          "memoryTotal",
+          "memoryPercent",
+          "diskFree",
+          "diskTotal",
+          "diskPercent",
+          "cpu",
+          "temperature"
+      ];
+
+      for (key in sensorsSystemData) {
+        console.log(sensorsSystemData[key].length);
+      }
+
+      // selectors.forEach((item) => {
+      //     document.querySelector(`.sensors${item}`).value = sensorsSystemData[]
+      // });
+  }
+  </script>
 </body>
 </html>
