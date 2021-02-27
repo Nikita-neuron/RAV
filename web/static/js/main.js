@@ -83,7 +83,7 @@ function set_system_data(systemData) {
 // })
 
 socket.on('systemData', function(data) {
-  console.log('systemData', data)
+  // console.log('systemData', data)
 })
 
 function update()

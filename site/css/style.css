@@ -43,7 +43,7 @@ body {
   top: calc(80% - 500px);
   width: 500px;
   height: 500px;
-  background: url("../img/Logo.svg") center center no-repeat;
+  background: url("../img/Logo_gradient.svg") center center no-repeat;
   background-size: 500px;
 }
 
@@ -80,8 +80,14 @@ body {
 
   margin: 18px 18px 0;
 }
-.remote-video {
+.no_video {
+  /* display: none; */
+}
+.video-player {
+  display: none;
+
   height: 100%;
+  max-width: 100%;
   width: auto;
 }
 /* end video */
@@ -277,8 +283,11 @@ body {
 .logo {
   position: absolute;
   /* top: -120px; */
-  right: 10px;
+  right: 30px;
   bottom: 0;
+}
+.logo-img {
+  height: 88px;
 }
 
 @media (max-width: 1310px) {

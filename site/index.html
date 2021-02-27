@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <script src="js/main_webrtc.js" defer></script>
   <script src="js/jquery-3.5.1.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -22,8 +23,11 @@
     <div class="container">
       <div class="visulizate">
         <div class="video-sound">
-          <div class="video">
+          <div class="video" onclick="start();">
             <img src="img/no_camera.svg" alt="" class="no_video" width="64" height="64">
+            <video id="remote-video" class="video-player" autoplay="">
+              Your browser does not support the video tag.
+            </video>
           </div>
           <div class="sound">
             <button class="microphone">
