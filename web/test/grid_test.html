@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Css grid test</title>
+    <style>
+        .signal-grid {
+            /* flex: content; */
+            width: 600px;
+            height: 600px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* grid-auto-rows: minmax(100px, auto); */
+            grid-template-rows: repeat(3, 1fr);
+        }
+        .signal-img {
+            /* max-width: 100vh; */
+            /* max-height: 100vw; */
+            /* transform: translatex(calc(50vw - 50%)) translatey(calc(50vh - 50%)); */
+            /* transform-origin: 50% 50%; */
+            width: 100%;
+            height: 100%;
+            /* object-fit: fill; */
+        }
+        .robot-img {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        .signal-up {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        .signal-left {
+            grid-column: 1;
+            grid-row: 2;
+            width: calc(100%);
+            /* height: calc(100vw/10); */
+            
+            /* transform: rotate(90deg); */
+            /* transform: scale(1.48 2.21); */
+        }
+        .signal-right {
+            grid-column: 3;
+            grid-row: 2;
+        }
+        .signal-down {
+            grid-column: 2;
+            grid-row: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="signal-grid">
+        <img class = robot-img src="loh.jpg">
+        <object class="signal-img signal-up" data="signal.svg"></object>
+        <object class="signal-img signal-left" data="signal.svg"></object>
+        <object class="signal-img signal-right" data="signal.svg"></object>
+        <object class="signal-img signal-down" data="signal.svg"></object>
+    </div>
+</body>
+</html>
