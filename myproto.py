@@ -48,40 +48,39 @@ class PcServerProtocol(Protocol):
         self.name = name
         print(f'"{self.name}" connected')
         self.factory._on_client_connect(self)
+
+        # test_data = {
+        #     "memory": {
+        #         "memoryFree":       1,
+        #         "memoryTotal":      2,
+        #         "memoryPercent":    3
+        #     },
+        #     "disk": {
+        #         "diskFree":         4,
+        #         "diskTotal":        5,
+        #         "diskPercent":      6
+        #     },
+        #     "cpu":                  7,
+        #     "temperature":          8
+        # }
+        # import time
+        # import threading
+        # def f():
+        #     while True:
+        #         # self.on_systemData(test_data)
+        #         self.factory.sendMsg('webserver', 'systemData', {'name': 'raspberryPIMotors', **data})
+        #         time.sleep(1)
+        # threading.Thread(target=f, daemon=True).start()
+
     def on_motorsSpeed(self, data):
         print('recv motors', data)
         self.factory.sendMsg('raspberryPIMotors', 'motorsSpeed', data)
     def on_systemData(self, data):
-        self.factory.sendMsg('webserver', 'systemData', data)
+        self.factory.sendMsg('webserver', 'systemData', {'name': self.name, **data})
         
 
 
-class PcClientProtocol(Protocol):
-    def __init__(self, name, factory):
-        super().__init__()
-        self.name = name
-        self.factory = factory
-    def connectionMade(self):
-        super().connectionMade()
-        self.i = 0
-        # self.img_display = ImageDisplayThread()
-        # self.img_display.start()
-        self.sendMsg('client_connect', self.name)
-    # def dataReceived(self, data):
-    #     print('recv', self.i, len(data))
-    #     self.unpacker.feed(data)
-    #     for msg in self.unpacker:
-    #         if msg['type'] == 'data':
-    #             print('img', self.i)
-    #             self.i += 1
-    #             # self.img_display.display(msg['image'])
-    #             # _, encoded = 
-    #             # socketio.emit('image', {'data': cv2.})
-    def on_image(self, img):
-        print('img', self.i)
-        self.i += 1
-    def on_systemData(self, data):
-        print('recv sysytem', data)
+
 
 
 class PcClientProtocolFactory(protocol.ClientFactory):
@@ -89,15 +88,16 @@ class PcClientProtocolFactory(protocol.ClientFactory):
     retry_delay = 1.0
     retry_after_connection_loss = True
     retry_after_connection_failure = True
-    def __init__(self):
+    def __init__(self, protocol):
         self.client = None
         self.connection_tries = 0
+        self.protocol = protocol
     def startedConnecting(self, connector):
         print(f'Connecting to {connector.host}:{connector.port}' if self.connection_tries==0 else '.', end='', flush=True)
     def buildProtocol(self, addr):
         self.connection_tries = 0
         print(f'\nConnected to main server ({addr.host}:{addr.port})!')
-        self.client = PcClientProtocol(self.name, self)
+        self.client = self.protocol(self.name, self)
         return self.client
     def retryConnection(self, connector):
         # print('.', end='', flush=True)

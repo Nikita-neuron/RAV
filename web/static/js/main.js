@@ -82,6 +82,9 @@ function set_system_data(systemData) {
 //     update_motors()
 // })
 
+socket.on('systemData', function(data) {
+  console.log('systemData', data)
+})
 
 function update()
 {

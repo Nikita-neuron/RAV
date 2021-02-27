@@ -14,6 +14,7 @@ import livereload
 
 import time
 from twisted.internet import protocol, reactor
+import myproto
 from myproto import PcClientProtocolFactory
 import threading
 import queue
@@ -111,8 +112,8 @@ def handle_keys(joystick):
     # print('JOYSTICK', joystick)
     sticks = joystick['sticks']
     buttons = joystick['buttons']
-    left_stick_y = -sticks['left'][1]
-    right_stick_y = -sticks['right'][1]
+    left_stick_y = sticks['left'][1]
+    right_stick_y = sticks['right'][1]
     lb = buttons['lb']
     rb = buttons['rb']
     
@@ -126,7 +127,26 @@ def run_webserver():
     print('Starting webserver on port', config.WEBSERVER_PORT)
     socketio.run(app, port=config.WEBSERVER_PORT, debug=False)
 
-pc_client = PcClientProtocolFactory()
+
+class PcClientProtocol(myproto.Protocol):
+    def __init__(self, name, factory):
+        super().__init__()
+        self.name = name
+        self.factory = factory
+    def connectionMade(self):
+        super().connectionMade()
+        self.i = 0
+        # self.img_display = ImageDisplayThread()
+        # self.img_display.start()
+        self.sendMsg('client_connect', self.name)
+    def on_image(self, img):
+        print('img', self.i)
+        self.i += 1
+    def on_systemData(self, data):
+        print('RECV SYSTEM', self.name, data)
+        socketio.emit('systemData', data)
+pc_client = PcClientProtocolFactory(PcClientProtocol)
+
 
 def main():
     # app.debug = True
