@@ -23,7 +23,8 @@
       <div class="visulizate">
         <div class="video-sound">
           <div class="video">
-            <img src="img/no_camera.svg" alt="" class="no_video" width="64" height="64">
+            <img src="img/Screenshot_1.png" alt=""  class="video-player" >
+            <!-- <img src="img/no_camera.svg" alt="" class="no_video" width="64" height="64"> -->
           </div>
           <div class="sound">
             <button class="microphone">
@@ -128,13 +129,13 @@
                     <span class="sensors-diskTotal">
                       10000 
                     </span>
-                    <span>MB</span>
+                    <span>GB</span>
                   </span>
                   <span class="free-data">
                     <span class="sensors-diskFree">
                       10000 
                     </span>
-                    <span>MB</span>
+                    <span>GB</span>
                   </span>
                 </div>
               </div>
@@ -233,13 +234,13 @@
                     <span class="motors-diskTotal">
                       10000 
                     </span>
-                    <span>MB</span>
+                    <span>GB</span>
                   </span>
                   <span class="free-data">
                     <span class="motors-diskFree">
                       10000 
                     </span>
-                    <span>MB</span>
+                    <span>GB</span>
                   </span>
                 </div>
               </div>
@@ -273,7 +274,7 @@
   </main>
   <footer class="footer">
     <div class="logo">
-      <img src="img/miniLogo_gradient.svg" alt="logo" class="logo-img">
+      <img src="img/Logo_gradient.svg" alt="logo" class="logo-img">
     </div>
   </footer>
   <script type="text/javascript">
@@ -286,32 +287,32 @@
   <script>
     let sensorsSystemData = {
       "memory": {
-          "memoryFree":       1,
-          "memoryTotal":      2,
-          "memoryPercent":    3
+          "memoryFree":       3343,
+          "memoryTotal":      4196,
+          "memoryPercent":    19
       },
       "disk": {
-          "diskFree":         4,
-          "diskTotal":        5,
-          "diskPercent":      6
+          "diskFree":         11.3,
+          "diskTotal":        16,
+          "diskPercent":      30
       },
-      "cpu":                  7,
-      "temperature":          8
+      "cpu":                  20,
+      "temperature":          40
     };
 
     let motorsSystemData = {
       "memory": {
-          "memoryFree":       9,
-          "memoryTotal":      10,
-          "memoryPercent":    11
+          "memoryFree":       3251,
+          "memoryTotal":      4196,
+          "memoryPercent":    23
       },
       "disk": {
-          "diskFree":         12,
-          "diskTotal":        13,
-          "diskPercent":      14
+          "diskFree":         9.1,
+          "diskTotal":        16,
+          "diskPercent":      43
       },
-      "cpu":                  15,
-      "temperature":          16
+      "cpu":                  25,
+      "temperature":          45
     };
 
     set_system_data({

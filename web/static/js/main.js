@@ -2,9 +2,9 @@ var socket = io();
 
 let sensorsSystemData = {
     "memory": {
-        "memoryFree":       1,
-        "memoryTotal":      2,
-        "memoryPercent":    3
+        "memoryFree":       3343,
+        "memoryTotal":      4196,
+        "memoryPercent":    19
     },
     "disk": {
         "diskFree":         4,
