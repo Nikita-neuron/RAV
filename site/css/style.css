@@ -84,7 +84,7 @@ body {
   /* display: none; */
 }
 .video-player {
-  /* display: none; */
+  display: none;
 
   height: 100%;
   max-width: 100%;
