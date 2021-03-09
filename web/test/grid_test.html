@@ -6,6 +6,9 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Css grid test</title>
     <style>
+        #_1:hover, #_2:hover, #_3:hover, #_4:hover, #_5:hover, #_6:hover, #_7:hover, #_8:hover {
+            display: none;
+        }
         .signal-grid {
             /* flex: content; */
             width: 600px;
@@ -35,7 +38,7 @@
         .signal-left {
             grid-column: 1;
             grid-row: 2;
-            width: calc(100%);
+            /* width: calc(100%); */
             /* height: calc(100vw/10); */
             
             /* transform: rotate(90deg); */
@@ -49,15 +52,61 @@
             grid-column: 2;
             grid-row: 3;
         }
+        #_1 {
+            fill: none;
+        }
     </style>
 </head>
 <body>
     <div class="signal-grid">
-        <img class = robot-img src="loh.jpg">
         <object class="signal-img signal-up" data="signal.svg"></object>
-        <object class="signal-img signal-left" data="signal.svg"></object>
+        <!-- <object class="signal-img signal-left" data="signal.svg"></object>
         <object class="signal-img signal-right" data="signal.svg"></object>
-        <object class="signal-img signal-down" data="signal.svg"></object>
+        <object class="signal-img signal-down" data="signal.svg"></object> -->
     </div>
+    <script defer>
+        const signal = document.querySelector(".signal-up");
+
+        var loaded = false;
+        var signalComponents;
+        var signalSVG;
+        signal.onload = () => {
+            loaded = true;
+            console.log('load');
+            signalSVG = signal.getSVGDocument();
+            // console.log(signal.getSVGDocument());
+            signalComponents = signalSVG.querySelectorAll('path[id^="_"]');
+            console.log(signalComponents);
+
+            var color = 0;
+
+            console.log(signalComponents);
+
+            signalComponents.forEach(element => {
+                element.style.fill = `#0${color}0`;
+                color ++;
+            });
+        };
+        // setTimeout(() => signal.getSVGDocument(), 2000)
+        var signalLoad = () => {
+            console.log(signal.getSVGDocument());
+        }
+
+        var distance = {
+            "up1": 200,
+            "up2": 300,
+            "down": 400,
+            "left": 100,
+            "right": 50
+        }
+
+        function setUltrasonicData(distance) {
+            if (loaded) {
+                if (distanse["up1"]) {
+                    
+                }
+            }
+        }
+    </script>
 </body>
 </html>
