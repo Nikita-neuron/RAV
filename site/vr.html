@@ -19,6 +19,7 @@
 
     import * as THREE from './js/libs/three.module.js';
     import { VRButton } from './js/VRButton.js';
+    import { BoxLineGeometry } from './js/libs/BoxLineGeometry.js';
 
     let camera, scene, renderer;
 
@@ -34,9 +35,13 @@
 
       } );
 
-      camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 2000 );
+      camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 10 );
+			// camera.position.set( 0, 0, 0 );
+      camera.position.set(0,150,300);
+
+      // camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 2000 );
       camera.layers.enable( 1 ); // render left view when no stereo available
-      camera.position.set( 0, 1.6, 3 );
+      // camera.position.set( 0, 1.6, 3 );
 
       // video
 
@@ -44,34 +49,53 @@
       video.play();
 
       const texture = new THREE.VideoTexture( video );
+      texture.minFilter = THREE.LinearFilter;
+      texture.magFilter = THREE.LinearFilter;
+      texture.format = THREE.RGBFormat;
 
       scene = new THREE.Scene();
       scene.background = new THREE.Color( 0x101010 );
 
+      const axesHelper = new THREE.AxesHelper( 5 );
+      scene.add( axesHelper );
+
+      // scene.add(camera);
+
+      let room = new THREE.LineSegments(
+				new BoxLineGeometry( 6, 6, 6, 10, 10, 10 ).translate( 0, 3, 0 ),
+				new THREE.LineBasicMaterial( { color: 0x808080 } )
+			);
+			scene.add( room );
+
       // left
 
       // const geometry1 = new THREE.SphereGeometry( 500, 60, 40 );
-      // const geometry1 = new THREE.PlaneGeometry( 500, 500, 60, 40 );
-      const geometry1 = new THREE.BoxGeometry( 200, 200, 100 );
+      const geometry1 = new THREE.PlaneGeometry( 2, 2, 2 );
+      // const geometry1 = new THREE.BoxGeometry( 1, 1, 1 );
       // invert the geometry on the x-axis so that all of the faces point inward
-      geometry1.scale( - 1, 1, 1 );
+      geometry1.scale( 1, -1, 1 );
 
       const uvs1 = geometry1.attributes.uv.array;
 
       for ( let i = 0; i < uvs1.length; i += 2 ) {
 
-        uvs1[ i ] *= 0.5;
+        // uvs1[ i ] *= 0.5;
 
       }
 
       const material1 = new THREE.MeshBasicMaterial( { map: texture } );
 
       const mesh1 = new THREE.Mesh( geometry1, material1 );
-      // mesh1.rotation.y = - Math.PI /2;
-      // mesh1.rotation.z = - Math.PI;
-      // mesh1.rotation.x = - Math.PI /2;
+      mesh1.position.x = 1;
+      mesh1.position.z = 0;
+      mesh1.rotation.y =  THREE.Math.degToRad( 90 );
+      mesh1.rotation.z =  THREE.Math.degToRad( 90 );
+      mesh1.rotation.x =  THREE.Math.degToRad( 90 );
       mesh1.layers.set( 1 ); // display in left eye only
-      scene.add( mesh1 );
+      // scene.add( mesh1 );
+      room.add(mesh1);
+
+      // camera.lookAt(mesh1);
 
       // right
 
@@ -92,7 +116,28 @@
       const mesh2 = new THREE.Mesh( geometry2, material2 );
       mesh2.rotation.y = - Math.PI / 2;
       mesh2.layers.set( 2 ); // display in right eye only
-      scene.add( mesh2 );
+      // scene.add( mesh2 );
+      room.add( mesh2 );
+
+      const geometry = new THREE.IcosahedronGeometry( 0.08, 3 );
+
+      for ( let i = 0; i < 200; i ++ ) {
+
+        const object = new THREE.Mesh( geometry, material1 );
+
+        object.position.x = Math.random() * 4 - 2;
+        object.position.y = Math.random() * 4;
+        object.position.z = Math.random() * 4 - 2;
+
+        object.userData.velocity = new THREE.Vector3();
+        object.userData.velocity.x = Math.random() * 0.01 - 0.005;
+        object.userData.velocity.y = Math.random() * 0.01 - 0.005;
+        object.userData.velocity.z = Math.random() * 0.01 - 0.005;
+
+        room.add( object );
+
+      }
+
 
       //
 
