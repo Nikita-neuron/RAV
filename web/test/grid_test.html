@@ -59,38 +59,15 @@
 </head>
 <body>
     <div class="signal-grid">
-        <object class="signal-img signal-up" data="signal.svg"></object>
-        <!-- <object class="signal-img signal-left" data="signal.svg"></object>
+        <object class="signal-img signal-up1" data="signal.svg"></object>
+        <object class="signal-img signal-up2" data="signal.svg"></object>
+        <object class="signal-img signal-left" data="signal.svg"></object>
         <object class="signal-img signal-right" data="signal.svg"></object>
-        <object class="signal-img signal-down" data="signal.svg"></object> -->
+        <object class="signal-img signal-down" data="signal.svg"></object>
     </div>
     <script defer>
-        const signal = document.querySelector(".signal-up");
-
+        const signals = document.querySelectorAll(".signal-img");
         var loaded = false;
-        var signalComponents;
-        var signalSVG;
-        signal.onload = () => {
-            loaded = true;
-            console.log('load');
-            signalSVG = signal.getSVGDocument();
-            // console.log(signal.getSVGDocument());
-            signalComponents = signalSVG.querySelectorAll('path[id^="_"]');
-            console.log(signalComponents);
-
-            var color = 0;
-
-            console.log(signalComponents);
-
-            signalComponents.forEach(element => {
-                element.style.fill = `#0${color}0`;
-                color ++;
-            });
-        };
-        // setTimeout(() => signal.getSVGDocument(), 2000)
-        var signalLoad = () => {
-            console.log(signal.getSVGDocument());
-        }
 
         var distance = {
             "up1": 200,
@@ -100,10 +77,42 @@
             "right": 50
         }
 
+        const signalsSVG = {
+            "signal-up1": null,
+            "signal-up2": null,
+            "signal-left": null,
+            "signal-right": null,
+            "signal-down": null
+        }
+
+        signals.forEach((sign) => {
+            sign.onload = () => {
+                signalsSVG[sign.classList[1]] = sign.getSVGDocument();
+                console.log(signalsSVG[sign.classList[1]])
+                
+                loaded = true;
+
+                setUltrasonicData(distance);
+            }
+        });
+
         function setUltrasonicData(distance) {
+            const maxDistance = 400;
             if (loaded) {
-                if (distanse["up1"]) {
-                    
+                for(var key in distance) {
+                    if (distance[key] != null) {
+                        let signalSVG = signalsSVG[`signal-${key}`];
+                        let signalSVGComponents = signalSVG.querySelectorAll('path[id^="_"]');
+
+                        let signalDistance = maxDistance / signalSVGComponents.length;
+                        let signalCount = ~~(distance[key] / signalDistance);
+
+                        console.log(signalSVGComponents)
+
+                        for (let i = signalSVGComponents.length - 1; i > signalCount; i--) {
+                            signalSVGComponents[i].style.display = "none";
+                        }
+                    }  
                 }
             }
         }

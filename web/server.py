@@ -10,7 +10,7 @@ spec.loader.exec_module(config)
 import flask
 from flask import Flask, Response, render_template
 from flask_socketio import SocketIO
-import livereload
+# import livereload
 
 import time
 from twisted.internet import protocol, reactor
