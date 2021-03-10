@@ -51,6 +51,54 @@ function set_system_data(systemData) {
     }
 }
 
+const signals = document.querySelectorAll(".signal-img");
+var loaded = false;
+
+var distance = {
+  "upleft": 200,
+  "upright": 300,
+  "down": 400,
+  "left": 100,
+  "right": 50
+}
+
+const signalsSVG = {
+  "signal-upleft": null,
+  "signal-upright": null,
+  "signal-left": null,
+  "signal-right": null,
+  "signal-down": null
+}
+
+signals.forEach((sign) => {
+  sign.onload = () => {
+    signalsSVG[sign.classList[1]] = sign.getSVGDocument();
+                
+    loaded = true;
+
+    setUltrasonicData(distance);
+  }
+});
+
+function setUltrasonicData(distance) {
+  const maxDistance = 400;
+  if (loaded) {
+    for(var key in distance) {
+      if (distance[key] != null) {
+        let signalSVG = signalsSVG[`signal-${key}`];
+        let signalSVGComponents = signalSVG.querySelectorAll('path[id^="_"]');
+
+        let signalDistance = maxDistance / signalSVGComponents.length;
+        let signalCount = ~~(distance[key] / signalDistance);
+
+        for (let i = signalSVGComponents.length - 1; i > signalCount; i--) {
+          signalSVGComponents[i].style.display = "none";
+        }
+      }  
+    }
+  }
+}
+
 
 // let keys = {
 //     'w': false,
