@@ -137,24 +137,24 @@
       // // scene.add( mesh2 );
       // room.add( mesh2 );
 
-      // const geometry = new THREE.IcosahedronGeometry( 0.08, 3 );
+      const geometry1 = new THREE.IcosahedronGeometry( 0.08, 3 );
 
-      // for ( let i = 0; i < 200; i ++ ) {
+      for ( let i = 0; i < 200; i ++ ) {
 
-      //   const object = new THREE.Mesh( geometry, material1 );
+        const object = new THREE.Mesh( geometry1, material );
 
-      //   object.position.x = Math.random() * 4 - 2;
-      //   object.position.y = Math.random() * 4;
-      //   object.position.z = Math.random() * 4 - 2;
+        object.position.x = Math.random() * 4 - 2;
+        object.position.y = Math.random() * 4;
+        object.position.z = Math.random() * 4 - 2;
 
-      //   object.userData.velocity = new THREE.Vector3();
-      //   object.userData.velocity.x = Math.random() * 0.01 - 0.005;
-      //   object.userData.velocity.y = Math.random() * 0.01 - 0.005;
-      //   object.userData.velocity.z = Math.random() * 0.01 - 0.005;
+        object.userData.velocity = new THREE.Vector3();
+        object.userData.velocity.x = Math.random() * 0.01 - 0.005;
+        object.userData.velocity.y = Math.random() * 0.01 - 0.005;
+        object.userData.velocity.z = Math.random() * 0.01 - 0.005;
 
-      //   room.add( object );
+        room.add( object );
 
-      // }
+      }
       //
       renderer = new THREE.WebGLRenderer();
       renderer.setPixelRatio( window.devicePixelRatio );

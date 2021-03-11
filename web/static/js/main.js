@@ -84,7 +84,7 @@ function setUltrasonicData(distance) {
   const maxDistance = 400;
   if (loaded) {
     for(var key in distance) {
-      if (distance[key] != null) {
+      if (signalsSVG[`signal-${key}`] != null) {
         let signalSVG = signalsSVG[`signal-${key}`];
         let signalSVGComponents = signalSVG.querySelectorAll('path[id^="_"]');
 
