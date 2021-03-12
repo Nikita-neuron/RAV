@@ -151,12 +151,12 @@ let GAMEPAD_BUTTONS = bidirect_object([
 
 
 let gamepad = null
-gamepad.vibrationActuator.playEffect('dual-rumble', {
-    startDelay: 0, // Add a delay in milliseconds
-    duration: 1000, // Total duration in milliseconds
-    weakMagnitude: 0.5, // intensity (0-1) of the small ERM 
-    strongMagnitude: 1 // intesity (0-1) of the bigger ERM
-});
+// gamepad.vibrationActuator.playEffect('dual-rumble', {
+//     startDelay: 0, // Add a delay in milliseconds
+//     duration: 1000, // Total duration in milliseconds
+//     weakMagnitude: 0.5, // intensity (0-1) of the small ERM 
+//     strongMagnitude: 1 // intesity (0-1) of the bigger ERM
+// });
 window.addEventListener("gamepadconnected", function(e) {
     gamepad = e.gamepad;
     gamepad.vibrationActuator.playEffect('dual-rumble', {
