@@ -145,6 +145,9 @@ class PcClientProtocol(myproto.Protocol):
     def on_systemData(self, data):
         print('RECV SYSTEM', self.name, data)
         socketio.emit('systemData', data)
+    def on_ultrasonic(self, data):
+        print("RECV ULTRASONIC", self.name, data)
+        socketio.emit('ultrasonic', data)
 pc_client = PcClientProtocolFactory(PcClientProtocol)
 
 

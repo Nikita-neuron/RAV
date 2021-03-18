@@ -131,8 +131,23 @@ function setUltrasonicData(distance) {
 // })
 
 socket.on('systemData', function(data) {
-  // console.log('systemData', data)
-})
+  let name = data.name;
+  let sensorsSystemData;
+  let motorsSystemData;
+  delete data.name;
+
+  if (name == "raspberryPIMotors") sensorsSystemData = data;
+  if (name == "raspberryPISensors") motorsSystemData = data;
+
+  set_system_data({
+    "sensors": motorsSystemData,
+    "motors": sensorsSystemData
+  });
+});
+
+socket.on('ultrasonic', data => {
+  console.log('ultrasonic', data);
+});
 
 function update()
 {
