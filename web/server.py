@@ -1,5 +1,6 @@
 
 import sys
+import pyfiglet
 import importlib.util
 # sys.path.append('..')
 # import config
@@ -157,6 +158,9 @@ def main():
     # app.run(host='localhost'    , port=5500)
     main_pc_ip= config.MAIN_PC_IP
     main_pc_port = config.MAIN_PC_PORT
+
+    result = pyfiglet.figlet_format("R A V")
+    print(result)
 
     webserver_thread = threading.Thread(target=run_webserver, daemon=True)
     webserver_thread.start()

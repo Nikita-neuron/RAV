@@ -4,6 +4,8 @@ import config
 from twisted.internet import protocol, reactor, defer
 from myproto import PcServerProtocolFactory
 
+import pyfiglet
+
 import threading
 import cv2
 import time
@@ -135,6 +137,8 @@ pc_protocol = PcServerProtocolFactory()
 # camera.start(lambda img: pc_protocol.sendMsg('webserver', 'image', img))
 
 def main():
+    result = pyfiglet.figlet_format("R A V")
+    print(result)
     reactor.listenTCP(config.MAIN_PC_PORT, pc_protocol)
     print('listening on port', config.MAIN_PC_PORT)
     reactor.run()
