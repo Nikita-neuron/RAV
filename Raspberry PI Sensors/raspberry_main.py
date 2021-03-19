@@ -95,15 +95,12 @@ def main():
 
 
 	while True:
+		system_data = systemData.get_system_data()
 
-		if i%10000 == 0:
-			system_data = systemData.get_system_data()
-
-			raspberryPIMotorsServer.send_message({
-			  "type": "systemData", 
-			  "data": system_data
-			})
-			i += 1
+		raspberryPIMotorsServer.send_message({
+			"type": "systemData", 
+			"data": system_data
+		})
 
 		# print("get frame")
 		# frame = raspberryVideo.get_video_frames()

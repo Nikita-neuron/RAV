@@ -88,6 +88,10 @@ function setUltrasonicData(distance) {
         let signalSVG = signalsSVG[`signal-${key}`];
         let signalSVGComponents = signalSVG.querySelectorAll('path[id^="_"]');
 
+        signalSVGComponents.forEach(signal => {
+          signal.style.display = "block";
+        });
+
         let signalDistance = maxDistance / signalSVGComponents.length;
         let signalCount = ~~(distance[key] / signalDistance);
 
@@ -146,8 +150,8 @@ socket.on('systemData', function(data) {
 });
 
 socket.on('ultrasonic', data => {
-  console.log('ultrasonic', data);
   delete data.name;
+  // console.log('ultrasonic', data);
   setUltrasonicData(data);
 });
 

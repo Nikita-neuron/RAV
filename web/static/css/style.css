@@ -182,6 +182,9 @@ body {
   top: -700px;
   left: -5px;
 }
+.signal-unactive {
+  display: none;
+}
 /* end sensors */
 
 /* system data */
