@@ -153,6 +153,12 @@ def main():
 
 		raspberryPIMotorsServer.send_message({
 		  "type": "ultrasonic", 
-		  "data": ultrasonicData
+		  "data": {
+				"upleft": 	ultrasonicData[0],
+				"upright": 	ultrasonicData[1],
+				"down": 	ultrasonicData[2],
+				"left": 	ultrasonicData[3],
+				"right": 	ultrasonicData[4]
+		  }
 		})
 main()

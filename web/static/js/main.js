@@ -147,6 +147,8 @@ socket.on('systemData', function(data) {
 
 socket.on('ultrasonic', data => {
   console.log('ultrasonic', data);
+  delete data.name;
+  setUltrasonicData(data);
 });
 
 function update()
