@@ -1,5 +1,70 @@
 var socket = io();
 
+import {start} from "./vr.js"
+
+const vrButton    = document.querySelector(".vr_button");
+const webglviewer = document.querySelector("#webglviewer");
+const video       = document.querySelector("#remote-video");
+const noVR        = document.querySelector(".no-vr");
+const signals     = document.querySelectorAll(".signal-img");
+
+var loaded        = false;
+var playVR        = false;
+
+const signalsSVG  = {
+  "signal-upleft": null,
+  "signal-upright": null,
+  "signal-left": null,
+  "signal-right": null,
+  "signal-down": null
+}
+
+const getDeviceType = () => {
+  // get device type
+  const ua = navigator.userAgent;
+  if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+    return "tablet";
+  }
+  if (
+    /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+      ua
+    )
+  ) {
+    return "mobile";
+  }
+  return "desktop";
+};
+
+vrButton.addEventListener('click', () => {
+  // run vr
+  if (!video.classList.contains("play-video")) {
+    alert("Run the video");
+  } else {
+    webglviewer.style.display = "block";
+    noVR.style.display = "none";
+    start();
+    playVR = true;
+  }
+});
+
+window.addEventListener("deviceorientation", event => {
+  // get and send orientation data
+  console.log({
+    "absolute": event.absolute,
+    "alpha":    event.alpha,
+    "beta":     event.beta,
+    "gamma":    event.gamma
+  })
+  if (playVR) {
+    socket.emit("gyroscopeData", {
+      "absolute": event.absolute,
+      "alpha":    event.alpha,
+      "beta":     event.beta,
+      "gamma":    event.gamma
+    });
+  }
+}, true);
+
 let sensorsSystemData = {
     "memory": {
         "memoryFree":       3343,
@@ -36,6 +101,7 @@ set_system_data({
 });
 
 function set_system_data(systemData) {
+  // show system data
     for (let device in systemData) {
       let data = systemData[device];
 
@@ -51,23 +117,12 @@ function set_system_data(systemData) {
     }
 }
 
-const signals = document.querySelectorAll(".signal-img");
-var loaded = false;
-
 var distance = {
   "upleft": 200,
   "upright": 300,
   "down": 400,
   "left": 100,
   "right": 50
-}
-
-const signalsSVG = {
-  "signal-upleft": null,
-  "signal-upright": null,
-  "signal-left": null,
-  "signal-right": null,
-  "signal-down": null
 }
 
 signals.forEach((sign) => {
@@ -81,6 +136,7 @@ signals.forEach((sign) => {
 });
 
 function setUltrasonicData(distance) {
+  // show ultrasonic data
   const maxDistance = 400;
   if (loaded) {
     for(var key in distance) {
@@ -135,6 +191,7 @@ function setUltrasonicData(distance) {
 // })
 
 socket.on('systemData', function(data) {
+  // get system data
   let name = data.name;
   let sensorsSystemData;
   let motorsSystemData;
@@ -150,18 +207,18 @@ socket.on('systemData', function(data) {
 });
 
 socket.on('ultrasonic', data => {
+  // get ultrasonic data
   delete data.name;
-  // console.log('ultrasonic', data);
   setUltrasonicData(data);
 });
 
 function update()
 {
-    let gamepad_value = getGamepadIfChanged()
+  let gamepad_value = getGamepadIfChanged();
 	if (gamepad_value === null) {
-		return
+		return;
 	}
-    socket.emit('joystick', gamepad_value)
+  socket.emit('joystick', gamepad_value);
 }
 
 function loop()

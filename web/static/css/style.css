@@ -22,6 +22,16 @@ body {
   color: #000000;
 }
 
+#webglviewer {
+  display: none;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
 .main {
   height: 100%;
 }
@@ -101,7 +111,7 @@ body {
   margin-left: 10px;
 }
 
-.microphone, .speaker {
+.microphone, .speaker, .vr_button {
   background: none;
   border: none;
   width: 80px;
@@ -110,18 +120,18 @@ body {
 
   margin-top: 20px;
 }
-.microphone:focus, .speaker:focus {
+.microphone:focus, .speaker:focus, .vr_button:focus {
   outline: none;
 }
-.microphone-img, .speaker-img {
+.microphone-img, .speaker-img, .vr-img{
   position: relative;
   top: -73px;
 }
-.no-microphone, .no-speaker {
+.no-microphone, .no-speaker, .no-vr {
   position: relative;
   width: 75.32px;
   height: 4.03px;
-  top: -105px;
+  top: -110px;
 
   background: #DC3030;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
@@ -181,9 +191,6 @@ body {
   height: 150px;
   top: -700px;
   left: -5px;
-}
-.signal-unactive {
-  display: none;
 }
 /* end sensors */
 
@@ -307,4 +314,24 @@ body {
     top: 20px;
     right: 5px;
   }
+}
+@media (max-width: 900px) {
+  .sensors {
+    display: none;
+  }
+  .video-sound {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .video {
+    height: 100%;
+    margin: 18px;
+  }
+  .sound {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
 }

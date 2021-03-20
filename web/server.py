@@ -123,10 +123,20 @@ def handle_keys(joystick):
     print('Send', motors)
     pc_client.sendMsg('motorsSpeed', [*motors, platform])
 
+@socketio.on("gyroscopeData")
+def gyroscope_data(gyroscopeData):
+    print(gyroscopeData)
+
 
 def run_webserver():
     print('Starting webserver on port', config.WEBSERVER_PORT)
-    socketio.run(app, port=config.WEBSERVER_PORT, debug=False)
+    import webbrowser 
+    new = 2 # open in a new tab, if possible
+
+    # open a public URL, in this case, the webbrowser docs
+    url = "http://localhost:" + str(config.WEBSERVER_PORT)
+    webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open(url,new=new)
+    socketio.run(app, port=config.WEBSERVER_PORT, debug=False, host="0.0.0.0")
 
 
 class PcClientProtocol(myproto.Protocol):
