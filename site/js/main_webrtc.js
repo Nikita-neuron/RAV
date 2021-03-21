@@ -1,5 +1,5 @@
 var signalling_server_hostname = "192.168.1.37"
-var server_port = "8080"
+var server_port = "8088/janus"
 var signalling_server_address = signalling_server_hostname + ':' + server_port;
 var isFirefox = typeof InstallTrigger !== 'undefined';// Firefox 1.0+
 
@@ -128,7 +128,8 @@ function startWEBRTC() {
         var server = signalling_server_address;
 
         var protocol = location.protocol === "https:" ? "wss:" : "ws:";
-        ws = new WebSocket(protocol + '//' + server + '/stream/webrtc');
+        // ws = new WebSocket(protocol + '//' + server + '/stream/webrtc');
+        ws = new WebSocket('ws://' + server);
 
         function call(stream) {
             iceCandidates = [];

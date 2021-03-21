@@ -1,0 +1,12 @@
+uv4l:
+  # run uv4l server 
+  uv4l --external-driver --device-name=video0
+
+janus:
+  # change config server
+  cd /opt/janus/etc/janus
+  sudo nano janus.plugin.streaming.cfg
+
+  # run server
+  cd /opt/janus/bin
+  ./janus -F /opt/janus/etc/janus/
