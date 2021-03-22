@@ -10,3 +10,6 @@ janus:
   # run server
   cd /opt/janus/bin
   ./janus -F /opt/janus/etc/janus/
+
+# if error on server "mDNS"
+  chrome://flags/#enable-webrtc-hide-local-ips-with-mdns

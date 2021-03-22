@@ -44,15 +44,15 @@
 //
 
 
-var server = "http://192.168.1.37:8088/janus"
+var server = "http://172.20.233.12:8088/janus"
 
 var janus = null;
 var sfutest = null;
 var opaqueId = "videoroomtest-"+Janus.randomString(12);
 
 var myroom = 1234;	// Demo room
-if(getQueryStringValue("room") !== "")
-	myroom = parseInt(getQueryStringValue("room"));
+// if(getQueryStringValue("room") !== "")
+	// myroom = parseInt(getQueryStringValue("room"));
 var myusername = null;
 var myid = null;
 var mystream = null;
