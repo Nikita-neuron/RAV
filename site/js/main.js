@@ -2,7 +2,7 @@ import {start} from "./vr.js"
 
 const vrButton = document.querySelector(".vr_button");
 const webglviewer = document.querySelector("#webglviewer");
-const video = document.querySelector("#remote-video");
+const video = document.querySelector("#videoremote");
 const noVR = document.querySelector(".no-vr");
 
 const getDeviceType = () => {

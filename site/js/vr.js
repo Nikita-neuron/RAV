@@ -30,8 +30,8 @@ import { StereoEffect } from './libs/StereoEffect.js';
 
         element.addEventListener('click', fullscreen, false);
 
-        const video = document.querySelector("#remote-video");
-        video.play();
+        const video = document.querySelector("#remotevideo");
+        // video.play();
 
         const texture     = new THREE.VideoTexture( video );
 
