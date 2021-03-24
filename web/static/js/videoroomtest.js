@@ -520,12 +520,12 @@ function newRemoteFeed(id, display, audio, video) {
 						}
 						remoteFeed.rfid = msg["id"];
 						remoteFeed.rfdisplay = msg["display"];
-						if(!remoteFeed.spinner) {
-							var target = document.getElementById('videoremote');
-							remoteFeed.spinner = new Spinner({top:100}).spin(target);
-						} else {
-							remoteFeed.spinner.spin();
-						}
+						// if(!remoteFeed.spinner) {
+						// 	var target = document.getElementById('videoremote');
+						// 	remoteFeed.spinner = new Spinner({top:100}).spin(target);
+						// } else {
+						// 	remoteFeed.spinner.spin();
+						// }
 						Janus.log("Successfully attached to feed " + remoteFeed.rfid + " (" + remoteFeed.rfdisplay + ") in room " + msg["room"]);
 						// $('#remote').removeClass('hide').html(remoteFeed.rfdisplay).show();
 					} else if(event === "event") {

@@ -13,3 +13,6 @@ janus:
 
 # if error on server "mDNS"
   chrome://flags/#enable-webrtc-hide-local-ips-with-mdns
+
+# if error getUserMedia
+  chrome://flags/#unsafely-treat-insecure-origin-as-secure
