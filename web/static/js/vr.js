@@ -30,12 +30,12 @@ import { StereoEffect } from './libs/StereoEffect.js';
 
         element.addEventListener('click', fullscreen, false);
 
-        const video = document.querySelector("#remote-video");
-        video.play();
+        const video = document.querySelector("#remotevideo");
+        // video.play();
 
         const texture     = new THREE.VideoTexture( video );
 
-        var cameraPlane = new THREE.PlaneGeometry(512, 512);
+        var cameraPlane = new THREE.PlaneGeometry(container.offsetWidth / 4, container.offsetHeight / 4);
 
         var cameraMesh = new THREE.Mesh(cameraPlane, new THREE.MeshBasicMaterial({
           color: 0xffffff, opacity: 1, map: texture
@@ -50,8 +50,8 @@ import { StereoEffect } from './libs/StereoEffect.js';
       }
 
       function resize() {
-        var width = container.offsetWidth;
-        var height = container.offsetHeight;
+        var width = container.offsetWidth * 2;
+        var height = container.offsetHeight * 2;
 
         camera.aspect = width / height;
         camera.updateProjectionMatrix();

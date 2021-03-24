@@ -308,57 +308,5 @@
         $preloader.delay(1000).fadeOut('slow');
     });
   </script>
-  <script>
-    let sensorsSystemData = {
-      "memory": {
-          "memoryFree":       3343,
-          "memoryTotal":      4196,
-          "memoryPercent":    19
-      },
-      "disk": {
-          "diskFree":         11.3,
-          "diskTotal":        16,
-          "diskPercent":      30
-      },
-      "cpu":                  20,
-      "temperature":          40
-    };
-
-    let motorsSystemData = {
-      "memory": {
-          "memoryFree":       3251,
-          "memoryTotal":      4196,
-          "memoryPercent":    23
-      },
-      "disk": {
-          "diskFree":         9.1,
-          "diskTotal":        16,
-          "diskPercent":      43
-      },
-      "cpu":                  25,
-      "temperature":          45
-    };
-
-    set_system_data({
-      "sensors": sensorsSystemData,
-      "motors": motorsSystemData
-    });
-
-    function set_system_data(systemData) {
-      for (let device in systemData) {
-        let data = systemData[device];
-
-        for (let key in data) {
-          if (typeof(data[key]) == "object") {
-            for (let k in data[key]) {
-              document.querySelector(`.${device}-${k}`).innerHTML = data[key][k];
-            }        
-          } else {
-            document.querySelector(`.${device}-${key}`).innerHTML = data[key];
-          }
-        }
-      }
-    }
-  </script>
 </body>
 </html>
