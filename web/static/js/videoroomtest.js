@@ -114,6 +114,7 @@ $(document).ready(function() {
 										document.documentElement.style.cursor = 'wait';
 									} else {
 										document.documentElement.style.cursor = 'default';
+										console.log("add");
 										document.getElementById('videoremote').classList.add("play-video");
 									}
 								},

@@ -1,14 +1,12 @@
-// var socket = io();
+var socket = io();
 
-// import {start} from "./js/vr.js"
+import {start} from "./vr.js"
 
 const vrButton    = document.querySelector(".vr_button");
 const webglviewer = document.querySelector("#webglviewer");
-const video       = document.querySelector("#remote-video");
+const video       = document.querySelector("#videoremote");
 const noVR        = document.querySelector(".no-vr");
 const signals     = document.querySelectorAll(".signal-img");
-
-console.log(vrButton);
 
 var loaded        = false;
 var playVR        = false;
