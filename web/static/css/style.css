@@ -202,7 +202,7 @@ body {
 }
 
 .raspberry-sensors-system-data, .raspberry-motors-system-data {
-  min-width: 500px;
+  min-width: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -326,12 +326,34 @@ body {
   }
   .video {
     height: 100%;
-    margin: 18px;
+    margin: 10px;
+    min-height: 300px;
   }
   .sound {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
   }
+  .system-data {
+    display: none;
+  }
   
+}
+
+@media (max-width: 500px) {
+  .logo {
+    display: none;
+  }
+  body {
+    background-image: none;
+  }
+  .system-data .header-text {
+    font-size: 7vw;
+  }
+  .system-data .system-data-content {
+    font-size: 3vw;
+  }
+  .system-data .processor, .system-data .temperature {
+    font-size: 3vw;
+  }
 }

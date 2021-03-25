@@ -35,7 +35,7 @@ import { StereoEffect } from './libs/StereoEffect.js';
 
         const texture     = new THREE.VideoTexture( video );
 
-        var cameraPlane = new THREE.PlaneGeometry(container.offsetWidth / 4, container.offsetHeight / 4);
+        var cameraPlane = new THREE.PlaneGeometry(window.innerWidth / 2, window.innerHeight);
 
         var cameraMesh = new THREE.Mesh(cameraPlane, new THREE.MeshBasicMaterial({
           color: 0xffffff, opacity: 1, map: texture

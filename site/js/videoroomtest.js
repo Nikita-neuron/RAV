@@ -166,8 +166,11 @@ $(document).ready(function() {
 													var display = list[f]["display"];
 													var audio = list[f]["audio_codec"];
 													var video = list[f]["video_codec"];
+													console.log(display);
 													Janus.debug("  >> [" + id + "] " + display + " (audio: " + audio + ", video: " + video + ")");
-													newRemoteFeed(id, display, audio, video);
+													if (display == "raspberry") {
+														newRemoteFeed(id, display, audio, video);
+													}
 												}
 											}
 										} else if(event === "destroyed") {
@@ -187,7 +190,9 @@ $(document).ready(function() {
 													var audio = list[f]["audio_codec"];
 													var video = list[f]["video_codec"];
 													Janus.debug("  >> [" + id + "] " + display + " (audio: " + audio + ", video: " + video + ")");
-													newRemoteFeed(id, display, audio, video);
+													if (display == "raspberry") {
+														newRemoteFeed(id, display, audio, video);
+													}
 												}
 											} else if(msg["leaving"]) {
 												// One of the publishers has gone away?

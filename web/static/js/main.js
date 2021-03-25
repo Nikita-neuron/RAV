@@ -77,9 +77,8 @@ function handleOrientation(event) {
       "absolute": event.absolute
     }
   };
-  if (playVR) {
+    console.log(data);
     socket.emit("gyroscopeData", data);
-  }
 }
 
 function handleGyronorm(data) {
@@ -130,6 +129,7 @@ function orientationsend_selection() {
     gn.setHeadDirection(); // only with gn.GAME
   }).catch(function (e) {
     console.log("DeviceOrientation or DeviceMotion might not be supported by this browser or device");
+    window.addEventListener('deviceorientation', handleOrientation, true);
   });
   if (!gn) {
     window.addEventListener('deviceorientation', handleOrientation, true);
