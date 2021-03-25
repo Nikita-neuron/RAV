@@ -35,8 +35,10 @@ const getDeviceType = () => {
   }
   return "desktop";
 };
-
+orientationsend_selection();
+window.addEventListener('deviceorientation', handleOrientation);
 vrButton.addEventListener('click', () => {
+  orientationsend_selection();
   // run vr
   if (!video.classList.contains("play-video")) {
     alert("Run the video");
@@ -44,7 +46,7 @@ vrButton.addEventListener('click', () => {
     console.log("Run VR");
     webglviewer.style.display = "block";
     noVR.style.display = "none";
-    orientationsend_selection();
+    
     start();
     playVR = true;
   }
@@ -69,11 +71,12 @@ vrButton.addEventListener('click', () => {
 // }, true);
 
 function handleOrientation(event) {
+  console.log(event);
   var data = {
     "do": {
-      "alpha": event.alpha.toFixed(1), // In degree in the range [0,360]
-      "beta": event.beta.toFixed(1), // In degree in the range [-180,180]
-      "gamma": event.gamma.toFixed(1), // In degree in the range [-90,90]
+      "alpha": event.alpha, // In degree in the range [0,360]
+      "beta": event.beta, // In degree in the range [-180,180]
+      "gamma": event.gamma, // In degree in the range [-90,90]
       "absolute": event.absolute
     }
   };
@@ -129,10 +132,10 @@ function orientationsend_selection() {
     gn.setHeadDirection(); // only with gn.GAME
   }).catch(function (e) {
     console.log("DeviceOrientation or DeviceMotion might not be supported by this browser or device");
-    window.addEventListener('deviceorientation', handleOrientation, true);
+    window.addEventListener('deviceorientation', handleOrientation);
   });
   if (!gn) {
-    window.addEventListener('deviceorientation', handleOrientation, true);
+    window.addEventListener('deviceorientation', handleOrientation);
     console.log("gyronorm.js library not found, using defaults");
   }
 }
