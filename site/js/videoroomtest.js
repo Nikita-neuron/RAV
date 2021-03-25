@@ -114,6 +114,7 @@ $(document).ready(function() {
 										document.documentElement.style.cursor = 'wait';
 									} else {
 										document.documentElement.style.cursor = 'default';
+										console.log("add");
 										document.getElementById('videoremote').classList.add("play-video");
 									}
 								},
@@ -173,7 +174,7 @@ $(document).ready(function() {
 											// The room has been destroyed
 											Janus.warn("The room has been destroyed!");
 											bootbox.alert("The room has been destroyed", function() {
-												// window.location.reload();
+												window.location.reload();
 											});
 										} else if(event === "event") {
 											// Any new feed to attach to?
@@ -201,7 +202,7 @@ $(document).ready(function() {
 												}
 												if(remoteFeed != null) {
 													Janus.debug("Feed " + remoteFeed.rfid + " (" + remoteFeed.rfdisplay + ") has left the room, detaching");
-													$('#videoremote').empty();
+													// $('#videoremote').empty();
 													feeds[remoteFeed.rfindex] = null;
 													remoteFeed.detach();
 												}
@@ -223,7 +224,7 @@ $(document).ready(function() {
 												}
 												if(remoteFeed != null) {
 													Janus.debug("Feed " + remoteFeed.rfid + " (" + remoteFeed.rfdisplay + ") has left the room, detaching");
-													$('#videoremote').empty();
+													// $('#videoremote').empty();
 													feeds[remoteFeed.rfindex] = null;
 													remoteFeed.detach();
 												}
@@ -463,6 +464,7 @@ function publishOwnFeed(useAudio) {
 // }
 
 function newRemoteFeed(id, display, audio, video) {
+	// Called when a new client arrives
 	// A new feed has been published, create a new plugin handle and attach to it as a subscriber
 	var remoteFeed = null;
 	janus.attach(
@@ -519,12 +521,12 @@ function newRemoteFeed(id, display, audio, video) {
 						}
 						remoteFeed.rfid = msg["id"];
 						remoteFeed.rfdisplay = msg["display"];
-						if(!remoteFeed.spinner) {
-							var target = document.getElementById('videoremote');
-							remoteFeed.spinner = new Spinner({top:100}).spin(target);
-						} else {
-							remoteFeed.spinner.spin();
-						}
+						// if(!remoteFeed.spinner) {
+						// 	var target = document.getElementById('videoremote');
+						// 	remoteFeed.spinner = new Spinner({top:100}).spin(target);
+						// } else {
+						// 	remoteFeed.spinner.spin();
+						// }
 						Janus.log("Successfully attached to feed " + remoteFeed.rfid + " (" + remoteFeed.rfdisplay + ") in room " + msg["room"]);
 						// $('#remote').removeClass('hide').html(remoteFeed.rfdisplay).show();
 					} else if(event === "event") {
@@ -587,9 +589,9 @@ function newRemoteFeed(id, display, audio, video) {
 						'<span class="label label-info hide" id="curbitrate'+'" style="position: absolute; bottom: 0px; right: 0px; margin: 15px;"></span>');
 					// Show the video, hide the spinner and show the resolution when we get a playing event
 					$("#remotevideo").bind("playing", function () {
-						if(remoteFeed.spinner)
-							remoteFeed.spinner.stop();
-						remoteFeed.spinner = null;
+						// if(remoteFeed.spinner)
+							// remoteFeed.spinner.stop();
+						// remoteFeed.spinner = null;
 						$('#waitingvideo').remove();
 						if(this.videoWidth)
 							$('#remotevideo').removeClass('hide').show();
@@ -641,9 +643,9 @@ function newRemoteFeed(id, display, audio, video) {
 			},
 			oncleanup: function() {
 				Janus.log(" ::: Got a cleanup notification (remote feed " + id + ") :::");
-				if(remoteFeed.spinner)
-					remoteFeed.spinner.stop();
-				remoteFeed.spinner = null;
+				// if(remoteFeed.spinner)
+					// remoteFeed.spinner.stop();
+				// remoteFeed.spinner = null;
 				$('#remotevideo').remove();
 				$('#waitingvideo').remove();
 				$('#novideo').remove();
