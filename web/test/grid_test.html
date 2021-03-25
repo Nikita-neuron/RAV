@@ -65,57 +65,5 @@
         <object class="signal-img signal-right" data="signal.svg"></object>
         <object class="signal-img signal-down" data="signal.svg"></object>
     </div>
-    <script defer>
-        const signals = document.querySelectorAll(".signal-img");
-        var loaded = false;
-
-        var distance = {
-            "up1": 200,
-            "up2": 300,
-            "down": 400,
-            "left": 100,
-            "right": 50
-        }
-
-        const signalsSVG = {
-            "signal-up1": null,
-            "signal-up2": null,
-            "signal-left": null,
-            "signal-right": null,
-            "signal-down": null
-        }
-
-        signals.forEach((sign) => {
-            sign.onload = () => {
-                signalsSVG[sign.classList[1]] = sign.getSVGDocument();
-                console.log(signalsSVG[sign.classList[1]])
-                
-                loaded = true;
-
-                setUltrasonicData(distance);
-            }
-        });
-
-        function setUltrasonicData(distance) {
-            const maxDistance = 400;
-            if (loaded) {
-                for(var key in distance) {
-                    if (distance[key] != null) {
-                        let signalSVG = signalsSVG[`signal-${key}`];
-                        let signalSVGComponents = signalSVG.querySelectorAll('path[id^="_"]');
-
-                        let signalDistance = maxDistance / signalSVGComponents.length;
-                        let signalCount = ~~(distance[key] / signalDistance);
-
-                        console.log(signalSVGComponents)
-
-                        for (let i = signalSVGComponents.length - 1; i > signalCount; i--) {
-                            signalSVGComponents[i].style.display = "none";
-                        }
-                    }  
-                }
-            }
-        }
-    </script>
 </body>
 </html>
