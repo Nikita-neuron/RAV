@@ -38,7 +38,7 @@ const getDeviceType = () => {
 orientationsend_selection();
 window.addEventListener('deviceorientation', handleOrientation);
 vrButton.addEventListener('click', () => {
-  orientationsend_selection();
+  // orientationsend_selection();
   // run vr
   if (!video.classList.contains("play-video")) {
     alert("Run the video");
