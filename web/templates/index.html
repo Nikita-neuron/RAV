@@ -308,6 +308,7 @@
               </span>
               <span>°С</span>
             </span>
+            <div class="output"></div>
           </div>
         </div>
       </div>
@@ -325,5 +326,22 @@
         $preloader.delay(1000).fadeOut('slow');
     });
   </script>
+  <script>
+    var output = document.querySelector('.output');
+  
+    var maxX = garden.clientWidth  - ball.clientWidth;
+    var maxY = garden.clientHeight - ball.clientHeight;
+  
+  function handleOrientation(event) {
+    var x = event.beta;  // In degree in the range [-180,180)
+    var y = event.gamma; // In degree in the range [-90,90)
+  
+    output.textContent  = `beta : ${x}\n`;
+    output.textContent += `gamma: ${y}\n`;
+  }
+  
+  window.addEventListener('deviceorientation', handleOrientation);
+  
+</script>
 </body>
 </html>
