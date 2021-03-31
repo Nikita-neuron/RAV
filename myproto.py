@@ -75,6 +75,10 @@ class PcServerProtocol(Protocol):
     def on_motorsSpeed(self, data):
         print('recv motors', data)
         self.factory.sendMsg('raspberryPIMotors', 'motorsSpeed', data)
+    def on_gyroscope(self, data):
+        print(data)
+        self.factory.sendMsg('raspberryPIMotors', 'gyroscope', data['alpha'])
+        self.factory.sendMsg('raspberryPISensors', 'gyroscope', data['gamma'])
     def on_systemData(self, data):
         self.factory.sendMsg('webserver', 'systemData', {'name': self.name, **data})
     def on_ultrasonic(self, data):

@@ -45,6 +45,10 @@ class MotorsStructure(Structure):
   _pack_ = 1
   _fields_ = [("r", c_int8), ("l", c_int8), ("p", c_int8)]
 
+class MotorsCameraStructure(Structure):
+  _pack_ = 1
+  _fields_ = [("u", c_int8)]
+
 def get_data(queueData, name):
   try:
     return queueData[name].get_nowait()
@@ -56,7 +60,8 @@ def main():
 
   queueData = {
     "soundsPC":     queue.Queue(20),
-    "motorsSpeed":  queue.Queue(20)
+    "motorsSpeed":  queue.Queue(20),
+    "gyroscope":    queue.Queue(20)
   }
   name = "raspberryPIMotors"
   server_ip, server_port = get_server_ip_port()
@@ -127,9 +132,13 @@ def main():
     motors = get_data(queueData, "motorsSpeed")
     if motors is not None:
       print("from raspberry: ", motors)
-
       motors_arduino = MotorsStructure(motors[0], motors[1], motors[2])
+      arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
 
+    motors = get_data(queueData, "gyroscope")
+    if motors is not None:
+      print("from raspberry: ", motors)
+      motors_arduino = MotorsCameraStructure(motors)
       arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
 
 

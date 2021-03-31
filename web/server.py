@@ -126,6 +126,7 @@ def handle_keys(joystick):
 @socketio.on("gyroscopeData")
 def gyroscope_data(gyroscopeData):
     print(gyroscopeData)
+    pc_client.sendMsg('gyroscope', gyroscopeData)
 
 
 def run_webserver():
