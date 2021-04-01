@@ -72,11 +72,14 @@ vrButton.addEventListener('click', () => {
 
 function handleOrientation(event) {
   var data = {
-    "alpha": event.alpha, // In degree in the range [0,360]
-    "beta": event.beta, // In degree in the range [-180,180]
-    "gamma": event.gamma, // In degree in the range [-90,90]
+      "alpha": event.alpha, // In degree in the range [0,360]
+      "beta": event.beta, // In degree in the range [-180,180]
+      "gamma": event.gamma, // In degree in the range [-90,90]
+  };
+  console.log(data);
+  if (data['alpha'] != null && data['beta'] != null && data['gamma'] != null) {
+    socket.emit("gyroscopeData", data);
   }
-  socket.emit("gyroscopeData", data);
 }
 
 function handleGyronorm(data) {

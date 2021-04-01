@@ -132,6 +132,7 @@ def gyroscope_data(gyroscopeData):
     x = gyroscopeData['beta']
     y = gyroscopeData['gamma']
     print(gyroscopeData)
+    pc_client.sendMsg('gyroscope', gyroscopeData)
 
 
 def run_webserver():
