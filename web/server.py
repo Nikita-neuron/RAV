@@ -25,6 +25,10 @@ import queue
 import cv2
 import numpy as np
 
+from engineio.payload import Payload
+
+Payload.max_decode_packets = 50
+
 async_mode = None
 app = Flask(__name__, static_folder='static')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -125,6 +129,8 @@ def handle_keys(joystick):
 
 @socketio.on("gyroscopeData")
 def gyroscope_data(gyroscopeData):
+    x = gyroscopeData['beta']
+    y = gyroscopeData['gamma']
     print(gyroscopeData)
 
 
