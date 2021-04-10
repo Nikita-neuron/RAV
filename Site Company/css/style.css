@@ -1,0 +1,289 @@
+* {
+  box-sizing: border-box;
+}
+
+/* scroll */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 5px grey;  */
+  background: transparent;
+  /* border-radius: 10px; */
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3f9eab; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4a5b6b; 
+}
+
+/* main */
+
+body {
+  background-image: url("../img/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+  overflow: overlay;
+}
+
+.header {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.37);
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-image {
+  height: 70px;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.nav-item:not(:last-child) {
+  margin-right: 56px;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 29px;
+  line-height: 41px;
+  color: #3F9EAB;
+}
+
+.main-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.main-page-title {
+  font-weight: bold;
+  font-size: 70px;
+  line-height: 70px;
+  color: #99BBDA;
+  text-align: center;
+}
+
+.robot-image {
+  width: 676px;
+  height: 432px;
+  border-radius: 36px;
+}
+
+/* info page */
+
+.info-panel-page-title {
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 83px;
+  text-align: center;
+
+  color: #99BBDA;
+}
+
+.info-panel-page-main {
+  display: flex;
+  position: relative;
+  margin-top: 20px;
+  max-width: 1600px;
+  margin: auto;
+}
+
+.hint-ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.hint-ul:hover .hint-item {
+  opacity: 0.5;
+}
+
+.hint-ul:hover + .panel-image {
+  opacity: 0.8;
+}
+
+.hint-ul:hover .hint-item:hover {
+  opacity: 1;
+}
+.panel-image {
+  display: block;
+  height: 450px;
+  margin: 0 auto;
+  transition: all 0.25s ease-out;
+}
+.hint-item {
+  position: absolute;
+  z-index: 99;
+  min-width: 30em;
+  transition: all 0.25s ease-out;
+  color: #BCB977;
+}
+.hint-item:hover {
+  min-width: 25em !important;
+}
+.grow-left {
+  text-align: left;
+}
+.grow-left h2 {
+  padding-right: 1em;
+}
+.grow-left h2:after {
+  right: 0;
+  transform: translate(50%, 50%);
+}
+.grow-right {
+  text-align: right;
+}
+.grow-right h2 {
+  padding-left: 1em;
+}
+.grow-right h2:after {
+  left: 0;
+  transform: translate(-50%, 50%);
+}
+.hint-item h2 {
+  position: relative;
+  padding: 0 0 0.4em;
+  border-bottom: solid 0.2em;
+  margin: 0 0 0.4em;
+}
+.hint-item h2:after {
+  position: absolute;
+  bottom: -0.1em;
+  content: "";
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background: #BCB977;
+}
+.hint-item p {
+  margin: 0;
+  padding: 0;
+}
+.hint-video {
+  right: 66%;
+  top: 8%;
+  min-width: 12em;
+}
+.hint-ultrasonic {
+  left: 67%;
+  top: 27%;
+  min-width: 16em;
+}
+.hint-system {
+  left: 57%;
+  top: 77%;
+  min-width: 16em;
+}
+
+/* command page */
+
+.command-page-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 83px;
+  color: #99BBDA;
+}
+
+.command-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.command-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 41px;
+  text-align: center;
+
+  color: #81C1D6;
+}
+
+.card-image {
+  width: 309px;
+  height: 515px;
+  border-radius: 43px;
+}
+
+.card-descr {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #81C1D6;
+  width: 100%;
+}
+
+/* video page */
+
+.video-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-page-title {
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 83px;
+  text-align: center;
+  color: #99BBDA;
+}
+
+.video-content {
+  height: 750px;
+}
+
+.future-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.future-page-title {
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 83px;
+  text-align: center;
+  color: #99BBDA;
+}
+
+.future-page-text {
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 83px;
+  text-align: center;
+
+  color: #99BBDA;
+}
