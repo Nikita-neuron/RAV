@@ -135,12 +135,14 @@ body {
 .hint-item {
   position: absolute;
   z-index: 99;
-  min-width: 30em;
+  min-width: 25em;
   transition: all 0.25s ease-out;
   color: #BCB977;
 }
 .hint-item:hover {
-  min-width: 25em !important;
+  /* font-size: 73px; */
+  font-size: 13pt;
+  /* min-width: 25em !important; */
 }
 .grow-left {
   text-align: left;
@@ -184,17 +186,17 @@ body {
 .hint-video {
   right: 66%;
   top: 8%;
-  min-width: 12em;
+  /* min-width: 12em; */
 }
 .hint-ultrasonic {
   left: 67%;
   top: 27%;
-  min-width: 16em;
+  /* min-width: 16em; */
 }
 .hint-system {
   left: 57%;
   top: 77%;
-  min-width: 16em;
+  /* min-width: 16em; */
 }
 
 /* command page */
