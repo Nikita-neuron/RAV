@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    body {
+      background-image: url("../img/background.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    .hint-ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.hint-ul:hover .hint-item {
+  opacity: 0.5;
+}
+
+.hint-ul:hover + .panel-image {
+  opacity: 0.8;
+}
+
+.hint-ul:hover .hint-item:hover {
+  opacity: 1;
+}
+.panel-image {
+  display: block;
+  height: 450px;
+  margin: 0 auto;
+  transition: all 0.25s ease-out;
+}
+.hint-item {
+  position: absolute;
+  z-index: 99;
+  min-width: 30em;
+  transition: all 0.25s ease-out;
+  color: #BCB977;
+}
+.hint-item:hover {
+  min-width: 25em !important;
+}
+.grow-left {
+  text-align: left;
+}
+.grow-left h2 {
+  padding-right: 1em;
+}
+.grow-left h2:after {
+  right: 0;
+  transform: translate(50%, 50%);
+}
+.grow-right {
+  text-align: right;
+}
+.grow-right h2 {
+  padding-left: 1em;
+}
+.grow-right h2:after {
+  left: 0;
+  transform: translate(-50%, 50%);
+}
+.hint-item h2 {
+  position: relative;
+  padding: 0 0 0.4em;
+  border-bottom: solid 0.2em;
+  margin: 0 0 0.4em;
+}
+.hint-item h2:after {
+  position: absolute;
+  bottom: -0.1em;
+  content: "";
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background: #BCB977;
+}
+.hint-item p {
+  margin: 0;
+  padding: 0;
+}
+.hint-video {
+  right: 66%;
+  top: 8%;
+  min-width: 12em;
+}
+.hint-ultrasonic {
+  left: 67%;
+  top: 27%;
+  min-width: 16em;
+}
+.hint-system {
+  left: 57%;
+  top: 77%;
+  min-width: 16em;
+}
+  </style>
+
+</head>
+<body>
+  <div class="ancatomy">
+    <img src="../img/panel.png" alt="Panel" class="panel-image">
+    <ul class="hint-ul">
+      <li class="hint-item hint-video grow-left">
+        <h2>Видео</h2>
+        <p>
+          Трансляция в режиме онлайн
+        </p>
+      </li>
+      <li class="hint-item hint-ultrasonic grow-right">
+        <h2>Показания дальномеров</h2>
+        <p>
+          Обнаружение препятствий
+        </p>
+      </li>
+      <li class="hint-item hint-system grow-right">
+        <h2>Системные данные</h2>
+        <p>
+          Контроль над состоянием <br> 
+          микрокомпьютеров
+        </p>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
