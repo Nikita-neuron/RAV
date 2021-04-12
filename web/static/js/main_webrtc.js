@@ -23,7 +23,7 @@ function addGyronormScript() {
 }
 
 // var signalling_server_hostname = location.hostname || "192.168.1.8";
-var signalling_server_hostname = "172.20.235.105"
+var signalling_server_hostname = "172.20.232.153"
 var server_port = "8080"
 var signalling_server_address = signalling_server_hostname + ':' + server_port;
 var isFirefox = typeof InstallTrigger !== 'undefined';// Firefox 1.0+
@@ -197,7 +197,7 @@ function start() {
         document.querySelector(".video-player").style.display = "block";
         document.documentElement.style.cursor = 'wait';
         // var server = document.getElementById("signalling_server").value.toLowerCase();
-        var server = "172.20.235.105:8080";
+        var server = "172.20.232.153:8080";
 
         var protocol = location.protocol === "https:" ? "wss:" : "ws:";
         ws = new WebSocket(protocol + '//' + server + '/stream/webrtc');

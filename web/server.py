@@ -109,7 +109,7 @@ def keys_to_motors(keys: dict):
 
 @socketio.on('joystick')
 def handle_keys(joystick):
-    # print('JOYSTICK', joystick)
+    print('JOYSTICK', joystick)
     sticks = joystick['sticks']
     buttons = joystick['buttons']
     left_stick_y = sticks['left'][1]

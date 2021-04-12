@@ -92,6 +92,7 @@ function update()
 	if (gamepad_value === null) {
 		return
 	}
+    // console.log('JOYSTICK', gamepad_value)
     socket.emit('joystick', gamepad_value)
 }
 
