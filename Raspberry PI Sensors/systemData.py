@@ -11,14 +11,14 @@ class SystemData:
   def memory(self):
     memory = psutil.virtual_memory()
     # Divide from Bytes -> KB -> MB
-    # available = round(memory.available/1024.0/1024.0,1)
-    # total = round(memory.total/1024.0/1024.0,1)
+    available = round(memory.available/1024.0/1024.0,1)
+    total = round(memory.total/1024.0/1024.0,1)
 
     # all data in Bytes
 
     return {
-      "memoryFree": memory.available,
-      "memoryTotal": memory.total,
+      "memoryFree": available,
+      "memoryTotal": total,
       "memoryPercent": memory.percent
     }
 
@@ -26,13 +26,13 @@ class SystemData:
     disk = psutil.disk_usage('/')
     # all data in Bytes
     
-    # Divide from Bytes -> KB -> MB -> GB
-    # free = round(disk.free/1024.0/1024.0/1024.0,1)
-    # total = round(disk.total/1024.0/1024.0/1024.0,1)
+    # Divide from Bytes -> KB -> MB
+    free = round(disk.free/1024.0/1024.0,1)
+    total = round(disk.total/1024.0/1024.0,1)
     # return str(free) + 'GB free / ' + str(total) + 'GB total ( ' + str(disk.percent) + '% )
     return {
-      "diskFree": disk.free,
-      "diskTotal": disk.total,
+      "diskFree": free,
+      "diskTotal": total,
       "diskPercent": disk.percent
     }
 

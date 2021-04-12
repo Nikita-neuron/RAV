@@ -6,6 +6,9 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Css grid test</title>
     <style>
+        #_1:hover, #_2:hover, #_3:hover, #_4:hover, #_5:hover, #_6:hover, #_7:hover, #_8:hover {
+            display: none;
+        }
         .signal-grid {
             /* flex: content; */
             width: 600px;
@@ -35,7 +38,7 @@
         .signal-left {
             grid-column: 1;
             grid-row: 2;
-            width: calc(100%);
+            /* width: calc(100%); */
             /* height: calc(100vw/10); */
             
             /* transform: rotate(90deg); */
@@ -49,6 +52,9 @@
             grid-column: 2;
             grid-row: 3;
         }
+        #_1 {
+            fill: none;
+        }
     </style>
 </head>
 <body>
@@ -57,8 +63,8 @@
         OOPS
     </video>
     <div class="signal-grid">
-        <img class = robot-img src="loh.jpg">
-        <object class="signal-img signal-up" data="signal.svg"></object>
+        <object class="signal-img signal-up1" data="signal.svg"></object>
+        <object class="signal-img signal-up2" data="signal.svg"></object>
         <object class="signal-img signal-left" data="signal.svg"></object>
         <object class="signal-img signal-right" data="signal.svg"></object>
         <object class="signal-img signal-down" data="signal.svg"></object>

@@ -6,17 +6,41 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico', version='1') }}" type="image/x-icon">
+  <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico', version='1') }}" type="image/x-icon">
   <script src="{{ url_for('static', filename='js/jquery-3.5.1.min.js', version='1') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js" integrity="sha512-oFOCo2/3DtjrJG4N27BjSLQWoiBv171sK6a+JiWjp/7agxC2nCUP358AqzxkBUb5jX8g6CYLPdSKQTbC0weCwA==" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <script src="js/main_webrtc.js" defer></script>
+  <script src="{{ url_for('static', filename='js/main_webrtc.js', version='1') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/gamepad.js', version='1') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/main.js', version='1') }}" defer type="module"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', version='1') }}"> -->
+
+
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <script src="js/vr.js" defer type="module"></script>
+  <script type="text/javascript" defer type="module" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js" integrity="sha512-oFOCo2/3DtjrJG4N27BjSLQWoiBv171sK6a+JiWjp/7agxC2nCUP358AqzxkBUb5jX8g6CYLPdSKQTbC0weCwA==" crossorigin="anonymous"></script>
   <script src="js/gamepad.js" defer></script>
-  <script src="js/main.js" defer></script>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', version='1') }}">
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/7.4.0/adapter.min.js" ></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js" ></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+  <script type="text/javascript" src="https://rawgit.com/dorukeker/gyronorm.js/master/dist/gyronorm.complete.min.js"></script>
+  <script type="text/javascript" src="js/libs/janus.js" defer></script>
+  <script type="text/javascript" src="js/videoroomtest.js" defer></script>
+
+  <script src="js/main.js" defer type="module"></script>
+
   <title>RAV</title>
 </head>
 <body>
+  <div id="webglviewer"></div>
   <header class="header">
     <div id="p_prldr">
       <div class="contpre">
@@ -34,20 +58,22 @@
           </video>
         </div> -->
         <div class="video-sound">
-          <div class="video" onclick="start();">
-            <img src="img/no_camera.svg" alt="" class="no_video" width="64" height="64">
-            <video id="remote-video" class="video-player" autoplay="">
-              Your browser does not support the video tag.
-            </video>
+          <div class="video" id="videoremote">
+            <img src="img/no_camera.svg" alt="" class="no_video" id="no-video" width="64" height="64">
           </div>
           <div class="sound">
+            <button class="vr_button">
+              <img src="img/sound_background.png" alt="vr" class="vr-background">
+              <img src="img/vr.png" alt="vr" class="vr-img">
+              <div class="no-vr"></div>
+            </button>
             <button class="microphone">
               <img src="img/sound_background.png" alt="microphone" class="microphone-background">
               <img src="img/microphone.png" alt="microphone" class="microphone-img">
               <div class="no-microphone"></div>
             </button>
             <button class="speaker">
-              <img src="img/sound_background.png" alt="speaker" class="speaker=background">
+              <img src="img/sound_background.png" alt="speaker" class="speaker-background">
               <img src="img/volume.png" alt="speaker" class="speaker-img">
               <div class="no-speaker"></div>
             </button>
@@ -56,19 +82,19 @@
         <div class="sensors">
           <div class="view-from-above"></div>
           <div class="sensors-up-left signal">
-            <object data="img/up-signal.svg" alt="" width="148" height="150"></object>
+            <img src="img/up-signal.svg" alt="" width="148" height="150">
           </div>
           <div class="sensors-up-right signal">
-            <object data="img/up-signal.svg" alt="" width="148" height="150"></object>
+            <img src="img/up-signal.svg" alt="" width="148" height="150">
           </div>
           <div class="sensors-right signal">
-            <object data="img/leftRight-signal.svg" alt="" width="100" height="207"></object>
+            <img src="img/leftRight-signal.svg" alt="" width="100" height="207">
           </div>
           <div class="sensors-left signal">
-            <object data="img/leftRight-signal.svg" alt="" width="100" height="207"></object>
+            <img src="img/leftRight-signal.svg" alt="" width="100" height="207">
           </div>
           <div class="sensors-down signal">
-            <object data="img/down-signal.svg" alt="" width="207" height="150"></object>
+            <img src="img/down-signal.svg" alt="" width="207" height="150">
           </div>
         </div>
       </div>
@@ -143,13 +169,13 @@
                     <span class="sensors-diskTotal">
                       10000 
                     </span>
-                    <span>MB</span>
+                    <span>GB</span>
                   </span>
                   <span class="free-data">
                     <span class="sensors-diskFree">
                       10000 
                     </span>
-                    <span>MB</span>
+                    <span>GB</span>
                   </span>
                 </div>
               </div>
@@ -248,13 +274,13 @@
                     <span class="motors-diskTotal">
                       10000 
                     </span>
-                    <span>MB</span>
+                    <span>GB</span>
                   </span>
                   <span class="free-data">
                     <span class="motors-diskFree">
                       10000 
                     </span>
-                    <span>MB</span>
+                    <span>GB</span>
                   </span>
                 </div>
               </div>
@@ -288,7 +314,7 @@
   </main>
   <footer class="footer">
     <div class="logo">
-      <img src="img/miniLogo_gradient.svg" alt="logo" class="logo-img">
+      <img src="img/Logo_gradient.svg" alt="logo" class="logo-img">
     </div>
   </footer>
   <script type="text/javascript">
@@ -297,60 +323,6 @@
         $svg_anm.delay(900).fadeOut();
         $preloader.delay(1000).fadeOut('slow');
     });
-  </script>
-  <script>
-  //   let sensorsSystemData = {
-  //     "memory": {
-  //         "memoryFree":       1000,
-  //         "memoryTotal":      1000,
-  //         "memoryPercent":    100
-  //     },
-  //     "disk": {
-  //         "diskFree":         0,
-  //         "diskTotal":        0,
-  //         "diskPercent":      0
-  //     },
-  //     "cpu":                  0,
-  //     "temperature":          0
-  // };
-
-  // let motorsSystemData = {
-  //     "memory": {
-  //         "memoryFree":       1000,
-  //         "memoryTotal":      1000,
-  //         "memoryPercent":    100
-  //     },
-  //     "disk": {
-  //         "diskFree":         0,
-  //         "diskTotal":        0,
-  //         "diskPercent":      0
-  //     },
-  //     "cpu":                  0,
-  //     "temperature":          0
-  // };
-
-  // set_system_data(sensorsSystemData, motorsSystemData);
-
-  // function set_system_data(sensorsSystemData, motorsSystemData) {
-  //     let selectors = [
-  //         "memoryFree",
-  //         "memoryTotal",
-  //         "memoryPercent",
-  //         "diskFree",
-  //         "diskTotal",
-  //         "diskPercent",
-  //         "cpu",
-  //         "temperature"
-  //     ];
-
-  //     for (key in sensorsSystemData) {
-  //       console.log(sensorsSystemData[key].length);
-  //     }
-
-  //     // selectors.forEach((item) => {
-  //     //     document.querySelector(`.sensors${item}`).value = sensorsSystemData[]
-  //     // });
-  // }
   </script>
 </body>
 </html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>RAV&co.</title>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="img/Logo.svg" alt="RAV" class="logo-image">
+    </div>
+    <nav class="nav">
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#main-page" class="nav-link">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a href="#info-page" class="nav-link">Устройство платформы</a>
+        </li>
+        <li class="nav-item">
+          <a href="#command-page" class="nav-link">Команда</a>
+        </li>
+        <li class="nav-item">
+          <a href="#video-page" class="nav-link">Демонстрация</a>
+        </li>
+        <li class="nav-item">
+          <a href="#future-page" class="nav-link">Перспективы</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main">
+    <div class="main-page" id="main-page">
+      <h1 class="main-page-title">Универсальная робототехническая платформа RAV</h1>
+      <img src="img/robot_main.JPG" alt="Robot" class="robot-image">
+    </div>
+    <div class="info-page" id="info-page">
+      <div class="info-robot-page"></div>
+      <div class="info-panel-page">
+        <h2 class="info-panel-page-title">Панель управления роботом</h2>
+        <div class="info-panel-page-main">
+          <ul class="hint-ul">
+            <li class="hint-item hint-video grow-left">
+              <h2>Видео</h2>
+              <p>
+                Трансляция в режиме онлайн
+              </p>
+            </li>
+            <li class="hint-item hint-ultrasonic grow-right">
+              <h2>Показания дальномеров</h2>
+              <p>
+                Обнаружение препятствий
+              </p>
+            </li>
+            <li class="hint-item hint-system grow-right">
+              <h2>Системные данные</h2>
+              <p>
+                Контроль над состоянием <br> 
+                микрокомпьютеров
+              </p>
+            </li>
+          </ul>
+          <img src="img/panel.png" alt="Panel" class="panel-image">
+        </div>
+      </div>
+    </div>
+    <div class="command-page" id="command-page">
+      <h2 class="command-page-title">Наша команда</h2>
+      <div class="command-info">
+        <div class="command-card">
+          <h3 class="card-title">Валентин Стриженко</h3>
+          <img src="img/Valentine.png" alt="Valentine" class="card-image">
+          <span class="card-descr">Программист, ответственный за серверную часть платформы</span>
+        </div>
+        <div class="command-card">
+          <h3 class="card-title">Шпунтов Глеб</h3>
+          <img src="img/Gleb.png" alt="Gleb" class="card-image">
+          <span class="card-descr">Старший инжинер, ответственный за техническую часть платформы</span>
+        </div>
+        <div class="command-card">
+          <h3 class="card-title">Шалов Никита</h3>
+          <img src="img/Nikita.png" alt="Nikita" class="card-image">
+          <span class="card-descr">Программист, ответственный за взаимодействие платформы с внешним миром</span>
+        </div>
+      </div>
+    </div>
+    <div class="video-page" id="video-page">
+      <h2 class="video-page-title">Демонстрация работы платформы</h2>
+      <div class="video-content">
+        <video src="video/RAV.mp4"></video>
+      </div>
+    </div>
+    <div class="future-page" id="future-page">
+      <h2 class="future-page-title">Перспективы платформы</h2>
+      <div class="future-page-content">
+        <span class="future-page-text">Внедрить компьютерное зрение, элементы VR для повышения эффективности выполнения задач оператором, оптимизировать передачу данных, а также сделать страховку от потери сигнала на программном уровне. Также планируются прочие незначительные доработки</span>
+      </div>
+    </div>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>

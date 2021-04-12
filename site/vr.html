@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>three.js vr stereo video</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link type="text/css" rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div id="container"></div>
+
+  <video id="video" loop muted crossOrigin="anonymous" playsinline style="display:none">
+    <!-- <source src="img/MaryOculus.webm"> -->
+    <!-- <source src="img/MaryOculus.mp4"> -->
+    <source src="img/RAV.mp4">
+  </video>
+
+  <script type="module">
+
+    import * as THREE from './js/libs/three.module.js';
+    import { VRButton } from './js/VRButton.js';
+    import { BoxLineGeometry } from './js/libs/BoxLineGeometry.js';
+
+    let camera, scene, renderer;
+
+    init();
+    animate();
+
+    function init() {
+
+      const container = document.getElementById( 'container' );
+      container.addEventListener( 'click', function () {
+
+        video.play();
+
+      } );
+
+      scene            = new THREE.Scene();
+      scene.background = new THREE.Color( 0x101010 );
+
+      camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 10 );
+			camera.position.set( 0, 0, 0 );
+      camera.rotation.y = -1.54;
+      // camera.position.set(0,150,300);
+
+      // camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 2000 );
+      camera.layers.enable( 1 ); // render left view when no stereo available
+      // camera.position.set( 0, 1.6, 3 );
+
+      // video
+
+      const video = document.getElementById( 'video' );
+      video.play();
+
+      const texture     = new THREE.VideoTexture( video );
+      texture.minFilter = THREE.LinearFilter;
+      texture.magFilter = THREE.LinearFilter;
+      texture.format    = THREE.RGBFormat;
+
+      const axesHelper = new THREE.AxesHelper( 5 );
+      scene.add( axesHelper );
+
+      var room = new THREE.LineSegments(
+				new BoxLineGeometry( 6, 6, 6, 10, 10, 10 ).translate( 0, 3, 0 ),
+				new THREE.LineBasicMaterial( { color: 0x808080 } )
+			);
+			scene.add( room );
+
+      // left
+
+      const geometry = new THREE.PlaneGeometry( 2, 2, 2 );
+      geometry.scale( 1, -1, 1 );
+
+      const material = new THREE.MeshBasicMaterial( { map: texture } );
+
+      var rotationMesh = {
+        "x": THREE.Math.degToRad( -90 ),
+        "y": THREE.Math.degToRad( 90 ),
+        "z": THREE.Math.degToRad( -90 )
+      };
+
+      var positionMesh = {
+        "x": 1.3,
+        "y": 0,
+        "z": 0
+      }
+
+      // const geometry1 = new THREE.SphereGeometry( 500, 60, 40 );
+      // const geometry1 = new THREE.PlaneGeometry( 2, 2, 2 );
+      // const geometry1 = new THREE.BoxGeometry( 1, 1, 1 );
+      // invert the geometry on the x-axis so that all of the faces point inward
+      // geometry1.scale( 1, -1, 1 );
+
+      // const material1 = new THREE.MeshBasicMaterial( { map: texture } );
+
+      for (let i = 1; i <= 2; i++) {
+        var mesh        = new THREE.Mesh( geometry, material );
+        mesh.position.x = positionMesh.x;
+        mesh.position.z = positionMesh.z;
+        mesh.position.y = positionMesh.y
+        mesh.rotation.y = rotationMesh.y;
+        mesh.rotation.z = rotationMesh.z;
+        mesh.rotation.x = rotationMesh.x;
+        mesh.layers.set( i );
+        room.add(mesh);
+      }
+
+      // const mesh1 = new THREE.Mesh( geometry, material );
+      // mesh1.position.x = positionMesh.x;
+      // mesh1.position.z = positionMesh.z;
+      // mesh1.position.y = positionMesh.y
+      // mesh1.rotation.y = rotationMesh.y;
+      // mesh1.rotation.z = rotationMesh.z;
+      // mesh1.rotation.x = rotationMesh.x;
+      // mesh1.layers.set( 1 ); // display in left eye only
+      // // scene.add( mesh1 );
+      // room.add(mesh1);
+
+      // camera.lookAt(mesh1);
+
+      // right
+
+      // const geometry2 = new THREE.SphereGeometry( 500, 60, 40 );
+      // const geometry2 = new THREE.PlaneGeometry( 2, 2, 2 );
+      // geometry2.scale( 1, -1, 1 );
+
+      // const material2 = new THREE.MeshBasicMaterial( { map: texture } );
+
+      // const mesh2 = new THREE.Mesh( geometry, material );
+      // mesh2.position.x = positionMesh.x;
+      // mesh2.position.z = positionMesh.z;
+      // mesh2.position.y = positionMesh.y
+      // mesh2.rotation.y = rotationMesh.y;
+      // mesh2.rotation.z = rotationMesh.z;
+      // mesh2.rotation.x = rotationMesh.x;
+      // mesh2.layers.set( 2 ); // display in right eye only
+      // // scene.add( mesh2 );
+      // room.add( mesh2 );
+
+      const geometry1 = new THREE.IcosahedronGeometry( 0.08, 3 );
+
+      for ( let i = 0; i < 200; i ++ ) {
+
+        const object = new THREE.Mesh( geometry1, material );
+
+        object.position.x = Math.random() * 4 - 2;
+        object.position.y = Math.random() * 4;
+        object.position.z = Math.random() * 4 - 2;
+
+        object.userData.velocity = new THREE.Vector3();
+        object.userData.velocity.x = Math.random() * 0.01 - 0.005;
+        object.userData.velocity.y = Math.random() * 0.01 - 0.005;
+        object.userData.velocity.z = Math.random() * 0.01 - 0.005;
+
+        room.add( object );
+
+      }
+      //
+      renderer = new THREE.WebGLRenderer();
+      renderer.setPixelRatio( window.devicePixelRatio );
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      renderer.xr.enabled = true;
+      renderer.xr.setReferenceSpaceType( 'local' );
+      container.appendChild( renderer.domElement );
+
+      document.body.appendChild( VRButton.createButton( renderer ) );
+
+      //
+      window.addEventListener( 'resize', onWindowResize );
+    }
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize( window.innerWidth, window.innerHeight );
+    }
+
+    function animate() {
+      renderer.setAnimationLoop( render );
+    }
+
+    function render() {
+      renderer.render( scene, camera );
+    }
+
+  </script>
+</body>
+</html>

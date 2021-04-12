@@ -1,5 +1,6 @@
 
 import sys
+import pyfiglet
 import importlib.util
 # sys.path.append('..')
 # import config
@@ -10,7 +11,7 @@ spec.loader.exec_module(config)
 import flask
 from flask import Flask, Response, render_template
 from flask_socketio import SocketIO
-import livereload
+# import livereload
 
 import time
 from twisted.internet import protocol, reactor
@@ -23,6 +24,10 @@ import queue
 # msgpack_numpy.patch()
 import cv2
 import numpy as np
+
+from engineio.payload import Payload
+
+Payload.max_decode_packets = 50
 
 async_mode = None
 app = Flask(__name__, static_folder='static')
@@ -122,10 +127,23 @@ def handle_keys(joystick):
     print('Send', motors)
     pc_client.sendMsg('motorsSpeed', [*motors, platform])
 
+@socketio.on("gyroscopeData")
+def gyroscope_data(gyroscopeData):
+    x = gyroscopeData['beta']
+    y = gyroscopeData['gamma']
+    print(gyroscopeData)
+    pc_client.sendMsg('gyroscope', gyroscopeData)
+
 
 def run_webserver():
     print('Starting webserver on port', config.WEBSERVER_PORT)
-    socketio.run(app, port=config.WEBSERVER_PORT, debug=False)
+    import webbrowser 
+    new = 2 # open in a new tab, if possible
+
+    # open a public URL, in this case, the webbrowser docs
+    url = "http://localhost:" + str(config.WEBSERVER_PORT)
+    webbrowser.get("C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s").open(url,new=new)
+    socketio.run(app, port=config.WEBSERVER_PORT, debug=False, host="0.0.0.0")
 
 
 class PcClientProtocol(myproto.Protocol):
@@ -145,6 +163,9 @@ class PcClientProtocol(myproto.Protocol):
     def on_systemData(self, data):
         print('RECV SYSTEM', self.name, data)
         socketio.emit('systemData', data)
+    def on_ultrasonic(self, data):
+        print("RECV ULTRASONIC", self.name, data)
+        socketio.emit('ultrasonic', data)
 pc_client = PcClientProtocolFactory(PcClientProtocol)
 
 
@@ -154,6 +175,9 @@ def main():
     # app.run(host='localhost'    , port=5500)
     main_pc_ip= config.MAIN_PC_IP
     main_pc_port = config.MAIN_PC_PORT
+
+    result = pyfiglet.figlet_format("R A V")
+    print(result)
 
     webserver_thread = threading.Thread(target=run_webserver, daemon=True)
     webserver_thread.start()
