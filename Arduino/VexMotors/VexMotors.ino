@@ -1,4 +1,6 @@
 #include <Servo.h>
+#include <Wire.h>
+#include <I2CEncoder.h>
 
 int right_motors_speed = 0;
 int left_motors_speed = 0;
@@ -40,11 +42,22 @@ Servo motor_left_platform_1;
 Servo motor_left_platform_2;
 Servo motor_left_platform_3;
 
+Servo motor_up;
+Servo motor_down;
+
+I2CEncoder leftEncoder;
+I2CEncoder rightEncoder;
+
+int motor_up_Pin = 8;
+int motor_down_Pin = 7;
+
 typedef struct
 {
     int8_t r;
     int8_t l;
     int8_t p;
+    int16_t u;
+    int16_t d;
 } __attribute__((__packed__)) myS;
 
 myS s;
@@ -81,6 +94,9 @@ void setup() {
   motor_left_platform_1.attach(motor_left_platform_1_Pin);
   motor_left_platform_2.attach(motor_left_platform_2_Pin);
   motor_left_platform_3.attach(motor_left_platform_3_Pin);
+
+  motor_up.attach(motor_up_Pin);
+  motor_down.attach(motor_down_Pin);
   
   Serial.begin(9600);
 }
@@ -94,6 +110,9 @@ void setup() {
 //  }
 //}
 
+int16_t up_motor_needed = 0;
+int16_t down_motor_needed = 0;
+
 void loop() {
   if (Serial.available() > 0) {
 //    char command = Serial.read();
@@ -104,10 +123,14 @@ void loop() {
       left_motors_speed = s.l;
 
       motors_platform_speed = s.p;
+
+      up_motor_needed = s.u;
+      down_motor_needed = s.d;
   }
   move_right_motors(right_motors_speed);
   move_left_motors(left_motors_speed);
   move_motors_platform(motors_platform_speed);
+  move_camera_motors(100*(up_motor_now < up_motor_needed), 
 //  myS ass {0x12, 0x34};
 //  Serial.write((byte*)( &s), sizeof s);
 //  uint16_t loh = 0x1234;
@@ -140,4 +163,9 @@ void move_motors_platform(int angle) {
   motor_left_platform_1.write(map(angle, -100, 100, 1000, 2000));
   motor_left_platform_2.write(map(angle, -100, 100, 1000, 2000));
   motor_left_platform_3.write(map(angle, -100, 100, 1000, 2000));
+}
+
+void move_camera_motors(int angleUp, int angleDown) {
+  analogWrite(3, map(angleUp, -100, 100, 0, 250));
+  analogWrite(2, map(angleDown, -100, 100, 0, 250));
 }
