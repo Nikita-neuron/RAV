@@ -69,6 +69,9 @@ float up_motor_needed = 0;
 int move_direction_right = 1;
 int move_direction_up = 0;
 
+float max_right_motor_angle = 120;
+float max_up_motor_angle = 120;
+
 
 void loop() {
 //  if (Serial.available() > 0) {
@@ -133,12 +136,12 @@ void loop() {
 //  delay(1000);
 }
 
-int pwm_convert(int angle) {
-  return map(angle, -100, 100, 1000, 2000);
+int pwm_convert(int speed) {
+  return map(speed, -100, 100, 1000, 2000);
 }
 
-void move_platform(int angle) {
-  motor_platform.write(pwm_convert(angle));
+void move_platform(int speed) {
+  motor_platform.write(pwm_convert(speed));
 }
 
 void move_tracks(int left, int right) {

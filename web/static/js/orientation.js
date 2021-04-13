@@ -20,6 +20,7 @@ function handleOrientation(event) {
       "beta": event.beta, // In degree in the range [-180,180]
       "gamma": event.gamma, // In degree in the range [-90,90]
   };
+  console.log(orientationData);
 }
 
 function getOrientation() {

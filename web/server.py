@@ -129,10 +129,13 @@ def handle_keys(joystick):
 
 @socketio.on("gyroscopeData")
 def gyroscope_data(gyroscopeData):
-    x = gyroscopeData['beta']
-    y = gyroscopeData['gamma']
-    print(gyroscopeData)
-    pc_client.sendMsg('gyroscope', gyroscopeData)
+    x = round(gyroscopeData['alpha'], 1)
+    y = round(gyroscopeData['gamma'], 1)
+    if y > 0: y -= 90
+    else: y += 90
+    gyroscope = [x, y]
+    print(gyroscope)
+    pc_client.sendMsg('gyroscope', gyroscope)
 
 
 def run_webserver():

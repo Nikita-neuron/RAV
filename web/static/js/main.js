@@ -36,6 +36,12 @@ function getDeviceType() {
   return "desktop";
 };
 
+orientation_init();
+
+if (getDeviceType() == "mobile") {
+  orientation_init();
+}
+
 vrButton.addEventListener('click', () => {
   // orientationsend_selection();
   // run vr
@@ -275,8 +281,17 @@ socket.on('ultrasonic', data => {
   setUltrasonicData(data);
 });
 
+function sendOrientation() {
+  let orientation_value = getOrientation();
+  if (orientation_value === null) return;
+
+  socket.emit('gyroscopeData', orientation_value);
+}
+
 function update()
 {
+  sendOrientation();
+
   let gamepad_value = getGamepadIfChanged();
 	if (gamepad_value === null) {
 		return;

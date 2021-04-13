@@ -43,11 +43,7 @@ def get_sound_device():
 
 class MotorsStructure(Structure):
   _pack_ = 1
-  _fields_ = [("r", c_int8), ("l", c_int8), ("p", c_int8)]
-
-class MotorsCameraStructure(Structure):
-  _pack_ = 1
-  _fields_ = [("u", c_int8)]
+  _fields_ = [("r", c_int8), ("l", c_int8), ("p", c_int8), ("u", c_int16), ("d", c_int16)]
 
 def get_data(queueData, name):
   try:
@@ -65,8 +61,6 @@ def main():
   }
   name = "raspberryPIMotors"
   server_ip, server_port = get_server_ip_port()
-
-  # get_sound_device()
 
   arduino = connect_arduino()
 
@@ -90,19 +84,14 @@ def main():
 
   raspberryPIMotorsServer.start()
 
-  i = 0
-
   while True:
+    system_data = systemData.get_system_data()
 
-    if i%10000 == 0:
-      system_data = systemData.get_system_data()
-
-      raspberryPIMotorsServer.send_message({
-        "type": "systemData", 
-        "data": system_data
-      })
-    i += 1
-
+    raspberryPIMotorsServer.send_message({
+      "type": "systemData", 
+      "data": system_data
+    })
+    
     # print("get frame")
     # frame = raspberryVideo.get_video_frames()
     # print("hhh")
@@ -130,15 +119,10 @@ def main():
     #   soundPlay.add_sound(sound_pc)
     
     motors = get_data(queueData, "motorsSpeed")
+    gyroscopeData = get_data(queueData, "gyroscope")
     if motors is not None:
       print("from raspberry: ", motors)
-      motors_arduino = MotorsStructure(motors[0], motors[1], motors[2])
-      arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
-
-    motors = get_data(queueData, "gyroscope")
-    if motors is not None:
-      print("from raspberry: ", motors)
-      motors_arduino = MotorsCameraStructure(motors)
+      motors_arduino = MotorsStructure(motors[0], motors[1], motors[2], gyroscopeData[0], gyroscopeData[1])
       arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
 
 

@@ -1,25 +1,27 @@
 #include <NewPing.h>
 #include <Servo.h>
 
-#define TRIGGER_PIN_1  2
-#define ECHO_PIN_1     3
+// up left
+#define TRIGGER_PIN_1  2 // input
+#define ECHO_PIN_1     3 // output
 
-#define TRIGGER_PIN_2  4
-#define ECHO_PIN_2     5
+// up right
+#define TRIGGER_PIN_2  4 // input
+#define ECHO_PIN_2     5 // output
 
-#define TRIGGER_PIN_3  6
-#define ECHO_PIN_3     7
+// down
+#define TRIGGER_PIN_3  6 // input
+#define ECHO_PIN_3     7 // output
 
-#define TRIGGER_PIN_4  8
+// left
+#define TRIGGER_PIN_4  8 // input
 #define ECHO_PIN_4     9
 
-#define TRIGGER_PIN_5  10
-#define ECHO_PIN_5     11
+// right
+#define TRIGGER_PIN_5  10 // input
+#define ECHO_PIN_5     11 // output
 
 #define MAX_DISTANCE 400
-
-int up_motors_speed = 0;
-int down_motors_speed = 0;
  
 NewPing sonar1(TRIGGER_PIN_1, ECHO_PIN_1, MAX_DISTANCE); // up left
 NewPing sonar2(TRIGGER_PIN_2, ECHO_PIN_2, MAX_DISTANCE); // up right
@@ -39,15 +41,10 @@ typedef struct
 ultrasonic_Data ultrasonicData;
  
 void setup() {
-  pinMode(motor_up_Pin, OUTPUT);
-  pinMode(motor_down_Pin, OUTPUT);
-  
   Serial.begin(9600);
 }
  
 void loop() {
-  move_camera_motors(up_motors_speed, down_motors_speed);
-  
   ultrasonicData.dis1 = sonar1.ping_cm();
   ultrasonicData.dis2 = sonar2.ping_cm();
   ultrasonicData.dis3 = sonar3.ping_cm();
@@ -55,6 +52,4 @@ void loop() {
   ultrasonicData.dis5 = sonar5.ping_cm();
 
   Serial.write((byte*)( &ultrasonicData), sizeof ultrasonicData);
-
-//  delay(100);
 }
