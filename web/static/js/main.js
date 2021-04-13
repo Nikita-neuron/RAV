@@ -20,7 +20,7 @@ const signalsSVG  = {
   "signal-down": null
 }
 
-const getDeviceType = () => {
+function getDeviceType() {
   // get device type
   const ua = navigator.userAgent;
   if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
@@ -35,8 +35,7 @@ const getDeviceType = () => {
   }
   return "desktop";
 };
-orientationsend_selection();
-window.addEventListener('deviceorientation', handleOrientation);
+
 vrButton.addEventListener('click', () => {
   // orientationsend_selection();
   // run vr
@@ -48,6 +47,9 @@ vrButton.addEventListener('click', () => {
     noVR.style.display = "none";
     
     start();
+    if (getDeviceType() == "mobile") {
+      orientation_init();
+    }
     playVR = true;
   }
 });
@@ -69,18 +71,6 @@ vrButton.addEventListener('click', () => {
 //     });
 //   }
 // }, true);
-
-function handleOrientation(event) {
-  var data = {
-      "alpha": event.alpha, // In degree in the range [0,360]
-      "beta": event.beta, // In degree in the range [-180,180]
-      "gamma": event.gamma, // In degree in the range [-90,90]
-  };
-  console.log(data);
-  if (data['alpha'] != null && data['beta'] != null && data['gamma'] != null) {
-    socket.emit("gyroscopeData", data);
-  }
-}
 
 function handleGyronorm(data) {
   // Process:
