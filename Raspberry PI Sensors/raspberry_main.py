@@ -44,9 +44,9 @@ def connect_arduino():
 class UltrasonicStructure(Structure):
 	_pack_ = 1
 	_fields_ = [
-		("dis1", c_int16), ("dis2", c_int16), 
-		("dis3", c_int16), ("dis4", c_int16), 
-		("dis5", c_int16)
+		("upLeft", c_int16), ("upRight", c_int16), 
+		("down", c_int16), ("left", c_int16), 
+		("right", c_int16)
 	]
 
 def get_data(queueData, name):
@@ -126,23 +126,17 @@ def main():
 		serial_data = arduino.read(10)
 		ultrasonicData = UltrasonicStructure.from_buffer_copy(serial_data)
 
-		ultrasonicData = [
-			ultrasonicData.dis1,
-			ultrasonicData.dis2,
-			ultrasonicData.dis3,
-			ultrasonicData.dis4,
-			ultrasonicData.dis5,
-		]
+		ultrasonicData = {
+			"upleft": ultrasonicData.upLeft,
+			"upright": ultrasonicData.upRight,
+			"down": ultrasonicData.down,
+			"left": ultrasonicData.left,
+			"right": ultrasonicData.right,
+		}
 		print(ultrasonicData)
 
 		raspberryPIMotorsServer.send_message({
 		  "type": "ultrasonic", 
-		  "data": {
-				"upleft": 	ultrasonicData[0],
-				"upright": 	ultrasonicData[1],
-				"down": 	ultrasonicData[2],
-				"left": 	ultrasonicData[3],
-				"right": 	ultrasonicData[4]
-		  }
+		  "data": ultrasonicData
 		})
 main()
