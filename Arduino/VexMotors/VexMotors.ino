@@ -6,7 +6,7 @@ int pwm_convert(int speed) {
   return map(speed, -100, 100, 1000, 2000);
 }
 
-class I2CMotor {
+class CameraMotor {
 public:
   I2CEncoder encoder;
   Servo motor;
@@ -14,7 +14,7 @@ public:
   float needed;
   int move_direction;
 public:
-  I2CMotor(int speed) {
+  CameraMotor(int speed) {
     this->speed = pwm_convert(speed);
   }
   void attach(int pin) {
@@ -69,16 +69,8 @@ Servo motor_platform;
 Servo motor_left;
 Servo motor_right;
 
-/*
-Servo motor_camera_up;
-Servo motor_camera_right;
-
-I2CEncoder encoder_up;
-I2CEncoder encoder_right;
-*/
-
-I2CMotor motor_camera_up(25);
-
+CameraMotor motor_camera_up(25);
+CameraMotor motor_camera_right(25);
 
 typedef struct
 {
@@ -121,10 +113,8 @@ void setup() {
 }
 
 
-float right_motor_needed = 0.1;
-float up_motor_needed = 0;
-int move_direction_right = 1;
-int move_direction_up = 0;
+float right_motor_needed = 0.5;
+float up_motor_needed = 0.5;
 
 float max_right_motor_angle = 80;
 float max_up_motor_angle = 80;
@@ -132,7 +122,7 @@ float max_up_motor_angle = 80;
 
 
 void loop() {
-  /* if (Serial.available() > 0) {
+  if (Serial.available() > 0) {
       Serial.readBytes((byte*)(&s), sizeof(myS));    
 
       right_motors_speed = s.r;
@@ -162,8 +152,8 @@ void loop() {
 
   move_right_motors(right_motors_speed);
   move_left_motors(left_motors_speed);
-  move_motors_platform(motors_platform_speed); */
-//  move_camera_motors(25, 25);
+  move_motors_platform(motors_platform_speed);
+  move_camera_motors(right_motor_needed, up_motor_needed);
 
 //  move_platform(30);
 //  move_tracks(30, 30);
@@ -182,8 +172,7 @@ void move_tracks(int left, int right) {
   motor_right.write(pwm_convert(right));
 }
 
-/*
-void move_camera(int right, int up) {
-  motor_camera_up.write(pwm_convert(up));
-  motor_camera_right.write(pwm_convert(right));
-}*/
+void move_camera_motors(int right, int up) {
+  motor_camera_right.set_needed(right);
+  motor_camera_up.set_needed(up);
+}
