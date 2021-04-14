@@ -2,54 +2,74 @@
 #include <Wire.h>
 #include <I2CEncoder.h>
 
+int pwm_convert(int speed) {
+  return map(speed, -100, 100, 1000, 2000);
+}
+
+class I2CMotor {
+public:
+  I2CEncoder encoder;
+  Servo motor;
+  int speed;
+  float needed;
+  int move_direction;
+public:
+  I2CMotor(int speed) {
+    this->speed = pwm_convert(speed);
+  }
+  void attach(int pin) {
+    motor.attach(pin);
+    encoder.init(MOTOR_269_ROTATIONS, MOTOR_269_TIME_DELTA);
+  }
+  void set_needed(float needed) {
+    this->needed = needed;
+  }
+  void update() {
+    if (move_direction) {
+      float now = encoder.getPosition();
+      
+      int delta = sign(needed - now);
+      
+      Serial.print("MOVE ");
+      Serial.print(needed - now);
+      Serial.print(' ');
+      Serial.println(delta);
+      motor.write(speed*delta);
+      if (delta != move_direction) {
+        Serial.println("GAVDUINO");
+        needed = 0;
+        move_direction = 0;
+      }
+    } else {
+      Serial.println("DONE");
+      motor.write(1500);
+    }
+  }
+};
+
 int right_motors_speed = 0;
 int left_motors_speed = 0;
 
 int motors_platform_speed = 0;
 
-int motor_right_1_Pin = 7;
-int motor_right_2_Pin = 6;
-int motor_right_3_Pin = 5;
+enum PINS {
+  PIN_MOTOR_PLATFORM = 2,
+  PIN_MOTOR_LEFT = 4,
+  PIN_MOTOR_RIGHT = 3,
+  PIN_MOTOR_CAMERA_UP = 5,
+  PIN_MOTOR_CAMERA_RIGHT = 6,
+};
 
-int motor_left_1_Pin = 4;
-int motor_left_2_Pin = 3;
-int motor_left_3_Pin = 2;
 
-Servo motor_right_1;
-Servo motor_right_2;
-Servo motor_right_3;
+Servo motor_platform;
+Servo motor_left;
+Servo motor_right;
 
-Servo motor_left_1;
-Servo motor_left_2;
-Servo motor_left_3;
+Servo motor_camera_up;
+Servo motor_camera_right;
 
-int right_motors_platform_speed = 0;
-int left_motors_platform_speed = 0;
-
-int motor_right_platform_1_Pin = 13;
-int motor_right_platform_2_Pin = 12;
-int motor_right_platform_3_Pin = 11;
-
-int motor_left_platform_1_Pin = 10;
-int motor_left_platform_2_Pin = 9;
-int motor_left_platform_3_Pin = 8;
-
-Servo motor_right_platform_1;
-Servo motor_right_platform_2;
-Servo motor_right_platform_3;
-
-Servo motor_left_platform_1;
-Servo motor_left_platform_2;
-Servo motor_left_platform_3;
-
-Servo motor_up;
-Servo motor_down;
-
-I2CEncoder right_encoder;
-I2CEncoder up_encoder;
-
-int motor_up_Pin = 8;
-int motor_down_Pin = 7;
+I2CEncoder encoder_up;
+I2CEncoder encoder_right;
 
 typedef struct
 {
@@ -62,87 +82,107 @@ typedef struct
 
 myS s;
 
-void setup() {
-  pinMode(motor_right_1_Pin, OUTPUT);
-  pinMode(motor_right_2_Pin, OUTPUT);
-  pinMode(motor_right_3_Pin, OUTPUT);
-  pinMode(motor_left_1_Pin, OUTPUT);
-  pinMode(motor_left_2_Pin, OUTPUT);
-  pinMode(motor_left_3_Pin, OUTPUT);
-
-  pinMode(motor_right_platform_1_Pin, OUTPUT);
-  pinMode(motor_right_platform_2_Pin, OUTPUT);
-  pinMode(motor_right_platform_3_Pin, OUTPUT);
-
-  pinMode(motor_left_platform_1_Pin, OUTPUT);
-  pinMode(motor_left_platform_2_Pin, OUTPUT);
-  pinMode(motor_left_platform_3_Pin, OUTPUT);
-  
-  motor_right_1.attach(motor_right_1_Pin);
-  motor_right_2.attach(motor_right_2_Pin);
-  motor_right_3.attach(motor_right_3_Pin);
-
-  motor_left_1.attach(motor_left_1_Pin);
-  motor_left_2.attach(motor_left_2_Pin);
-  motor_left_3.attach(motor_left_3_Pin);
-
-  motor_right_platform_1.attach(motor_right_platform_1_Pin);
-  motor_right_platform_2.attach(motor_right_platform_2_Pin);
-  motor_right_platform_3.attach(motor_right_platform_3_Pin);
-
-  motor_left_platform_1.attach(motor_left_platform_1_Pin);
-  motor_left_platform_2.attach(motor_left_platform_2_Pin);
-  motor_left_platform_3.attach(motor_left_platform_3_Pin);
-
-  motor_up.attach(motor_up_Pin);
-  motor_down.attach(motor_down_Pin);
-  
-  Serial.begin(9600);
-}
-
-//void loop() {
-//  if (Serial.available() > 0) {
-////    myS s;
-////    Serial.readBytes((byte*)(&s), sizeof(s));
-//    char command = Serial.read();
-//    Serial.println("ABC");
-//  }
-//}
 
 int sign(float n) {
   return (n > 0) - (n < 0);
 }
 
-float right_motor_needed = 1;
+void setup() {
+  Wire.begin();
+
+  pinMode(PIN_MOTOR_PLATFORM, OUTPUT);
+  pinMode(PIN_MOTOR_LEFT, OUTPUT);
+  pinMode(PIN_MOTOR_RIGHT, OUTPUT);
+  pinMode(PIN_MOTOR_CAMERA_UP, OUTPUT);
+  pinMode(PIN_MOTOR_CAMERA_RIGHT, OUTPUT);
+  
+  motor_platform.attach(PIN_MOTOR_PLATFORM);
+  motor_left.attach(PIN_MOTOR_LEFT);
+  motor_right.attach(PIN_MOTOR_RIGHT);
+  motor_camera_up.attach(PIN_MOTOR_CAMERA_UP);
+  motor_camera_right.attach(PIN_MOTOR_CAMERA_RIGHT);
+
+  encoder_up.init(MOTOR_269_ROTATIONS, MOTOR_269_TIME_DELTA);
+  encoder_right.init(MOTOR_269_ROTATIONS, MOTOR_269_TIME_DELTA);
+  
+  Serial.begin(9600);
+}
+
+
+float right_motor_needed = 0.1;
 float up_motor_needed = 0;
-bool done_moving_motors = false;
+int move_direction_right = 1;
+int move_direction_up = 0;
+
+float max_right_motor_angle = 80;
+float max_up_motor_angle = 80;
+
 
 void loop() {
-//  if (Serial.available() > 0) {
-////    char command = Serial.read();
-//      
-//      Serial.readBytes((byte*)(&s), sizeof(myS));    
-//
-//      right_motors_speed = s.r;
-//      left_motors_speed = s.l;
-//
-//      motors_platform_speed = s.p;
-//
-//      up_motor_needed = s.u;
-//      right_motor_needed = s.d;
-//      done_moving_motors = true;
-//  }
+  if (Serial.available() > 0) {
+      Serial.readBytes((byte*)(&s), sizeof(myS));    
+
+      right_motors_speed = s.r;
+      left_motors_speed = s.l;
+
+      motors_platform_speed = s.p;
+
+      up_motor_needed = s.u;
+      right_motor_needed = s.d;
+  }
+
+  if (up_motor_needed > max_up_motor_angle) {
+    up_motor_needed = max_up_motor_angle;
+  }
+  if (up_motor_needed < max_up_motor_angle*-1) {
+    up_motor_needed = max_up_motor_angle*-1;
+  }
+  if (right_motor_needed > max_right_motor_angle) {
+    right_motor_needed = max_right_motor_angle;
+  }
+  if (right_motor_needed < max_right_motor_angle*-1) {
+    right_motor_needed = max_right_motor_angle*-1;
+  }
+
+  right_motor_needed /= 360;
+  up_motor_needed /= 360;
+
   move_right_motors(right_motors_speed);
   move_left_motors(left_motors_speed);
   move_motors_platform(motors_platform_speed);
-  move_camera_motors(25, 25);
-//  if (!done_moving_motors) {
-//    Serial.println("HELLO");
-//    float right_motor_now = right_encoder.getPosition();
-//    float up_motor_now = up_encoder.getPosition();
-//    Serial.println("WORLD");
-//    move_camera_motors(25*sign(right_motor_now - right_motor_needed), 25*sign(up_motor_now - up_motor_needed));
-//  }
+//  move_camera_motors(25, 25);
+
+//  move_platform(30);
+//  move_tracks(30, 30);
+//  move_camera(0, 0);
+
+  
+  if (move_direction_right) {
+    float right_motor_now = encoder_right.getPosition();
+    float up_motor_now = encoder_up.getPosition();
+
+    
+
+    int right_dir = sign(right_motor_needed - right_motor_now);
+    int up_dir = sign(up_motor_needed - up_motor_now);
+    
+    Serial.print("MOVE ");
+    Serial.print(right_motor_needed - right_motor_now);
+    Serial.print(' ');
+    Serial.println(up_motor_needed - up_motor_now);
+    Serial.print(' ');
+    Serial.println(right_dir);
+    move_camera(25*move_direction_right, 25*move_direction_up);
+    if (right_dir != move_direction_right) {
+      Serial.println("GAVDUINO");
+      right_motor_needed *= -1;
+      move_direction_right *= -1;
+    }
+  } else {
+    Serial.println("DONE");
+    move_camera(0, 0);
+  }
+  
 //  myS ass {0x12, 0x34};
 //  Serial.write((byte*)( &s), sizeof s);
 //  uint16_t loh = 0x1234;
@@ -154,30 +194,18 @@ void loop() {
 //  delay(1000);
 }
 
-void move_right_motors(int angle) {
-//  Serial.println(angle);
-  motor_right_1.write(map(angle, -100, 100, 1000, 2000));
-  motor_right_2.write(map(angle, -100, 100, 1000, 2000));
-  motor_right_3.write(map(angle, -100, 100, 1000, 2000));
+
+
+void move_platform(int speed) {
+  motor_platform.write(pwm_convert(speed));
 }
 
-void move_left_motors(int angle) {
-  motor_left_1.write(map(angle, -100, 100, 1000, 2000));
-  motor_left_2.write(map(angle, -100, 100, 1000, 2000));
-  motor_left_3.write(map(angle, -100, 100, 1000, 2000));
+void move_tracks(int left, int right) {
+  motor_left.write(pwm_convert(left));
+  motor_right.write(pwm_convert(right));
 }
 
-void move_motors_platform(int angle) {
-  motor_right_platform_1.write(map(angle, -100, 100, 1000, 2000));
-  motor_right_platform_2.write(map(angle, -100, 100, 1000, 2000));
-  motor_right_platform_3.write(map(angle, -100, 100, 1000, 2000));
-  
-  motor_left_platform_1.write(map(angle, -100, 100, 1000, 2000));
-  motor_left_platform_2.write(map(angle, -100, 100, 1000, 2000));
-  motor_left_platform_3.write(map(angle, -100, 100, 1000, 2000));
-}
-
-void move_camera_motors(int speedRight, int speedUp) {
-  analogWrite(3, map(speedRight, -100, 100, 0, 250));
-  analogWrite(2, map(speedUp, -100, 100, 0, 250));
+void move_camera(int right, int up) {
+  motor_camera_up.write(pwm_convert(up));
+  motor_camera_right.write(pwm_convert(right));
 }
