@@ -36,11 +36,7 @@ function getDeviceType() {
   return "desktop";
 };
 
-orientation_init();
-
-if (getDeviceType() == "mobile") {
-  orientation_init();
-}
+// orientation_init();
 
 vrButton.addEventListener('click', () => {
   // orientationsend_selection();
@@ -59,80 +55,6 @@ vrButton.addEventListener('click', () => {
     playVR = true;
   }
 });
-
-// window.addEventListener("deviceorientation", event => {
-//   // get and send orientation data
-//   console.log({
-//     "absolute": event.absolute,
-//     "alpha":    event.alpha,
-//     "beta":     event.beta,
-//     "gamma":    event.gamma
-//   })
-//   if (playVR) {
-//     socket.emit("gyroscopeData", {
-//       "absolute": event.absolute,
-//       "alpha":    event.alpha,
-//       "beta":     event.beta,
-//       "gamma":    event.gamma
-//     });
-//   }
-// }, true);
-
-function handleGyronorm(data) {
-  // Process:
-  // data.do.alpha    ( deviceorientation event alpha value )
-  // data.do.beta     ( deviceorientation event beta value )
-  // data.do.gamma    ( deviceorientation event gamma value )
-  // data.do.absolute ( deviceorientation event absolute value )
-
-  // data.dm.x        ( devicemotion event acceleration x value )
-  // data.dm.y        ( devicemotion event acceleration y value )
-  // data.dm.z        ( devicemotion event acceleration z value )
-
-  // data.dm.gx       ( devicemotion event accelerationIncludingGravity x value )
-  // data.dm.gy       ( devicemotion event accelerationIncludingGravity y value )
-  // data.dm.gz       ( devicemotion event accelerationIncludingGravity z value )
-
-  // data.dm.alpha    ( devicemotion event rotationRate alpha value )
-  // data.dm.beta     ( devicemotion event rotationRate beta value )
-  // data.dm.gamma    ( devicemotion event rotationRate gamma value )
-  if (playVR) {
-    socket.emit("gyroscopeData", data);
-  }
-}
-
-function orientationsend_selection() {
-  console.log("gyronorm.js library found!");
-  if (gn) {
-    gn.setHeadDirection();
-    return;
-  }
-  try {
-    gn = new GyroNorm();
-  } catch (e) {
-    console.log(e);
-    return;
-  }
-  var args = {
-    frequency: 60, // ( How often the object sends the values - milliseconds )
-    gravityNormalized: true, // ( If the gravity related values to be normalized )
-    orientationBase: GyroNorm.GAME, // ( Can be GyroNorm.GAME or GyroNorm.WORLD. gn.GAME returns orientation values with respect to the head direction of the device. gn.WORLD returns the orientation values with respect to the actual north direction of the world. )
-    decimalCount: 1, // ( How many digits after the decimal point will there be in the return values )
-    logger: null, // ( Function to be called to log messages from gyronorm.js )
-    screenAdjusted: false            // ( If set to true it will return screen adjusted values. )
-  };
-  gn.init(args).then(function () {
-    gn.start(handleGyronorm);
-    gn.setHeadDirection(); // only with gn.GAME
-  }).catch(function (e) {
-    console.log("DeviceOrientation or DeviceMotion might not be supported by this browser or device");
-    window.addEventListener('deviceorientation', handleOrientation);
-  });
-  if (!gn) {
-    window.addEventListener('deviceorientation', handleOrientation);
-    console.log("gyronorm.js library not found, using defaults");
-  }
-}
 
 let sensorsSystemData = {
     "memory": {

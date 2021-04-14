@@ -15,7 +15,7 @@
 
 // left
 #define TRIGGER_PIN_4  8 // input
-#define ECHO_PIN_4     9
+#define ECHO_PIN_4     9 // output
 
 // right
 #define TRIGGER_PIN_5  10 // input

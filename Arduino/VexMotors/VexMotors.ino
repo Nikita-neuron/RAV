@@ -69,29 +69,43 @@ float up_motor_needed = 0;
 int move_direction_right = 1;
 int move_direction_up = 0;
 
-float max_right_motor_angle = 120;
-float max_up_motor_angle = 120;
+float max_right_motor_angle = 80;
+float max_up_motor_angle = 80;
 
 
 void loop() {
-//  if (Serial.available() > 0) {
-////    char command = Serial.read();
-//      
-//      Serial.readBytes((byte*)(&s), sizeof(myS));    
-//
-//      right_motors_speed = s.r;
-//      left_motors_speed = s.l;
-//
-//      motors_platform_speed = s.p;
-//
-//      up_motor_needed = s.u;
-//      right_motor_needed = s.d;
-//      done_moving_motors = true;
-//  }
+  if (Serial.available() > 0) {
+      Serial.readBytes((byte*)(&s), sizeof(myS));    
 
-//  move_right_motors(right_motors_speed);
-//  move_left_motors(left_motors_speed);
-//  move_motors_platform(motors_platform_speed);
+      right_motors_speed = s.r;
+      left_motors_speed = s.l;
+
+      motors_platform_speed = s.p;
+
+      up_motor_needed = s.u;
+      right_motor_needed = s.d;
+      done_moving_motors = true;
+  }
+
+  if (up_motor_needed > max_up_motor_angle) {
+    up_motor_needed = max_up_motor_angle;
+  }
+  if (up_motor_needed < max_up_motor_angle*-1) {
+    up_motor_needed = max_up_motor_angle*-1;
+  }
+  if (right_motor_needed > max_right_motor_angle) {
+    right_motor_needed = max_right_motor_angle;
+  }
+  if (right_motor_needed < max_right_motor_angle*-1) {
+    right_motor_needed = max_right_motor_angle*-1;
+  }
+
+  right_motor_needed /= 360;
+  up_motor_needed /= 360;
+
+  move_right_motors(right_motors_speed);
+  move_left_motors(left_motors_speed);
+  move_motors_platform(motors_platform_speed);
 //  move_camera_motors(25, 25);
 
 //  move_platform(30);
