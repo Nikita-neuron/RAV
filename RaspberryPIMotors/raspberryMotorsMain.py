@@ -55,6 +55,7 @@ def main():
   systemData = SystemData()
 
   gyroscopeData_last = [0, 0]
+  motors_last = [0, 0, 0]
 
   queueData = {
     "soundsPC":     queue.Queue(20),
@@ -124,11 +125,18 @@ def main():
     gyroscopeData = get_data(queueData, "gyroscope")
     if gyroscopeData is None:
       gyroscopeData = gyroscopeData_last
-    if motors is not None:
-      print("from raspberry: ", motors)
-      motors_arduino = MotorsStructure(motors[0], motors[1], motors[2], gyroscopeData[1], gyroscopeData[0])
-      arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
-      gyroscopeData_last = gyroscopeData
+    if motors is None:
+      motors = motors_last
+
+    print("send to arduino")
+
+    motors_arduino = MotorsStructure(motors[0], motors[1], motors[2], int(gyroscopeData[1]), int(gyroscopeData[0]))
+    arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
+
+    print("from raspberry: ", motors, gyroscopeData)
+
+    gyroscopeData_last = gyroscopeData
+    motors_last = motors
 
 
 if __name__ == '__main__':

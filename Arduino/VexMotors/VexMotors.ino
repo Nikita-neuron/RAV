@@ -24,7 +24,9 @@ public:
   }
   void set_needed(float needed) {
     this->needed = needed;
-    move_direction = 1;
+    float now = encoder.getPosition();
+    int delta = sign(needed - now);
+    move_direction = delta;
   }
   void update() {
 //    move_direction = 1;
@@ -40,12 +42,12 @@ public:
       motor.write(speed*delta);
 //      motor.write(1700);
       if (delta != move_direction) {
-        Serial.println("GAVDUINO");
+        // Serial.println("GAVDUINO");
         needed = 0;
         move_direction = 0;
       }
     } else {
-      Serial.println("DONE");
+      // Serial.println("DONE");
       motor.write(0);
     }
   }
@@ -101,6 +103,8 @@ void setup() {
   motor_left.attach(PIN_MOTOR_LEFT);
   motor_right.attach(PIN_MOTOR_RIGHT);
   motor_camera_up.attach(PIN_MOTOR_CAMERA_UP);
+  motor_camera_right.attach(PIN_MOTOR_CAMERA_RIGHT);
+  
 //  motor_camera_right.attach(PIN_MOTOR_CAMERA_RIGHT);
 
 /*
@@ -150,15 +154,17 @@ void loop() {
   right_motor_needed /= 360;
   up_motor_needed /= 360;
 
-  move_right_motors(right_motors_speed);
-  move_left_motors(left_motors_speed);
-  move_motors_platform(motors_platform_speed);
-  move_camera_motors(right_motor_needed, up_motor_needed);
+  motor_camera_up.set_needed(up_motor_needed);
+  motor_camera_right.set_needed(right_motor_needed);
+  
+  
+//  move_camera_motors(right_motor_needed, up_motor_needed);
 
-//  move_platform(30);
-//  move_tracks(30, 30);
-//  move_camera(0, 0);
+  move_platform(motors_platform_speed);
+  move_tracks(left_motors_speed, right_motors_speed);
   motor_camera_up.update();
+  motor_camera_right.update();
+  
 }
 
 
