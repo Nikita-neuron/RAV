@@ -19,7 +19,7 @@ class Protocol(protocol.Protocol):
     def dataReceived(self, data):
         self._unpacker.feed(data)
         for msg in self._unpacker:
-            print(msg)
+            # print(msg)
             msg_type = msg['type']
             callback_name = 'on_'+msg_type
             if hasattr(self, callback_name):

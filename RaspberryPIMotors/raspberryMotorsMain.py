@@ -1,6 +1,7 @@
 import sys
 import serial
 # import pyaudio
+import time
 sys.path.append("..")
 from ctypes import *
 import queue
@@ -137,6 +138,7 @@ def main():
 
     gyroscopeData_last = gyroscopeData
     motors_last = motors
+    time.sleep(0.1)
 
 
 if __name__ == '__main__':

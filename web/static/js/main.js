@@ -36,7 +36,7 @@ function getDeviceType() {
   return "desktop";
 };
 
-// orientation_init();
+orientation_init();
 
 vrButton.addEventListener('click', () => {
   // orientationsend_selection();

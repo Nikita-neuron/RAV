@@ -24,10 +24,18 @@ import queue
 # msgpack_numpy.patch()
 import cv2
 import numpy as np
+import traceback
 
 from engineio.payload import Payload
 
 Payload.max_decode_packets = 50
+
+
+old_print = print
+def spy_print(*args, **kwargs):
+    frame = traceback.extract_stack()[-2]
+    old_print(f'[{frame.name}]', *args, **kwargs)
+print = spy_print
 
 async_mode = None
 app = Flask(__name__, static_folder='static')
@@ -88,8 +96,11 @@ def hello_world():
 
 @app.route('/<path:filename>')
 def file_route(filename):
-    print('ROUTE', filename)
-    return flask.send_from_directory(app.static_folder, filename)
+    mimetype = 'text/javascript' if filename.endswith('.js') else None
+    
+    # for _ in range(1000):
+    #     print('ROUTE', filename, mimetype)
+    return flask.send_from_directory(app.static_folder, filename, mimetype=mimetype)
 
 @socketio.on('connect')
 def handle_connect():
@@ -164,7 +175,7 @@ class PcClientProtocol(myproto.Protocol):
         print('img', self.i)
         self.i += 1
     def on_systemData(self, data):
-        print('RECV SYSTEM', self.name, data)
+        # print('RECV SYSTEM', self.name, data)
         socketio.emit('systemData', data)
     def on_ultrasonic(self, data):
         print("RECV ULTRASONIC", self.name, data)
