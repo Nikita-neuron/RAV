@@ -6,3 +6,4 @@ watchdog
 twisted
 msgpack
 msgpack-numpy
+pyfiglet
