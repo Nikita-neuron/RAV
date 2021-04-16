@@ -51,5 +51,11 @@ void loop() {
   ultrasonicData.left = sonarLeft.ping_cm();
   ultrasonicData.right = sonarRight.ping_cm();
 
+//  ultrasonicData.upLeft = 1;
+//  ultrasonicData.upRight = 2;
+//  ultrasonicData.down = 3;
+//  ultrasonicData.left = 4;
+//  ultrasonicData.right = 5;
+
   Serial.write((byte*)( &ultrasonicData), sizeof ultrasonicData);
 }

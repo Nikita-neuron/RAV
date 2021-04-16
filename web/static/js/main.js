@@ -116,11 +116,8 @@ var distance = {
   "right": 50
 }
 
-console.log(signals);
 signals.forEach((sign) => {
-  console.log(sign);
-  sign.onload = () => {
-    console.log("jjj");
+  sign.addEventListener('load', () => {
     signalsSVG[sign.classList[1]] = sign.getSVGDocument();
                 
     loaded = true;
@@ -128,7 +125,7 @@ signals.forEach((sign) => {
     console.log(distance);
 
     setUltrasonicData(distance);
-  }
+  });
 });
 
 function setUltrasonicData(distance) {
