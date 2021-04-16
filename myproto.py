@@ -10,7 +10,7 @@ class Protocol(protocol.Protocol):
     def connectionMade(self):
         self.client_address = self.transport.getPeer()
         self.client_name = None
-        print(f'Connected to {self.client_address.host}:{self.client_address.port}')
+        print(f'[{self.name}] Connected to {self.client_address.host}:{self.client_address.port}')
     def sendMsg(self, type_, data):
         msg = {'type': type_, 'data': data}
         b = msgpack.packb(msg)
@@ -26,63 +26,6 @@ class Protocol(protocol.Protocol):
                 getattr(self, callback_name)(msg['data'])
                 continue
             print(f'{self}: Unknown message type "{msg_type}"')
-
-
-
-class PcServerProtocol(Protocol):
-    def __init__(self, factory: 'PcServerProtocolFactory'):
-        super().__init__()
-        self.factory = factory
-        self.name = None
-    # def dataReceived(self, data):
-    #     self.unpacker.feed(data)
-    #     for msg in self.unpacker:
-    #         print('Received message:', msg)
-    #         if msg['type'] == 'client_connect':
-    #             self.client_name = msg['name']
-    #             print(f'"{self.client_name}" connected')
-    #             self.factory._clientConnect(self)
-    #         elif msg['type'] == 'motors':
-    #             msg['type'] = 'motorsSpeed'
-    def on_client_connect(self, name):
-        self.name = name
-        print(f'"{self.name}" connected')
-        self.factory._on_client_connect(self)
-
-        # test_data = {
-        #     "memory": {
-        #         "memoryFree":       1,
-        #         "memoryTotal":      2,
-        #         "memoryPercent":    3
-        #     },
-        #     "disk": {
-        #         "diskFree":         4,
-        #         "diskTotal":        5,
-        #         "diskPercent":      6
-        #     },
-        #     "cpu":                  7,
-        #     "temperature":          8
-        # }
-        # import time
-        # import threading
-        # def f():
-        #     while True:
-        #         # self.on_systemData(test_data)
-        #         self.factory.sendMsg('webserver', 'systemData', {'name': 'raspberryPIMotors', **data})
-        #         time.sleep(1)
-        # threading.Thread(target=f, daemon=True).start()
-
-    def on_motorsSpeed(self, data):
-        print('recv motors', data)
-        self.factory.sendMsg('raspberryPIMotors', 'motorsSpeed', data)
-    def on_gyroscope(self, data):
-        print(data)
-        self.factory.sendMsg('raspberryPIMotors', 'gyroscope', data)
-    def on_systemData(self, data):
-        self.factory.sendMsg('webserver', 'systemData', {'name': self.name, **data})
-    def on_ultrasonic(self, data):
-        self.factory.sendMsg('webserver', 'ultrasonic', {'name': self.name, **data})
-        
 
 
 
@@ -139,4 +82,25 @@ class PcServerProtocolFactory(protocol.Factory):
         except KeyError:
             return None
         return client.sendMsg(type_, data)
+
+
+class PcServerProtocol(Protocol):
+    def __init__(self, factory: 'PcServerProtocolFactory'):
+        super().__init__()
+        self.factory = factory
+        self.name = None
+    def on_client_connect(self, name):
+        self.name = name
+        print(f'"{self.name}" connected')
+        self.factory._on_client_connect(self)
+    def on_motorsSpeed(self, data):
+        print('recv motors', data)
+        self.factory.sendMsg('raspberryPIMotors', 'motorsSpeed', data)
+    def on_gyroscope(self, data):
+        print(data)
+        self.factory.sendMsg('raspberryPIMotors', 'gyroscope', data)
+    def on_systemData(self, data):
+        self.factory.sendMsg('webserver', 'systemData', {'name': self.name, **data})
+    def on_ultrasonic(self, data):
+        self.factory.sendMsg('webserver', 'ultrasonic', {'name': self.name, **data})
 
