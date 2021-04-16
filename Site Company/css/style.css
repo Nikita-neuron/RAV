@@ -55,6 +55,7 @@ body {
   list-style: none;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0;
 }
 
@@ -65,7 +66,7 @@ body {
 .nav-link {
   text-decoration: none;
   font-weight: bold;
-  font-size: 29px;
+  font-size: 1.7em;
   line-height: 41px;
   color: #3F9EAB;
 }
@@ -79,23 +80,24 @@ body {
 
 .main-page-title {
   font-weight: bold;
-  font-size: 70px;
+  font-size: 4em;
   line-height: 70px;
   color: #99BBDA;
   text-align: center;
 }
 
 .robot-image {
-  width: 676px;
+  width: 60%;
   height: 432px;
   border-radius: 36px;
+  margin-left: 30px;
 }
 
 /* info page */
 
 .info-panel-page-title {
   font-weight: bold;
-  font-size: 72px;
+  font-size: 4em;
   line-height: 83px;
   text-align: center;
 
@@ -204,9 +206,10 @@ body {
 .command-page-title {
   text-align: center;
   font-weight: bold;
-  font-size: 72px;
+  font-size: 4em;
   line-height: 83px;
   color: #99BBDA;
+  margin-bottom: 10px;
 }
 
 .command-info {
@@ -220,11 +223,12 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  max-width: 25%;
 }
 
 .card-title {
   font-weight: bold;
-  font-size: 36px;
+  font-size: 2em;
   line-height: 41px;
   text-align: center;
 
@@ -232,15 +236,14 @@ body {
 }
 
 .card-image {
-  width: 309px;
-  height: 515px;
+  width: 100%;
   border-radius: 43px;
 }
 
 .card-descr {
   margin-top: 20px;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 1.3em;
   line-height: 28px;
   text-align: center;
   color: #81C1D6;
@@ -257,7 +260,7 @@ body {
 
 .video-page-title {
   font-weight: bold;
-  font-size: 72px;
+  font-size: 4em;
   line-height: 83px;
   text-align: center;
   color: #99BBDA;
@@ -275,7 +278,7 @@ body {
 
 .future-page-title {
   font-weight: bold;
-  font-size: 72px;
+  font-size: 4em;
   line-height: 83px;
   text-align: center;
   color: #99BBDA;
