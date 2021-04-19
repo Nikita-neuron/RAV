@@ -169,7 +169,7 @@ $(document).ready(function() {
 													var video = list[f]["video_codec"];
 													console.log(display);
 													Janus.debug("  >> [" + id + "] " + display + " (audio: " + audio + ", video: " + video + ")");
-													if (display == "raspberry") {
+													if (display == "aiortc") {
 														newRemoteFeed(id, display, audio, video);
 													}
 												}
@@ -191,7 +191,7 @@ $(document).ready(function() {
 													var audio = list[f]["audio_codec"];
 													var video = list[f]["video_codec"];
 													Janus.debug("  >> [" + id + "] " + display + " (audio: " + audio + ", video: " + video + ")");
-													if (display == "raspberry") {
+													if (display == "aiortc") {
 														newRemoteFeed(id, display, audio, video);
 													}
 												}
@@ -413,7 +413,7 @@ function publishOwnFeed(useAudio) {
 	sfutest.createOffer(
 		{
 			// Add data:true here if you want to publish datachannels as well
-			media: { audioRecv: false, videoRecv: false, audioSend: true, videoSend: false },	// Publishers are sendonly
+			media: { audioRecv: false, videoRecv: false, audioSend: false, videoSend: false },	// Publishers are sendonly
 			// If you want to test simulcasting (Chrome and Firefox only), then
 			// pass a ?simulcast=true when opening this demo page: it will turn
 			// the following 'simulcast' property to pass to janus.js to true
@@ -421,7 +421,7 @@ function publishOwnFeed(useAudio) {
 			simulcast2: doSimulcast2,
 			success: function(jsep) {
 				Janus.debug("Got publisher SDP!", jsep);
-				var publish = { request: "configure", audio: true, video: false };
+				var publish = { request: "configure", audio: false, video: false };
 				// You can force a specific codec to use when publishing by using the
 				// audiocodec and videocodec properties, for instance:
 				// 		publish["audiocodec"] = "opus"

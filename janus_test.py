@@ -230,7 +230,7 @@ async def subscribe(session, room, feed, recorder, plugin_last):
           print(feed)
 
           local_video = VideoTransformTrack(
-                track, transform='cartoon'
+                track, transform='rotate'
           )
           pc.addTrack(local_video)
 
@@ -284,7 +284,7 @@ async def run(player, recorder, room, session):
     publishers = response["plugindata"]["data"]["publishers"]
     for publisher in publishers:
         print("id: %(id)s, display: %(display)s" % publisher)
-        if publisher["display"] == "test":
+        if publisher["display"] == "raspberry":
           publish = publisher
 
     # receive video
