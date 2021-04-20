@@ -50,6 +50,7 @@ var server = null;
 
 server = "http://192.168.1.37:8088/janus"
 server = "http://172.20.233.12:8088/janus"
+server = "http://192.168.0.28:8088/janus"
 
 var janus = null;
 var sfutest = null;
