@@ -17,8 +17,8 @@ public:
   float max_angle;
   int move_direction;
 public:
-  CameraMotor(int speed, float min_angle = -INFINITY, float max_angle = INFINITY) {
-    this->speed = speed;
+  CameraMotor(float min_angle = -INFINITY, float max_angle = INFINITY) {
+//    this->speed = speed;
     this->min_angle = min_angle;
     this->max_angle = max_angle;
   }
@@ -47,28 +47,35 @@ public:
     
     move_direction = delta;
   }
+  void set_speed(int8_t speed) {
+    this->speed = speed;
+  }
   void update() {
-//    move_direction = 1;
-    if (move_direction) {
-      float now = encoder.getPosition();
-      
-      int delta = sign(needed - now);
-      
-//      Serial.print("MOVE ");
-//      Serial.print(needed - now);
-//      Serial.print(' ');
-//      Serial.println(delta);
-      motor.write(pwm_convert(speed*delta));
-//      motor.write(1700);
-      if (delta != move_direction) {
-        // Serial.println("GAVDUINO");
-        needed = 0;
-        move_direction = 0;
-      }
+    if (min_angle <= needed && needed <= max_angle) {
+      motor.write(pwm_convert(speed));
     } else {
-      // Serial.println("DONE");
-      motor.write(0);
+      motor.write(pwm_convert(0));
     }
+//    if (move_direction) {
+//      float now = encoder.getPosition();
+//      
+//      int delta = sign(needed - now);
+//      
+////      Serial.print("MOVE ");
+////      Serial.print(needed - now);
+////      Serial.print(' ');
+////      Serial.println(delta);
+//      this.write(speed*delta);
+////      motor.write(1700);
+//      if (delta != move_direction) {
+//        // Serial.println("GAVDUINO");
+//        needed = 0;
+//        move_direction = 0;
+//      }
+//    } else {
+//      // Serial.println("DONE");
+//      motor.write(0);
+//    }
   }
 };
 
@@ -90,16 +97,16 @@ Servo motor_platform;
 Servo motor_left;
 Servo motor_right;
 
-CameraMotor motor_camera_up(15);
-CameraMotor motor_camera_right(17, -45/360.0, 45/360.0);
+CameraMotor motor_camera_up;
+CameraMotor motor_camera_right(-45/360.0, 45/360.0);
 
 typedef struct
 {
     int8_t r;
     int8_t l;
     int8_t p;
-    int16_t u;
-    int16_t d;
+    int8_t lr;
+    int8_t ud;
 } __attribute__((__packed__)) myS;
 
 myS s;
@@ -162,14 +169,16 @@ void loop() {
 
     motors_platform_speed = s.p;
 
-    up_motor_needed = s.u;
-    right_motor_needed = s.d;
+//    up_motor_needed = s.u;
+//    right_motor_needed = s.d;
     
-    right_motor_needed /= 360;
-    up_motor_needed /= 360;
+//    right_motor_needed /= 360;
+//    up_motor_needed /= 360;
     
-    motor_camera_up.set_needed(up_motor_needed);
-    motor_camera_right.set_needed(right_motor_needed);
+//    motor_camera_up.set_needed(up_motor_needed);
+//    motor_camera_right.set_needed(right_motor_needed);
+    motor_camera_up.set_speed(s.ud);
+    motor_camera_right.set_speed(s.lr);
   }
   motor_camera_up.update();
   motor_camera_right.update();

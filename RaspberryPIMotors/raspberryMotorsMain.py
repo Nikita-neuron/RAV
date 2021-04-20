@@ -44,7 +44,13 @@ def get_sound_device():
 
 class MotorsStructure(Structure):
   _pack_ = 1
-  _fields_ = [("r", c_int8), ("l", c_int8), ("p", c_int8), ("u", c_int16), ("d", c_int16)]
+  _fields_ = [
+    ("r", c_int8),
+    ("l", c_int8),
+    ("p", c_int8),
+    ("lr", c_int8),
+    ("ud", c_int8)]
+
 
 def get_data(queueData, name):
   try:
@@ -56,7 +62,7 @@ def main():
   systemData = SystemData()
 
   gyroscopeData_last = [0, 0]
-  motors_last = [0, 0, 0]
+  motors_last = [0]*5
 
   queueData = {
     "soundsPC":     queue.Queue(20),
@@ -96,47 +102,23 @@ def main():
       "data": system_data
     })
     
-    # print("get frame")
-    # frame = raspberryVideo.get_video_frames()
-    # print("hhh")
-    # print("send")
-    # if frame is not None:
-    #   raspberryPIMotorsServer.send_message({
-    #     "type": "frames",
-    #     "data": frame
-    #   })
-    # print("done")
 
-    
-    # sound = soundRecord.get_sound()
-    # if sound is not None:
-    #   # print(sound)
-    #   soundPlay.add_sound(sound)
-      # raspberryPIMotorsServer.send_message({
-      #   "type": "soundsRaspberry", 
-      #   "data": sound
-      # })
-
-    # sound_pc = get_data(queueData, "soundsPC")
-    # if sound_pc is not None:
-    #   # print(sound_pc)
-    #   soundPlay.add_sound(sound_pc)
-    
     motors = get_data(queueData, "motorsSpeed")
-    gyroscopeData = get_data(queueData, "gyroscope")
-    if gyroscopeData is None:
-      gyroscopeData = gyroscopeData_last
+    # gyroscopeData = get_data(queueData, "gyroscope")
+    # if gyroscopeData is None:
+      # gyroscopeData = gyroscopeData_last
     if motors is None:
       motors = motors_last
 
-    print("send to arduino")
+    print("send to arduino", motors)
 
-    motors_arduino = MotorsStructure(motors[0], motors[1], motors[2], int(gyroscopeData[1]), int(gyroscopeData[0]))
+    #                               | TRACKS             | PLATFORM | CAMERA              | 
+    motors_arduino = MotorsStructure(motors[0], motors[1], motors[2], motors[3], motors[4])
     arduino.write(string_at(byref(motors_arduino), sizeof(motors_arduino)))
 
-    print("from raspberry: ", motors, gyroscopeData)
+    print("from raspberry: ", motors)
 
-    gyroscopeData_last = gyroscopeData
+    # gyroscopeData_last = gyroscopeData
     motors_last = motors
     time.sleep(0.1)
 

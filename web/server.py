@@ -132,11 +132,17 @@ def handle_keys(joystick):
     right_stick_y = sticks['right'][1]
     lb = buttons['lb']
     rb = buttons['rb']
+
+    br = buttons['br']['pressed']
+    rr = buttons['rr']['pressed']
+    lr = buttons['lr']['pressed']
+    tr = buttons['tr']['pressed']
     
     motors = np.int8(-100*np.array([right_stick_y, left_stick_y])).clip(-100, 100)
     platform = 30*lb['pressed'] - 30*rb['pressed']
-    print('Send', motors)
-    pc_client.sendMsg('motorsSpeed', [*motors, platform])
+    camera = (np.array([0, 20])*br + np.array([-15, 0])*rr + np.array([15, 0])*lr + np.array([0, -12])*tr)
+    print('Send', motors, platform, camera)
+    pc_client.sendMsg('motorsSpeed', [*motors, platform, *camera])
 
 @socketio.on("gyroscopeData")
 def gyroscope_data(gyroscopeData):
