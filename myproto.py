@@ -5,13 +5,20 @@ import msgpack_numpy
 msgpack_numpy.patch()
 
 class Protocol(protocol.Protocol):
+    unnamed_protocol_count = 0
     def __init__(self):
+        # if not hasattr(self, name):
+        #     self.name = 'unknown'
+        self.ip_cache = {}
         self._unpacker = msgpack.Unpacker()
     def connectionMade(self):
         self.client_address = self.transport.getPeer()
         self.client_name = None
         print(f'[{self.name}] Connected to {self.client_address.host}:{self.client_address.port}')
-    def sendMsg(self, type_, data):
+    def sendMsg(self, *args):
+        ''' sendMsg(self[, client_name], type_ data) '''
+        *client_name, type_, data = args
+        # if client_name:
         msg = {'type': type_, 'data': data}
         b = msgpack.packb(msg)
         self.transport.write(b)

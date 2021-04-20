@@ -133,7 +133,7 @@ def handle_keys(joystick):
     lb = buttons['lb']
     rb = buttons['rb']
     
-    motors = np.int8(100*np.array([right_stick_y, left_stick_y])).clip(-100, 100)
+    motors = np.int8(-100*np.array([right_stick_y, left_stick_y])).clip(-100, 100)
     platform = 30*lb['pressed'] - 30*rb['pressed']
     print('Send', motors)
     pc_client.sendMsg('motorsSpeed', [*motors, platform])

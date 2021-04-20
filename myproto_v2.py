@@ -27,9 +27,9 @@ class PcClientProtocol(myproto.Protocol):
 
 
 server_protocol = myproto.PcServerProtocolFactory()
-reactor.listenTCP(54321, server_protocol)
+reactor.listenTCP(54320, server_protocol)
 
 client_protocol = myproto.PcClientProtocolFactory(PcClientProtocol)
-reactor.connectTCP('localhost', 54321, client_protocol)
+reactor.connectTCP('localhost', 54320, client_protocol)
 
 reactor.run()
